@@ -1422,7 +1422,7 @@ form.addEventListener('submit', async (e) => {
     const result = await res.json();
     if (result.ok) {
       form.reset();
-      showOnboardingFlow(payload.name);
+      showOnboardingFlow(payload.name, payload);
     } else {
       throw new Error('Failed');
     }
@@ -1458,7 +1458,7 @@ function animateCounter(el, target, duration = 1500) {
 }
 
 // ═══ ONBOARDING OVERLAY ═══
-function showOnboardingFlow(leadName) {
+function showOnboardingFlow(leadName, payload) {
   const overlay = document.createElement('div');
   overlay.className = 'onboarding-overlay';
   overlay.innerHTML = `
