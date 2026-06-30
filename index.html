@@ -606,6 +606,102 @@ section { padding: 6rem 0; position: relative; z-index: 1; }
   margin-top: 1rem;
 }
 
+/* ═══ ONBOARDING OVERLAY ═══ */
+.onboarding-overlay {
+  position: fixed; inset: 0; z-index: 9999;
+  background: rgba(6, 7, 9, 0.85);
+  backdrop-filter: blur(12px);
+  display: flex; align-items: center; justify-content: center;
+  padding: 1.5rem;
+  animation: ob-fade-in 0.3s ease;
+}
+@keyframes ob-fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+.onboarding-card {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 3rem 2.5rem;
+  max-width: 480px; width: 100%;
+  text-align: center;
+  position: relative;
+  box-shadow: 0 24px 80px rgba(0,0,0,0.5), 0 0 0 1px rgba(59,130,246,0.1);
+}
+.ob-step { display: none; }
+.ob-step.active { display: block; animation: ob-slide-up 0.4s ease; }
+@keyframes ob-slide-up {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.ob-spinner { margin-bottom: 1.5rem; }
+.ob-title {
+  font-family: var(--font-display);
+  font-size: 1.5rem; font-weight: 700;
+  color: var(--fg); margin-bottom: 0.5rem;
+}
+.ob-sub { color: var(--muted); font-size: 0.95rem; margin-bottom: 2rem; }
+.ob-checks {
+  display: flex; flex-direction: column; gap: 0.75rem;
+  text-align: left; margin-top: 1.5rem;
+}
+.ob-check {
+  display: flex; align-items: center; gap: 0.75rem;
+  font-size: 0.9rem; color: var(--muted);
+  transition: color 0.3s;
+}
+.ob-check.done { color: var(--fg); }
+.ob-check-icon {
+  width: 22px; height: 22px;
+  display: flex; align-items: center; justify-content: center;
+  border-radius: 50%; font-size: 0.8rem;
+  border: 1.5px solid var(--border);
+  transition: all 0.3s;
+}
+.ob-check.done .ob-check-icon {
+  background: #22c55e; border-color: #22c55e; color: #fff;
+}
+.ob-success-icon { margin-bottom: 1.5rem; }
+.ob-next-steps {
+  display: flex; flex-direction: column; gap: 1rem;
+  text-align: left; margin: 1.5rem 0;
+}
+.ob-step-item {
+  display: flex; gap: 0.75rem; align-items: flex-start;
+}
+.ob-step-num {
+  width: 28px; height: 28px; flex-shrink: 0;
+  border-radius: 50%; background: var(--accent-soft);
+  color: var(--accent-light);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.85rem; font-weight: 700;
+  font-family: var(--font-display);
+}
+.ob-step-text { font-size: 0.9rem; color: var(--fg); line-height: 1.5; padding-top: 3px; }
+.ob-step-text strong { color: var(--fg); }
+.ob-contact-card {
+  background: rgba(59,130,246,0.08);
+  border: 1px solid rgba(59,130,246,0.2);
+  border-radius: 12px;
+  padding: 1rem; margin: 1.5rem 0;
+}
+.ob-contact-row {
+  display: flex; align-items: center; gap: 0.5rem; justify-content: center;
+  font-size: 0.9rem; color: var(--fg);
+}
+.ob-contact-row svg { color: var(--accent-light); }
+.ob-portal-btn { width: 100%; margin-top: 0.5rem; }
+.ob-close-link {
+  margin-top: 1rem; font-size: 0.8rem; color: var(--muted);
+  cursor: pointer; transition: color 0.2s;
+}
+.ob-close-link:hover { color: var(--fg); }
+@media (max-width: 540px) {
+  .onboarding-card { padding: 2rem 1.5rem; }
+  .ob-title { font-size: 1.25rem; }
+}
+
 /* ═══ FOOTER ═══ */
 footer {
   border-top: 1px solid var(--border);
@@ -1298,12 +1394,8 @@ form.addEventListener('submit', async (e) => {
     });
     const result = await res.json();
     if (result.ok) {
-      btn.innerHTML = '✓ Sent! We\'ll be in touch within 24h';
       form.reset();
-      setTimeout(() => {
-        btn.innerHTML = originalText;
-        btn.disabled = false;
-      }, 5000);
+      showOnboardingFlow(payload.name);
     } else {
       throw new Error('Failed');
     }
@@ -1336,6 +1428,88 @@ function animateCounter(el, target, duration = 1500) {
     if (progress < 1) requestAnimationFrame(update);
   }
   requestAnimationFrame(update);
+}
+
+// ═══ ONBOARDING OVERLAY ═══
+function showOnboardingFlow(leadName) {
+  const overlay = document.createElement('div');
+  overlay.className = 'onboarding-overlay';
+  overlay.innerHTML = `
+    <div class="onboarding-card">
+      <!-- Step 1: Thinking -->
+      <div class="ob-step ob-thinking active">
+        <div class="ob-spinner">
+          <svg width="48" height="48" viewBox="0 0 48 48">
+            <circle cx="24" cy="24" r="20" fill="none" stroke="rgba(59,130,246,0.15)" stroke-width="3"/>
+            <circle cx="24" cy="24" r="20" fill="none" stroke="#3b82f6" stroke-width="3" stroke-linecap="round" stroke-dasharray="90 150" stroke-dashoffset="0">
+              <animateTransform attributeName="transform" type="rotate" from="0 24 24" to="360 24 24" dur="1.2s" repeatCount="indefinite"/>
+            </circle>
+          </svg>
+        </div>
+        <h3 class="ob-title">Reviewing your request…</h3>
+        <p class="ob-sub">Our AI is checking if we can help with your project.</p>
+        <div class="ob-checks">
+          <div class="ob-check" data-check="0"><span class="ob-check-icon">○</span> Analyzing your message</div>
+          <div class="ob-check" data-check="1"><span class="ob-check-icon">○</span> Checking project scope</div>
+          <div class="ob-check" data-check="2"><span class="ob-check-icon">○</span> Verifying fit</div>
+        </div>
+      </div>
+
+      <!-- Step 2: Approved -->
+      <div class="ob-step ob-approved">
+        <div class="ob-success-icon">
+          <svg width="64" height="64" viewBox="0 0 64 64">
+            <circle cx="32" cy="32" r="28" fill="none" stroke="#22c55e" stroke-width="3" stroke-dasharray="176" stroke-dashoffset="176">
+              <animate attributeName="stroke-dashoffset" from="176" to="0" dur="0.6s" fill="freeze" begin="0.1s"/>
+            </circle>
+            <path d="M20 32 L28 40 L44 24" fill="none" stroke="#22c55e" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="40" stroke-dashoffset="40">
+              <animate attributeName="stroke-dashoffset" from="40" to="0" dur="0.4s" fill="freeze" begin="0.5s"/>
+            </path>
+          </svg>
+        </div>
+        <h3 class="ob-title">You're approved! 🎉</h3>
+        <p class="ob-sub">${leadName ? leadName.split(' ')[0] + ', ' : ''}your project looks like a great fit.</p>
+        <div class="ob-next-steps">
+          <div class="ob-step-item">
+            <div class="ob-step-num">1</div>
+            <div class="ob-step-text"><strong>Create your free portal</strong> to track your project and upload requirements.</div>
+          </div>
+          <div class="ob-step-item">
+            <div class="ob-step-num">2</div>
+            <div class="ob-step-text"><strong>Expect a call from Reagan</strong> — the owner. He'll personally discuss your project.</div>
+          </div>
+        </div>
+        <div class="ob-contact-card">
+          <div class="ob-contact-row">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+            <span>Reagan Gallagher — (919) 525-4567</span>
+          </div>
+        </div>
+        <button class="btn btn-primary ob-portal-btn" onclick="window.location.href='#'">
+          Create Free Portal
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+        </button>
+        <p class="ob-close-link" onclick="document.querySelector('.onboarding-overlay').remove()">Close</p>
+      </div>
+    </div>
+  `;
+  document.body.appendChild(overlay);
+  document.body.style.overflow = 'hidden';
+
+  // Animate checks
+  const checks = overlay.querySelectorAll('.ob-check');
+  checks.forEach((check, i) => {
+    setTimeout(() => {
+      check.querySelector('.ob-check-icon').textContent = '✓';
+      check.classList.add('done');
+    }, 600 + i * 700);
+  });
+
+  // Switch to approved
+  setTimeout(() => {
+    overlay.querySelector('.ob-thinking').classList.remove('active');
+    overlay.querySelector('.ob-approved').classList.add('active');
+  }, 2800);
 }
 </script>
 
