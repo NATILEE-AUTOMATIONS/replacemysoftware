@@ -638,17 +638,17 @@ section { padding: 6rem 0; position: relative; z-index: 1; }
 .ob-spinner { margin-bottom: 1.5rem; }
 .ob-title {
   font-family: var(--font-display);
-  font-size: 1.5rem; font-weight: 700;
+  font-size: 1.875rem; font-weight: 700;
   color: var(--fg); margin-bottom: 0.5rem;
 }
-.ob-sub { color: var(--muted); font-size: 0.95rem; margin-bottom: 2rem; }
+.ob-sub { color: var(--muted); font-size: 1.1rem; margin-bottom: 2rem; }
 .ob-checks {
   display: flex; flex-direction: column; gap: 0.75rem;
   text-align: left; margin-top: 1.5rem;
 }
 .ob-check {
   display: flex; align-items: center; gap: 0.75rem;
-  font-size: 0.9rem; color: var(--muted);
+  font-size: 1.05rem; color: var(--muted);
   transition: color 0.3s;
 }
 .ob-check.done { color: var(--fg); }
@@ -678,7 +678,7 @@ section { padding: 6rem 0; position: relative; z-index: 1; }
   font-size: 0.85rem; font-weight: 700;
   font-family: var(--font-display);
 }
-.ob-step-text { font-size: 0.9rem; color: var(--fg); line-height: 1.5; padding-top: 3px; }
+.ob-step-text { font-size: 1.05rem; color: var(--fg); line-height: 1.5; padding-top: 3px; }
 .ob-step-text strong { color: var(--fg); }
 .ob-contact-card {
   background: rgba(59,130,246,0.08);
@@ -688,10 +688,22 @@ section { padding: 6rem 0; position: relative; z-index: 1; }
 }
 .ob-contact-row {
   display: flex; align-items: center; gap: 0.5rem; justify-content: center;
-  font-size: 0.9rem; color: var(--fg);
+  font-size: 1.05rem; color: var(--fg);
 }
 .ob-contact-row svg { color: var(--accent-light); }
 .ob-portal-btn { width: 100%; margin-top: 0.5rem; }
+.ob-portal-form { margin-top: 0.5rem; }
+.ob-portal-label { font-size: 1rem; color: var(--fg); margin-bottom: 0.75rem; font-weight: 500; }
+.ob-password-input {
+  width: 100%; padding: 0.85rem 1rem; margin-bottom: 0.75rem;
+  background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius);
+  color: var(--fg); font-family: var(--font-body); font-size: 1rem;
+  box-sizing: border-box; transition: border-color 0.2s;
+}
+.ob-password-input:focus {
+  outline: none; border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-soft);
+}
 .ob-close-link {
   margin-top: 1rem; font-size: 0.8rem; color: var(--muted);
   cursor: pointer; transition: color 0.2s;
@@ -699,7 +711,8 @@ section { padding: 6rem 0; position: relative; z-index: 1; }
 .ob-close-link:hover { color: var(--fg); }
 @media (max-width: 540px) {
   .onboarding-card { padding: 2rem 1.5rem; }
-  .ob-title { font-size: 1.25rem; }
+  .ob-title { font-size: 1.5rem; }
+  .ob-sub { font-size: 1rem; }
 }
 
 /* ═══ FOOTER ═══ */
@@ -1485,10 +1498,16 @@ function showOnboardingFlow(leadName) {
             <span>Reagan Gallagher — (919) 525-4567</span>
           </div>
         </div>
-        <button class="btn btn-primary ob-portal-btn" onclick="window.location.href='#'">
-          Create Free Portal
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
-        </button>
+        
+        <!-- Password creation -->
+        <div class="ob-portal-form">
+          <p class="ob-portal-label">Create your portal password:</p>
+          <input type="password" id="portal-password" placeholder="Choose a password" class="ob-password-input" autocomplete="new-password">
+          <button class="btn btn-primary ob-portal-btn" id="portal-submit">
+            Create Portal & View Dashboard
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+          </button>
+        </div>
         <p class="ob-close-link" onclick="document.querySelector('.onboarding-overlay').remove()">Close</p>
       </div>
     </div>
@@ -1502,14 +1521,31 @@ function showOnboardingFlow(leadName) {
     setTimeout(() => {
       check.querySelector('.ob-check-icon').textContent = '✓';
       check.classList.add('done');
-    }, 600 + i * 700);
+    }, 800 + i * 1200);
   });
 
-  // Switch to approved
+  // Switch to approved after ~5s
   setTimeout(() => {
     overlay.querySelector('.ob-thinking').classList.remove('active');
     overlay.querySelector('.ob-approved').classList.add('active');
-  }, 2800);
+
+    // Wire up portal submit
+    const portalBtn = overlay.querySelector('#portal-submit');
+    const portalInput = overlay.querySelector('#portal-password');
+    portalBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      if (!portalInput.value) {
+        portalInput.style.borderColor = '#ef4444';
+        return;
+      }
+      // Store lead data for the dashboard
+      localStorage.setItem('rms_lead', JSON.stringify(payload));
+      window.location.href = '/portal';
+    });
+    portalInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') portalBtn.click();
+    });
+  }, 5200);
 }
 </script>
 

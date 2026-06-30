@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Client Portal — Replace My Software</title>
+<link rel="icon" type="image/svg+xml" href="/logo.svg">
+<link rel="icon" type="image/png" href="/logo.png">
+<link rel="apple-touch-icon" href="/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #060709;
+  --bg-card: #0d0e12;
+  --bg-hover: #14151a;
+  --fg: #e8e9ed;
+  --muted: #7a7d86;
+  --border: #1a1b22;
+  --accent: #3b82f6;
+  --accent-light: #60a5fa;
+  --accent-soft: rgba(59,130,246,0.12);
+  --accent-glow: rgba(59,130,246,0.4);
+  --success: #22c55e;
+  --warning: #f59e0b;
+  --radius: 12px;
+  --font-display: 'Space Grotesk', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+html, body { max-width:100vw; overflow-x:hidden; }
+body {
+  background: var(--bg); color: var(--fg);
+  font-family: var(--font-body); font-size: 16px; line-height: 1.6;
+  min-height: 100vh;
+}
+
+/* Nav */
+.portal-nav {
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(6,7,9,0.8); backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border);
+  padding: 1rem 0;
+}
+.portal-nav-inner {
+  max-width: 1100px; margin: 0 auto; padding: 0 1.5rem;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.portal-brand {
+  display: flex; align-items: center; gap: 0.6rem;
+  font-family: var(--font-display); font-weight: 700; font-size: 1.1rem;
+}
+.portal-brand img { width: 28px; height: 28px; border-radius: 6px; }
+.portal-brand .accent { color: var(--accent-light); }
+.portal-nav-right { display: flex; align-items: center; gap: 1.5rem; }
+.portal-user {
+  display: flex; align-items: center; gap: 0.5rem;
+  font-size: 0.9rem; color: var(--muted);
+}
+.portal-avatar {
+  width: 32px; height: 32px; border-radius: 50%;
+  background: var(--accent-soft); color: var(--accent-light);
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 700; font-size: 0.85rem; font-family: var(--font-display);
+}
+.portal-logout {
+  color: var(--muted); text-decoration: none; font-size: 0.85rem;
+  transition: color 0.2s;
+}
+.portal-logout:hover { color: var(--fg); }
+
+/* Layout */
+.portal-main {
+  max-width: 1100px; margin: 0 auto; padding: 2rem 1.5rem 4rem;
+}
+
+/* Welcome */
+.portal-welcome {
+  margin-bottom: 2.5rem;
+}
+.portal-welcome h1 {
+  font-family: var(--font-display); font-size: 2rem; font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+.portal-welcome p { color: var(--muted); font-size: 1.05rem; }
+
+/* Progress section */
+.progress-section {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: 16px; padding: 2rem; margin-bottom: 2rem;
+}
+.progress-header {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-bottom: 1.5rem;
+}
+.progress-header h2 {
+  font-family: var(--font-display); font-size: 1.25rem; font-weight: 600;
+}
+.progress-badge {
+  padding: 0.35rem 0.85rem; border-radius: 20px;
+  font-size: 0.8rem; font-weight: 600;
+  background: rgba(245,158,11,0.12); color: var(--warning);
+  border: 1px solid rgba(245,158,11,0.25);
+}
+.progress-bar-container {
+  height: 12px; background: var(--bg); border-radius: 6px;
+  overflow: hidden; margin-bottom: 1rem; position: relative;
+}
+.progress-bar-fill {
+  height: 100%; width: 15%; border-radius: 6px;
+  background: linear-gradient(90deg, var(--accent), var(--accent-light));
+  position: relative; transition: width 1s ease;
+}
+.progress-bar-fill::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  animation: shimmer 2s infinite;
+}
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+.progress-stages {
+  display: flex; justify-content: space-between; margin-top: 1.5rem;
+  position: relative;
+}
+.progress-stages::before {
+  content: ''; position: absolute; top: 14px; left: 0; right: 0;
+  height: 2px; background: var(--border);
+}
+.stage {
+  display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
+  position: relative; z-index: 1; flex: 1;
+}
+.stage-dot {
+  width: 28px; height: 28px; border-radius: 50%;
+  background: var(--bg); border: 2px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.75rem; font-weight: 700; font-family: var(--font-display);
+  color: var(--muted); transition: all 0.3s;
+}
+.stage.active .stage-dot {
+  background: var(--accent); border-color: var(--accent); color: #fff;
+  box-shadow: 0 0 0 4px var(--accent-soft);
+}
+.stage.done .stage-dot {
+  background: var(--success); border-color: var(--success); color: #fff;
+}
+.stage-label { font-size: 0.8rem; color: var(--muted); text-align: center; }
+.stage.active .stage-label { color: var(--fg); }
+.stage.done .stage-label { color: var(--fg); }
+
+/* Grid */
+.portal-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 2rem;
+}
+.card {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: 16px; padding: 1.75rem;
+}
+.card h3 {
+  font-family: var(--font-display); font-size: 1.1rem; font-weight: 600;
+  margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;
+}
+.card-icon { color: var(--accent-light); }
+
+/* Summary card */
+.summary-content {
+  font-size: 0.95rem; color: var(--muted); line-height: 1.7;
+}
+.summary-content strong { color: var(--fg); }
+.summary-msg {
+  margin-top: 1rem; padding: 1rem;
+  background: var(--bg); border-radius: 8px;
+  border-left: 3px solid var(--accent);
+  font-size: 0.9rem; color: var(--fg); font-style: italic;
+}
+
+/* Contact card */
+.contact-info { display: flex; flex-direction: column; gap: 1rem; }
+.contact-row {
+  display: flex; align-items: center; gap: 0.75rem;
+  font-size: 0.95rem;
+}
+.contact-row svg { color: var(--accent-light); flex-shrink: 0; }
+.contact-row a { color: var(--fg); text-decoration: none; transition: color 0.2s; }
+.contact-row a:hover { color: var(--accent-light); }
+.contact-owner-card {
+  margin-top: 0.5rem; padding: 1rem;
+  background: var(--accent-soft); border-radius: 10px;
+  border: 1px solid rgba(59,130,246,0.2);
+}
+.contact-owner-name { font-weight: 600; color: var(--fg); }
+.contact-owner-title { font-size: 0.85rem; color: var(--muted); }
+
+/* Timeline */
+.timeline { display: flex; flex-direction: column; gap: 1rem; }
+.timeline-item {
+  display: flex; gap: 1rem; align-items: flex-start;
+}
+.timeline-dot {
+  width: 10px; height: 10px; border-radius: 50%;
+  background: var(--accent); margin-top: 5px; flex-shrink: 0;
+  box-shadow: 0 0 0 3px var(--accent-soft);
+}
+.timeline-item.done .timeline-dot { background: var(--success); box-shadow: 0 0 0 3px rgba(34,197,94,0.12); }
+.timeline-content { flex: 1; }
+.timeline-title { font-size: 0.9rem; font-weight: 500; color: var(--fg); }
+.timeline-time { font-size: 0.8rem; color: var(--muted); }
+
+/* Specs card */
+.specs-list { display: flex; flex-direction: column; gap: 0.75rem; }
+.spec-item {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 0.75rem 1rem; background: var(--bg); border-radius: 8px;
+  font-size: 0.9rem;
+}
+.spec-label { color: var(--muted); }
+.spec-value { color: var(--fg); font-weight: 500; }
+
+/* CTA */
+.portal-cta {
+  background: linear-gradient(135deg, var(--accent-soft), transparent);
+  border: 1px solid rgba(59,130,246,0.2);
+  border-radius: 16px; padding: 2rem; text-align: center; margin-top: 1rem;
+}
+.portal-cta h3 {
+  font-family: var(--font-display); font-size: 1.2rem; font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+.portal-cta p { color: var(--muted); font-size: 0.95rem; margin-bottom: 1.25rem; }
+.btn {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  padding: 0.85rem 1.5rem; border-radius: 10px;
+  font-family: var(--font-body); font-weight: 600; font-size: 0.95rem;
+  text-decoration: none; border: none; cursor: pointer;
+  transition: all 0.2s;
+}
+.btn-primary {
+  background: var(--accent); color: #fff;
+}
+.btn-primary:hover {
+  background: var(--accent-light); transform: translateY(-1px);
+  box-shadow: 0 4px 20px var(--accent-glow);
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .portal-grid { grid-template-columns: 1fr; }
+  .portal-welcome h1 { font-size: 1.5rem; }
+  .progress-stages { gap: 0.25rem; }
+  .stage-label { font-size: 0.7rem; }
+  .portal-nav-inner { padding: 0 1rem; }
+  .portal-main { padding: 1.5rem 1rem 3rem; }
+}
+@media (max-width: 540px) {
+  .progress-section { padding: 1.5rem 1rem; }
+  .card { padding: 1.25rem; }
+  .stage-label { display: none; }
+  .stage-dot { width: 24px; height: 24px; font-size: 0.65rem; }
+}
+</style>
+</head>
+<body>
+
+<nav class="portal-nav">
+  <div class="portal-nav-inner">
+    <div class="portal-brand">
+      <img src="/logo.png" alt="RMS">
+      Replace My <span class="accent">Software</span>
+    </div>
+    <div class="portal-nav-right">
+      <div class="portal-user">
+        <div class="portal-avatar" id="user-avatar">U</div>
+        <span id="user-name">User</span>
+      </div>
+      <a href="/" class="portal-logout">Exit Portal</a>
+    </div>
+  </div>
+</nav>
+
+<main class="portal-main">
+  <!-- Welcome -->
+  <div class="portal-welcome">
+    <h1>Welcome to your portal, <span id="welcome-name">there</span> 👋</h1>
+    <p>Your custom CRM project starts here. Track progress, view details, and message our team.</p>
+  </div>
+
+  <!-- Progress -->
+  <div class="progress-section">
+    <div class="progress-header">
+      <h2>Project Progress</h2>
+      <span class="progress-badge" id="status-badge">Onboarding</span>
+    </div>
+    <div class="progress-bar-container">
+      <div class="progress-bar-fill" id="progress-fill"></div>
+    </div>
+    <div class="progress-stages">
+      <div class="stage done">
+        <div class="stage-dot">✓</div>
+        <span class="stage-label">Submitted</span>
+      </div>
+      <div class="stage active">
+        <div class="stage-dot">2</div>
+        <span class="stage-label">Onboarding</span>
+      </div>
+      <div class="stage">
+        <div class="stage-dot">3</div>
+        <span class="stage-label">Discovery</span>
+      </div>
+      <div class="stage">
+        <div class="stage-dot">4</div>
+        <span class="stage-label">Design</span>
+      </div>
+      <div class="stage">
+        <div class="stage-dot">5</div>
+        <span class="stage-label">Build</span>
+      </div>
+      <div class="stage">
+        <div class="stage-dot">6</div>
+        <span class="stage-label">Launch</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Grid -->
+  <div class="portal-grid">
+    <!-- Project Summary -->
+    <div class="card">
+      <h3>
+        <svg class="card-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+        Project Summary
+      </h3>
+      <div class="summary-content" id="summary-content">
+        <div><strong>Company:</strong> <span id="sum-company">—</span></div>
+        <div><strong>Industry:</strong> <span id="sum-industry">—</span></div>
+        <div><strong>Submitted:</strong> <span id="sum-date">—</span></div>
+        <div class="summary-msg" id="sum-message">—</div>
+      </div>
+    </div>
+
+    <!-- Your Contact -->
+    <div class="card">
+      <h3>
+        <svg class="card-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+        Your Contact
+      </h3>
+      <div class="contact-info">
+        <div class="contact-row">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+          <a href="mailto:team@roofingwebpro.com">team@roofingwebpro.com</a>
+        </div>
+        <div class="contact-row">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+          <a href="tel:+19195254567">(919) 525-4567</a>
+        </div>
+        <div class="contact-owner-card">
+          <div class="contact-owner-name">Reagan Gallagher</div>
+          <div class="contact-owner-title">Owner & Lead Developer</div>
+          <div style="font-size:0.85rem;color:var(--muted);margin-top:0.25rem;">Will personally call you within 24 hours</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Timeline -->
+    <div class="card">
+      <h3>
+        <svg class="card-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        Recent Activity
+      </h3>
+      <div class="timeline">
+        <div class="timeline-item done">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="timeline-title">Form submitted</div>
+            <div class="timeline-time" id="timeline-submitted">Just now</div>
+          </div>
+        </div>
+        <div class="timeline-item done">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="timeline-title">AI review passed</div>
+            <div class="timeline-time">Just now</div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="timeline-title">Portal created</div>
+            <div class="timeline-time">Just now</div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot" style="background:var(--border);box-shadow:none;"></div>
+          <div class="timeline-content">
+            <div class="timeline-title" style="color:var(--muted);">Discovery call scheduled</div>
+            <div class="timeline-time">Pending</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Project Specs -->
+    <div class="card">
+      <h3>
+        <svg class="card-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+        Project Specs
+      </h3>
+      <div class="specs-list">
+        <div class="spec-item">
+          <span class="spec-label">Timeline</span>
+          <span class="spec-value">4–6 weeks</span>
+        </div>
+        <div class="spec-item">
+          <span class="spec-label">Starting Price</span>
+          <span class="spec-value">From $15K</span>
+        </div>
+        <div class="spec-item">
+          <span class="spec-label">Support</span>
+          <span class="spec-value">30 days included</span>
+        </div>
+        <div class="spec-item">
+          <span class="spec-label">Code Ownership</span>
+          <span class="spec-value">100% yours</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="portal-cta">
+    <h3>Need to add more details?</h3>
+    <p>Upload requirements, wireframes, or screenshots to help us understand your vision.</p>
+    <button class="btn btn-primary" onclick="alert('File upload coming soon — for now email team@roofingwebpro.com')">
+      Upload Requirements
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"/></svg>
+    </button>
+  </div>
+</main>
+
+<script>
+// Load lead data from localStorage
+const lead = JSON.parse(localStorage.getItem('rms_lead') || '{}');
+
+if (lead.name) {
+  const firstName = lead.name.split(' ')[0];
+  document.getElementById('welcome-name').textContent = firstName;
+  document.getElementById('user-name').textContent = lead.name;
+  document.getElementById('user-avatar').textContent = firstName[0].toUpperCase();
+  document.getElementById('sum-company').textContent = lead.company || '—';
+  document.getElementById('sum-industry').textContent = lead.industry || '—';
+  
+  if (lead.timestamp) {
+    const d = new Date(lead.timestamp);
+    document.getElementById('sum-date').textContent = d.toLocaleDateString('en-US', { month:'short', day:'numeric', year:'numeric' });
+    document.getElementById('timeline-submitted').textContent = d.toLocaleString('en-US', { month:'short', day:'numeric', hour:'numeric', minute:'2-digit' });
+  }
+  
+  if (lead.message) {
+    document.getElementById('sum-message').textContent = '"' + lead.message + '"';
+  }
+} else {
+  // No lead data — redirect to main site
+  window.location.href = '/';
+}
+</script>
+
+</body>
+</html>
