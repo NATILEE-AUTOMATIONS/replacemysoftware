@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a0a0a"/>
+      <stop offset="100%" stop-color="#1a1a2e"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3b82f6"/>
+      <stop offset="50%" stop-color="#60a5fa"/>
+      <stop offset="100%" stop-color="#818cf8"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="6" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  <!-- Background -->
+  <rect width="512" height="512" rx="112" fill="url(#bg)"/>
+  <!-- Replace icon: Two arrows in a circular swap pattern -->
+  <g filter="url(#glow)">
+    <!-- Top arrow pointing right -->
+    <path d="M 160 180 L 320 180 L 320 140 L 380 200 L 320 260 L 320 220 L 160 220 Z" 
+          fill="url(#accent)" opacity="0.95"/>
+    <!-- Bottom arrow pointing left -->
+    <path d="M 352 332 L 192 332 L 192 292 L 132 352 L 192 412 L 192 372 L 352 372 Z" 
+          fill="url(#accent)" opacity="0.7"/>
+  </g>
+</svg>
