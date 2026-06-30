@@ -1543,31 +1543,41 @@ function showOnboardingFlow(leadName) {
   setTimeout(() => {
     overlay.querySelector('.ob-thinking').classList.remove('active');
     overlay.querySelector('.ob-approved').classList.add('active');
+
+    // Wire up portal submit directly now that it's visible
+    const portalBtn = overlay.querySelector('#portal-submit');
+    const portalInput = overlay.querySelector('#portal-password');
+    
+    if (portalBtn) {
+      portalBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        if (!portalInput.value) {
+          portalInput.style.borderColor = '#ef4444';
+          portalInput.focus();
+          return;
+        }
+        // Store lead data for the dashboard
+        try {
+          localStorage.setItem('rms_lead', JSON.stringify(payload));
+        } catch(err) {}
+        // Redirect to portal
+        window.location.href = '/portal.html';
+      });
+    }
+    
+    if (portalInput) {
+      portalInput.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+          e.preventDefault();
+          portalBtn.click();
+        }
+      });
+      portalInput.addEventListener('input', () => {
+        portalInput.style.borderColor = '';
+      });
+    }
   }, 5200);
-
-  // Wire up portal submit (on click of the whole overlay, delegated)
-  overlay.addEventListener('click', (e) => {
-    if (e.target.closest('#portal-submit') || e.target.id === 'portal-submit') {
-      e.preventDefault();
-      const portalInput = overlay.querySelector('#portal-password');
-      if (!portalInput || !portalInput.value) {
-        if (portalInput) portalInput.style.borderColor = '#ef4444';
-        return;
-      }
-      // Store lead data for the dashboard
-      localStorage.setItem('rms_lead', JSON.stringify(payload));
-      window.location.href = '/portal.html';
-    }
-  });
-
-  // Also handle Enter key on password input
-  overlay.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter' && e.target.id === 'portal-password') {
-      e.preventDefault();
-      const portalBtn = overlay.querySelector('#portal-submit');
-      if (portalBtn) portalBtn.click();
-    }
-  });
 }
 </script>
 
