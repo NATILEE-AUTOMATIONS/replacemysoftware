@@ -1291,27 +1291,22 @@ form.addEventListener('submit', async (e) => {
   };
 
   try {
-    // Try to send to a serverless function (will be wired up later)
-    // For now, use a mailto fallback
-    const subject = encodeURIComponent(`New Lead: ${payload.name} — ${payload.company || 'No company'}`);
-    const body = encodeURIComponent(
-      `Name: ${payload.name}\n` +
-      `Company: ${payload.company || 'N/A'}\n` +
-      `Email: ${payload.email}\n` +
-      `Phone: ${payload.phone || 'N/A'}\n` +
-      `Industry: ${payload.industry || 'N/A'}\n` +
-      `Message: ${payload.message || 'N/A'}\n` +
-      `Source: replacemysoftware.com\n` +
-      `Time: ${payload.timestamp}`
-    );
-    window.location.href = `mailto:team@roofingwebpro.com?subject=${subject}&body=${body}`;
-
-    btn.innerHTML = '✓ Check your email client';
-    setTimeout(() => {
-      btn.innerHTML = originalText;
-      btn.disabled = false;
+    const res = await fetch('/api/contact', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+    });
+    const result = await res.json();
+    if (result.ok) {
+      btn.innerHTML = '✓ Sent! We\'ll be in touch within 24h';
       form.reset();
-    }, 4000);
+      setTimeout(() => {
+        btn.innerHTML = originalText;
+        btn.disabled = false;
+      }, 5000);
+    } else {
+      throw new Error('Failed');
+    }
   } catch (err) {
     btn.innerHTML = 'Something went wrong — call (919) 525-4567';
     setTimeout(() => {

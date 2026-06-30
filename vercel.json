@@ -1,5 +1,10 @@
 {
   "outputDirectory": ".",
+  "functions": {
+    "api/contact.js": {
+      "runtime": "@vercel/node@5"
+    }
+  },
   "headers": [
     {
       "source": "/(.*)",
