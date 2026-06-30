@@ -1515,14 +1515,6 @@ function showOnboardingFlow(leadName, payload) {
         </div>
         
         <!-- Password creation -->
-        <div class="ob-portal-form">
-          <p class="ob-portal-label">Create your portal password:</p>
-          <input type="password" id="portal-password" placeholder="Choose a password" class="ob-password-input" autocomplete="new-password">
-          <button class="btn btn-primary ob-portal-btn" id="portal-submit">
-            Create Portal & View Dashboard
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
-          </button>
-        </div>
         <p class="ob-close-link" onclick="document.querySelector('.onboarding-overlay').remove()">Close</p>
       </div>
     </div>
@@ -1543,40 +1535,6 @@ function showOnboardingFlow(leadName, payload) {
   setTimeout(() => {
     overlay.querySelector('.ob-thinking').classList.remove('active');
     overlay.querySelector('.ob-approved').classList.add('active');
-
-    // Wire up portal submit directly now that it's visible
-    const portalBtn = overlay.querySelector('#portal-submit');
-    const portalInput = overlay.querySelector('#portal-password');
-    
-    if (portalBtn) {
-      portalBtn.addEventListener('click', (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-        if (!portalInput.value) {
-          portalInput.style.borderColor = '#ef4444';
-          portalInput.focus();
-          return;
-        }
-        // Store lead data for the dashboard
-        try {
-          localStorage.setItem('rms_lead', JSON.stringify(payload));
-        } catch(err) {}
-        // Redirect to portal
-        window.location.href = '/portal.html';
-      });
-    }
-    
-    if (portalInput) {
-      portalInput.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter') {
-          e.preventDefault();
-          portalBtn.click();
-        }
-      });
-      portalInput.addEventListener('input', () => {
-        portalInput.style.borderColor = '';
-      });
-    }
   }, 5200);
 }
 </script>
