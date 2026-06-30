@@ -9,7 +9,12 @@ export default async function handler(req, res) {
     return res.status(400).json({ error: 'Name and email are required' });
   }
 
-  const RESEND_API_KEY = process.env.RESEND_API_KEY || 'REDACTED';
+  const RESEND_API_KEY = process.env.RESEND_API_KEY;
+
+  if (!RESEND_API_KEY) {
+    console.error('RESEND_API_KEY not configured');
+    return res.status(200).json({ ok: true, fallback: true });
+  }
 
   try {
     const response = await fetch('https://api.resend.com/emails', {
