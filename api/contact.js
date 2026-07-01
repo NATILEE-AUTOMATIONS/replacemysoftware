@@ -1,3 +1,5 @@
+import { createClient } from '@supabase/supabase-js';
+
 export default async function handler(req, res) {
   // CORS
   res.setHeader('Access-Control-Allow-Origin', '*');
@@ -19,6 +21,20 @@ export default async function handler(req, res) {
   }
 
   const RESEND_API_KEY = process.env.RESEND_API_KEY;
+
+  // Supabase insert (fire-and-forget, non-blocking)
+  const supabaseUrl = process.env.SUPABASE_URL;
+  const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
+  if (supabaseUrl && supabaseKey) {
+    const supabase = createClient(supabaseUrl, supabaseKey);
+    supabase.from('leads').insert({
+      name, company, email, phone, industry, message,
+      status: 'new',
+    }).then(({ error }) => {
+      if (error) console.error('Supabase insert error:', error.message);
+      else console.log('Lead saved to Supabase:', email);
+    });
+  }
 
   if (!RESEND_API_KEY) {
     console.error('RESEND_API_KEY not configured');
