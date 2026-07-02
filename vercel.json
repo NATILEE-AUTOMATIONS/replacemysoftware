@@ -1,5 +1,8 @@
 {
   "outputDirectory": ".",
+  "rewrites": [
+    { "source": "/landscaping-software", "destination": "/landscaping-software.html" }
+  ],
   "headers": [
     {
       "source": "/(.*)",
