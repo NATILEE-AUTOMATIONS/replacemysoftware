@@ -2,6 +2,8 @@
   "name": "replacemysoftware",
   "private": true,
   "dependencies": {
+    "@supabase/supabase-js": "^2.110.0",
+    "twilio": "^5",
     "@vercel/node": "^5"
   },
   "scripts": {

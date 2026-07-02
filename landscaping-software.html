@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Landscaping Software That Actually Fits Your Business | Replace My Software</title>
+<meta name="description" content="Custom landscaping software built for your workflow. Crew scheduling, route optimization, job costing, invoicing. No monthly SaaS fees. Starting at $10K.">
+<meta name="keywords" content="landscaping business management software, landscaping software, lawn care scheduling app, software for lawn care companies, lawn care estimating tool, crew scheduling, route optimization, landscaping CRM">
+<link rel="icon" type="image/svg+xml" href="/logo.svg">
+<link rel="icon" type="image/png" href="/logo.png">
+<link rel="apple-touch-icon" href="/logo.png">
+<meta property="og:title" content="Landscaping Software That Actually Fits Your Business">
+<meta property="og:description" content="Custom landscaping software — scheduling, crew tracking, invoicing. No monthly SaaS fees. Starting at $10K.">
+<meta property="og:image" content="https://replacemysoftware.com/og-image.png">
+<meta property="og:url" content="https://replacemysoftware.com/landscaping-software">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Landscaping Software That Actually Fits Your Business">
+<meta name="twitter:description" content="Custom landscaping software — scheduling, crew tracking, invoicing. No monthly SaaS fees. Starting at $10K.">
+<meta name="twitter:image" content="https://replacemysoftware.com/og-image.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #060709;
+  --bg-2: #0a0b0f;
+  --bg-card: #0d0e12;
+  --bg-hover: #14151a;
+  --fg: #e8e9ed;
+  --muted: #7a7d86;
+  --border: #1a1b22;
+  --accent: #3b82f6;
+  --accent-light: #60a5fa;
+  --accent-soft: rgba(59,130,246,0.12);
+  --accent-glow: rgba(59,130,246,0.4);
+  --green: #22c55e;
+  --green-soft: rgba(34,197,94,0.12);
+  --radius: 12px;
+  --font-display: 'Space Grotesk', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+html, body { max-width:100vw; overflow-x:hidden; }
+body {
+  background: var(--bg); color: var(--fg);
+  font-family: var(--font-body); font-size: 16px; line-height: 1.6;
+  min-height: 100vh;
+}
+a { color: inherit; text-decoration: none; }
+.container { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; }
+
+/* Nav */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  background: rgba(6,7,9,0.7); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border); transition: all 0.3s;
+}
+nav.scrolled { background: rgba(6,7,9,0.92); }
+.nav-inner {
+  max-width: 1200px; margin: 0 auto; padding: 0.85rem 1.5rem;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.nav-brand {
+  display: flex; align-items: center; gap: 0.6rem;
+  font-family: var(--font-display); font-weight: 700; font-size: 1.1rem;
+}
+.nav-brand img { width: 30px; height: 30px; border-radius: 6px; }
+.nav-brand .accent { color: var(--accent-light); }
+.nav-links { display: flex; gap: 2rem; align-items: center; }
+.nav-links a { color: var(--muted); font-size: 0.9rem; font-weight: 500; transition: color 0.2s; }
+.nav-links a:hover { color: var(--fg); }
+.nav-cta {
+  padding: 0.6rem 1.25rem; background: var(--accent); color: #fff;
+  border-radius: 8px; font-weight: 600; font-size: 0.9rem;
+  transition: all 0.2s; box-shadow: 0 4px 20px var(--accent-glow);
+}
+.nav-cta:hover { transform: translateY(-1px); box-shadow: 0 6px 24px var(--accent-glow); }
+
+/* Hero */
+.hero {
+  position: relative; padding: 8rem 0 4rem; overflow: hidden;
+}
+.hero-orb {
+  position: absolute; border-radius: 50%; filter: blur(80px); opacity: 0.15; pointer-events: none;
+}
+.orb-1 { width: 500px; height: 500px; background: var(--accent); top: -100px; right: -100px; }
+.orb-2 { width: 400px; height: 400px; background: var(--green); bottom: -150px; left: -100px; }
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  padding: 0.4rem 0.9rem; background: var(--accent-soft); border: 1px solid rgba(59,130,246,0.2);
+  border-radius: 20px; font-size: 0.85rem; color: var(--accent-light); font-weight: 500;
+  margin-bottom: 1.5rem;
+}
+.pulse { width: 8px; height: 8px; border-radius: 50%; background: var(--accent-light); animation: pulse 2s infinite; }
+@keyframes pulse { 0%,100% { opacity:1; } 50% { opacity:0.4; } }
+.hero h1 {
+  font-family: var(--font-display); font-size: 3.5rem; font-weight: 700;
+  line-height: 1.1; margin-bottom: 1.5rem; letter-spacing: -0.02em;
+}
+.hero h1 .highlight {
+  background: linear-gradient(135deg, var(--accent-light), var(--green));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+.hero-sub {
+  font-size: 1.2rem; color: var(--muted); max-width: 600px; margin-bottom: 2rem;
+}
+.hero-cta { display: flex; gap: 1rem; flex-wrap: wrap; }
+.btn {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  padding: 0.85rem 1.5rem; border-radius: 10px;
+  font-family: var(--font-body); font-weight: 600; font-size: 0.95rem;
+  border: none; cursor: pointer; transition: all 0.2s; text-decoration: none;
+}
+.btn-primary {
+  background: var(--accent); color: #fff; box-shadow: 0 8px 30px var(--accent-glow);
+}
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 40px var(--accent-glow); }
+.btn-ghost {
+  background: transparent; color: var(--fg); border: 1px solid var(--border);
+}
+.btn-ghost:hover { border-color: var(--accent); background: var(--accent-soft); }
+.hero-stats {
+  display: flex; gap: 2.5rem; margin-top: 3rem; flex-wrap: wrap;
+}
+.hero-stat .num { font-family: var(--font-display); font-size: 1.8rem; font-weight: 700; color: var(--fg); }
+.hero-stat .label { font-size: 0.85rem; color: var(--muted); }
+
+/* Section base */
+section { padding: 5rem 0; }
+.section-label {
+  display: inline-block; font-family: var(--font-mono); font-size: 0.8rem;
+  color: var(--accent-light); text-transform: uppercase; letter-spacing: 0.1em;
+  margin-bottom: 1rem;
+}
+.section-title {
+  font-family: var(--font-display); font-size: 2.5rem; font-weight: 700;
+  line-height: 1.2; margin-bottom: 1rem; letter-spacing: -0.02em;
+}
+.section-sub { font-size: 1.1rem; color: var(--muted); max-width: 600px; margin-bottom: 3rem; }
+
+/* Comparison strip */
+.compare-strip {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: 16px; padding: 1.5rem; margin-bottom: 3rem;
+}
+.compare-strip h3 {
+  font-family: var(--font-display); font-size: 1rem; color: var(--muted);
+  text-align: center; margin-bottom: 1rem; font-weight: 500;
+}
+.compare-logos {
+  display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap;
+  font-family: var(--font-display); font-weight: 600; font-size: 1rem;
+}
+.compare-logos span { color: var(--muted); transition: color 0.2s; }
+.compare-logos span:hover { color: var(--fg); }
+.compare-logos .vs { color: var(--border); }
+
+/* Pain points */
+.pain-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem;
+}
+.pain-card {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: 16px; padding: 2rem; transition: all 0.3s;
+}
+.pain-card:hover { border-color: rgba(239,68,68,0.3); transform: translateY(-2px); }
+.pain-icon {
+  width: 48px; height: 48px; border-radius: 12px;
+  background: rgba(239,68,68,0.1); display: flex; align-items: center; justify-content: center;
+  margin-bottom: 1.25rem; color: #ef4444;
+}
+.pain-card h3 { font-family: var(--font-display); font-size: 1.15rem; font-weight: 600; margin-bottom: 0.5rem; }
+.pain-card p { color: var(--muted); font-size: 0.95rem; }
+.pain-price { font-family: var(--font-mono); color: #ef4444; font-weight: 600; font-size: 0.85rem; margin-top: 0.5rem; }
+
+/* Solution */
+.solution-section { background: var(--bg-2); }
+.solution-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center;
+}
+.solution-list { display: flex; flex-direction: column; gap: 1.5rem; }
+.solution-item {
+  display: flex; gap: 1rem; align-items: flex-start;
+}
+.solution-check {
+  width: 24px; height: 24px; border-radius: 50%; background: var(--green-soft);
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px;
+}
+.solution-check svg { color: var(--green); }
+.solution-item h4 { font-family: var(--font-display); font-size: 1.05rem; font-weight: 600; margin-bottom: 0.25rem; }
+.solution-item p { color: var(--muted); font-size: 0.9rem; }
+
+/* Mockup */
+.mockup-card {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: 16px; padding: 1.5rem; position: relative; overflow: hidden;
+}
+.mockup-header {
+  display: flex; align-items: center; gap: 0.5rem; margin-bottom: 1.25rem;
+  padding-bottom: 1rem; border-bottom: 1px solid var(--border);
+}
+.mockup-dots { display: flex; gap: 0.35rem; }
+.mockup-dots span { width: 10px; height: 10px; border-radius: 50%; }
+.mockup-dots span:nth-child(1) { background: #ef4444; }
+.mockup-dots span:nth-child(2) { background: #f59e0b; }
+.mockup-dots span:nth-child(3) { background: #22c55e; }
+.mockup-title { font-family: var(--font-mono); font-size: 0.8rem; color: var(--muted); margin-left: 0.5rem; }
+.mockup-rows { display: flex; flex-direction: column; gap: 0.75rem; }
+.mockup-row {
+  display: grid; grid-template-columns: 1fr 80px 80px 60px; gap: 0.75rem;
+  padding: 0.75rem; background: var(--bg); border-radius: 8px; align-items: center;
+}
+.mockup-row .crew { font-size: 0.85rem; font-weight: 500; }
+.mockup-row .route { font-size: 0.75rem; color: var(--muted); font-family: var(--font-mono); }
+.mockup-row .status {
+  font-size: 0.7rem; padding: 0.2rem 0.5rem; border-radius: 4px;
+  font-weight: 600; text-align: center;
+}
+.status-active { background: var(--green-soft); color: var(--green); }
+.status-done { background: rgba(122,125,134,0.15); color: var(--muted); }
+.status-queued { background: var(--accent-soft); color: var(--accent-light); }
+
+/* Features */
+.features-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem;
+}
+.feature {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: 16px; padding: 1.75rem; transition: all 0.3s;
+}
+.feature:hover { border-color: var(--accent); background: var(--bg-hover); }
+.feature-icon {
+  width: 40px; height: 40px; flex-shrink: 0;
+  background: var(--accent-soft); border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 1rem; color: var(--accent-light);
+}
+.feature h3 { font-family: var(--font-display); font-size: 1.05rem; font-weight: 600; margin-bottom: 0.5rem; }
+.feature p { color: var(--muted); font-size: 0.9rem; }
+
+/* Pricing */
+.pricing-section { background: var(--bg-2); }
+.pricing-card {
+  max-width: 600px; margin: 0 auto;
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: 20px; padding: 3rem; text-align: center; position: relative; overflow: hidden;
+}
+.pricing-card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, var(--accent), var(--green));
+}
+.price { font-family: var(--font-display); font-size: 3rem; font-weight: 700; margin-bottom: 0.5rem; }
+.price-label { color: var(--muted); font-size: 0.95rem; margin-bottom: 2rem; }
+.pricing-features {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem;
+  text-align: left; margin-bottom: 2rem;
+}
+.pricing-feature {
+  display: flex; align-items: center; gap: 0.5rem; font-size: 0.9rem;
+}
+.pricing-feature svg { color: var(--green); flex-shrink: 0; }
+
+/* Form / CTA */
+.cta-section { padding: 5rem 0; }
+.cta-box {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: 20px; padding: 3rem; max-width: 700px; margin: 0 auto;
+}
+.cta-box h2 {
+  font-family: var(--font-display); font-size: 1.75rem; font-weight: 700;
+  text-align: center; margin-bottom: 0.5rem;
+}
+.cta-box p { text-align: center; color: var(--muted); margin-bottom: 2rem; }
+.form-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
+}
+.form-field { width: 100%; }
+.form-field.full { grid-column: 1 / -1; }
+.form-field input,
+.form-field select,
+.form-field textarea {
+  width: 100%; padding: 0.85rem 1rem;
+  background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius);
+  color: var(--fg); font-family: var(--font-body); font-size: 0.95rem;
+  transition: border-color 0.2s, box-shadow 0.2s; box-sizing: border-box;
+}
+.form-field input::placeholder, .form-field textarea::placeholder { color: var(--muted); }
+.form-field input:focus, .form-field select:focus, .form-field textarea:focus {
+  outline: none; border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-soft); background: var(--bg-hover);
+}
+.form-field input:-webkit-autofill,
+.form-field select:-webkit-autofill,
+.form-field textarea:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 1000px var(--bg-card) inset !important;
+  -webkit-text-fill-color: var(--fg) !important; caret-color: var(--fg);
+  transition: background-color 9999s ease-in-out 0s;
+}
+.form-field textarea { resize: vertical; min-height: 100px; }
+.form-submit { grid-column: 1 / -1; margin-top: 0.5rem; }
+.form-submit .btn { width: 100%; padding: 1rem; font-size: 1rem; }
+.form-note { text-align: center; font-size: 0.8rem; color: var(--muted); margin-top: 1rem; }
+
+/* Footer */
+footer { border-top: 1px solid var(--border); padding: 2rem 0; }
+.footer-inner {
+  max-width: 1200px; margin: 0 auto; padding: 0 1.5rem;
+  display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;
+}
+.footer-brand {
+  display: flex; align-items: center; gap: 0.5rem;
+  font-family: var(--font-display); font-weight: 700; font-size: 1rem;
+}
+.footer-brand img { width: 24px; height: 24px; border-radius: 5px; }
+.footer-brand .accent { color: var(--accent-light); }
+.footer-links { display: flex; gap: 1.5rem; font-size: 0.85rem; }
+.footer-links a { color: var(--muted); transition: color 0.2s; }
+.footer-links a:hover { color: var(--fg); }
+
+/* Reveal */
+.reveal { opacity: 0; transform: translateY(30px); transition: all 0.7s cubic-bezier(0.16,1,0.3,1); }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.reveal-left { opacity: 0; transform: translateX(-30px); transition: all 0.7s cubic-bezier(0.16,1,0.3,1); }
+.reveal-left.visible { opacity: 1; transform: translateX(0); }
+.reveal-scale { opacity: 0; transform: scale(0.95); transition: all 0.7s cubic-bezier(0.16,1,0.3,1); }
+.reveal-scale.visible { opacity: 1; transform: scale(1); }
+
+/* Mobile */
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  .hero { padding: 6rem 0 3rem; }
+  .hero h1 { font-size: 2.25rem; }
+  .hero-sub { font-size: 1rem; }
+  .hero-stats { gap: 1.5rem; }
+  .section-title { font-size: 1.75rem; }
+  .pain-grid { grid-template-columns: 1fr; }
+  .solution-grid { grid-template-columns: 1fr; }
+  .features-grid { grid-template-columns: 1fr; }
+  .pricing-card { padding: 2rem 1.5rem; }
+  .pricing-features { grid-template-columns: 1fr; }
+  .cta-box { padding: 2rem 1.5rem; }
+  .form-grid { grid-template-columns: 1fr; }
+  .hero-cta { flex-direction: column; }
+  .hero-cta .btn { width: 100%; }
+}
+@media (max-width: 540px) {
+  .nav-inner { padding: 0.65rem 1rem; }
+  .nav-brand { font-size: 0.9rem; }
+  .nav-brand img { width: 26px; height: 26px; }
+  .nav-cta { padding: 0.5rem 0.9rem; font-size: 0.8rem; }
+  .hero h1 { font-size: 1.85rem; }
+  .compare-logos { gap: 1rem; font-size: 0.85rem; }
+}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <div class="nav-inner">
+    <a href="/" class="nav-brand">
+      <img src="/logo.png" alt="RMS">
+      Replace My <span class="accent">Software</span>
+    </a>
+    <div class="nav-links">
+      <a href="#pain">Why Us</a>
+      <a href="#features">Features</a>
+      <a href="#pricing">Pricing</a>
+    </div>
+    <a href="#contact" class="nav-cta">Get Started →</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-orb orb-1"></div>
+  <div class="hero-orb orb-2"></div>
+  <div class="container">
+    <div class="hero-badge reveal">
+      <span class="pulse"></span>
+      Built for landscaping & lawn care companies
+    </div>
+    <h1 class="reveal">
+      Landscaping Software<br>
+      That <span class="highlight">Actually Fits</span><br>
+      Your Business
+    </h1>
+    <p class="hero-sub reveal">
+      Custom scheduling, crew tracking, job costing & invoicing — built around YOUR workflow. Not another SaaS subscription. One-time build, you own the code. Starting at $10K.
+    </p>
+    <div class="hero-cta reveal">
+      <a href="#contact" class="btn btn-primary">
+        Get a Free Custom Plan
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+      </a>
+      <a href="#compare" class="btn btn-ghost">See How We Compare</a>
+    </div>
+    <div class="hero-stats reveal">
+      <div class="hero-stat">
+        <div class="num">$0/mo</div>
+        <div class="label">No SaaS subscription</div>
+      </div>
+      <div class="hero-stat">
+        <div class="num">100%</div>
+        <div class="label">You own the code</div>
+      </div>
+      <div class="hero-stat">
+        <div class="num">2 weeks</div>
+        <div class="label">From call to custom build</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMPARISON STRIP -->
+<section id="compare" style="padding: 2rem 0;">
+  <div class="container">
+    <div class="compare-strip reveal">
+      <h3>Replacing these expensive tools?</h3>
+      <div class="compare-logos">
+        <span>Service Autopilot</span>
+        <span class="vs">vs</span>
+        <span>Aspire</span>
+        <span class="vs">vs</span>
+        <span>LMN</span>
+        <span class="vs">vs</span>
+        <span>Jobber</span>
+        <span class="vs">vs</span>
+        <span>RealGreen</span>
+        <span class="vs">vs</span>
+        <span>Housecall Pro</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PAIN POINTS -->
+<section id="pain">
+  <div class="container">
+    <div class="reveal">
+      <span class="section-label">The Problem</span>
+      <h2 class="section-title">Landscaping software shouldn't cost more than your truck payment</h2>
+      <p class="section-sub">Off-the-shelf landscaping tools are built for everyone — which means they're built for no one. Here's what you're actually dealing with:</p>
+    </div>
+    <div class="pain-grid">
+      <div class="pain-card reveal">
+        <div class="pain-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        </div>
+        <h3>Paying $300+/mo in winter</h3>
+        <p>Service Autopilot charges per user. Aspire charges $200+. When your crews are laid off in December, you're still paying full price for software nobody's using.</p>
+        <div class="pain-price">$300-500/mo wasted</div>
+      </div>
+      <div class="pain-card reveal">
+        <div class="pain-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        </div>
+        <h3>50 features, crews use 3</h3>
+        <p>Jobber and Housecall Pro pack in every feature imaginable. Your crew leader just needs to see today's route, mark jobs done, and move on. Everything else is noise.</p>
+        <div class="pain-price">Training nightmare</div>
+      </div>
+      <div class="pain-card reveal">
+        <div class="pain-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13l4-4M7 7h.01M7 3h5a2 2 0 011.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A2 2 0 013 12V7a4 4 0 014-4z"/></svg>
+        </div>
+        <h3>Nothing connects</h3>
+        <p>Estimating in one app. Scheduling in another. Invoicing in QuickBooks. Route sheets printed by hand. Your workflow is duct-taped together — and things fall through the cracks.</p>
+        <div class="pain-price">Dropped jobs, lost revenue</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOLUTION -->
+<section class="solution-section">
+  <div class="container">
+    <div class="solution-grid">
+      <div class="reveal-left">
+        <span class="section-label">The Solution</span>
+        <h2 class="section-title">One tool. Your workflow. No monthly fees.</h2>
+        <p class="section-sub" style="margin-bottom:2rem;">We build custom landscaping software around how your business actually runs — not how some SaaS company thinks it should.</p>
+        <div class="solution-list">
+          <div class="solution-item">
+            <div class="solution-check">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+            </div>
+            <div>
+              <h4>Crew scheduling & route optimization</h4>
+              <p>Drag-and-drop daily routes. Optimize for drive time and route density. Your crew leader sees exactly where to go, in what order, with job notes attached.</p>
+            </div>
+          </div>
+          <div class="solution-item">
+            <div class="solution-check">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+            </div>
+            <div>
+              <h4>Recurring maintenance contracts</h4>
+              <p>Weekly, bi-weekly, seasonal — set it once and the schedule auto-generates. Spring cleanups and fall leaf removal automatically slotted in. No more manual rescheduling.</p>
+            </div>
+          </div>
+          <div class="solution-item">
+            <div class="solution-check">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+            </div>
+            <div>
+              <h4>Job costing & material takeoff</h4>
+              <p>Track mulch, soil, plants, hardscape materials per job. Know your actual margin on every project — not just revenue. Estimate smarter on the next bid.</p>
+            </div>
+          </div>
+          <div class="solution-item">
+            <div class="solution-check">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+            </div>
+            <div>
+              <h4>Invoicing & QuickBooks sync</h4>
+              <p>Send branded invoices the moment a job is marked complete. Sync with QuickBooks. Track who's paid, who's late, and chase down overdue accounts automatically.</p>
+            </div>
+          </div>
+          <div class="solution-item">
+            <div class="solution-check">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+            </div>
+            <div>
+              <h4>Plant Health Care (PHC) tracking</h4>
+              <p>Chemical applications, fertilizer schedules, treatment history per property. Stay compliant with application records and never miss a treatment cycle.</p>
+            </div>
+          </div>
+          <div class="solution-item">
+            <div class="solution-check">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+            </div>
+            <div>
+              <h4>Client portal</h4>
+              <p>Customers view upcoming services, approve estimates, pay invoices, and request work — all from a branded portal at app.yourcompany.com. No more phone tag.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="reveal-scale">
+        <div class="mockup-card">
+          <div class="mockup-header">
+            <div class="mockup-dots"><span></span><span></span><span></span></div>
+            <span class="mockup-title">app.greenway-landscaping.com</span>
+          </div>
+          <div class="mockup-rows">
+            <div style="display:flex;justify-content:space-between;margin-bottom:0.5rem;font-size:0.75rem;color:var(--muted);font-family:var(--font-mono);padding:0 0..75rem;">
+              <span>TODAY'S ROUTE — CREW A</span>
+              <span>6 JOBS</span>
+            </div>
+            <div class="mockup-row">
+              <div>
+                <div class="crew">124 Maple St</div>
+                <div class="route">Lawn maintenance — 45 min</div>
+              </div>
+              <div style="font-size:0.75rem;color:var(--muted);">Mike's crew</div>
+              <div style="font-size:0.75rem;color:var(--muted);">$120</div>
+              <div class="status status-done">Done</div>
+            </div>
+            <div class="mockup-row">
+              <div>
+                <div class="crew">88 Oak Ridge Dr</div>
+                <div class="route">Mulch install — 2 hrs</div>
+              </div>
+              <div style="font-size:0.75rem;color:var(--muted);">Mike's crew</div>
+              <div style="font-size:0.75rem;color:var(--muted);">$480</div>
+              <div class="status status-active">En route</div>
+            </div>
+            <div class="mockup-row">
+              <div>
+                <div class="crew">56 Pinecrest Ln</div>
+                <div class="route">Hardscaping — 4 hrs</div>
+              </div>
+              <div style="font-size:0.75rem;color:var(--muted);">Carlos's crew</div>
+              <div style="font-size:0.75rem;color:var(--muted);">$2,100</div>
+              <div class="status status-queued">Queued</div>
+            </div>
+            <div class="mockup-row">
+              <div>
+                <div class="crew">230 River Rd</div>
+                <div class="route">PHC treatment — 30 min</div>
+              </div>
+              <div style="font-size:0.75rem;color:var(--muted);">Mike's crew</div>
+              <div style="font-size:0.75rem;color:var(--muted);">$95</div>
+              <div class="status status-queued">Queued</div>
+            </div>
+          </div>
+          <div style="margin-top:1rem;padding-top:1rem;border-top:1px solid var(--border);display:flex;justify-content:space-between;font-size:0.85rem;">
+            <span style="color:var(--muted);">Today's revenue</span>
+            <span style="font-family:var(--font-display);font-weight:700;color:var(--green);">$2,795</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section id="features">
+  <div class="container">
+    <div class="reveal">
+      <span class="section-label">What You Get</span>
+      <h2 class="section-title">Everything your landscaping business needs.<br>Nothing it doesn't.</h2>
+      <p class="section-sub">Every build is custom. These are the modules we typically include — but we build whatever your workflow demands.</p>
+    </div>
+    <div class="features-grid">
+      <div class="feature reveal">
+        <div class="feature-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+        </div>
+        <h3>Estimating & bidding</h3>
+        <p>Build estimates from your material costs, labor rates, and overhead. Turn approved estimates into jobs with one click. No more guessing on margins.</p>
+      </div>
+      <div class="feature reveal">
+        <div class="feature-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+        </div>
+        <h3>Route density optimization</h3>
+        <p>Group jobs by neighborhood to minimize drive time. More jobs per crew per day. Less fuel, less wear on trucks, more revenue.</p>
+      </div>
+      <div class="feature reveal">
+        <div class="feature-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/></svg>
+        </div>
+        <h3>Invoicing & payments</h3>
+        <p>Branded invoices sent automatically when jobs complete. Online payment via Stripe. Sync with QuickBooks. Track overdue accounts at a glance.</p>
+      </div>
+      <div class="feature reveal">
+        <div class="feature-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        </div>
+        <h3>Seasonal contract management</h3>
+        <p>Set up seasonal packages (spring cleanup, summer maintenance, fall leaf removal, snow removal). Auto-generate schedules and invoice on completion.</p>
+      </div>
+      <div class="feature reveal">
+        <div class="feature-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        </div>
+        <h3>Compliance & application records</h3>
+        <p>Track every chemical and fertilizer application by property, date, and applicator. Export compliance reports for state regulations. Never lose a record.</p>
+      </div>
+      <div class="feature reveal">
+        <div class="feature-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>
+        </div>
+        <h3>Mobile-first for field crews</h3>
+        <p>Crew leaders see today's route, job notes, site photos, and customer instructions on their phone. Mark jobs done, log materials used, upload before/after photos. Works offline.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing" class="pricing-section">
+  <div class="container">
+    <div class="reveal" style="text-align:center;">
+      <span class="section-label">Pricing</span>
+      <h2 class="section-title">One price. No monthly fees.</h2>
+      <p class="section-sub" style="margin-inline:auto;">Custom landscaping software built for your workflow. Flat rate. You own everything.</p>
+    </div>
+    <div class="pricing-card reveal-scale">
+      <div class="price">From $10,000</div>
+      <div class="price-label">One-time build — no monthly fees, no per-crew charges</div>
+      <div class="pricing-features">
+        <div class="pricing-feature">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+          Custom scheduling & routing
+        </div>
+        <div class="pricing-feature">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+          Crew tracking & job management
+        </div>
+        <div class="pricing-feature">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+          Estimating & job costing
+        </div>
+        <div class="pricing-feature">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+          Invoicing & QuickBooks sync
+        </div>
+        <div class="pricing-feature">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+          Client portal
+        </div>
+        <div class="pricing-feature">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+          Mobile app for crews
+        </div>
+        <div class="pricing-feature">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+          As many integrations as you need
+        </div>
+        <div class="pricing-feature">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+          30 days of free support & revisions
+        </div>
+        <div class="pricing-feature" style="grid-column:1/-1;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+          You own the code & data — 100%
+        </div>
+      </div>
+      <a href="#contact" class="btn btn-primary" style="width:100%;">
+        Start Your Build
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+      </a>
+      <p class="form-note">30 days of free support & revisions included. Optional monthly retainer available after — no commitment required.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT FORM -->
+<section id="contact" class="cta-section">
+  <div class="container">
+    <div class="cta-box reveal">
+      <h2>Stop paying for software you don't use.</h2>
+      <p>Tell us about your landscaping business. We'll send a custom proposal within 24 hours.</p>
+      <form id="leadForm" class="form-grid">
+        <div class="form-field">
+          <input type="text" name="name" placeholder="Your name" required>
+        </div>
+        <div class="form-field">
+          <input type="text" name="company" placeholder="Company name">
+        </div>
+        <div class="form-field">
+          <input type="email" name="email" placeholder="Email address" required>
+        </div>
+        <div class="form-field">
+          <input type="tel" name="phone" placeholder="Phone number">
+        </div>
+        <div class="form-field full">
+          <select name="industry" required>
+            <option value="">What do you do?</option>
+            <option>Landscaping & Lawn Care</option>
+            <option>Hardscaping</option>
+            <option>Lawn Maintenance</option>
+            <option>Landscape Design</option>
+            <option>Snow Removal</option>
+            <option>Other Trade Service</option>
+          </select>
+        </div>
+        <div class="form-field full">
+          <textarea name="message" placeholder="What's your biggest software headache?"></textarea>
+        </div>
+        <div class="form-submit">
+          <button type="submit" class="btn btn-primary">
+            Get My Custom Plan
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+          </button>
+        </div>
+        <p class="form-note">We'll call you within 24 hours. No obligation, no pressure.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <img src="/logo.png" alt="RMS">
+      Replace My <span class="accent">Software</span>
+    </div>
+    <div class="footer-links">
+      <a href="/">Home</a>
+      <a href="mailto:team@roofingwebpro.com">team@roofingwebpro.com</a>
+      <a href="tel:+19195254567">(919) 525-4567</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Nav scroll
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 20);
+});
+
+// Reveal animations
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      observer.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.15 });
+document.querySelectorAll('.reveal, .reveal-left, .reveal-scale').forEach(el => observer.observe(el));
+
+// Form handler
+const form = document.getElementById('leadForm');
+form.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const btn = form.querySelector('button[type="submit"]');
+  const originalText = btn.innerHTML;
+  btn.innerHTML = 'Sending…';
+  btn.disabled = true;
+
+  const data = new FormData(form);
+  const payload = {
+    name: data.get('name'),
+    company: data.get('company'),
+    email: data.get('email'),
+    phone: data.get('phone'),
+    industry: data.get('industry'),
+    message: data.get('message'),
+    source: 'replacemysoftware.com/landscaping-software',
+    timestamp: new Date().toISOString()
+  };
+
+  try {
+    const res = await fetch('https://replacemysoftware.vercel.app/api/contact', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+    });
+    const result = await res.json();
+    if (result.ok) {
+      form.reset();
+      btn.innerHTML = '✓ Sent! We\'ll call you within 24h';
+      setTimeout(() => {
+        btn.innerHTML = originalText;
+        btn.disabled = false;
+      }, 5000);
+    } else {
+      throw new Error('Failed');
+    }
+  } catch (err) {
+    btn.innerHTML = 'Something went wrong — call (919) 525-4567';
+    setTimeout(() => {
+      btn.innerHTML = originalText;
+      btn.disabled = false;
+    }, 4000);
+  }
+});
+</script>
+
+</body>
+</html>
