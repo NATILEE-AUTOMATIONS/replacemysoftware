@@ -91,7 +91,7 @@ section{padding:5rem 0}
 footer{border-top:1px solid var(--border);padding:2rem 0}.footer-inner{max-width:1200px;margin:0 auto;padding:0 1.5rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
 .footer-brand{display:flex;align-items:center;gap:.5rem;font-family:var(--fd);font-weight:700;font-size:1rem}.footer-brand img{width:24px;height:24px;border-radius:5px}.footer-brand .accent{color:var(--accent-light)}
 .footer-links{display:flex;gap:1.5rem;font-size:.85rem}.footer-links a{color:var(--muted);transition:color .2s}.footer-links a:hover{color:var(--fg)}
-.reveal{opacity:0;transform:translateY(30px);transition:all .7s cubic-bezier(.16,1,.3,1)}.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal{opacity:0;transform:translateY(30px);transition:all .7s cubic-bezier(.16,1,.3,1)}.reveal.visible{opacity:1;transform:translateY(0)}.no-js .reveal{opacity:1;transform:none}
 .reveal-left{opacity:0;transform:translateX(-30px);transition:all .7s cubic-bezier(.16,1,.3,1)}.reveal-left.visible{opacity:1;transform:translateX(0)}
 .reveal-scale{opacity:0;transform:scale(.95);transition:all .7s cubic-bezier(.16,1,.3,1)}.reveal-scale.visible{opacity:1;transform:scale(1)}
 @media(max-width:768px){.nav-links{display:none}.hero{padding:6rem 0 3rem}.hero h1{font-size:2.25rem}.hero-sub{font-size:1rem}.hero-stats{gap:1.5rem}.section-title{font-size:1.75rem}.pain-grid{grid-template-columns:1fr}.solution-grid{grid-template-columns:1fr}.features-grid{grid-template-columns:1fr}.pricing-card{padding:2rem 1.5rem}.pricing-features{grid-template-columns:1fr}.cta-box{padding:2rem 1.5rem}.form-grid{grid-template-columns:1fr}.hero-cta{flex-direction:column}.hero-cta .btn{width:100%}}
@@ -220,7 +220,7 @@ footer{border-top:1px solid var(--border);padding:2rem 0}.footer-inner{max-width
 </div></footer>
 <script>
 const nav=document.getElementById('nav');window.addEventListener('scroll',()=>{nav.classList.toggle('scrolled',window.scrollY>20)});
-const observer=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')})}),{threshold:0.1});document.querySelectorAll('.reveal,.reveal-left,.reveal-scale').forEach(el=>observer.observe(el));
+const observer=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')})},{threshold:0.1});document.querySelectorAll('.reveal,.reveal-left,.reveal-scale').forEach(el=>observer.observe(el));
 const form=document.getElementById('contact-form');const success=document.getElementById('form-success');const error=document.getElementById('form-error');form.addEventListener('submit',async(e)=>{e.preventDefault();const btn=form.querySelector('button[type=submit]');btn.disabled=true;btn.textContent='Sending...';try{const fd=new FormData(form);const payload={name:fd.get('name'),email:fd.get('email'),company:fd.get('company'),crew_size:fd.get('crew_size'),message:fd.get('message'),source:'replacemysoftware.com/fertilizer-tracking'};const r=await fetch('https://replacemysoftware.vercel.app/api/contact',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});if(r.ok){form.style.display='none';success.style.display='block';}else throw new Error();}catch(err){form.style.display='none';error.style.display='block';}});
 </script>
 </body>
