@@ -45,14 +45,16 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(6,7,9,.7);ba
 /* Wizard */
 .wizard-section{padding:2rem 0 5rem}
 .wizard{max-width:640px;margin:0 auto;padding:0 1.5rem}
-.progress-bar{display:flex;align-items:center;justify-content:center;gap:.5rem;margin-bottom:2.5rem;flex-wrap:wrap}
-.progress-step{display:flex;align-items:center;gap:.5rem}
-.progress-dot{width:32px;height:32px;border-radius:50%;background:var(--bg-card);border:2px solid var(--border);display:flex;align-items:center;justify-content:center;font-family:var(--fd);font-weight:700;font-size:.85rem;color:var(--muted);transition:all .3s}
+
+/* Progress bar — single line */
+.progress-bar{display:flex;align-items:center;justify-content:center;gap:0;margin-bottom:2.5rem;flex-wrap:nowrap;white-space:nowrap}
+.progress-step{display:flex;align-items:center;gap:0;flex-shrink:0}
+.progress-dot{width:28px;height:28px;border-radius:50%;background:var(--bg-card);border:2px solid var(--border);display:flex;align-items:center;justify-content:center;font-family:var(--fd);font-weight:700;font-size:.75rem;color:var(--muted);transition:all .3s;flex-shrink:0}
 .progress-step.active .progress-dot{background:var(--accent);border-color:var(--accent);color:#fff;box-shadow:0 0 20px var(--accent-glow)}
 .progress-step.done .progress-dot{background:var(--green);border-color:var(--green);color:#fff}
-.progress-line{width:30px;height:2px;background:var(--border);transition:background .3s}
+.progress-line{width:24px;height:2px;background:var(--border);transition:background .3s;flex-shrink:0}
 .progress-line.done{background:var(--green)}
-.progress-label{font-size:.75rem;color:var(--muted);font-family:var(--fm);text-transform:uppercase;letter-spacing:.05em}
+.progress-label{font-size:.7rem;color:var(--muted);font-family:var(--fm);text-transform:uppercase;letter-spacing:.04em;margin-left:.4rem}
 
 .step{display:none;animation:slideIn .4s ease}
 .step.active{display:block}
@@ -69,10 +71,10 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(6,7,9,.7);ba
 .field-input::placeholder,.field-textarea::placeholder{color:var(--muted)}
 .field-input:focus,.field-select:focus,.field-textarea:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft);background:var(--bg-hover)}
 .field-input:-webkit-autofill,.field-select:-webkit-autofill,.field-textarea:-webkit-autofill{-webkit-box-shadow:0 0 0 1000px var(--bg-card) inset!important;-webkit-text-fill-color:var(--fg)!important;caret-color:var(--fg);transition:background-color 9999s ease-in-out 0s}
-.field-textarea{resize:vertical;min-height:100px}
+.field-textarea{resize:vertical;min-height:120px}
 .field-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
 
-/* Option cards (for selections) */
+/* Option cards */
 .option-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:.75rem}
 .option-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:1rem;cursor:pointer;transition:all .2s;display:flex;flex-direction:column;gap:.25rem}
 .option-card:hover{border-color:var(--accent);background:var(--bg-hover)}
@@ -80,17 +82,20 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(6,7,9,.7);ba
 .option-card .opt-title{font-weight:600;font-size:.95rem}
 .option-card .opt-desc{font-size:.8rem;color:var(--muted)}
 
-/* Tool search & add */
+/* Tool search — unified */
 .tool-search-wrap{position:relative;margin-bottom:1rem}
 .tool-search{width:100%;padding:.85rem 1rem .85rem 2.75rem;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);color:var(--fg);font-family:var(--fb);font-size:.95rem;box-sizing:border-box}
 .tool-search:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
 .tool-search-icon{position:absolute;left:1rem;top:50%;transform:translateY(-50%);color:var(--muted)}
-.tool-results{position:absolute;top:calc(100% + .25rem);left:0;right:0;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);max-height:240px;overflow-y:auto;z-index:10;display:none;box-shadow:0 8px 30px rgba(0,0,0,.4)}
+.tool-results{position:absolute;top:calc(100% + .25rem);left:0;right:0;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);max-height:300px;overflow-y:auto;z-index:10;display:none;box-shadow:0 8px 30px rgba(0,0,0,.4)}
 .tool-results.show{display:block}
 .tool-result{padding:.6rem 1rem;cursor:pointer;transition:background .15s;display:flex;align-items:center;justify-content:space-between}
 .tool-result:hover{background:var(--bg-hover)}
 .tool-result-name{font-size:.9rem}
 .tool-result-cat{font-size:.75rem;color:var(--muted);font-family:var(--fm)}
+.tool-result-add{padding:.6rem 1rem;cursor:pointer;transition:background .15s;display:flex;align-items:center;gap:.5rem;border-top:1px solid var(--border);color:var(--accent-light)}
+.tool-result-add:hover{background:var(--accent-soft)}
+.tool-result-add svg{flex-shrink:0}
 
 .tools-list{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:1rem;min-height:40px}
 .tool-chip{display:inline-flex;align-items:center;gap:.5rem;padding:.4rem .75rem .4rem .85rem;background:var(--accent-soft);border:1px solid rgba(59,130,246,.25);border-radius:20px;font-size:.85rem;color:var(--accent-light);animation:chipIn .3s ease}
@@ -98,12 +103,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(6,7,9,.7);ba
 .tool-chip .remove{cursor:pointer;color:var(--muted);transition:color .2s;display:flex;align-items:center}
 .tool-chip .remove:hover{color:var(--red)}
 .tools-empty{color:var(--muted);font-size:.85rem;font-style:italic;padding:.5rem 0}
-
-.add-custom-row{display:flex;gap:.5rem}
-.add-custom-input{flex:1;padding:.7rem .9rem;background:var(--bg-card);border:1px solid var(--border);border-radius:8px;color:var(--fg);font-family:var(--fb);font-size:.9rem;box-sizing:border-box}
-.add-custom-input:focus{outline:none;border-color:var(--accent)}
-.add-custom-btn{padding:.7rem 1rem;background:var(--bg-hover);border:1px solid var(--border);border-radius:8px;color:var(--fg);cursor:pointer;font-size:.85rem;font-weight:600;transition:all .2s;white-space:nowrap}
-.add-custom-btn:hover{border-color:var(--accent);background:var(--accent-soft);color:var(--accent-light)}
 
 /* Buttons */
 .step-actions{display:flex;justify-content:space-between;align-items:center;margin-top:2rem}
@@ -148,9 +147,9 @@ footer{border-top:1px solid var(--border);padding:2rem 0}
   .hero-sub{font-size:1rem}
   .option-grid{grid-template-columns:1fr}
   .field-row{grid-template-columns:1fr}
-  .progress-bar{gap:.25rem}
-  .progress-line{width:16px}
-  .progress-label{display:none}
+  .progress-dot{width:24px;height:24px;font-size:.65rem}
+  .progress-line{width:12px}
+  .progress-label{font-size:.6rem;margin-left:.25rem}
   .step-actions{flex-direction:row}
 }
 @media(max-width:540px){
@@ -159,6 +158,8 @@ footer{border-top:1px solid var(--border);padding:2rem 0}
   .nav-brand img{width:26px;height:26px}
   .nav-cta{padding:.5rem .9rem;font-size:.8rem}
   .hero h1{font-size:1.85rem}
+  .progress-line{width:8px}
+  .progress-label{display:none}
 }
 </style>
 </head>
@@ -181,7 +182,7 @@ footer{border-top:1px solid var(--border);padding:2rem 0}
 <section class="wizard-section">
 <div class="wizard">
 
-<!-- Progress -->
+<!-- Progress — 6 steps now, one line -->
 <div class="progress-bar" id="progress-bar">
 <div class="progress-step active" data-step="1"><div class="progress-dot">1</div><span class="progress-label">Basics</span></div>
 <div class="progress-line"></div>
@@ -191,7 +192,9 @@ footer{border-top:1px solid var(--border);padding:2rem 0}
 <div class="progress-line"></div>
 <div class="progress-step" data-step="4"><div class="progress-dot">4</div><span class="progress-label">Revenue</span></div>
 <div class="progress-line"></div>
-<div class="progress-step" data-step="5"><div class="progress-dot">5</div><span class="progress-label">Review</span></div>
+<div class="progress-step" data-step="5"><div class="progress-dot">5</div><span class="progress-label">Problem</span></div>
+<div class="progress-line"></div>
+<div class="progress-step" data-step="6"><div class="progress-dot">6</div><span class="progress-label">Review</span></div>
 </div>
 
 <!-- Step 1: Basics -->
@@ -199,12 +202,12 @@ footer{border-top:1px solid var(--border);padding:2rem 0}
 <h2 class="step-title">Let's start with the basics</h2>
 <p class="step-sub">We'll use this to contact you with your custom plan.</p>
 <div class="field-row">
-<div class="field-group"><label class="field-label">Your name</label><input class="field-input" id="f-name" placeholder="John Smith" oninput="updateNext()"></div>
-<div class="field-group"><label class="field-label">Email</label><input class="field-input" id="f-email" type="email" placeholder="john@company.com" oninput="updateNext()"></div>
+<div class="field-group"><label class="field-label">Your name</label><input class="field-input" id="f-name" placeholder="John Smith"></div>
+<div class="field-group"><label class="field-label">Email</label><input class="field-input" id="f-email" type="email" placeholder="john@company.com"></div>
 </div>
 <div class="field-row">
-<div class="field-group"><label class="field-label">Phone</label><input class="field-input" id="f-phone" placeholder="(555) 123-4567" oninput="updateNext()"></div>
-<div class="field-group"><label class="field-label">Company name</label><input class="field-input" id="f-company" placeholder="Smith Landscaping LLC" oninput="updateNext()"></div>
+<div class="field-group"><label class="field-label">Phone</label><input class="field-input" id="f-phone" placeholder="(555) 123-4567"></div>
+<div class="field-group"><label class="field-label">Company name</label><input class="field-input" id="f-company" placeholder="Smith Landscaping LLC"></div>
 </div>
 <div class="field-group"><label class="field-label">Your role</label>
 <div class="option-grid" id="role-grid">
@@ -246,25 +249,20 @@ footer{border-top:1px solid var(--border);padding:2rem 0}
 </div>
 </div>
 
-<!-- Step 3: Tools -->
+<!-- Step 3: Tools — unified search -->
 <div class="step" data-step="3">
 <h2 class="step-title">What software are you using now?</h2>
-<p class="step-sub">Search for tools you use, or add custom ones. This helps us understand what we're replacing.</p>
+<p class="step-sub">Search for tools you use. If it's not in our database, we'll add it as a custom entry.</p>
 
 <div class="tool-search-wrap">
 <svg class="tool-search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
-<input class="tool-search" id="tool-search" placeholder="Search: Service Autopilot, Jobber, QuickBooks..." oninput="searchTools()">
+<input class="tool-search" id="tool-search" placeholder="Search or type a tool name..." oninput="searchTools()" onkeydown="handleToolKey(event)">
 <div class="tool-results" id="tool-results"></div>
-</div>
-
-<div class="add-custom-row">
-<input class="add-custom-input" id="custom-tool-input" placeholder="Add a tool not listed..." onkeypress="if(event.key==='Enter'){event.preventDefault();addCustomTool();}">
-<button class="add-custom-btn" onclick="addCustomTool()">+ Add</button>
 </div>
 
 <div class="field-label" style="margin-top:1rem;">Your current tools</div>
 <div class="tools-list" id="tools-list">
-<div class="tools-empty" id="tools-empty">No tools added yet. Search above or add your own.</div>
+<div class="tools-empty" id="tools-empty">No tools added yet. Start typing above.</div>
 </div>
 
 <div class="field-group" style="margin-top:1.5rem;"><label class="field-label">How much do you pay per month for software?</label>
@@ -281,7 +279,7 @@ footer{border-top:1px solid var(--border);padding:2rem 0}
 </div>
 </div>
 
-<!-- Step 4: Revenue & Pain -->
+<!-- Step 4: Revenue -->
 <div class="step" data-step="4">
 <h2 class="step-title">About your business</h2>
 <p class="step-sub">This stays confidential. It helps us scope the right solution.</p>
@@ -293,9 +291,19 @@ footer{border-top:1px solid var(--border);padding:2rem 0}
 <div class="option-card" data-value="1M+"><span class="opt-title">$1M+</span><span class="opt-desc">Scaling</span></div>
 </div>
 </div>
-<div class="field-group"><label class="field-label">What's your biggest problem with your current software?</label>
-<p class="field-hint">Be as specific as you want. This is what we'll solve.</p>
-<textarea class="field-textarea" id="f-pain" placeholder="e.g., We use Service Autopilot but our crew can't figure out the mobile app. We waste 3 hours every Sunday routing jobs by hand. Invoicing doesn't sync with QuickBooks so I spend every Friday night doing data entry..." rows="5"></textarea>
+<div class="step-actions">
+<button class="btn btn-ghost" onclick="prevStep()">← Back</button>
+<button class="btn btn-primary" onclick="nextStep()">Continue →</button>
+</div>
+</div>
+
+<!-- Step 5: Problem — own page -->
+<div class="step" data-step="5">
+<h2 class="step-title">What's your biggest problem?</h2>
+<p class="step-sub">Tell us what your current software can't do. This is the problem we'll solve.</p>
+<div class="field-group">
+<p class="field-hint">Be as specific as you want. The more detail you give us, the better your custom plan will be.</p>
+<textarea class="field-textarea" id="f-pain" placeholder="e.g., We use Service Autopilot but our crew can't figure out the mobile app. We waste 3 hours every Sunday routing jobs by hand. Invoicing doesn't sync with QuickBooks so I spend every Friday night doing data entry..." rows="8"></textarea>
 </div>
 <div class="step-actions">
 <button class="btn btn-ghost" onclick="prevStep()">← Back</button>
@@ -303,8 +311,8 @@ footer{border-top:1px solid var(--border);padding:2rem 0}
 </div>
 </div>
 
-<!-- Step 5: Review -->
-<div class="step" data-step="5">
+<!-- Step 6: Review -->
+<div class="step" data-step="6">
 <h2 class="step-title">Review your application</h2>
 <p class="step-sub">Make sure everything looks right before submitting.</p>
 <div class="summary-card" id="summary-card"></div>
@@ -334,13 +342,11 @@ footer{border-top:1px solid var(--border);padding:2rem 0}
 </div></footer>
 
 <script>
-// State
 let currentStep = 1;
-const totalSteps = 5;
+const totalSteps = 6;
 const selectedTools = new Set();
 const formData = { role: '', fieldWorkers: '', officeStaff: '', softwareSpend: '', revenue: '' };
 
-// Known software tools database
 const knownTools = [
   { name: 'Service Autopilot', cat: 'Field service' },
   { name: 'Jobber', cat: 'Field service' },
@@ -365,8 +371,10 @@ const knownTools = [
   { name: 'Trello', cat: 'Project mgmt' },
   { name: 'ClickUp', cat: 'Project mgmt' },
   { name: 'HubSpot', cat: 'CRM' },
+  { name: 'HubSpot CRM', cat: 'CRM' },
   { name: 'Salesforce', cat: 'CRM' },
   { name: 'Pipedrive', cat: 'CRM' },
+  { name: 'Zoho', cat: 'CRM' },
   { name: 'Canva', cat: 'Design' },
   { name: 'Adobe Creative Cloud', cat: 'Design' },
   { name: 'Slack', cat: 'Communication' },
@@ -375,18 +383,24 @@ const knownTools = [
   { name: 'WhatsApp', cat: 'Messaging' },
   { name: 'Samsara', cat: 'GPS tracking' },
   { name: 'Verizon Connect', cat: 'GPS tracking' },
-  { name: 'Time Tracker', cat: 'Time tracking' },
   { name: 'Clockify', cat: 'Time tracking' },
   { name: 'HomeAdvisor', cat: 'Lead gen' },
   { name: 'Angi', cat: 'Lead gen' },
   { name: 'Thumbtack', cat: 'Lead gen' },
   { name: 'SalesRabbit', cat: 'Sales' },
-  { name: 'HubSpot CRM', cat: 'CRM' },
-  { name: 'Zoho', cat: 'CRM' },
   { name: 'Mailchimp', cat: 'Email marketing' },
   { name: 'Constant Contact', cat: 'Email marketing' },
   { name: 'Facebook Ads', cat: 'Marketing' },
   { name: 'Google Ads', cat: 'Marketing' },
+  { name: 'Buildertrend', cat: 'Construction' },
+  { name: 'Contractor Foreman', cat: 'Construction' },
+  { name: 'Houzz Pro', cat: 'Home improvement' },
+  { name: 'RazorSync', cat: 'Field service' },
+  { name: 'FieldEdge', cat: 'Field service' },
+  { name: 'ServiceTitan', cat: 'Field service' },
+  { name: 'Workiz', cat: 'Field service' },
+  { name: 'ProValet', cat: 'Pool service' },
+  { name: 'Spark Pay', cat: 'Payments' },
 ];
 
 // Option card selection
@@ -405,19 +419,66 @@ document.querySelectorAll('.option-grid').forEach(grid => {
   });
 });
 
-// Tool search
+// Unified tool search — shows known matches + "add custom" option
 function searchTools() {
-  const query = document.getElementById('tool-search').value.toLowerCase().trim();
+  const query = document.getElementById('tool-search').value.trim();
   const results = document.getElementById('tool-results');
   if (!query) { results.classList.remove('show'); return; }
+  
+  const queryLower = query.toLowerCase();
   const matches = knownTools.filter(t => 
-    t.name.toLowerCase().includes(query) && !selectedTools.has(t.name)
-  ).slice(0, 8);
-  if (matches.length === 0) { results.classList.remove('show'); return; }
-  results.innerHTML = matches.map(t => 
-    `<div class="tool-result" onclick="addTool('${t.name.replace(/'/g, "\\'")}')"><span class="tool-result-name">${t.name}</span><span class="tool-result-cat">${t.cat}</span></div>`
-  ).join('');
-  results.classList.add('show');
+    t.name.toLowerCase().includes(queryLower) && !selectedTools.has(t.name)
+  ).slice(0, 6);
+  
+  // Check if the typed text exactly matches a known tool (case-insensitive)
+  const exactMatch = knownTools.some(t => t.name.toLowerCase() === queryLower);
+  
+  let html = '';
+  
+  // Known matches
+  if (matches.length > 0) {
+    html += matches.map(t => 
+      `<div class="tool-result" onclick="addTool('${escStr(t.name)}')"><span class="tool-result-name">${t.name}</span><span class="tool-result-cat">${t.cat}</span></div>`
+    ).join('');
+  }
+  
+  // Add custom option (if not an exact match of a known tool)
+  if (!exactMatch && !selectedTools.has(query)) {
+    html += `<div class="tool-result-add" onclick="addTool('${escStr(query)}')"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/></svg><span class="tool-result-name">Add "${escHtml(query)}" as a custom tool</span></div>`;
+  }
+  
+  if (html) {
+    results.innerHTML = html;
+    results.classList.add('show');
+  } else {
+    results.classList.remove('show');
+  }
+}
+
+function handleToolKey(event) {
+  if (event.key === 'Enter') {
+    event.preventDefault();
+    const query = document.getElementById('tool-search').value.trim();
+    if (!query) return;
+    const results = document.getElementById('tool-results');
+    // If there are visible results, click the first one
+    const firstResult = results.querySelector('.tool-result, .tool-result-add');
+    if (firstResult) {
+      firstResult.click();
+    } else if (!selectedTools.has(query)) {
+      addTool(query);
+    }
+  } else if (event.key === 'Escape') {
+    document.getElementById('tool-results').classList.remove('show');
+    document.getElementById('tool-search').blur();
+  }
+}
+
+function escStr(s) {
+  return s.replace(/'/g, "\\'").replace(/"/g, '&quot;');
+}
+function escHtml(s) {
+  return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
 }
 
 // Click outside to close results
@@ -434,16 +495,7 @@ function addTool(name) {
   }
   document.getElementById('tool-search').value = '';
   document.getElementById('tool-results').classList.remove('show');
-}
-
-function addCustomTool() {
-  const input = document.getElementById('custom-tool-input');
-  const name = input.value.trim();
-  if (name && !selectedTools.has(name)) {
-    selectedTools.add(name);
-    renderTools();
-  }
-  input.value = '';
+  document.getElementById('tool-search').focus();
 }
 
 function removeTool(name) {
@@ -453,20 +505,18 @@ function removeTool(name) {
 
 function renderTools() {
   const list = document.getElementById('tools-list');
-  const empty = document.getElementById('tools-empty');
   if (selectedTools.size === 0) {
-    list.innerHTML = '<div class="tools-empty" id="tools-empty">No tools added yet. Search above or add your own.</div>';
+    list.innerHTML = '<div class="tools-empty">No tools added yet. Start typing above.</div>';
     return;
   }
   list.innerHTML = Array.from(selectedTools).map(name => 
-    `<div class="tool-chip">${name}<span class="remove" onclick="removeTool('${name.replace(/'/g, "\\'")}')"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg></span></div>`
+    `<div class="tool-chip">${escHtml(name)}<span class="remove" onclick="removeTool('${escStr(name)}')"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg></span></div>`
   ).join('');
 }
 
 // Step navigation
 function nextStep() {
   if (currentStep < totalSteps) {
-    if (currentStep === 5) { buildSummary(); }
     goToStep(currentStep + 1);
   }
 }
@@ -481,7 +531,6 @@ function goToStep(step) {
   document.querySelectorAll('.step').forEach(s => s.classList.remove('active'));
   document.querySelector(`.step[data-step="${step}"]`).classList.add('active');
   
-  // Update progress
   document.querySelectorAll('.progress-step').forEach(ps => {
     const psStep = parseInt(ps.dataset.step);
     ps.classList.remove('active', 'done');
@@ -493,32 +542,30 @@ function goToStep(step) {
   });
   
   currentStep = step;
-  if (step === 5) buildSummary();
+  if (step === 6) buildSummary();
   window.scrollTo({ top: document.querySelector('.wizard-section').offsetTop - 80, behavior: 'smooth' });
 }
 
 function buildSummary() {
   const tools = Array.from(selectedTools);
   const toolsHtml = tools.length > 0 
-    ? `<div class="summary-tools">${tools.map(t => `<div class="tool-chip">${t}</div>`).join('')}</div>`
+    ? `<div class="summary-tools">${tools.map(t => `<div class="tool-chip">${escHtml(t)}</div>`).join('')}</div>`
     : '<span style="color:var(--muted)">None added</span>';
   
   document.getElementById('summary-card').innerHTML = `
-    <div class="summary-row"><span class="summary-label">Name</span><span class="summary-value">${document.getElementById('f-name').value || '—'}</span></div>
-    <div class="summary-row"><span class="summary-label">Email</span><span class="summary-value">${document.getElementById('f-email').value || '—'}</span></div>
-    <div class="summary-row"><span class="summary-label">Phone</span><span class="summary-value">${document.getElementById('f-phone').value || '—'}</span></div>
-    <div class="summary-row"><span class="summary-label">Company</span><span class="summary-value">${document.getElementById('f-company').value || '—'}</span></div>
+    <div class="summary-row"><span class="summary-label">Name</span><span class="summary-value">${escHtml(document.getElementById('f-name').value || '—')}</span></div>
+    <div class="summary-row"><span class="summary-label">Email</span><span class="summary-value">${escHtml(document.getElementById('f-email').value || '—')}</span></div>
+    <div class="summary-row"><span class="summary-label">Phone</span><span class="summary-value">${escHtml(document.getElementById('f-phone').value || '—')}</span></div>
+    <div class="summary-row"><span class="summary-label">Company</span><span class="summary-value">${escHtml(document.getElementById('f-company').value || '—')}</span></div>
     <div class="summary-row"><span class="summary-label">Role</span><span class="summary-value">${formData.role || '—'}</span></div>
     <div class="summary-row"><span class="summary-label">Field workers</span><span class="summary-value">${formData.fieldWorkers || '—'}</span></div>
     <div class="summary-row"><span class="summary-label">Office staff</span><span class="summary-value">${formData.officeStaff || '—'}</span></div>
     <div class="summary-row"><span class="summary-label">Current tools</span>${toolsHtml}</div>
     <div class="summary-row"><span class="summary-label">Monthly software spend</span><span class="summary-value">${formData.softwareSpend || '—'}</span></div>
     <div class="summary-row"><span class="summary-label">Annual revenue</span><span class="summary-value">${formData.revenue || '—'}</span></div>
-    <div class="summary-row"><span class="summary-label">Biggest problem</span><span class="summary-value" style="max-width:70%;">${document.getElementById('f-pain').value || '—'}</span></div>
+    <div class="summary-row"><span class="summary-label">Biggest problem</span><span class="summary-value" style="max-width:70%;">${escHtml(document.getElementById('f-pain').value || '—')}</span></div>
   `;
 }
-
-function updateNext() { /* could add validation */ }
 
 async function submitApp() {
   const btn = document.getElementById('submit-btn');
