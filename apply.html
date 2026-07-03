@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Apply for Custom Software | Replace My Software</title>
+<link rel="icon" type="image/png" href="/logo.png">
+<link rel="apple-touch-icon" href="/logo.png">
+<meta property="og:title" content="Apply for Custom Software — Replace My Software">
+<meta property="og:description" content="Tell us about your business. We'll build a custom tool around your actual workflow.">
+<meta property="og:image" content="https://replacemysoftware.com/og-image.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#060709;--bg-2:#0a0b0f;--bg-card:#0d0e12;--bg-hover:#14151a;--fg:#e8e9ed;--muted:#7a7d86;--border:#1a1b22;--accent:#3b82f6;--accent-light:#60a5fa;--accent-soft:rgba(59,130,246,.12);--accent-glow:rgba(59,130,246,.4);--green:#22c55e;--green-soft:rgba(34,197,94,.12);--orange:#f59e0b;--red:#ef4444;--red-soft:rgba(239,68,68,.1);--radius:12px;--fd:'Space Grotesk',sans-serif;--fb:'Inter',sans-serif;--fm:'JetBrains Mono',monospace}
+*{margin:0;padding:0;box-sizing:border-box}html,body{max-width:100vw;overflow-x:hidden}
+body{background:var(--bg);color:var(--fg);font-family:var(--fb);font-size:16px;line-height:1.6;min-height:100vh}
+a{color:inherit;text-decoration:none}
+
+/* Nav */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(6,7,9,.7);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+.nav-inner{max-width:1200px;margin:0 auto;padding:.85rem 1.5rem;display:flex;align-items:center;justify-content:space-between}
+.nav-brand{display:flex;align-items:center;gap:.6rem;font-family:var(--fd);font-weight:700;font-size:1.1rem}
+.nav-brand img{width:30px;height:30px;border-radius:6px}
+.nav-brand .accent{color:var(--accent-light)}
+.nav-links{display:flex;gap:2rem;align-items:center}
+.nav-links a{color:var(--muted);font-size:.9rem;font-weight:500;transition:color .2s}
+.nav-links a:hover{color:var(--fg)}
+.nav-cta{padding:.6rem 1.25rem;background:var(--accent);color:#fff;border-radius:8px;font-weight:600;font-size:.9rem;transition:all .2s;box-shadow:0 4px 20px var(--accent-glow)}
+.nav-cta:hover{transform:translateY(-1px);box-shadow:0 6px 24px var(--accent-glow)}
+
+/* Hero */
+.hero{position:relative;padding:8rem 0 3rem;overflow:hidden;text-align:center}
+.hero-orb{position:absolute;border-radius:50%;filter:blur(80px);opacity:.15;pointer-events:none}
+.orb-1{width:500px;height:500px;background:var(--accent);top:-100px;right:-100px}
+.orb-2{width:400px;height:400px;background:var(--green);bottom:-150px;left:-100px}
+.hero-badge{display:inline-flex;align-items:center;gap:.5rem;padding:.4rem .9rem;background:var(--accent-soft);border:1px solid rgba(59,130,246,.2);border-radius:20px;font-size:.85rem;color:var(--accent-light);font-weight:500;margin-bottom:1.5rem}
+.pulse{width:8px;height:8px;border-radius:50%;background:var(--accent-light);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+.hero h1{font-family:var(--fd);font-size:3rem;font-weight:700;line-height:1.1;margin-bottom:1rem;letter-spacing:-.02em}
+.hero h1 .highlight{background:linear-gradient(135deg,var(--accent-light),var(--green));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-sub{font-size:1.15rem;color:var(--muted);max-width:540px;margin:0 auto 1rem}
+
+/* Wizard */
+.wizard-section{padding:2rem 0 5rem}
+.wizard{max-width:640px;margin:0 auto;padding:0 1.5rem}
+.progress-bar{display:flex;align-items:center;justify-content:center;gap:.5rem;margin-bottom:2.5rem;flex-wrap:wrap}
+.progress-step{display:flex;align-items:center;gap:.5rem}
+.progress-dot{width:32px;height:32px;border-radius:50%;background:var(--bg-card);border:2px solid var(--border);display:flex;align-items:center;justify-content:center;font-family:var(--fd);font-weight:700;font-size:.85rem;color:var(--muted);transition:all .3s}
+.progress-step.active .progress-dot{background:var(--accent);border-color:var(--accent);color:#fff;box-shadow:0 0 20px var(--accent-glow)}
+.progress-step.done .progress-dot{background:var(--green);border-color:var(--green);color:#fff}
+.progress-line{width:30px;height:2px;background:var(--border);transition:background .3s}
+.progress-line.done{background:var(--green)}
+.progress-label{font-size:.75rem;color:var(--muted);font-family:var(--fm);text-transform:uppercase;letter-spacing:.05em}
+
+.step{display:none;animation:slideIn .4s ease}
+.step.active{display:block}
+@keyframes slideIn{from{opacity:0;transform:translateX(20px)}to{opacity:1;transform:translateX(0)}}
+
+.step-title{font-family:var(--fd);font-size:1.5rem;font-weight:700;margin-bottom:.5rem}
+.step-sub{color:var(--muted);font-size:.95rem;margin-bottom:2rem}
+
+/* Form fields */
+.field-group{margin-bottom:1.5rem}
+.field-label{display:block;font-size:.9rem;font-weight:600;margin-bottom:.5rem}
+.field-hint{font-size:.8rem;color:var(--muted);margin-bottom:.5rem}
+.field-input,.field-select,.field-textarea{width:100%;padding:.85rem 1rem;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);color:var(--fg);font-family:var(--fb);font-size:.95rem;transition:border-color .2s,box-shadow .2s;box-sizing:border-box}
+.field-input::placeholder,.field-textarea::placeholder{color:var(--muted)}
+.field-input:focus,.field-select:focus,.field-textarea:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft);background:var(--bg-hover)}
+.field-input:-webkit-autofill,.field-select:-webkit-autofill,.field-textarea:-webkit-autofill{-webkit-box-shadow:0 0 0 1000px var(--bg-card) inset!important;-webkit-text-fill-color:var(--fg)!important;caret-color:var(--fg);transition:background-color 9999s ease-in-out 0s}
+.field-textarea{resize:vertical;min-height:100px}
+.field-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+
+/* Option cards (for selections) */
+.option-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:.75rem}
+.option-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:1rem;cursor:pointer;transition:all .2s;display:flex;flex-direction:column;gap:.25rem}
+.option-card:hover{border-color:var(--accent);background:var(--bg-hover)}
+.option-card.selected{border-color:var(--accent);background:var(--accent-soft);box-shadow:0 0 0 3px var(--accent-soft)}
+.option-card .opt-title{font-weight:600;font-size:.95rem}
+.option-card .opt-desc{font-size:.8rem;color:var(--muted)}
+
+/* Tool search & add */
+.tool-search-wrap{position:relative;margin-bottom:1rem}
+.tool-search{width:100%;padding:.85rem 1rem .85rem 2.75rem;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);color:var(--fg);font-family:var(--fb);font-size:.95rem;box-sizing:border-box}
+.tool-search:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
+.tool-search-icon{position:absolute;left:1rem;top:50%;transform:translateY(-50%);color:var(--muted)}
+.tool-results{position:absolute;top:calc(100% + .25rem);left:0;right:0;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);max-height:240px;overflow-y:auto;z-index:10;display:none;box-shadow:0 8px 30px rgba(0,0,0,.4)}
+.tool-results.show{display:block}
+.tool-result{padding:.6rem 1rem;cursor:pointer;transition:background .15s;display:flex;align-items:center;justify-content:space-between}
+.tool-result:hover{background:var(--bg-hover)}
+.tool-result-name{font-size:.9rem}
+.tool-result-cat{font-size:.75rem;color:var(--muted);font-family:var(--fm)}
+
+.tools-list{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:1rem;min-height:40px}
+.tool-chip{display:inline-flex;align-items:center;gap:.5rem;padding:.4rem .75rem .4rem .85rem;background:var(--accent-soft);border:1px solid rgba(59,130,246,.25);border-radius:20px;font-size:.85rem;color:var(--accent-light);animation:chipIn .3s ease}
+@keyframes chipIn{from{opacity:0;transform:scale(.8)}to{opacity:1;transform:scale(1)}}
+.tool-chip .remove{cursor:pointer;color:var(--muted);transition:color .2s;display:flex;align-items:center}
+.tool-chip .remove:hover{color:var(--red)}
+.tools-empty{color:var(--muted);font-size:.85rem;font-style:italic;padding:.5rem 0}
+
+.add-custom-row{display:flex;gap:.5rem}
+.add-custom-input{flex:1;padding:.7rem .9rem;background:var(--bg-card);border:1px solid var(--border);border-radius:8px;color:var(--fg);font-family:var(--fb);font-size:.9rem;box-sizing:border-box}
+.add-custom-input:focus{outline:none;border-color:var(--accent)}
+.add-custom-btn{padding:.7rem 1rem;background:var(--bg-hover);border:1px solid var(--border);border-radius:8px;color:var(--fg);cursor:pointer;font-size:.85rem;font-weight:600;transition:all .2s;white-space:nowrap}
+.add-custom-btn:hover{border-color:var(--accent);background:var(--accent-soft);color:var(--accent-light)}
+
+/* Buttons */
+.step-actions{display:flex;justify-content:space-between;align-items:center;margin-top:2rem}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;padding:.85rem 1.5rem;border-radius:10px;font-family:var(--fb);font-weight:600;font-size:.95rem;line-height:1;border:none;cursor:pointer;transition:all .2s;text-decoration:none}
+.btn-primary{background:var(--accent);color:#fff;box-shadow:0 8px 30px var(--accent-glow)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 40px var(--accent-glow)}
+.btn-primary:disabled{opacity:.4;cursor:not-allowed;transform:none;box-shadow:none}
+.btn-ghost{background:transparent;color:var(--muted);border:1px solid var(--border)}
+.btn-ghost:hover{color:var(--fg);border-color:var(--muted)}
+
+/* Summary step */
+.summary-card{background:var(--bg-card);border:1px solid var(--border);border-radius:16px;padding:1.5rem;margin-bottom:1.5rem}
+.summary-row{display:flex;justify-content:space-between;padding:.6rem 0;border-bottom:1px solid var(--border)}
+.summary-row:last-child{border-bottom:none}
+.summary-label{color:var(--muted);font-size:.9rem}
+.summary-value{font-weight:600;font-size:.9rem;text-align:right;max-width:60%}
+.summary-tools{display:flex;flex-wrap:wrap;gap:.4rem;justify-content:flex-end}
+.summary-tools .tool-chip{font-size:.75rem;padding:.3rem .6rem}
+
+/* Success screen */
+.success-screen{text-align:center;padding:3rem 0}
+.success-icon{width:64px;height:64px;border-radius:50%;background:var(--green-soft);display:flex;align-items:center;justify-content:center;margin:0 auto 1.5rem;animation:popIn .5s ease}
+@keyframes popIn{from{transform:scale(0)}to{transform:scale(1)}}
+.success-icon svg{color:var(--green);width:32px;height:32px}
+.success-screen h2{font-family:var(--fd);font-size:1.5rem;margin-bottom:.5rem}
+.success-screen p{color:var(--muted);margin-bottom:1.5rem}
+
+/* Footer */
+footer{border-top:1px solid var(--border);padding:2rem 0}
+.footer-inner{max-width:1200px;margin:0 auto;padding:0 1.5rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
+.footer-brand{display:flex;align-items:center;gap:.5rem;font-family:var(--fd);font-weight:700;font-size:1rem}
+.footer-brand img{width:24px;height:24px;border-radius:5px}
+.footer-brand .accent{color:var(--accent-light)}
+.footer-links{display:flex;gap:1.5rem;font-size:.85rem}
+.footer-links a{color:var(--muted);transition:color .2s}
+.footer-links a:hover{color:var(--fg)}
+
+@media(max-width:768px){
+  .nav-links{display:none}
+  .hero{padding:6rem 0 2rem}
+  .hero h1{font-size:2.25rem}
+  .hero-sub{font-size:1rem}
+  .option-grid{grid-template-columns:1fr}
+  .field-row{grid-template-columns:1fr}
+  .progress-bar{gap:.25rem}
+  .progress-line{width:16px}
+  .progress-label{display:none}
+  .step-actions{flex-direction:row}
+}
+@media(max-width:540px){
+  .nav-inner{padding:.65rem 1rem}
+  .nav-brand{font-size:.9rem}
+  .nav-brand img{width:26px;height:26px}
+  .nav-cta{padding:.5rem .9rem;font-size:.8rem}
+  .hero h1{font-size:1.85rem}
+}
+</style>
+</head>
+<body>
+<nav><div class="nav-inner">
+<a href="/" class="nav-brand"><img src="/logo.png" alt="RMS">Replace My <span class="accent">Software</span></a>
+<div class="nav-links"><a href="/">Home</a><a href="/#features">Features</a><a href="/#pricing">Pricing</a></div>
+<a href="/apply" class="nav-cta">Apply →</a>
+</div></nav>
+
+<section class="hero">
+<div class="hero-orb orb-1"></div><div class="hero-orb orb-2"></div>
+<div class="container">
+<div class="hero-badge"><span class="pulse"></span>Custom software application</div>
+<h1>Tell us about your <span class="highlight">business</span></h1>
+<p class="hero-sub">We build custom software around your actual workflow. Start by telling us how you operate.</p>
+</div>
+</section>
+
+<section class="wizard-section">
+<div class="wizard">
+
+<!-- Progress -->
+<div class="progress-bar" id="progress-bar">
+<div class="progress-step active" data-step="1"><div class="progress-dot">1</div><span class="progress-label">Basics</span></div>
+<div class="progress-line"></div>
+<div class="progress-step" data-step="2"><div class="progress-dot">2</div><span class="progress-label">Team</span></div>
+<div class="progress-line"></div>
+<div class="progress-step" data-step="3"><div class="progress-dot">3</div><span class="progress-label">Tools</span></div>
+<div class="progress-line"></div>
+<div class="progress-step" data-step="4"><div class="progress-dot">4</div><span class="progress-label">Revenue</span></div>
+<div class="progress-line"></div>
+<div class="progress-step" data-step="5"><div class="progress-dot">5</div><span class="progress-label">Review</span></div>
+</div>
+
+<!-- Step 1: Basics -->
+<div class="step active" data-step="1">
+<h2 class="step-title">Let's start with the basics</h2>
+<p class="step-sub">We'll use this to contact you with your custom plan.</p>
+<div class="field-row">
+<div class="field-group"><label class="field-label">Your name</label><input class="field-input" id="f-name" placeholder="John Smith" oninput="updateNext()"></div>
+<div class="field-group"><label class="field-label">Email</label><input class="field-input" id="f-email" type="email" placeholder="john@company.com" oninput="updateNext()"></div>
+</div>
+<div class="field-row">
+<div class="field-group"><label class="field-label">Phone</label><input class="field-input" id="f-phone" placeholder="(555) 123-4567" oninput="updateNext()"></div>
+<div class="field-group"><label class="field-label">Company name</label><input class="field-input" id="f-company" placeholder="Smith Landscaping LLC" oninput="updateNext()"></div>
+</div>
+<div class="field-group"><label class="field-label">Your role</label>
+<div class="option-grid" id="role-grid">
+<div class="option-card" data-value="Owner"><span class="opt-title">Owner / Founder</span></div>
+<div class="option-card" data-value="Manager"><span class="opt-title">Manager / Operations</span></div>
+<div class="option-card" data-value="Office"><span class="opt-title">Office / Admin</span></div>
+<div class="option-card" data-value="Other"><span class="opt-title">Other</span></div>
+</div>
+</div>
+<div class="step-actions">
+<div></div>
+<button class="btn btn-primary" onclick="nextStep()">Continue →</button>
+</div>
+</div>
+
+<!-- Step 2: Team -->
+<div class="step" data-step="2">
+<h2 class="step-title">Tell us about your team</h2>
+<p class="step-sub">This helps us understand the scale of software we'd build.</p>
+<div class="field-group"><label class="field-label">How many field workers do you have?</label>
+<div class="option-grid" id="field-workers-grid">
+<div class="option-card" data-value="1-2"><span class="opt-title">1-2</span><span class="opt-desc">Solo or duo</span></div>
+<div class="option-card" data-value="3-5"><span class="opt-title">3-5</span><span class="opt-desc">Small crew</span></div>
+<div class="option-card" data-value="6-10"><span class="opt-title">6-10</span><span class="opt-desc">Multiple crews</span></div>
+<div class="option-card" data-value="10+"><span class="opt-title">10+</span><span class="opt-desc">Large operation</span></div>
+</div>
+</div>
+<div class="field-group"><label class="field-label">How many office / admin staff?</label>
+<div class="option-grid" id="office-staff-grid">
+<div class="option-card" data-value="0"><span class="opt-title">0</span><span class="opt-desc">I handle everything</span></div>
+<div class="option-card" data-value="1-2"><span class="opt-title">1-2</span><span class="opt-desc">Small office</span></div>
+<div class="option-card" data-value="3-5"><span class="opt-title">3-5</span><span class="opt-desc">Full office team</span></div>
+<div class="option-card" data-value="5+"><span class="opt-title">5+</span><span class="opt-desc">Large admin team</span></div>
+</div>
+</div>
+<div class="step-actions">
+<button class="btn btn-ghost" onclick="prevStep()">← Back</button>
+<button class="btn btn-primary" onclick="nextStep()">Continue →</button>
+</div>
+</div>
+
+<!-- Step 3: Tools -->
+<div class="step" data-step="3">
+<h2 class="step-title">What software are you using now?</h2>
+<p class="step-sub">Search for tools you use, or add custom ones. This helps us understand what we're replacing.</p>
+
+<div class="tool-search-wrap">
+<svg class="tool-search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+<input class="tool-search" id="tool-search" placeholder="Search: Service Autopilot, Jobber, QuickBooks..." oninput="searchTools()">
+<div class="tool-results" id="tool-results"></div>
+</div>
+
+<div class="add-custom-row">
+<input class="add-custom-input" id="custom-tool-input" placeholder="Add a tool not listed..." onkeypress="if(event.key==='Enter'){event.preventDefault();addCustomTool();}">
+<button class="add-custom-btn" onclick="addCustomTool()">+ Add</button>
+</div>
+
+<div class="field-label" style="margin-top:1rem;">Your current tools</div>
+<div class="tools-list" id="tools-list">
+<div class="tools-empty" id="tools-empty">No tools added yet. Search above or add your own.</div>
+</div>
+
+<div class="field-group" style="margin-top:1.5rem;"><label class="field-label">How much do you pay per month for software?</label>
+<div class="option-grid" id="software-spend-grid">
+<div class="option-card" data-value="0"><span class="opt-title">$0</span><span class="opt-desc">Spreadsheets & paper</span></div>
+<div class="option-card" data-value="1-99"><span class="opt-title">$1-99/mo</span><span class="opt-desc">Basic tools</span></div>
+<div class="option-card" data-value="100-299"><span class="opt-title">$100-299/mo</span><span class="opt-desc">Standard SaaS</span></div>
+<div class="option-card" data-value="300+"><span class="opt-title">$300+/mo</span><span class="opt-desc">Enterprise SaaS</span></div>
+</div>
+</div>
+<div class="step-actions">
+<button class="btn btn-ghost" onclick="prevStep()">← Back</button>
+<button class="btn btn-primary" onclick="nextStep()">Continue →</button>
+</div>
+</div>
+
+<!-- Step 4: Revenue & Pain -->
+<div class="step" data-step="4">
+<h2 class="step-title">About your business</h2>
+<p class="step-sub">This stays confidential. It helps us scope the right solution.</p>
+<div class="field-group"><label class="field-label">Estimated annual revenue</label>
+<div class="option-grid" id="revenue-grid">
+<div class="option-card" data-value="<250K"><span class="opt-title">Under $250K</span><span class="opt-desc">Getting started</span></div>
+<div class="option-card" data-value="250K-500K"><span class="opt-title">$250K - $500K</span><span class="opt-desc">Growing</span></div>
+<div class="option-card" data-value="500K-1M"><span class="opt-title">$500K - $1M</span><span class="opt-desc">Established</span></div>
+<div class="option-card" data-value="1M+"><span class="opt-title">$1M+</span><span class="opt-desc">Scaling</span></div>
+</div>
+</div>
+<div class="field-group"><label class="field-label">What's your biggest problem with your current software?</label>
+<p class="field-hint">Be as specific as you want. This is what we'll solve.</p>
+<textarea class="field-textarea" id="f-pain" placeholder="e.g., We use Service Autopilot but our crew can't figure out the mobile app. We waste 3 hours every Sunday routing jobs by hand. Invoicing doesn't sync with QuickBooks so I spend every Friday night doing data entry..." rows="5"></textarea>
+</div>
+<div class="step-actions">
+<button class="btn btn-ghost" onclick="prevStep()">← Back</button>
+<button class="btn btn-primary" onclick="nextStep()">Continue →</button>
+</div>
+</div>
+
+<!-- Step 5: Review -->
+<div class="step" data-step="5">
+<h2 class="step-title">Review your application</h2>
+<p class="step-sub">Make sure everything looks right before submitting.</p>
+<div class="summary-card" id="summary-card"></div>
+<div class="step-actions">
+<button class="btn btn-ghost" onclick="prevStep()">← Back</button>
+<button class="btn btn-primary" id="submit-btn" onclick="submitApp()">Submit Application →</button>
+</div>
+</div>
+
+<!-- Success -->
+<div class="step" data-step="success">
+<div class="success-screen">
+<div class="success-icon"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></div>
+<h2>Application received!</h2>
+<p>We'll review your business and send a custom plan within 24 hours.</p>
+<a href="/" class="btn btn-ghost">← Back to Home</a>
+</div>
+</div>
+
+</div>
+</section>
+
+<footer><div class="footer-inner">
+<a href="/" class="footer-brand"><img src="/logo.png" alt="RMS">Replace My <span class="accent">Software</span></a>
+<div class="footer-links"><a href="/">Home</a><a href="/apply">Apply</a><a href="mailto:team@roofingwebpro.com">Contact</a></div>
+<div style="font-size:.8rem;color:var(--muted);">© 2026 Replace My Software. Built by NATILEE AUTOMATIONS.</div>
+</div></footer>
+
+<script>
+// State
+let currentStep = 1;
+const totalSteps = 5;
+const selectedTools = new Set();
+const formData = { role: '', fieldWorkers: '', officeStaff: '', softwareSpend: '', revenue: '' };
+
+// Known software tools database
+const knownTools = [
+  { name: 'Service Autopilot', cat: 'Field service' },
+  { name: 'Jobber', cat: 'Field service' },
+  { name: 'Housecall Pro', cat: 'Field service' },
+  { name: 'Aspire', cat: 'Field service' },
+  { name: 'LMN', cat: 'Landscaping' },
+  { name: 'RealGreen', cat: 'Lawn care' },
+  { name: 'Clip', cat: 'Lawn care' },
+  { name: 'Yardbook', cat: 'Landscaping' },
+  { name: 'QuickBooks', cat: 'Accounting' },
+  { name: 'QuickBooks Online', cat: 'Accounting' },
+  { name: 'Xero', cat: 'Accounting' },
+  { name: 'FreshBooks', cat: 'Accounting' },
+  { name: 'Stripe', cat: 'Payments' },
+  { name: 'Square', cat: 'Payments' },
+  { name: 'Google Sheets', cat: 'Spreadsheets' },
+  { name: 'Excel', cat: 'Spreadsheets' },
+  { name: 'Notion', cat: 'Notes' },
+  { name: 'Airtable', cat: 'Database' },
+  { name: 'Monday.com', cat: 'Project mgmt' },
+  { name: 'Asana', cat: 'Project mgmt' },
+  { name: 'Trello', cat: 'Project mgmt' },
+  { name: 'ClickUp', cat: 'Project mgmt' },
+  { name: 'HubSpot', cat: 'CRM' },
+  { name: 'Salesforce', cat: 'CRM' },
+  { name: 'Pipedrive', cat: 'CRM' },
+  { name: 'Canva', cat: 'Design' },
+  { name: 'Adobe Creative Cloud', cat: 'Design' },
+  { name: 'Slack', cat: 'Communication' },
+  { name: 'Gmail', cat: 'Email' },
+  { name: 'Outlook', cat: 'Email' },
+  { name: 'WhatsApp', cat: 'Messaging' },
+  { name: 'Samsara', cat: 'GPS tracking' },
+  { name: 'Verizon Connect', cat: 'GPS tracking' },
+  { name: 'Time Tracker', cat: 'Time tracking' },
+  { name: 'Clockify', cat: 'Time tracking' },
+  { name: 'HomeAdvisor', cat: 'Lead gen' },
+  { name: 'Angi', cat: 'Lead gen' },
+  { name: 'Thumbtack', cat: 'Lead gen' },
+  { name: 'SalesRabbit', cat: 'Sales' },
+  { name: 'HubSpot CRM', cat: 'CRM' },
+  { name: 'Zoho', cat: 'CRM' },
+  { name: 'Mailchimp', cat: 'Email marketing' },
+  { name: 'Constant Contact', cat: 'Email marketing' },
+  { name: 'Facebook Ads', cat: 'Marketing' },
+  { name: 'Google Ads', cat: 'Marketing' },
+];
+
+// Option card selection
+document.querySelectorAll('.option-grid').forEach(grid => {
+  grid.querySelectorAll('.option-card').forEach(card => {
+    card.addEventListener('click', () => {
+      grid.querySelectorAll('.option-card').forEach(c => c.classList.remove('selected'));
+      card.classList.add('selected');
+      const gridId = grid.id;
+      if (gridId === 'role-grid') formData.role = card.dataset.value;
+      else if (gridId === 'field-workers-grid') formData.fieldWorkers = card.dataset.value;
+      else if (gridId === 'office-staff-grid') formData.officeStaff = card.dataset.value;
+      else if (gridId === 'software-spend-grid') formData.softwareSpend = card.dataset.value;
+      else if (gridId === 'revenue-grid') formData.revenue = card.dataset.value;
+    });
+  });
+});
+
+// Tool search
+function searchTools() {
+  const query = document.getElementById('tool-search').value.toLowerCase().trim();
+  const results = document.getElementById('tool-results');
+  if (!query) { results.classList.remove('show'); return; }
+  const matches = knownTools.filter(t => 
+    t.name.toLowerCase().includes(query) && !selectedTools.has(t.name)
+  ).slice(0, 8);
+  if (matches.length === 0) { results.classList.remove('show'); return; }
+  results.innerHTML = matches.map(t => 
+    `<div class="tool-result" onclick="addTool('${t.name.replace(/'/g, "\\'")}')"><span class="tool-result-name">${t.name}</span><span class="tool-result-cat">${t.cat}</span></div>`
+  ).join('');
+  results.classList.add('show');
+}
+
+// Click outside to close results
+document.addEventListener('click', (e) => {
+  if (!e.target.closest('.tool-search-wrap')) {
+    document.getElementById('tool-results').classList.remove('show');
+  }
+});
+
+function addTool(name) {
+  if (!selectedTools.has(name)) {
+    selectedTools.add(name);
+    renderTools();
+  }
+  document.getElementById('tool-search').value = '';
+  document.getElementById('tool-results').classList.remove('show');
+}
+
+function addCustomTool() {
+  const input = document.getElementById('custom-tool-input');
+  const name = input.value.trim();
+  if (name && !selectedTools.has(name)) {
+    selectedTools.add(name);
+    renderTools();
+  }
+  input.value = '';
+}
+
+function removeTool(name) {
+  selectedTools.delete(name);
+  renderTools();
+}
+
+function renderTools() {
+  const list = document.getElementById('tools-list');
+  const empty = document.getElementById('tools-empty');
+  if (selectedTools.size === 0) {
+    list.innerHTML = '<div class="tools-empty" id="tools-empty">No tools added yet. Search above or add your own.</div>';
+    return;
+  }
+  list.innerHTML = Array.from(selectedTools).map(name => 
+    `<div class="tool-chip">${name}<span class="remove" onclick="removeTool('${name.replace(/'/g, "\\'")}')"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg></span></div>`
+  ).join('');
+}
+
+// Step navigation
+function nextStep() {
+  if (currentStep < totalSteps) {
+    if (currentStep === 5) { buildSummary(); }
+    goToStep(currentStep + 1);
+  }
+}
+
+function prevStep() {
+  if (currentStep > 1) {
+    goToStep(currentStep - 1);
+  }
+}
+
+function goToStep(step) {
+  document.querySelectorAll('.step').forEach(s => s.classList.remove('active'));
+  document.querySelector(`.step[data-step="${step}"]`).classList.add('active');
+  
+  // Update progress
+  document.querySelectorAll('.progress-step').forEach(ps => {
+    const psStep = parseInt(ps.dataset.step);
+    ps.classList.remove('active', 'done');
+    if (psStep < step) ps.classList.add('done');
+    else if (psStep === step) ps.classList.add('active');
+  });
+  document.querySelectorAll('.progress-line').forEach((line, i) => {
+    line.classList.toggle('done', i < step - 1);
+  });
+  
+  currentStep = step;
+  if (step === 5) buildSummary();
+  window.scrollTo({ top: document.querySelector('.wizard-section').offsetTop - 80, behavior: 'smooth' });
+}
+
+function buildSummary() {
+  const tools = Array.from(selectedTools);
+  const toolsHtml = tools.length > 0 
+    ? `<div class="summary-tools">${tools.map(t => `<div class="tool-chip">${t}</div>`).join('')}</div>`
+    : '<span style="color:var(--muted)">None added</span>';
+  
+  document.getElementById('summary-card').innerHTML = `
+    <div class="summary-row"><span class="summary-label">Name</span><span class="summary-value">${document.getElementById('f-name').value || '—'}</span></div>
+    <div class="summary-row"><span class="summary-label">Email</span><span class="summary-value">${document.getElementById('f-email').value || '—'}</span></div>
+    <div class="summary-row"><span class="summary-label">Phone</span><span class="summary-value">${document.getElementById('f-phone').value || '—'}</span></div>
+    <div class="summary-row"><span class="summary-label">Company</span><span class="summary-value">${document.getElementById('f-company').value || '—'}</span></div>
+    <div class="summary-row"><span class="summary-label">Role</span><span class="summary-value">${formData.role || '—'}</span></div>
+    <div class="summary-row"><span class="summary-label">Field workers</span><span class="summary-value">${formData.fieldWorkers || '—'}</span></div>
+    <div class="summary-row"><span class="summary-label">Office staff</span><span class="summary-value">${formData.officeStaff || '—'}</span></div>
+    <div class="summary-row"><span class="summary-label">Current tools</span>${toolsHtml}</div>
+    <div class="summary-row"><span class="summary-label">Monthly software spend</span><span class="summary-value">${formData.softwareSpend || '—'}</span></div>
+    <div class="summary-row"><span class="summary-label">Annual revenue</span><span class="summary-value">${formData.revenue || '—'}</span></div>
+    <div class="summary-row"><span class="summary-label">Biggest problem</span><span class="summary-value" style="max-width:70%;">${document.getElementById('f-pain').value || '—'}</span></div>
+  `;
+}
+
+function updateNext() { /* could add validation */ }
+
+async function submitApp() {
+  const btn = document.getElementById('submit-btn');
+  btn.disabled = true;
+  btn.textContent = 'Submitting...';
+  
+  const payload = {
+    name: document.getElementById('f-name').value,
+    email: document.getElementById('f-email').value,
+    phone: document.getElementById('f-phone').value,
+    company: document.getElementById('f-company').value,
+    role: formData.role,
+    fieldWorkers: formData.fieldWorkers,
+    officeStaff: formData.officeStaff,
+    currentTools: Array.from(selectedTools),
+    softwareSpend: formData.softwareSpend,
+    revenue: formData.revenue,
+    biggestProblem: document.getElementById('f-pain').value,
+    source: 'replacemysoftware.com/apply'
+  };
+  
+  try {
+    const r = await fetch('https://replacemysoftware.vercel.app/api/contact', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    });
+    if (r.ok) {
+      document.querySelectorAll('.step').forEach(s => s.classList.remove('active'));
+      document.querySelector('.step[data-step="success"]').classList.add('active');
+      document.getElementById('progress-bar').style.display = 'none';
+    } else throw new Error();
+  } catch (err) {
+    btn.disabled = false;
+    btn.textContent = 'Try Again';
+    alert('Something went wrong. Please try again or email us at team@roofingwebpro.com');
+  }
+}
+</script>
+</body>
+</html>

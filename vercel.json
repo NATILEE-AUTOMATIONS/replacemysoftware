@@ -10,7 +10,8 @@
     { "source": "/lawn-care-routing", "destination": "/lawn-care-routing.html" },
     { "source": "/landscaping-job-management", "destination": "/landscaping-job-management.html" },
     { "source": "/fertilizer-tracking", "destination": "/fertilizer-tracking.html" },
-    { "source": "/service-autopilot-alternative", "destination": "/service-autopilot-alternative.html" }
+    { "source": "/service-autopilot-alternative", "destination": "/service-autopilot-alternative.html" },
+    { "source": "/apply", "destination": "/apply.html" }
   ],
   "headers": [
     {
