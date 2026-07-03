@@ -2,7 +2,8 @@
   "outputDirectory": ".",
   "rewrites": [
     { "source": "/landscaping-software", "destination": "/landscaping-software.html" },
-    { "source": "/hardscaping-estimating", "destination": "/hardscaping-estimating.html" }
+    { "source": "/hardscaping-estimating", "destination": "/hardscaping-estimating.html" },
+    { "source": "/lawn-care-app", "destination": "/lawn-care-app.html" }
   ],
   "headers": [
     {
