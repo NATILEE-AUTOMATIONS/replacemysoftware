@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Hardscaping Estimating Software That Doesn't Lose You Money | Replace My Software</title>
+<meta name="description" content="Custom hardscaping takeoff & estimating tool. Your material costs, your labor rates, your margins. Patios, retaining walls, walkways. Starting at $10K.">
+<meta name="keywords" content="hardscaping estimating software, hardscape cost estimator, patio estimating, retaining wall takeoff, paver calculator, landscape hardscape bidding, material takeoff software">
+<link rel="icon" type="image/png" href="/logo.png">
+<link rel="apple-touch-icon" href="/logo.png">
+<meta property="og:title" content="Hardscaping Estimating Software That Doesn't Lose You Money">
+<meta property="og:description" content="Custom takeoff & estimating for patios, retaining walls, walkways. Your costs, your margins. Starting at $10K.">
+<meta property="og:image" content="https://replacemysoftware.com/og-image.png">
+<meta property="og:url" content="https://replacemysoftware.com/hardscaping-estimating">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Hardscaping Estimating Software That Doesn't Lose You Money">
+<meta name="twitter:description" content="Custom takeoff & estimating for patios, retaining walls, walkways. Your costs, your margins. Starting at $10K.">
+<meta name="twitter:image" content="https://replacemysoftware.com/og-image.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#060709;--bg-2:#0a0b0f;--bg-card:#0d0e12;--bg-hover:#14151a;--fg:#e8e9ed;--muted:#7a7d86;--border:#1a1b22;--accent:#3b82f6;--accent-light:#60a5fa;--accent-soft:rgba(59,130,246,.12);--accent-glow:rgba(59,130,246,.4);--green:#22c55e;--green-soft:rgba(34,197,94,.12);--orange:#f59e0b;--radius:12px;--fd:'Space Grotesk',sans-serif;--fb:'Inter',sans-serif;--fm:'JetBrains Mono',monospace}
+*{margin:0;padding:0;box-sizing:border-box}html,body{max-width:100vw;overflow-x:hidden}
+body{background:var(--bg);color:var(--fg);font-family:var(--fb);font-size:16px;line-height:1.6;min-height:100vh}
+a{color:inherit;text-decoration:none}.container{max-width:1200px;margin:0 auto;padding:0 1.5rem}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(6,7,9,.7);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--border);transition:all .3s}
+nav.scrolled{background:rgba(6,7,9,.92)}
+.nav-inner{max-width:1200px;margin:0 auto;padding:.85rem 1.5rem;display:flex;align-items:center;justify-content:space-between}
+.nav-brand{display:flex;align-items:center;gap:.6rem;font-family:var(--fd);font-weight:700;font-size:1.1rem}
+.nav-brand img{width:30px;height:30px;border-radius:6px}
+.nav-brand .accent{color:var(--accent-light)}
+.nav-links{display:flex;gap:2rem;align-items:center}
+.nav-links a{color:var(--muted);font-size:.9rem;font-weight:500;transition:color .2s}.nav-links a:hover{color:var(--fg)}
+.nav-cta{padding:.6rem 1.25rem;background:var(--accent);color:#fff;border-radius:8px;font-weight:600;font-size:.9rem;transition:all .2s;box-shadow:0 4px 20px var(--accent-glow)}.nav-cta:hover{transform:translateY(-1px);box-shadow:0 6px 24px var(--accent-glow)}
+.hero{position:relative;padding:8rem 0 4rem;overflow:hidden}
+.hero-orb{position:absolute;border-radius:50%;filter:blur(80px);opacity:.15;pointer-events:none}
+.orb-1{width:500px;height:500px;background:var(--accent);top:-100px;right:-100px}
+.orb-2{width:400px;height:400px;background:var(--orange);bottom:-150px;left:-100px}
+.hero-badge{display:inline-flex;align-items:center;gap:.5rem;padding:.4rem .9rem;background:var(--accent-soft);border:1px solid rgba(59,130,246,.2);border-radius:20px;font-size:.85rem;color:var(--accent-light);font-weight:500;margin-bottom:1.5rem}
+.pulse{width:8px;height:8px;border-radius:50%;background:var(--accent-light);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+.hero h1{font-family:var(--fd);font-size:3.5rem;font-weight:700;line-height:1.1;margin-bottom:1.5rem;letter-spacing:-.02em}
+.hero h1 .highlight{background:linear-gradient(135deg,var(--accent-light),var(--orange));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-sub{font-size:1.2rem;color:var(--muted);max-width:600px;margin-bottom:2rem}
+.hero-cta{display:flex;gap:1rem;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;padding:.85rem 1.5rem;border-radius:10px;font-family:var(--fb);font-weight:600;font-size:.95rem;line-height:1;border:none;cursor:pointer;transition:all .2s;text-decoration:none}
+.btn-primary{background:var(--accent);color:#fff;box-shadow:0 8px 30px var(--accent-glow)}.btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 40px var(--accent-glow)}
+.btn-ghost{background:transparent;color:var(--fg);border:1px solid var(--border)}.btn-ghost:hover{border-color:var(--accent);background:var(--accent-soft)}
+.hero-stats{display:flex;gap:2.5rem;margin-top:3rem;flex-wrap:wrap}.hero-stat .num{font-family:var(--fd);font-size:1.8rem;font-weight:700;color:var(--fg)}.hero-stat .label{font-size:.85rem;color:var(--muted)}
+section{padding:5rem 0}
+.section-label{display:inline-block;font-family:var(--fm);font-size:.8rem;color:var(--accent-light);text-transform:uppercase;letter-spacing:.1em;margin-bottom:1rem}
+.section-title{font-family:var(--fd);font-size:2.5rem;font-weight:700;line-height:1.2;margin-bottom:1rem;letter-spacing:-.02em}
+.section-sub{font-size:1.1rem;color:var(--muted);max-width:600px;margin-bottom:3rem}
+.pain-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.pain-card{background:var(--bg-card);border:1px solid var(--border);border-radius:16px;padding:2rem;transition:all .3s}.pain-card:hover{border-color:rgba(239,68,68,.3);transform:translateY(-2px)}
+.pain-icon{width:48px;height:48px;border-radius:12px;background:rgba(239,68,68,.1);display:flex;align-items:center;justify-content:center;margin-bottom:1.25rem;color:#ef4444}
+.pain-card h3{font-family:var(--fd);font-size:1.15rem;font-weight:600;margin-bottom:.5rem}.pain-card p{color:var(--muted);font-size:.95rem}
+.pain-price{font-family:var(--fm);color:#ef4444;font-weight:600;font-size:.85rem;margin-top:.5rem}
+.solution-section{background:var(--bg-2)}.solution-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center}
+.solution-list{display:flex;flex-direction:column;gap:1.5rem}.solution-item{display:flex;gap:1rem;align-items:flex-start}
+.solution-check{width:24px;height:24px;border-radius:50%;background:var(--green-soft);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px}.solution-check svg{color:var(--green)}
+.solution-item h4{font-family:var(--fd);font-size:1.05rem;font-weight:600;margin-bottom:.25rem}.solution-item p{color:var(--muted);font-size:.9rem}
+.mockup-card{background:var(--bg-card);border:1px solid var(--border);border-radius:16px;padding:1.5rem;position:relative;overflow:hidden}
+.mockup-header{display:flex;align-items:center;gap:.5rem;margin-bottom:1.25rem;padding-bottom:1rem;border-bottom:1px solid var(--border)}
+.mockup-dots{display:flex;gap:.35rem}.mockup-dots span{width:10px;height:10px;border-radius:50%}.mockup-dots span:nth-child(1){background:#ef4444}.mockup-dots span:nth-child(2){background:#f59e0b}.mockup-dots span:nth-child(3){background:#22c55e}
+.mockup-title{font-family:var(--fm);font-size:.8rem;color:var(--muted);margin-left:.5rem}
+.est-row{display:grid;grid-template-columns:1fr 70px 70px 80px;gap:.75rem;padding:.75rem;background:var(--bg);border-radius:8px;align-items:center;margin-bottom:.5rem}
+.est-row .lbl{font-size:.85rem;font-weight:500}.est-row .qty{font-size:.75rem;color:var(--muted);font-family:var(--fm)}.est-row .cost{font-size:.75rem;color:var(--muted);font-family:var(--fm)}.est-row .tot{font-size:.85rem;font-weight:600;color:var(--green);text-align:right}
+.est-total{display:flex;justify-content:space-between;padding:1rem .75rem 0;border-top:1px solid var(--border);margin-top:.5rem;font-size:.9rem}.est-total .amount{font-family:var(--fd);font-weight:700;color:var(--green);font-size:1.1rem}
+.features-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.feature{background:var(--bg-card);border:1px solid var(--border);border-radius:16px;padding:1.75rem;transition:all .3s}.feature:hover{border-color:var(--accent);background:var(--bg-hover)}
+.feature-icon{width:40px;height:40px;flex-shrink:0;background:var(--accent-soft);border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:1rem;color:var(--accent-light)}
+.feature h3{font-family:var(--fd);font-size:1.05rem;font-weight:600;margin-bottom:.5rem}.feature p{color:var(--muted);font-size:.9rem}
+.pricing-section{background:var(--bg-2)}.pricing-card{max-width:600px;margin:0 auto;background:var(--bg-card);border:1px solid var(--border);border-radius:20px;padding:3rem;text-align:center;position:relative;overflow:hidden}
+.pricing-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--accent),var(--orange))}
+.price{font-family:var(--fd);font-size:3rem;font-weight:700;margin-bottom:.5rem}.price-label{color:var(--muted);font-size:.95rem;margin-bottom:2rem}
+.pricing-features{display:grid;grid-template-columns:1fr 1fr;gap:.75rem;text-align:left;margin-bottom:2rem}.pricing-feature{display:flex;align-items:center;gap:.5rem;font-size:.9rem}.pricing-feature svg{color:var(--green);flex-shrink:0}
+.cta-section{padding:5rem 0}.cta-box{background:var(--bg-card);border:1px solid var(--border);border-radius:20px;padding:3rem;max-width:700px;margin:0 auto}
+.cta-box h2{font-family:var(--fd);font-size:1.75rem;font-weight:700;text-align:center;margin-bottom:.5rem}.cta-box p{text-align:center;color:var(--muted);margin-bottom:2rem}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem}.form-field{width:100%}.form-field.full{grid-column:1/-1}
+.form-field input,.form-field select,.form-field textarea{width:100%;padding:.85rem 1rem;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);color:var(--fg);font-family:var(--fb);font-size:.95rem;transition:border-color .2s,box-shadow .2s;box-sizing:border-box}
+.form-field input::placeholder,.form-field textarea::placeholder{color:var(--muted)}
+.form-field input:focus,.form-field select:focus,.form-field textarea:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft);background:var(--bg-hover)}
+.form-field input:-webkit-autofill,.form-field select:-webkit-autofill,.form-field textarea:-webkit-autofill{-webkit-box-shadow:0 0 0 1000px var(--bg-card) inset!important;-webkit-text-fill-color:var(--fg)!important;caret-color:var(--fg);transition:background-color 9999s ease-in-out 0s}
+.form-field textarea{resize:vertical;min-height:100px}.form-submit{grid-column:1/-1;margin-top:.5rem}.form-submit .btn{width:100%;padding:1rem;font-size:1rem}
+.form-note{text-align:center;font-size:.8rem;color:var(--muted);margin-top:1rem}
+footer{border-top:1px solid var(--border);padding:2rem 0}.footer-inner{max-width:1200px;margin:0 auto;padding:0 1.5rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
+.footer-brand{display:flex;align-items:center;gap:.5rem;font-family:var(--fd);font-weight:700;font-size:1rem}.footer-brand img{width:24px;height:24px;border-radius:5px}.footer-brand .accent{color:var(--accent-light)}
+.footer-links{display:flex;gap:1.5rem;font-size:.85rem}.footer-links a{color:var(--muted);transition:color .2s}.footer-links a:hover{color:var(--fg)}
+.reveal{opacity:0;transform:translateY(30px);transition:all .7s cubic-bezier(.16,1,.3,1)}.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal-left{opacity:0;transform:translateX(-30px);transition:all .7s cubic-bezier(.16,1,.3,1)}.reveal-left.visible{opacity:1;transform:translateX(0)}
+.reveal-scale{opacity:0;transform:scale(.95);transition:all .7s cubic-bezier(.16,1,.3,1)}.reveal-scale.visible{opacity:1;transform:scale(1)}
+@media(max-width:768px){.nav-links{display:none}.hero{padding:6rem 0 3rem}.hero h1{font-size:2.25rem}.hero-sub{font-size:1rem}.hero-stats{gap:1.5rem}.section-title{font-size:1.75rem}.pain-grid{grid-template-columns:1fr}.solution-grid{grid-template-columns:1fr}.features-grid{grid-template-columns:1fr}.pricing-card{padding:2rem 1.5rem}.pricing-features{grid-template-columns:1fr}.cta-box{padding:2rem 1.5rem}.form-grid{grid-template-columns:1fr}.hero-cta{flex-direction:column}.hero-cta .btn{width:100%}.est-row{grid-template-columns:1fr 60px 70px;gap:.5rem}.est-row .cost{display:none}}
+@media(max-width:540px){.nav-inner{padding:.65rem 1rem}.nav-brand{font-size:.9rem}.nav-brand img{width:26px;height:26px}.nav-cta{padding:.5rem .9rem;font-size:.8rem}.hero h1{font-size:1.85rem}}
+</style>
+</head>
+<body>
+<nav id="nav"><div class="nav-inner"><a href="/" class="nav-brand"><img src="/logo.png" alt="RMS">Replace My <span class="accent">Software</span></a><div class="nav-links"><a href="#pain">Why Us</a><a href="#features">Features</a><a href="#pricing">Pricing</a></div><a href="#contact" class="nav-cta">Get Started →</a></div></nav>
+
+<section class="hero">
+<div class="hero-orb orb-1"></div><div class="hero-orb orb-2"></div>
+<div class="container">
+<div class="hero-badge reveal"><span class="pulse"></span>Built for hardscape contractors & paver installers</div>
+<h1 class="reveal">Hardscaping Estimates<br>That <span class="highlight">Don't Lose</span><br>You Money</h1>
+<p class="hero-sub reveal">Custom takeoff & estimating tool for patios, retaining walls, walkways, and pavers. Your material costs, your labor rates, your margins — built around how you actually bid. Starting at $10K.</p>
+<div class="hero-cta reveal"><a href="#contact" class="btn btn-primary">Get a Free Custom Plan <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg></a><a href="#features" class="btn btn-ghost">See How It Works</a></div>
+<div class="hero-stats reveal"><div class="hero-stat"><div class="num">$0/mo</div><div class="label">No SaaS subscription</div></div><div class="hero-stat"><div class="num">100%</div><div class="label">Money-back guarantee</div></div><div class="hero-stat"><div class="num">6 weeks</div><div class="label">Free updates & changes</div></div></div>
+</div>
+</section>
+
+<section id="pain"><div class="container">
+<div class="reveal"><span class="section-label">The Problem</span>
+<h2 class="section-title">Every hardscape job you underbid is money out of your pocket</h2>
+<p class="section-sub">Hardscape estimating is nothing like lawn care. One wrong material calculation on a retaining wall and you've eaten your entire profit margin. Here's what you're dealing with:</p></div>
+<div class="pain-grid">
+<div class="pain-card reveal"><div class="pain-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></div>
+<h3>Takeoffs take hours by hand</h3><p>You're measuring paver patterns on graph paper or counting blocks from a PDF. One miscount means you're 200 pavers short on delivery day — and the crew is standing around.</p><div class="pain-price">3+ hours per bid</div></div>
+<div class="pain-card reveal"><div class="pain-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg></div>
+<h3>Different costs per job type</h3><p>Pavers cost different than natural stone. Retaining walls need geogrid. Steps need caps. Your material costs change per supplier, per job — but generic estimating software treats every material the same.</p><div class="pain-price">Margin erosion</div></div>
+<div class="pain-card reveal"><div class="pain-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"/></svg></div>
+<h3>Estimates don't connect to anything</h3><p>You estimate in a spreadsheet. Then you re-enter materials into an order form. Then you re-enter job costs into QuickBooks. Three systems, same data, plenty of room for errors.</p><div class="pain-price">Dropped numbers, lost profit</div></div>
+</div>
+</div></section>
+
+<section class="solution-section"><div class="container"><div class="solution-grid">
+<div class="reveal-left">
+<span class="section-label">The Solution</span>
+<h2 class="section-title">One estimating tool. Your numbers. No spreadsheet hell.</h2>
+<p class="section-sub" style="margin-bottom:2rem;">We build a custom hardscape estimating tool around your actual material costs, labor rates, and supplier pricing — not some generic database that doesn't match reality.</p>
+<div class="solution-list">
+<div class="solution-item"><div class="solution-check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></div><div><h4>Material takeoff that matches your suppliers</h4><p>Pavers, wall block, caps, geogrid, fabric, base material — all priced from YOUR supplier lists. Update pricing in one place when costs change. Every estimate auto-updates.</p></div></div>
+<div class="solution-item"><div class="solution-check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></div><div><h4>Paver & retaining wall calculators</h4><p>Input square footage, pattern, and waste factor. Get exact material counts — including cuts, caps, corners, and edge restraints. No more "add 10% and hope."</p></div></div>
+<div class="solution-item"><div class="solution-check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></div><div><h4>Labor rates per crew, per job type</h4><p>Your hardscape crew costs different than your maintenance crew. Set labor rates per crew and job type. Know exactly what every job costs you — not just materials.</p></div></div>
+<div class="solution-item"><div class="solution-check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></div><div><h4>Estimate to proposal to invoice in one flow</h4><p>Build the estimate, generate a client-facing proposal with photos and material specs, then convert to an invoice when the job closes. No re-entering data. No lost numbers.</p></div></div>
+<div class="solution-item"><div class="solution-check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></div><div><h4>Job costing & margin tracking</h4><p>Compare estimated vs actual costs on every job. See which job types make you money and which ones don't. Bid smarter every time.</p></div></div>
+<div class="solution-item"><div class="solution-check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></div><div><h4>QuickBooks sync</h4><p>Estimates, invoices, and material costs flow into QuickBooks automatically. Your accountant stops asking for spreadsheets.</p></div></div>
+</div>
+</div>
+<div class="reveal-scale"><div class="mockup-card">
+<div class="mockup-header"><div class="mockup-dots"><span></span><span></span><span></span></div><span class="mockup-title">estimator.greenway-hardscapes.com</span></div>
+<div style="font-size:.75rem;color:var(--muted);font-family:var(--fm);margin-bottom:.75rem;padding:0 .75rem;">PROJECT: 850 SQ FT PAVER PATIO + 40 LF RETAINING WALL</div>
+<div class="est-row"><div><div class="lbl">Pavers — Holland Stone</div><div class="qty">850 sq ft</div></div><div class="qty">3,825 pcs</div><div class="cost">$3.25/pc</div><div class="tot">$12,431</div></div>
+<div class="est-row"><div><div class="lbl">Wall block — Manchester</div><div class="qty">40 LF x 3 courses</div></div><div class="qty">240 pcs</div><div class="cost">$8.50/pc</div><div class="tot">$2,040</div></div>
+<div class="est-row"><div><div class="lbl">Caps — Manchester</div><div class="qty">40 LF</div></div><div class="qty">40 pcs</div><div class="cost">$12.00/pc</div><div class="tot">$480</div></div>
+<div class="est-row"><div><div class="lbl">Base + bedding sand</div><div class="qty">850 sq ft</div></div><div class="qty">42 tons</div><div class="cost">$45/ton</div><div class="tot">$1,890</div></div>
+<div class="est-row"><div><div class="lbl">Edge restraint + spikes</div><div class="qty">Perimeter</div></div><div class="qty">120 LF</div><div class="cost">$2.50/LF</div><div class="tot">$300</div></div>
+<div class="est-row"><div><div class="lbl">Labor — Hardscape crew</div><div class="qty">3 crew x 2.5 days</div></div><div class="qty">60 hrs</div><div class="cost">$65/hr</div><div class="tot">$3,900</div></div>
+<div class="est-total"><span>Estimated total (margin: 38%)</span><span class="amount">$21,041</span></div>
+</div></div>
+</div></div></section>
+
+<section id="features"><div class="container">
+<div class="reveal"><span class="section-label">What You Get</span>
+<h2 class="section-title">Built for how you actually bid hardscape jobs.</h2>
+<p class="section-sub">Every build is custom. These are the modules we typically include — but we build whatever your workflow demands.</p></div>
+<div class="features-grid">
+<div class="feature reveal"><div class="feature-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg></div>
+<h3>Supplier price lists</h3><p>Load your actual supplier pricing — pavers, wall block, caps, geogrid, fabric, base material. Update in one place, all estimates reflect new costs instantly.</p></div>
+<div class="feature reveal"><div class="feature-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg></div>
+<h3>Pattern-based paver calculator</h3><p>Herringbone, running bond, basket weave — different patterns waste different amounts. Calculator accounts for pattern waste, cuts, and borders automatically.</p></div>
+<div class="feature reveal"><div class="feature-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/></svg></div>
+<h3>Retaining wall engineering</h3><p>Wall height, courses, bury depth, geogrid layers, deadmen — calculator handles it all. Know your block count AND your engineering requirements before you bid.</p></div>
+<div class="feature reveal"><div class="feature-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"/></svg></div>
+<h3>Labor & crew cost tracking</h3><p>Set hourly rates per crew member. Log hours per job. See real-time labor costs on every estimate so you know your true margin before you bid.</p></div>
+<div class="feature reveal"><div class="feature-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 17v-2m2 2v-4m4 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg></div>
+<h3>Client proposals with material specs</h3><p>Generate professional proposals from your estimate — paver patterns, color options, material specs, project timeline. One click, no reformatting.</p></div>
+<div class="feature reveal"><div class="feature-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg></div>
+<h3>Job costing & profit analysis</h3><p>Compare estimated vs actual costs on every job. See which job types make you money and which ones eat your margin. Bid smarter every season.</p></div>
+<div class="feature reveal"><div class="feature-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"/></svg></div>
+<h3>QuickBooks sync</h3><p>Estimates, invoices, and material costs flow into QuickBooks automatically. Your accountant stops asking for spreadsheets.</p></div>
+<div class="feature reveal"><div class="feature-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"/></svg></div>
+<h3>As many integrations as you need</h3><p>Supplier order APIs, delivery scheduling, permit tracking, CRM, email marketing — we connect whatever tools you already use. No limits.</p></div>
+</div>
+</div></section>
+
+<!-- PRICING -->
+<section id="pricing" class="pricing-section"><div class="container">
+<div class="reveal" style="text-align:center;margin-bottom:3rem;"><span class="section-label">Pricing</span>
+<h2 class="section-title">One-time investment. You own the code.</h2>
+<p class="section-sub" style="margin:0 auto;">No monthly fees. No per-user pricing. No lock-in. You get the software, the source code, and the freedom to run it forever.</p></div>
+<div class="pricing-card reveal-scale">
+<div class="price">From $10K</div>
+<div class="price-label">one-time build — no SaaS subscription, no monthly fees</div>
+<div class="pricing-features">
+<div class="pricing-feature"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>Custom hardscape estimating tool</div>
+<div class="pricing-feature"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>Your material costs & supplier pricing</div>
+<div class="pricing-feature"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>Paver & retaining wall calculators</div>
+<div class="pricing-feature"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>Labor & crew cost tracking</div>
+<div class="pricing-feature"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>Client proposals & invoicing</div>
+<div class="pricing-feature"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>QuickBooks integration</div>
+<div class="pricing-feature"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>You own the source code</div>
+<div class="pricing-feature"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>6 weeks free updates & changes</div>
+<div class="pricing-feature" style="grid-column:1/-1;justify-content:center;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>100% money-back guarantee — if it doesn't fit your workflow, you get a full refund</div>
+</div>
+<a href="#contact" class="btn btn-primary" style="width:100%;">Get a Free Custom Plan</a>
+<p class="form-note">Optional monthly retainer available for ongoing support & new features.</p>
+</div>
+</div></section>
+
+<!-- CTA / CONTACT FORM -->
+<section id="contact" class="cta-section"><div class="container">
+<div class="cta-box reveal">
+<h2>Get Your Custom Hardscape Estimator</h2>
+<p>Tell us about your business. We'll design a custom estimating tool around your actual workflow — no generic templates.</p>
+<form id="contact-form" class="form-grid">
+<div class="form-field"><input type="text" name="name" placeholder="Your name" required></div>
+<div class="form-field"><input type="email" name="email" placeholder="Email address" required></div>
+<div class="form-field"><input type="text" name="company" placeholder="Company name"></div>
+<div class="form-field"><select name="crew_size" required><option value="" disabled selected>Crew size</option><option>1-2 crews</option><option>3-5 crews</option><option>6+ crews</option></select></div>
+<div class="form-field full"><textarea name="message" placeholder="What's your biggest estimating headache? (e.g. paver takeoffs, retaining wall material counts, labor tracking...)" required></textarea></div>
+<div class="form-submit"><button type="submit" class="btn btn-primary">Get My Custom Plan →</button></div>
+</form>
+<p class="form-note">We'll get back to you within 24 hours. No spam, no sales calls — just a real plan for your business.</p>
+<div id="form-success" style="display:none;padding:2rem;text-align:center;"><div style="font-size:3rem;margin-bottom:1rem;">✅</div><h3 style="font-family:var(--fd);font-size:1.3rem;margin-bottom:.5rem;">Thanks! Check your email.</h3><p style="color:var(--muted);">We'll send you a custom plan within 24 hours.</p></div>
+<div id="form-error" style="display:none;padding:2rem;text-align:center;"><div style="font-size:3rem;margin-bottom:1rem;">⚠️</div><h3 style="font-family:var(--fd);font-size:1.3rem;margin-bottom:.5rem;">Something went wrong.</h3><p style="color:var(--muted);">Please try again or email us directly at team@roofingwebpro.com</p></div>
+</div>
+</div></section>
+
+<!-- FOOTER -->
+<footer><div class="footer-inner">
+<a href="/" class="footer-brand"><img src="/logo.png" alt="RMS">Replace My <span class="accent">Software</span></a>
+<div class="footer-links"><a href="/landscaping-software">Landscaping</a><a href="/hardscaping-estimating">Hardscaping</a><a href="mailto:team@roofingwebpro.com">Contact</a></div>
+<div style="font-size:.8rem;color:var(--muted);">© 2026 Replace My Software. Built by NATILEE AUTOMATIONS.</div>
+</div></footer>
+
+<script>
+// Nav scroll
+const nav=document.getElementById('nav');window.addEventListener('scroll',()=>{nav.classList.toggle('scrolled',window.scrollY>20)});
+// Reveal animations
+const observer=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')})},{threshold:0.1});document.querySelectorAll('.reveal,.reveal-left,.reveal-scale').forEach(el=>observer.observe(el));
+// Form
+const form=document.getElementById('contact-form');const success=document.getElementById('form-success');const error=document.getElementById('form-error');form.addEventListener('submit',async(e)=>{e.preventDefault();const btn=form.querySelector('button[type=submit]');btn.disabled=true;btn.textContent='Sending...';try{const fd=new FormData(form);const payload={name:fd.get('name'),email:fd.get('email'),company:fd.get('company'),crew_size:fd.get('crew_size'),message:fd.get('message'),source:'replacemysoftware.com/hardscaping-estimating'};const r=await fetch('https://replacemysoftware.vercel.app/api/contact',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});if(r.ok){form.style.display='none';success.style.display='block';}else throw new Error();}catch(err){form.style.display='none';error.style.display='block';}});
+</script>
+</body>
+</html>

@@ -1,7 +1,8 @@
 {
   "outputDirectory": ".",
   "rewrites": [
-    { "source": "/landscaping-software", "destination": "/landscaping-software.html" }
+    { "source": "/landscaping-software", "destination": "/landscaping-software.html" },
+    { "source": "/hardscaping-estimating", "destination": "/hardscaping-estimating.html" }
   ],
   "headers": [
     {
