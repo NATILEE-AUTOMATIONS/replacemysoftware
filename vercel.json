@@ -4,7 +4,13 @@
     { "source": "/landscaping-software", "destination": "/landscaping-software.html" },
     { "source": "/hardscaping-estimating", "destination": "/hardscaping-estimating.html" },
     { "source": "/lawn-care-app", "destination": "/lawn-care-app.html" },
-    { "source": "/irrigation-software", "destination": "/irrigation-software.html" }
+    { "source": "/irrigation-software", "destination": "/irrigation-software.html" },
+    { "source": "/landscape-proposals", "destination": "/landscape-proposals.html" },
+    { "source": "/tree-care-software", "destination": "/tree-care-software.html" },
+    { "source": "/lawn-care-routing", "destination": "/lawn-care-routing.html" },
+    { "source": "/landscaping-job-management", "destination": "/landscaping-job-management.html" },
+    { "source": "/fertilizer-tracking", "destination": "/fertilizer-tracking.html" },
+    { "source": "/service-autopilot-alternative", "destination": "/service-autopilot-alternative.html" }
   ],
   "headers": [
     {
