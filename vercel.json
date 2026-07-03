@@ -3,7 +3,8 @@
   "rewrites": [
     { "source": "/landscaping-software", "destination": "/landscaping-software.html" },
     { "source": "/hardscaping-estimating", "destination": "/hardscaping-estimating.html" },
-    { "source": "/lawn-care-app", "destination": "/lawn-care-app.html" }
+    { "source": "/lawn-care-app", "destination": "/lawn-care-app.html" },
+    { "source": "/irrigation-software", "destination": "/irrigation-software.html" }
   ],
   "headers": [
     {
