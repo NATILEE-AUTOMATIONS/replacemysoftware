@@ -35,6 +35,7 @@ nav.scrolled{background:rgba(6,7,9,.92)}
 .nav-links a{color:var(--muted);font-size:.9rem;font-weight:500;transition:color .2s}.nav-links a:hover{color:var(--fg)}
 .nav-cta{padding:.6rem 1.25rem;background:var(--accent);color:#fff;border-radius:8px;font-weight:600;font-size:.9rem;transition:all .2s;box-shadow:0 4px 20px var(--accent-glow)}.nav-cta:hover{transform:translateY(-1px);box-shadow:0 6px 24px var(--accent-glow)}
 .hero{position:relative;padding:8rem 0 4rem;overflow:hidden}
+.hero-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:3rem;align-items:center}
 .hero-orb{position:absolute;border-radius:50%;filter:blur(80px);opacity:.15;pointer-events:none}
 .orb-1{width:500px;height:500px;background:var(--accent);top:-100px;right:-100px}
 .orb-2{width:400px;height:400px;background:var(--green);bottom:-150px;left:-100px}
@@ -43,12 +44,24 @@ nav.scrolled{background:rgba(6,7,9,.92)}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
 .hero h1{font-family:var(--fd);font-size:3.5rem;font-weight:700;line-height:1.1;margin-bottom:1.5rem;letter-spacing:-.02em}
 .hero h1 .highlight{background:linear-gradient(135deg,var(--accent-light),var(--green));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.hero-sub{font-size:1.2rem;color:var(--muted);max-width:600px;margin-bottom:2rem}
+.hero-sub{font-size:1.15rem;color:var(--muted);max-width:540px;margin-bottom:2rem}
+.hero-visual{position:relative}
+.hero-mockup{background:var(--bg-card);border:1px solid var(--border);border-radius:16px;padding:1.5rem;box-shadow:0 20px 60px rgba(0,0,0,.5);animation:float 6s ease-in-out infinite}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+.hero-mockup-header{display:flex;align-items:center;gap:.5rem;margin-bottom:1.25rem;padding-bottom:1rem;border-bottom:1px solid var(--border)}
+.hero-mockup-title{font-family:var(--fm);font-size:.8rem;color:var(--muted);margin-left:.5rem}
+.hero-mockup-row{display:flex;align-items:center;gap:.75rem;padding:.6rem .75rem;background:var(--bg);border-radius:8px;margin-bottom:.5rem}
+.hero-mockup-num{width:24px;height:24px;border-radius:50%;background:var(--accent-soft);color:var(--accent-light);display:flex;align-items:center;justify-content:center;font-family:var(--fd);font-weight:700;font-size:.75rem;flex-shrink:0}
+.hero-mockup-info .addr{font-size:.8rem;font-weight:500}
+.hero-mockup-info .svc{font-size:.7rem;color:var(--muted);font-family:var(--fm)}
+.hero-mockup-time{font-size:.7rem;color:var(--green);font-family:var(--fm);font-weight:600}
+.hero-mockup-total{display:flex;justify-content:space-between;padding:.75rem .75rem 0;border-top:1px solid var(--border);margin-top:.5rem;font-size:.85rem}
+.hero-mockup-total .amount{font-family:var(--fd);font-weight:700;color:var(--green);font-size:1rem}
 .hero-cta{display:flex;gap:1rem;flex-wrap:wrap}
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;padding:.85rem 1.5rem;border-radius:10px;font-family:var(--fb);font-weight:600;font-size:.95rem;line-height:1;border:none;cursor:pointer;transition:all .2s;text-decoration:none}
 .btn-primary{background:var(--accent);color:#fff;box-shadow:0 8px 30px var(--accent-glow)}.btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 40px var(--accent-glow)}
 .btn-ghost{background:transparent;color:var(--fg);border:1px solid var(--border)}.btn-ghost:hover{border-color:var(--accent);background:var(--accent-soft)}
-.hero-stats{display:flex;gap:2.5rem;margin-top:3rem;flex-wrap:wrap}.hero-stat .num{font-family:var(--fd);font-size:1.8rem;font-weight:700;color:var(--fg)}.hero-stat .label{font-size:.85rem;color:var(--muted)}
+.hero-stats{display:flex;gap:2rem;margin-top:2.5rem;flex-wrap:wrap}.hero-stat .num{font-family:var(--fd);font-size:1.5rem;font-weight:700;color:var(--fg)}.hero-stat .label{font-size:.8rem;color:var(--muted)}
 section{padding:5rem 0}
 .section-label{display:inline-block;font-family:var(--fm);font-size:.8rem;color:var(--accent-light);text-transform:uppercase;letter-spacing:.1em;margin-bottom:1rem}
 .section-title{font-family:var(--fd);font-size:2.5rem;font-weight:700;line-height:1.2;margin-bottom:1rem;letter-spacing:-.02em}
@@ -94,7 +107,7 @@ footer{border-top:1px solid var(--border);padding:2rem 0}.footer-inner{max-width
 .reveal{opacity:0;transform:translateY(30px);transition:all .7s cubic-bezier(.16,1,.3,1)}.reveal.visible{opacity:1;transform:translateY(0)}.no-js .reveal{opacity:1;transform:none}
 .reveal-left{opacity:0;transform:translateX(-30px);transition:all .7s cubic-bezier(.16,1,.3,1)}.reveal-left.visible{opacity:1;transform:translateX(0)}
 .reveal-scale{opacity:0;transform:scale(.95);transition:all .7s cubic-bezier(.16,1,.3,1)}.reveal-scale.visible{opacity:1;transform:scale(1)}
-@media(max-width:768px){.nav-links{display:none}.hero{padding:6rem 0 3rem}.hero h1{font-size:2.25rem}.hero-sub{font-size:1rem}.hero-stats{gap:1.5rem}.section-title{font-size:1.75rem}.pain-grid{grid-template-columns:1fr}.solution-grid{grid-template-columns:1fr}.features-grid{grid-template-columns:1fr}.pricing-card{padding:2rem 1.5rem}.pricing-features{grid-template-columns:1fr}.cta-box{padding:2rem 1.5rem}.form-grid{grid-template-columns:1fr}.hero-cta{flex-direction:column}.hero-cta .btn{width:100%}}
+@media(max-width:768px){.nav-links{display:none}.hero{padding:6rem 0 3rem}.hero-grid{grid-template-columns:1fr;gap:2rem}.hero h1{font-size:2.25rem}.hero-sub{font-size:1rem}.hero-stats{gap:1.5rem}.hero-visual{display:none}.section-title{font-size:1.75rem}.pain-grid{grid-template-columns:1fr}.solution-grid{grid-template-columns:1fr}.features-grid{grid-template-columns:1fr}.pricing-card{padding:2rem 1.5rem}.pricing-features{grid-template-columns:1fr}.cta-box{padding:2rem 1.5rem}.form-grid{grid-template-columns:1fr}.hero-cta{flex-direction:column}.hero-cta .btn{width:100%}}
 @media(max-width:540px){.nav-inner{padding:.65rem 1rem}.nav-brand{font-size:.9rem}.nav-brand img{width:26px;height:26px}.nav-cta{padding:.5rem .9rem;font-size:.8rem}.hero h1{font-size:1.85rem}}
 </style>
 </head>
@@ -103,11 +116,28 @@ footer{border-top:1px solid var(--border);padding:2rem 0}.footer-inner{max-width
 <section class="hero">
 <div class="hero-orb orb-1"></div><div class="hero-orb orb-2"></div>
 <div class="container">
+<div class="hero-grid">
+<div class="hero-content">
 <div class="hero-badge reveal"><span class="pulse"></span>Custom software for landscape contractors & hardscape crews</div>
 <h1 class="reveal">Landscaping Job Management<br><span class="highlight">From Estimate</span><br>To Invoice</h1>
 <p class="hero-sub reveal">We don't sell job management software. We build yours — work orders, time tracking, material logging, before/after photos, job costing. Built to how your company actually works. You own the code. Starting at $10K.</p>
 <div class="hero-cta reveal"><a href="#contact" class="btn btn-primary">Get a Free Custom Plan <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg></a><a href="#features" class="btn btn-ghost">See How It Works</a></div>
 <div class="hero-stats reveal"><div class="hero-stat"><div class="num">$0/mo</div><div class="label">No SaaS subscription</div></div><div class="hero-stat"><div class="num">100%</div><div class="label">Money-back guarantee</div></div><div class="hero-stat"><div class="num">6 weeks</div><div class="label">Free updates & changes</div></div></div>
+</div>
+<div class="hero-visual reveal-scale">
+<div class="hero-mockup">
+<div class="hero-mockup-header"><div class="mockup-dots"><span></span><span></span><span></span></div><span class="hero-mockup-title">jobs.your-landscape-company.com</span></div>
+<div style="font-size:.7rem;color:var(--muted);font-family:var(--fm);margin-bottom:.75rem;padding:0 .5rem;">ACTIVE JOBS — ALL CREWS (TUE JUL 7)</div>
+<div class="hero-mockup-row"><div class="hero-mockup-num">1</div><div class="hero-mockup-info"><div class="addr">124 Maple St — paver patio</div><div class="svc">Crew 1, 8 hrs, $2.1K materials</div></div><div class="hero-mockup-time">DONE</div></div>
+<div class="hero-mockup-row"><div class="hero-mockup-num">2</div><div class="hero-mockup-info"><div class="addr">89 Oak Ridge Dr — retaining wall</div><div class="svc">Crew 2, 6 hrs, $1.8K materials</div></div><div class="hero-mockup-time">ACTIVE</div></div>
+<div class="hero-mockup-row"><div class="hero-mockup-num">3</div><div class="hero-mockup-info"><div class="addr">56 Birch Ln — mulch + cleanup</div><div class="svc">Crew 3, 4 hrs, $420 materials</div></div><div class="hero-mockup-time">DONE</div></div>
+<div class="hero-mockup-row"><div class="hero-mockup-num">4</div><div class="hero-mockup-info"><div class="addr">203 Elm Court — install plants</div><div class="svc">Crew 1, 3 hrs, $890 materials</div></div><div class="hero-mockup-time">QUEUED</div></div>
+<div class="hero-mockup-row"><div class="hero-mockup-num">5</div><div class="hero-mockup-info"><div class="addr">77 Willow Way — grade + seed</div><div class="svc">Crew 2, 5 hrs, $310 materials</div></div><div class="hero-mockup-time">QUEUED</div></div>
+
+<div class="hero-mockup-total"><span>Today: 3 done, 2 queued, $5.5K materials</span><span class="amount">$14.2K</span></div>
+</div>
+</div>
+</div>
 </div>
 </section>
 <section id="pain"><div class="container">
