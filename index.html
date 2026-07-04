@@ -1452,6 +1452,11 @@ form.addEventListener('submit', async (e) => {
     });
     const result = await res.json();
     if (result.ok) {
+      gtag('event', 'conversion', {
+        'send_to': 'AW-18299539049/RtEdCIuy1MocEOmc85VE',
+        'value': 1.0,
+        'currency': 'USD'
+      });
       form.reset();
       showOnboardingFlow(payload.name, payload, result);
     } else {
