@@ -234,20 +234,14 @@ footer{border-top:1px solid var(--border);padding:2rem 0}.footer-inner{max-width
 </div>
 </div></section>
 <section id="contact" class="cta-section"><div class="container">
-<div class="cta-box reveal">
-<h2>Get Your Custom Lawn Care App</h2>
-<p>Tell us about your business. We'll design a custom tool around your actual workflow — no generic templates.</p>
-<form id="contact-form" class="form-grid">
-<div class="form-field"><input type="text" name="name" placeholder="Your name" required></div>
-<div class="form-field"><input type="email" name="email" placeholder="Email address" required></div>
-<div class="form-field"><input type="text" name="company" placeholder="Company name"></div>
-<div class="form-field"><select name="crew_size" required><option value="" disabled selected>Crew size</option><option>1-2 crews</option><option>3-5 crews</option><option>6+ crews</option></select></div>
-<div class="form-field full"><textarea name="message" placeholder="What's your biggest app headache? (scheduling, routing, crew tracking, invoicing...)" required></textarea></div>
-<div class="form-submit"><button type="submit" class="btn btn-primary">Get My Custom Plan →</button></div>
-</form>
-<p class="form-note">We'll get back to you within 24 hours. No spam, no sales calls — just a real plan for your business.</p>
-<div id="form-success" style="display:none;padding:2rem;text-align:center;"><div style="font-size:3rem;margin-bottom:1rem;">✅</div><h3 style="font-family:var(--fd);font-size:1.3rem;margin-bottom:.5rem;">Thanks! Check your email.</h3><p style="color:var(--muted);">We'll send you a custom plan within 24 hours.</p></div>
-<div id="form-error" style="display:none;padding:2rem;text-align:center;"><div style="font-size:3rem;margin-bottom:1rem;">⚠️</div><h3 style="font-family:var(--fd);font-size:1.3rem;margin-bottom:.5rem;">Something went wrong.</h3><p style="color:var(--muted);">Please try again or email us directly at team@roofingwebpro.com</p></div>
+<div class="cta-box reveal" style="text-align:center;">
+<span class="section-label">Get Started</span>
+<h2>Think a custom CRM is right for you?</h2>
+<p>Answer a few questions about your business. We'll review your workflow and tell you exactly what we'd build — no call required.</p>
+<div style="margin-top:2.5rem;">
+<a href="/apply" class="btn btn-primary" style="font-size:1.1rem;padding:1.1rem 2.5rem;">Apply Now <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg></a>
+</div>
+<p class="form-note" style="margin-top:1.5rem;">Takes 3 minutes. No commitment.</p>
 </div>
 </div></section>
 <footer><div class="footer-inner">
@@ -258,7 +252,7 @@ footer{border-top:1px solid var(--border);padding:2rem 0}.footer-inner{max-width
 <script>
 const nav=document.getElementById('nav');window.addEventListener('scroll',()=>{nav.classList.toggle('scrolled',window.scrollY>20)});
 const observer=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')})},{threshold:0.1});document.querySelectorAll('.reveal,.reveal-left,.reveal-scale').forEach(el=>observer.observe(el));
-const form=document.getElementById('contact-form');const success=document.getElementById('form-success');const error=document.getElementById('form-error');form.addEventListener('submit',async(e)=>{e.preventDefault();const btn=form.querySelector('button[type=submit]');btn.disabled=true;btn.textContent='Sending...';try{const fd=new FormData(form);const payload={name:fd.get('name'),email:fd.get('email'),company:fd.get('company'),crew_size:fd.get('crew_size'),message:fd.get('message'),source:'replacemysoftware.com/lawn-care-app'};const r=await fetch('https://replacemysoftware.vercel.app/api/contact',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});if(r.ok){gtag('event','conversion',{'send_to':'AW-18299539049/RtEdCIuy1MocEOmc85VE','value':1.0,'currency':'USD'});form.style.display='none';success.style.display='block';}else throw new Error();}catch(err){form.style.display='none';error.style.display='block';}});
+if(r.ok){gtag('event','conversion',{'send_to':'AW-18299539049/RtEdCIuy1MocEOmc85VE','value':1.0,'currency':'USD'});form.style.display='none';success.style.display='block';}else throw new Error();}catch(err){form.style.display='none';error.style.display='block';}});
 </script>
 </body>
 </html>

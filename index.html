@@ -1331,48 +1331,17 @@ footer {
 <!-- ═══ CTA / CONTACT FORM ═══ -->
 <section id="contact" class="cta-section">
   <div class="container">
-    <div class="cta-box reveal">
-      <div style="text-align:center;position:relative;z-index:1;">
-        <span class="section-label">Get Started</span>
-        <h2 class="section-title">Tell us what's broken.</h2>
-        <p class="section-sub" style="margin-inline:auto;">We'll send a custom proposal within 24 hours. No obligation, no pressure — just a clear plan and price.</p>
+    <div class="cta-box reveal" style="text-align:center;">
+      <span class="section-label">Get Started</span>
+      <h2 class="section-title" style="margin-bottom:1rem;">Think a custom CRM is right for you?</h2>
+      <p class="section-sub" style="margin-inline:auto;max-width:520px;">Answer a few questions about your business. We'll review your workflow and tell you exactly what we'd build — no call required.</p>
+      <div style="margin-top:2.5rem;">
+        <a href="/apply" class="btn btn-primary" style="font-size:1.1rem;padding:1.1rem 2.5rem;">
+          Apply Now
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+        </a>
       </div>
-      <form id="leadForm" class="form-grid" style="max-width:600px;margin:0 auto;">
-        <div class="form-field">
-          <input type="text" name="name" placeholder="Name" required>
-        </div>
-        <div class="form-field">
-          <input type="text" name="company" placeholder="Company">
-        </div>
-        <div class="form-field">
-          <input type="email" name="email" placeholder="Email" required>
-        </div>
-        <div class="form-field">
-          <input type="tel" name="phone" placeholder="Phone">
-        </div>
-        <div class="form-field full">
-          <select name="industry" style="color:var(--muted);">
-            <option value="">Select your industry…</option>
-            <option>Roofing</option>
-            <option>Plumbing</option>
-            <option>HVAC</option>
-            <option>Electrical</option>
-            <option>Landscaping</option>
-            <option>General Contractor</option>
-            <option>Other</option>
-          </select>
-        </div>
-        <div class="form-field full">
-          <textarea name="message" placeholder="What's the biggest problem with your current system?" rows="4"></textarea>
-        </div>
-        <div class="form-submit">
-          <button type="submit" class="btn btn-primary">
-            Send → Get Proposal in 24h
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
-          </button>
-        </div>
-        <p class="form-note">No commitment. We just send the proposal and you decide.</p>
-      </form>
+      <p class="form-note" style="margin-top:1.5rem;">Takes 3 minutes. No commitment.</p>
     </div>
   </div>
 </section>
@@ -1422,53 +1391,7 @@ const observer = new IntersectionObserver((entries) => {
 
 revealElements.forEach(el => observer.observe(el));
 
-// ═══ FORM HANDLER ═══
-const form = document.getElementById('leadForm');
-form.addEventListener('submit', async (e) => {
-  e.preventDefault();
-  const btn = form.querySelector('button[type="submit"]');
-  const originalText = btn.innerHTML;
-  btn.innerHTML = 'Sending…';
-  btn.disabled = true;
-
-  const data = new FormData(form);
-  const payload = {
-    name: data.get('name'),
-    company: data.get('company'),
-    email: data.get('email'),
-    phone: data.get('phone'),
-    industry: data.get('industry'),
-    message: data.get('message'),
-    source: 'replacemysoftware.com',
-    timestamp: new Date().toISOString()
-  };
-
-  try {
-    const res = await fetch('/api/contact', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload),
-    });
-    const result = await res.json();
-    if (result.ok) {
-      gtag('event', 'conversion', {
-        'send_to': 'AW-18299539049/RtEdCIuy1MocEOmc85VE',
-        'value': 1.0,
-        'currency': 'USD'
-      });
-      form.reset();
-      showOnboardingFlow(payload.name, payload, result);
-    } else {
-      throw new Error('Failed');
-    }
-  } catch (err) {
-    btn.innerHTML = 'Something went wrong — call (919) 525-4567';
-    setTimeout(() => {
-      btn.innerHTML = originalText;
-      btn.disabled = false;
-    }, 4000);
-  }
-});
+// ═══ FORM HANDLER REMOVED — leads now go to /apply ═══
 
 // ═══ PARALLAX ON ORBS ═══
 window.addEventListener('scroll', () => {
