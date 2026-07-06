@@ -858,11 +858,19 @@ footer {
   background: linear-gradient(180deg, rgba(59,130,246,0.03), transparent);
   -webkit-mask-image: linear-gradient(90deg, transparent, black 8%, black 92%, transparent);
   mask-image: linear-gradient(90deg, transparent, black 8%, black 92%, transparent);
+  cursor: grab;
+  touch-action: pan-x;
+  user-select: none;
+  -webkit-user-select: none;
 }
+.marquee.dragging { cursor: grabbing; }
 .marquee-track {
   display: flex; gap: 3.5rem;
-  animation: marquee 8s linear infinite;
   width: max-content;
+  will-change: transform;
+}
+.marquee-track.auto {
+  animation: marquee 8s linear infinite;
 }
 .marquee-item {
   display: flex; align-items: center; gap: 0.65rem;
@@ -1085,8 +1093,8 @@ footer {
 </section>
 
 <!-- ═══ MARQUEE ═══ -->
-<div class="marquee">
-  <div class="marquee-track">
+<div class="marquee" id="marquee">
+  <div class="marquee-track auto" id="marqueeTrack">
     <span class="marquee-item"><span class="dot"></span> Your app, your way</span>
     <span class="marquee-item"><span class="dot"></span> No vendor lock-in</span>
     <span class="marquee-item"><span class="dot"></span> Your app, your way</span>
@@ -1579,5 +1587,122 @@ function showOnboardingFlow(leadName, payload, result) {
 }
 </script>
 
+<script>
+// ═══ MARQUEE DRAG-TO-SWIPE WITH SPRING BACK ═══
+(function(){
+  const marquee = document.getElementById('marquee');
+  const track = document.getElementById('marqueeTrack');
+  if(!marquee || !track) return;
+
+  let isDragging = false;
+  let startX = 0;
+  let currentX = 0;
+  let offset = 0;
+  let velocity = 0;
+  let lastX = 0;
+  let lastTime = 0;
+  let rafId = null;
+  let trackWidth = 0;
+  const HALF = () => trackWidth / 2;
+
+  function getOffset() {
+    const matrix = new DOMMatrixReadOnly(getComputedStyle(track).transform);
+    return matrix.m41;
+  }
+
+  function setOffset(x) {
+    track.style.transform = `translateX(${x}px)`;
+  }
+
+  function wrapOffset(x) {
+    const half = HALF();
+    if (half === 0) return x;
+    // wrap into [-half, 0] for seamless loop
+    while (x > 0) x -= half;
+    while (x < -half) x += half;
+    return x;
+  }
+
+  function startDrag(e) {
+    isDragging = true;
+    marquee.classList.add('dragging');
+    track.classList.remove('auto');
+    // capture current animated position
+    offset = getOffset();
+    setOffset(offset);
+    startX = e.touches ? e.touches[0].clientX : e.clientX;
+    lastX = startX;
+    lastTime = performance.now();
+    velocity = 0;
+    if(rafId) cancelAnimationFrame(rafId);
+    e.preventDefault();
+  }
+
+  function moveDrag(e) {
+    if(!isDragging) return;
+    const x = e.touches ? e.touches[0].clientX : e.clientX;
+    const delta = x - startX;
+    offset = wrapOffset(offset + delta - (x - lastX));
+    // Actually simpler: just track from start
+    offset = wrapOffset(getOffset() + (x - lastX));
+    setOffset(offset);
+    
+    const now = performance.now();
+    const dt = now - lastTime;
+    if (dt > 0) velocity = (x - lastX) / dt; // px per ms
+    lastX = x;
+    lastTime = now;
+    e.preventDefault();
+  }
+
+  function endDrag() {
+    if(!isDragging) return;
+    isDragging = false;
+    marquee.classList.remove('dragging');
+    
+    // Fling with velocity, then spring back to auto animation
+    const v = velocity * 1000; // px per second
+    let x = getOffset();
+    let vPxPerFrame = v / 60; // px per 16ms frame
+    let frameCount = 0;
+    const maxFrames = 90; // ~1.5s
+
+    function fling() {
+      frameCount++;
+      x += vPxPerFrame;
+      vPxPerFrame *= 0.92; // friction
+      setOffset(wrapOffset(x));
+      
+      if (Math.abs(vPxPerFrame) < 0.5 || frameCount > maxFrames) {
+        // Spring back: blend current position into auto animation
+        // Snap to nearest loop position and resume CSS animation
+        const half = HALF();
+        let snapped = wrapOffset(x);
+        // Clear inline transform, let CSS animation take over from 0
+        track.style.transform = '';
+        track.classList.add('auto');
+        return;
+      }
+      rafId = requestAnimationFrame(fling);
+    }
+    rafId = requestAnimationFrame(fling);
+  }
+
+  // Measure track width after load
+  requestAnimationFrame(() => { trackWidth = track.scrollWidth; });
+  window.addEventListener('resize', () => { trackWidth = track.scrollWidth; });
+
+  marquee.addEventListener('mousedown', startDrag);
+  marquee.addEventListener('touchstart', startDrag, { passive: false });
+  window.addEventListener('mousemove', moveDrag);
+  window.addEventListener('touchmove', moveDrag, { passive: false });
+  window.addEventListener('mouseup', endDrag);
+  window.addEventListener('touchend', endDrag);
+  window.addEventListener('touchcancel', endDrag);
+
+  // Resume auto on mouse leave if not dragging
+  marquee.addEventListener('mouseleave', () => { if(!isDragging) return; });
+})();
+</script>
 </body>
 </html>
