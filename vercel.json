@@ -48,6 +48,10 @@
     {
       "source": "/check",
       "destination": "/check.html"
+    },
+    {
+      "source": "/roofing-crm",
+      "destination": "/roofing-crm.html"
     }
   ],
   "headers": [
