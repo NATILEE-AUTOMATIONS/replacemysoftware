@@ -55,11 +55,12 @@ body{background:var(--bg);color:var(--fg);font-family:var(--fb);font-size:19px;l
 a{color:inherit;text-decoration:none}
 .container{max-width:900px;margin:0 auto;padding:0 1.5rem}
 nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(6,7,9,.8);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
-.nav-inner{max-width:900px;margin:0 auto;padding:.85rem 1.5rem;display:flex;align-items:center;justify-content:space-between}
-.nav-brand{display:flex;align-items:center;gap:.6rem;font-family:var(--fd);font-weight:700;font-size:1.1rem}
-.nav-brand img{width:30px;height:30px;border-radius:6px}
+.nav-inner{max-width:900px;margin:0 auto;padding:.85rem 1.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem}
+.nav-brand{display:flex;align-items:center;gap:.6rem;font-family:var(--fd);font-weight:700;font-size:1.1rem;min-width:0}
+.nav-brand img{width:30px;height:30px;border-radius:6px;flex-shrink:0}
 .nav-brand .accent{color:var(--accent-light)}
-.nav-cta{padding:.65rem 1.4rem;background:var(--accent);color:#fff;border-radius:8px;font-weight:600;font-size:.95rem;transition:all .2s}
+.nav-brand .brand-text{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.nav-cta{padding:.65rem 1.4rem;background:var(--accent);color:#fff;border-radius:8px;font-weight:600;font-size:.95rem;transition:all .2s;flex-shrink:0;white-space:nowrap}
 .nav-cta:hover{transform:translateY(-1px);box-shadow:0 4px 20px var(--accent-glow)}
 
 /* Hero */
@@ -142,6 +143,9 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(6,7,9,.8);ba
 @media(max-width:600px){
   body{font-size:18px}
   .hero{padding:5.5rem 0 2rem}
+  .nav-brand{font-size:.95rem}
+  .nav-brand img{width:26px;height:26px}
+  .nav-cta{padding:.5rem 1rem;font-size:.85rem}
   .step{padding:1.75rem 1.5rem}
   .step-title{font-size:1.35rem}
   .step-num{width:44px;height:44px;font-size:1.2rem}
@@ -168,7 +172,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(6,7,9,.8);ba
   <div class="nav-inner">
     <a href="/" class="nav-brand">
       <img src="/logo.png" alt="">
-      Replace<span class="accent">My</span>Software
+      <span class="brand-text">Replace<span class="accent">My</span>Software</span>
     </a>
     <a href="/apply" class="nav-cta">Apply Now</a>
   </div>
