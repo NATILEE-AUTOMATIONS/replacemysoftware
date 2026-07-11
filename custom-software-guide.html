@@ -93,6 +93,14 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(6,7,9,.8);ba
 .agent-card .agent-icon{font-size:2rem;margin-bottom:.5rem}
 .agent-card .agent-name{font-family:var(--fd);font-size:1.15rem;font-weight:700;color:var(--fg)}
 .agent-card .agent-desc{font-size:.9rem;color:var(--muted);margin-top:.25rem}
+.agent-card .agent-ratings{margin-top:.75rem;display:flex;flex-direction:column;gap:.35rem;text-align:left}
+.agent-card .rating-row{display:flex;align-items:center;justify-content:space-between;gap:.5rem;font-size:.8rem}
+.agent-card .rating-row .rlabel{color:var(--muted);font-weight:500}
+.agent-card .rating-row .rstars{display:flex;gap:2px}
+.agent-card .rating-row .star{font-size:.85rem;line-height:1}
+.agent-card .star.on{color:#f5c842}
+.agent-card .star.off{color:var(--border)}
+.agent-card .recommended{display:inline-block;margin-top:.75rem;padding:.3rem .75rem;background:var(--accent);color:#fff;border-radius:6px;font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em}
 
 /* Branch panel */
 .branch-panel{background:var(--bg-2);border:1px solid var(--border);border-radius:12px;padding:1.5rem;margin-top:1.25rem;animation:fadeIn .3s ease}
@@ -274,16 +282,35 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(6,7,9,.8);ba
           <div class="agent-icon">💛</div>
           <div class="agent-name">Lovable</div>
           <div class="agent-desc">Easiest for beginners</div>
+          <div class="agent-ratings">
+            <div class="rating-row"><span class="rlabel">Ease of use</span><span class="rstars"><span class="star on">★</span><span class="star on">★</span><span class="star on">★</span><span class="star on">★</span><span class="star on">★</span></span></div>
+            <div class="rating-row"><span class="rlabel">Setup time</span><span class="rstars"><span class="star on">★</span><span class="star on">★</span><span class="star on">★</span><span class="star on">★</span><span class="star on">★</span></span></div>
+            <div class="rating-row"><span class="rlabel">Power</span><span class="rstars"><span class="star on">★</span><span class="star on">★</span><span class="star on">★</span><span class="star off">★</span><span class="star off">★</span></span></div>
+            <div class="rating-row"><span class="rlabel">Cost</span><span class="rstars"><span class="star on">★</span><span class="star on">★</span><span class="star on">★</span><span class="star off">★</span><span class="star off">★</span></span></div>
+          </div>
         </div>
         <div class="agent-card" data-agent="openclaw" onclick="selectAgent('openclaw')">
           <div class="agent-icon">🦀</div>
           <div class="agent-name">OpenClaw</div>
           <div class="agent-desc">Most powerful</div>
+          <div class="recommended">⭐ Recommended</div>
+          <div class="agent-ratings">
+            <div class="rating-row"><span class="rlabel">Ease of use</span><span class="rstars"><span class="star on">★</span><span class="star on">★</span><span class="star on">★</span><span class="star off">★</span><span class="star off">★</span></span></div>
+            <div class="rating-row"><span class="rlabel">Setup time</span><span class="rstars"><span class="star on">★</span><span class="star on">★</span><span class="star off">★</span><span class="star off">★</span><span class="star off">★</span></span></div>
+            <div class="rating-row"><span class="rlabel">Power</span><span class="rstars"><span class="star on">★</span><span class="star on">★</span><span class="star on">★</span><span class="star on">★</span><span class="star on">★</span></span></div>
+            <div class="rating-row"><span class="rlabel">Cost</span><span class="rstars"><span class="star on">★</span><span class="star on">★</span><span class="star on">★</span><span class="star on">★</span><span class="star off">★</span></span></div>
+          </div>
         </div>
         <div class="agent-card" data-agent="hermes" onclick="selectAgent('hermes')">
           <div class="agent-icon">⚡</div>
           <div class="agent-name">Hermes</div>
           <div class="agent-desc">Lightweight & fast</div>
+          <div class="agent-ratings">
+            <div class="rating-row"><span class="rlabel">Ease of use</span><span class="rstars"><span class="star on">★</span><span class="star on">★</span><span class="star off">★</span><span class="star off">★</span><span class="star off">★</span></span></div>
+            <div class="rating-row"><span class="rlabel">Setup time</span><span class="rstars"><span class="star on">★</span><span class="star on">★</span><span class="star off">★</span><span class="star off">★</span><span class="star off">★</span></span></div>
+            <div class="rating-row"><span class="rlabel">Power</span><span class="rstars"><span class="star on">★</span><span class="star on">★</span><span class="star on">★</span><span class="star off">★</span><span class="star off">★</span></span></div>
+            <div class="rating-row"><span class="rlabel">Cost</span><span class="rstars"><span class="star on">★</span><span class="star on">★</span><span class="star on">★</span><span class="star on">★</span><span class="star off">★</span></span></div>
+          </div>
         </div>
       </div>
       <div id="agentBranch"></div>
