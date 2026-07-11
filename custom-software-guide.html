@@ -86,7 +86,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(6,7,9,.8);ba
 .step-body strong{color:var(--fg)}
 
 /* Agent picker */
-.agent-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:1.5rem 0}
+.agent-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin:1.5rem 0}
 .agent-card{background:var(--bg-2);border:2px solid var(--border);border-radius:14px;padding:1.5rem;cursor:pointer;transition:all .2s;text-align:center}
 .agent-card:hover{border-color:var(--accent);background:var(--accent-soft);transform:translateY(-2px)}
 .agent-card.selected{border-color:var(--accent);background:var(--accent-soft);box-shadow:0 4px 24px var(--accent-glow)}
@@ -171,10 +171,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(6,7,9,.8);ba
 .done-banner p{color:var(--muted);font-size:1.15rem;max-width:500px;margin:0 auto}
 
 /* Mobile */
-@media(max-width:700px){
-  .agent-grid{grid-template-columns:1fr}
-}
 @media(max-width:600px){
+  .agent-grid{grid-template-columns:1fr}
   body{font-size:18px}
   .hero{padding:5.5rem 0 2rem}
   .nav-brand{font-size:.95rem}
@@ -276,11 +274,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(6,7,9,.8);ba
           <div class="agent-icon">💛</div>
           <div class="agent-name">Lovable</div>
           <div class="agent-desc">Easiest for beginners</div>
-        </div>
-        <div class="agent-card" data-agent="rork" onclick="selectAgent('rork')">
-          <div class="agent-icon">📱</div>
-          <div class="agent-name">Rork</div>
-          <div class="agent-desc">Great for mobile apps</div>
         </div>
         <div class="agent-card" data-agent="openclaw" onclick="selectAgent('openclaw')">
           <div class="agent-icon">🦀</div>
@@ -547,17 +540,6 @@ function selectAgent(agent) {
         <div class="branch-btns">
           <button class="branch-btn primary" onclick="agentReady('Go to lovable.dev, sign in, and start a new chat. Tell it "I want to build a roofing CRM" and paste the prompts from the next steps.')">Yes, I have one</button>
           <a href="https://lovable.dev" target="_blank" rel="noopener" class="branch-btn">No, sign me up</a>
-        </div>
-      </div>`;
-    continueBtn.disabled = false;
-  } else if (agent === 'rork') {
-    branch.innerHTML = `
-      <div class="branch-panel">
-        <h4>You picked Rork 🎉</h4>
-        <div class="branch-q">Do you already have a Rork account?</div>
-        <div class="branch-btns">
-          <button class="branch-btn primary" onclick="agentReady('Go to rork.com, sign in, and start a new project. Tell it "I want to build a roofing CRM" and paste the prompts from the next steps.')">Yes, I have one</button>
-          <a href="https://rork.com" target="_blank" rel="noopener" class="branch-btn">No, sign me up</a>
         </div>
       </div>`;
     continueBtn.disabled = false;
