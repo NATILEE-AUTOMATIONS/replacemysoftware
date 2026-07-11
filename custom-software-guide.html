@@ -240,11 +240,15 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(6,7,9,.8);ba
 <!-- Steps -->
 <section class="steps">
 
-  <!-- Progress bar (inside steps, sticky) -->
+  <div class="container">
+    <h2 style="font-family:var(--fd);font-size:clamp(2rem,6vw,3rem);font-weight:700;text-align:center;margin-bottom:1.5rem;background:linear-gradient(135deg,var(--accent-light),var(--green));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">Free CRM Building Guide</h2>
+  </div>
+
+  <!-- Progress bar (below heading, centered) -->
   <div class="progress-bar">
-    <div class="container">
-      <div class="progress-track">
-        <div class="dots" id="progressDots">
+    <div class="container" style="display:flex;justify-content:center">
+      <div class="progress-track" style="justify-content:center">
+        <div class="dots" id="progressDots" style="flex:0">
           <div class="dot active" data-step="1">1</div>
           <div class="dot" data-step="2">2</div>
           <div class="dot" data-step="3">3</div>
@@ -259,7 +263,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(6,7,9,.8);ba
   </div>
 
   <div class="container">
-    <h2 style="font-family:var(--fd);font-size:clamp(2rem,6vw,3rem);font-weight:700;text-align:center;margin-bottom:2.5rem;background:linear-gradient(135deg,var(--accent-light),var(--green));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">Free CRM Building Guide</h2>
 
     <!-- Step 1 -->
     <div class="step" id="step1">
