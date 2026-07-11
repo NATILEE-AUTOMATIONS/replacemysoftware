@@ -178,6 +178,59 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(6,7,9,.8);ba
 .done-banner h2{font-family:var(--fd);font-size:2rem;font-weight:700;margin-bottom:.75rem}
 .done-banner p{color:var(--muted);font-size:1.15rem;max-width:500px;margin:0 auto}
 
+/* Chat widget */
+.chat-fab{position:fixed;bottom:1.5rem;right:1.5rem;z-index:200;width:60px;height:60px;border-radius:50%;background:var(--accent);border:none;color:#fff;font-size:1.6rem;cursor:pointer;box-shadow:0 4px 24px var(--accent-glow);display:flex;align-items:center;justify-content:center;transition:all .2s}
+.chat-fab:hover{transform:scale(1.08);box-shadow:0 6px 32px var(--accent-glow)}
+.chat-fab .badge{position:absolute;top:-4px;right:-4px;background:var(--green);color:#fff;font-size:.65rem;font-weight:700;padding:2px 6px;border-radius:10px}
+
+.chat-panel{position:fixed;bottom:0;right:0;width:400px;max-width:100vw;height:600px;max-height:100vh;background:var(--bg-2);border:1px solid var(--border);border-radius:16px 0 0 0;z-index:200;display:none;flex-direction:column;box-shadow:-8px -8px 32px rgba(0,0,0,.4)}
+.chat-panel.open{display:flex;animation:slideIn .3s ease}
+@keyframes slideIn{from{transform:translateY(20px);opacity:0}to{transform:translateY(0);opacity:1}}
+.chat-header{display:flex;align-items:center;justify-content:space-between;padding:1rem 1.25rem;background:var(--bg-card);border-bottom:1px solid var(--border);border-radius:16px 16px 0 0}
+.chat-header .ch-title{display:flex;align-items:center;gap:.6rem;font-family:var(--fd);font-weight:700;font-size:1.05rem}
+.chat-header .ch-title .dot{width:8px;height:8px;border-radius:50%;background:var(--green);animation:pulse 2s infinite}
+.chat-close{background:none;border:none;color:var(--muted);font-size:1.4rem;cursor:pointer;padding:.25rem .5rem;line-height:1}
+.chat-close:hover{color:var(--fg)}
+.chat-messages{flex:1;overflow-y:auto;padding:1.25rem;display:flex;flex-direction:column;gap:.75rem}
+.chat-msg{max-width:85%;padding:.75rem 1rem;border-radius:12px;font-size:.95rem;line-height:1.5;animation:fadeIn .2s}
+.chat-msg.user{align-self:flex-end;background:var(--accent);color:#fff;border-radius:12px 12px 4px 12px}
+.chat-msg.ai{align-self:flex-start;background:var(--bg-card);border:1px solid var(--border);color:var(--fg);border-radius:12px 12px 12px 4px}
+.chat-msg.ai .ai-name{font-size:.75rem;color:var(--accent-light);font-weight:600;margin-bottom:.25rem}
+.chat-msg.error{align-self:center;background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.2);color:#ef4444;font-size:.9rem;text-align:center}
+.chat-typing{align-self:flex-start;padding:.75rem 1rem;background:var(--bg-card);border:1px solid var(--border);border-radius:12px 12px 12px 4px;color:var(--muted);font-size:.9rem;font-style:italic}
+.chat-rate{padding:.25rem .75rem .5rem;text-align:center;font-size:.75rem;color:var(--muted)}
+.chat-input-area{padding:.75rem 1rem;border-top:1px solid var(--border);background:var(--bg-card)}
+.chat-input-wrap{display:flex;gap:.5rem}
+.chat-input{flex:1;background:var(--bg-2);border:1px solid var(--border);border-radius:10px;padding:.75rem 1rem;color:var(--fg);font-size:.95rem;font-family:var(--fb);resize:none;max-height:120px;min-height:44px}
+.chat-input:focus{outline:none;border-color:var(--accent)}
+.chat-send{background:var(--accent);border:none;border-radius:10px;padding:.75rem 1.2rem;color:#fff;font-weight:600;cursor:pointer;transition:all .15s;font-size:.95rem}
+.chat-send:hover{background:var(--accent-light)}
+.chat-send:disabled{opacity:.4;cursor:not-allowed}
+
+/* Auth modal */
+.auth-overlay{position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:300;display:none;align-items:center;justify-content:center;padding:1.5rem}
+.auth-overlay.open{display:flex;animation:fadeIn .2s}
+.auth-modal{background:var(--bg-card);border:1px solid var(--border);border-radius:16px;padding:2rem;max-width:400px;width:100%;max-height:90vh;overflow-y:auto}
+.auth-modal h3{font-family:var(--fd);font-size:1.5rem;font-weight:700;margin-bottom:.5rem;text-align:center}
+.auth-modal p{color:var(--muted);font-size:.95rem;text-align:center;margin-bottom:1.5rem}
+.auth-tabs{display:flex;gap:0;margin-bottom:1.5rem;background:var(--bg-2);border-radius:10px;padding:4px}
+.auth-tab{flex:1;padding:.6rem;border:none;background:none;color:var(--muted);font-weight:600;cursor:pointer;border-radius:8px;transition:all .15s;font-size:.95rem;font-family:var(--fb)}
+.auth-tab.active{background:var(--accent);color:#fff}
+.auth-form{display:flex;flex-direction:column;gap:.75rem}
+.auth-form input{background:var(--bg-2);border:1px solid var(--border);border-radius:10px;padding:.8rem 1rem;color:var(--fg);font-size:1rem;font-family:var(--fb)}
+.auth-form input:focus{outline:none;border-color:var(--accent)}
+.auth-form input::placeholder{color:var(--muted)}
+.auth-submit{background:var(--accent);border:none;border-radius:10px;padding:.85rem;color:#fff;font-weight:700;font-size:1.05rem;cursor:pointer;transition:all .15s;margin-top:.5rem;font-family:var(--fb)}
+.auth-submit:hover{background:var(--accent-light)}
+.auth-error{color:#ef4444;font-size:.9rem;text-align:center;min-height:1.2rem}
+.auth-note{font-size:.8rem;color:var(--muted);text-align:center;margin-top:1rem}
+
+@media(max-width:600px){
+  .chat-fab{width:52px;height:52px;font-size:1.4rem;bottom:1rem;right:1rem}
+  .chat-panel{width:100vw;height:100vh;border-radius:0}
+  .auth-modal{padding:1.5rem}
+}
+
 /* Mobile */
 @media(max-width:600px){
   .agent-grid{grid-template-columns:1fr}
@@ -546,6 +599,217 @@ Make the job cards color-coded: red = urgent, yellow = this week, green = schedu
 
   </div>
 </section>
+
+<!-- Chat FAB -->
+<button class="chat-fab" id="chatFab" onclick="toggleChat()">💬<span class="badge" id="chatBadge" style="display:none">!</span></button>
+
+<!-- Chat Panel -->
+<div class="chat-panel" id="chatPanel">
+  <div class="chat-header">
+    <div class="ch-title"><span class="dot"></span>AI Guide Assistant</div>
+    <button class="chat-close" onclick="toggleChat()">×</button>
+  </div>
+  <div class="chat-messages" id="chatMessages">
+    <div class="chat-msg ai">
+      <div class="ai-name">Assistant</div>
+      Hey! I'm your AI guide assistant. Ask me anything about building your roofing CRM — how to use the tools, paste prompts, fix errors, whatever you need. How can I help?
+    </div>
+  </div>
+  <div class="chat-rate" id="chatRate"></div>
+  <div class="chat-input-area">
+    <div class="chat-input-wrap">
+      <textarea class="chat-input" id="chatInput" placeholder="Ask a question..." rows="1" onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();sendChat()}"></textarea>
+      <button class="chat-send" id="chatSend" onclick="sendChat()">Send</button>
+    </div>
+  </div>
+</div>
+
+<!-- Auth Modal -->
+<div class="auth-overlay" id="authOverlay">
+  <div class="auth-modal">
+    <h3 id="authTitle">Sign Up Free</h3>
+    <p id="authSub">Create an account to use the AI assistant</p>
+    <div class="auth-tabs">
+      <button class="auth-tab active" id="tabSignup" onclick="switchAuth('signup')">Sign Up</button>
+      <button class="auth-tab" id="tabSignin" onclick="switchAuth('signin')">Sign In</button>
+    </div>
+    <form class="auth-form" id="authForm" onsubmit="return doAuth(event)">
+      <input type="text" id="authName" placeholder="Full name" required>
+      <input type="email" id="authEmail" placeholder="Email address" required>
+      <input type="password" id="authPassword" placeholder="Password (min 6 chars)" required minlength="6">
+      <div class="auth-error" id="authError"></div>
+      <button type="submit" class="auth-submit" id="authSubmitBtn">Sign Up Free</button>
+    </form>
+    <p class="auth-note">Free account. No credit card needed. We'll never spam you.</p>
+  </div>
+</div>
+
+<script>
+const API_BASE = 'https://replacemysoftware.vercel.app/api';
+let userToken = localStorage.getItem('rms_user_token');
+let userName = localStorage.getItem('rms_user_name') || '';
+let chatHistory = [];
+let authMode = 'signup';
+
+function isSignedIn() { return !!userToken; }
+
+function toggleChat() {
+  const panel = document.getElementById('chatPanel');
+  const fab = document.getElementById('chatFab');
+  if (panel.classList.contains('open')) {
+    panel.classList.remove('open');
+    fab.style.display = 'flex';
+  } else {
+    if (!isSignedIn()) { openAuth(); return; }
+    panel.classList.add('open');
+    fab.style.display = 'none';
+    document.getElementById('chatInput').focus();
+  }
+}
+
+function openAuth() { document.getElementById('authOverlay').classList.add('open'); }
+function closeAuth() { document.getElementById('authOverlay').classList.remove('open'); }
+
+function switchAuth(mode) {
+  authMode = mode;
+  const nameField = document.getElementById('authName');
+  document.getElementById('tabSignup').classList.toggle('active', mode === 'signup');
+  document.getElementById('tabSignin').classList.toggle('active', mode === 'signin');
+  if (mode === 'signup') {
+    nameField.style.display = '';
+    nameField.required = true;
+    document.getElementById('authTitle').textContent = 'Sign Up Free';
+    document.getElementById('authSub').textContent = 'Create an account to use the AI assistant';
+    document.getElementById('authSubmitBtn').textContent = 'Sign Up Free';
+  } else {
+    nameField.style.display = 'none';
+    nameField.required = false;
+    document.getElementById('authTitle').textContent = 'Sign In';
+    document.getElementById('authSub').textContent = 'Welcome back! Sign in to continue.';
+    document.getElementById('authSubmitBtn').textContent = 'Sign In';
+  }
+  document.getElementById('authError').textContent = '';
+}
+
+async function doAuth(e) {
+  e.preventDefault();
+  const email = document.getElementById('authEmail').value.trim();
+  const password = document.getElementById('authPassword').value;
+  const name = document.getElementById('authName').value.trim();
+  const errEl = document.getElementById('authError');
+  const btn = document.getElementById('authSubmitBtn');
+  errEl.textContent = '';
+  btn.disabled = true;
+  btn.textContent = 'Please wait...';
+  try {
+    const endpoint = authMode === 'signup' ? '/signup' : '/signin';
+    const body = authMode === 'signup' ? { email, password, name } : { email, password };
+    const res = await fetch(API_BASE + endpoint, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(body)
+    });
+    const data = await res.json();
+    if (!res.ok) {
+      errEl.textContent = data.error || 'Something went wrong.';
+      btn.disabled = false;
+      btn.textContent = authMode === 'signup' ? 'Sign Up Free' : 'Sign In';
+      return false;
+    }
+    userToken = data.access_token;
+    userName = authMode === 'signup' ? name : (data.user?.user_metadata?.name || email);
+    localStorage.setItem('rms_user_token', userToken);
+    localStorage.setItem('rms_user_name', userName);
+    closeAuth();
+    document.getElementById('chatPanel').classList.add('open');
+    document.getElementById('chatFab').style.display = 'none';
+    document.getElementById('chatInput').focus();
+    const msgs = document.getElementById('chatMessages');
+    msgs.innerHTML = '';
+    const welcome = document.createElement('div');
+    welcome.className = 'chat-msg ai';
+    welcome.innerHTML = '<div class="ai-name">Assistant</div>Hey ' + userName.split(' ')[0] + '! 👋 I\'m your AI guide assistant. Ask me anything about building your roofing CRM — how to use Lovable, OpenClaw, or Hermes, how to set up Supabase, fix errors, whatever you need.';
+    msgs.appendChild(welcome);
+    btn.disabled = false;
+    btn.textContent = authMode === 'signup' ? 'Sign Up Free' : 'Sign In';
+  } catch (err) {
+    errEl.textContent = 'Network error. Please try again.';
+    btn.disabled = false;
+    btn.textContent = authMode === 'signup' ? 'Sign Up Free' : 'Sign In';
+  }
+  return false;
+}
+
+async function sendChat() {
+  const input = document.getElementById('chatInput');
+  const text = input.value.trim();
+  if (!text) return;
+  if (!isSignedIn()) { openAuth(); return; }
+  const msgs = document.getElementById('chatMessages');
+  const sendBtn = document.getElementById('chatSend');
+  const userMsg = document.createElement('div');
+  userMsg.className = 'chat-msg user';
+  userMsg.textContent = text;
+  msgs.appendChild(userMsg);
+  chatHistory.push({ role: 'user', content: text });
+  input.value = '';
+  input.style.height = 'auto';
+  sendBtn.disabled = true;
+  const typing = document.createElement('div');
+  typing.className = 'chat-typing';
+  typing.id = 'chatTyping';
+  typing.textContent = 'Assistant is typing...';
+  msgs.appendChild(typing);
+  msgs.scrollTop = msgs.scrollHeight;
+  try {
+    const res = await fetch(API_BASE + '/deepseek-chat', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ messages: chatHistory, userToken: userToken })
+    });
+    const data = await res.json();
+    document.getElementById('chatTyping')?.remove();
+    if (!res.ok) {
+      const errMsg = document.createElement('div');
+      errMsg.className = 'chat-msg error';
+      errMsg.textContent = data.error || 'Something went wrong.';
+      msgs.appendChild(errMsg);
+      if (res.status === 401) {
+        localStorage.removeItem('rms_user_token');
+        userToken = null;
+      }
+    } else {
+      const aiMsg = document.createElement('div');
+      aiMsg.className = 'chat-msg ai';
+      aiMsg.innerHTML = '<div class="ai-name">Assistant</div>' + data.reply.replace(/</g, '&lt;').replace(/\n/g, '<br>');
+      msgs.appendChild(aiMsg);
+      chatHistory.push({ role: 'assistant', content: data.reply });
+      const rateEl = document.getElementById('chatRate');
+      if (data.remaining !== undefined) {
+        rateEl.textContent = data.remaining + ' messages remaining this hour';
+      }
+    }
+  } catch (err) {
+    document.getElementById('chatTyping')?.remove();
+    const errMsg = document.createElement('div');
+    errMsg.className = 'chat-msg error';
+    errMsg.textContent = 'Network error. Please try again.';
+    msgs.appendChild(errMsg);
+  }
+  msgs.scrollTop = msgs.scrollHeight;
+  sendBtn.disabled = false;
+  input.focus();
+}
+
+document.getElementById('chatInput').addEventListener('input', function() {
+  this.style.height = 'auto';
+  this.style.height = Math.min(this.scrollHeight, 120) + 'px';
+});
+
+document.getElementById('authOverlay').addEventListener('click', function(e) {
+  if (e.target === this) closeAuth();
+});
+</script>
 
 <script>
 let selectedAgent = null;
