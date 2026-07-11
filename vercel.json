@@ -52,6 +52,10 @@
     {
       "source": "/roofing-crm",
       "destination": "/roofing-crm.html"
+    },
+    {
+      "source": "/diy",
+      "destination": "/diy.html"
     }
   ],
   "headers": [
