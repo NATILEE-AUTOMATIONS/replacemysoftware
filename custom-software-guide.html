@@ -102,7 +102,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(6,7,9,.8);ba
 .tool-link::after{content:' →';font-weight:700}
 /* Prompt boxes */
 .prompt-box{background:var(--bg-2);border:1px solid var(--border);border-radius:12px;margin:1.25rem 0;overflow:hidden}
-.prompt-label{display:flex;align-items:center;justify-content:space-between;padding:.85rem 1.25rem;background:rgba(59,130,246,.08);border-bottom:1px solid var(--border);font-size:.95rem;font-weight:600;color:var(--accent-light);text-transform:uppercase;letter-spacing:.05em}
+.prompt-label{display:flex;align-items:center;justify-content:space-between;padding:1.1rem 1.5rem;background:rgba(59,130,246,.1);border-bottom:2px solid var(--accent);font-size:1.25rem;font-weight:700;color:var(--accent-light);letter-spacing:.02em}
 .copy-btn{background:var(--accent);border:none;border-radius:8px;padding:.5rem 1.1rem;font-size:.9rem;font-weight:600;color:#fff;cursor:pointer;transition:all .15s;font-family:var(--fb);text-transform:none;letter-spacing:0}
 .copy-btn:hover{background:var(--accent-light);transform:translateY(-1px)}
 .copy-btn:hover{color:var(--accent-light);border-color:var(--accent)}
@@ -142,7 +142,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(6,7,9,.8);ba
   .dfy{padding:2rem 1.5rem}
   .dfy h2{font-size:1.6rem}
   .prompt-text{font-size:.88rem}
-  .prompt-label{font-size:.85rem;padding:.7rem 1rem}
+  .prompt-label{font-size:1.05rem;padding:.9rem 1.1rem}
   .copy-btn{font-size:.82rem;padding:.45rem .9rem}
   .tools{gap:.6rem}
   .tool-link{font-size:1rem;padding:.85rem 1.25rem}
@@ -191,18 +191,30 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(6,7,9,.8);ba
     <div class="step">
       <div class="step-header">
         <div class="step-num">1</div>
-        <div class="step-title">Download Cursor (Free AI Code Editor)</div>
+        <div class="step-title">Pick Your AI Agent</div>
       </div>
-      <p class="step-body">Cursor is like Google Docs for code — but it writes the code for you. You type what you want in plain English, and it builds it. It's the easiest way to build apps without knowing how to code.</p>
+      <p class="step-body">These tools write code for you. You type what you want in plain English, they build the app. Pick one to start with:</p>
       <div class="tools">
-        <a href="https://cursor.com" target="_blank" rel="noopener" class="tool-link">
+        <a href="https://lovable.dev" target="_blank" rel="noopener" class="tool-link">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+          Lovable — Easiest for Beginners
+        </a>
+        <a href="https://rork.com" target="_blank" rel="noopener" class="tool-link">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
+          Rork — Great for Mobile Apps
+        </a>
+        <a href="/openclaw-setup" target="_blank" rel="noopener" class="tool-link">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
-          cursor.com — Download
+          OpenClaw — Most Powerful (Free)
+        </a>
+        <a href="/hermes-setup" target="_blank" rel="noopener" class="tool-link">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+          Hermes — Self-Hosted (Free)
         </a>
       </div>
       <div class="tip">
         <span class="tip-icon">💡</span>
-        <span>Choose the free plan when you sign up. It gives you enough AI requests to build your whole app.</span>
+        <span><strong>Lovable</strong> is the easiest — just sign up and start chatting. <strong>Rork</strong> is great if you want a mobile app. <strong>OpenClaw</strong> and <strong>Hermes</strong> are more powerful but need setup — we'll have full guides soon.</span>
       </div>
     </div>
 
@@ -238,7 +250,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(6,7,9,.8);ba
           supabase.com — Start Free
         </a>
       </div>
-      <p class="step-body"><strong>What to do:</strong> Sign up → Create a new project → Go to SQL Editor → Paste the prompt below into Cursor and it'll generate the SQL for you.</p>
+      <p class="step-body"><strong>What to do:</strong> Sign up → Create a new project → Go to SQL Editor → Paste the prompt below into your AI agent and it'll generate the SQL for you.</p>
       <div class="prompt-box">
         <div class="prompt-label">
           Prompt 1 — Database Setup
@@ -260,9 +272,9 @@ Give me the SQL I can paste into Supabase SQL Editor.</div>
     <div class="step">
       <div class="step-header">
         <div class="step-num">4</div>
-        <div class="step-title">Build Your App with Cursor + AI</div>
+        <div class="step-title">Build Your App</div>
       </div>
-      <p class="step-body">Open Cursor, create a new folder called <strong>roofing-crm</strong>, and open it. Then open the AI chat (Cmd+L on Mac, Ctrl+L on Windows) and paste the prompt below. Cursor will generate your entire app — frontend, backend, everything.</p>
+      <p class="step-body">Open your AI agent, start a new project called <strong>roofing-crm</strong>, and paste the prompt below. Your AI agent will generate your entire app — frontend, backend, everything.</p>
       <div class="prompt-box">
         <div class="prompt-label">
           Prompt 2 — Build the CRM
@@ -293,7 +305,7 @@ Make it look clean and modern — dark theme, blue accents. Mobile responsive. U
       </div>
       <div class="tip">
         <span class="tip-icon">💡</span>
-        <span>When Cursor asks for your Supabase URL and key, go to your Supabase dashboard → Settings → API. Copy the Project URL and anon key.</span>
+        <span>When your AI agent asks for your Supabase URL and key, go to your Supabase dashboard → Settings → API. Copy the Project URL and anon key.</span>
       </div>
     </div>
 
@@ -359,7 +371,7 @@ The email should include a simple HTML template with the customer/job details. K
         <div class="step-num">7</div>
         <div class="step-title">Add JobNimbus Features (Kanban, Crew Tracking)</div>
       </div>
-      <p class="step-body">Now make it match what JobNimbus does — but free, and exactly how YOU want it. Paste this into Cursor:</p>
+      <p class="step-body">Now make it match what JobNimbus does — but free, and exactly how YOU want it. Paste this into your AI agent:</p>
       <div class="prompt-box">
         <div class="prompt-label">
           Prompt 4 — JobNimbus Features

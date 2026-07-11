@@ -56,6 +56,14 @@
     {
       "source": "/custom-software-guide",
       "destination": "/custom-software-guide.html"
+    },
+    {
+      "source": "/openclaw-setup",
+      "destination": "/openclaw-setup.html"
+    },
+    {
+      "source": "/hermes-setup",
+      "destination": "/hermes-setup.html"
     }
   ],
   "headers": [
