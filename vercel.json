@@ -54,8 +54,8 @@
       "destination": "/roofing-crm.html"
     },
     {
-      "source": "/diy",
-      "destination": "/diy.html"
+      "source": "/custom-software-guide",
+      "destination": "/custom-software-guide.html"
     }
   ],
   "headers": [
