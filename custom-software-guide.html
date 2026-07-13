@@ -378,7 +378,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(6,7,9,.8);ba
         </div>
       </div>
       <div id="agentBranch"></div>
-      <button class="continue-btn" id="continue1" disabled onclick="unlockStep(2)">Continue to Step 2 →</button>
     </div>
 
     <!-- Step 2 -->
@@ -839,7 +838,6 @@ function selectAgent(agent) {
   document.querySelector(`[data-agent="${agent}"]`).classList.add('selected');
 
   const branch = document.getElementById('agentBranch');
-  const continueBtn = document.getElementById('continue1');
 
   if (agent === 'lovable') {
     branch.innerHTML = `
@@ -851,7 +849,6 @@ function selectAgent(agent) {
           <a href="https://lovable.dev" target="_blank" rel="noopener" class="branch-btn">No, sign me up</a>
         </div>
       </div>`;
-    continueBtn.disabled = false;
   } else if (agent === 'openclaw') {
     branch.innerHTML = `
       <div class="branch-panel">
@@ -862,7 +859,6 @@ function selectAgent(agent) {
           <a href="/openclaw-setup" target="_blank" rel="noopener" class="branch-btn">No, I need help setting it up</a>
         </div>
       </div>`;
-    continueBtn.disabled = false;
   } else if (agent === 'hermes') {
     branch.innerHTML = `
       <div class="branch-panel">
@@ -873,8 +869,10 @@ function selectAgent(agent) {
           <a href="/hermes-setup" target="_blank" rel="noopener" class="branch-btn">No, I need help setting it up</a>
         </div>
       </div>`;
-    continueBtn.disabled = false;
   }
+
+  // Auto-advance to Step 2
+  unlockStep(2);
 }
 
 function agentReady(msg) {
