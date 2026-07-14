@@ -539,7 +539,15 @@ function goToStep(step) {
     document.getElementById('line2').classList.add('done');
   }
 
-  window.scrollTo({ top: 0, behavior: 'smooth' });
+  // Scroll to top of the active step panel instead of page top
+  const activePanel = document.querySelector('.step-panel.active');
+  if (activePanel) {
+    const rect = activePanel.getBoundingClientRect();
+    const offset = rect.top + window.scrollY - 120; // account for nav bar
+    window.scrollTo({ top: offset, behavior: 'smooth' });
+  } else {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
 }
 
 // Frequency toggle
