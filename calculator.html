@@ -451,25 +451,11 @@ canvas#lineChart{width:100%;height:280px;display:block}
           <div class="val" id="rptTotalSpend">$0</div>
           <div class="sub" id="rptTotalSpendSub">over all years</div>
         </div>
-        <div class="stat-item success">
-          <div class="lbl">If you owned instead</div>
-          <div class="val" id="rptOwnCost">Starting at $10K</div>
-          <div class="sub" id="rptOwnCostSub">over 13 yrs</div>
-        </div>
-        <div class="stat-item success">
-          <div class="lbl">You'd save</div>
-          <div class="val" id="rptSavings">$0</div>
-          <div class="sub" id="rptSavingsSub">by owning</div>
-        </div>
       </div>
 
       <div class="chart-wrap">
         <div class="chart-head">
-          <div class="chart-title">Renting vs Owning</div>
-          <div class="chart-legend">
-            <div class="legend-item"><span class="legend-dot rent"></span> Renting SaaS</div>
-            <div class="legend-item"><span class="legend-dot own"></span> Owning Software</div>
-          </div>
+          <div class="chart-title">Your Software Spend</div>
         </div>
         <div class="bar-compare">
           <div class="bar-row">
@@ -479,41 +465,6 @@ canvas#lineChart{width:100%;height:280px;display:block}
               <span class="bar-val" id="barRentVal">$0</span>
             </div>
           </div>
-          <div class="bar-row">
-            <div class="bar-label">Owning software</div>
-            <div class="bar-track">
-              <div class="bar-fill own" id="barOwn" style="width:0"></div>
-              <span class="bar-val" id="barOwnVal">$0</span>
-            </div>
-          </div>
-        </div>
-        <div class="bar-savings">
-          <span class="bar-savings-label" id="barSavingsLabel">Your savings by owning</span>
-          <span class="bar-savings-val" id="barSavings">$0</span>
-        </div>
-      </div>
-
-      <div class="own-control">
-        <div class="own-control-head">
-          <div class="own-control-title">How much would you pay for a CRM replacement?</div>
-          <div class="own-control-desc">Drag to adjust — see how it changes your savings</div>
-        </div>
-        <div class="own-slider-wrap">
-          <span class="own-slider-min">$10K</span>
-          <input type="range" id="ownCostSlider" min="10000" max="100000" step="5000" value="10000" oninput="updateOwnCost()">
-          <span class="own-slider-max">$100K</span>
-        </div>
-        <div class="own-cost-display" id="ownCostDisplay">$10,000</div>
-        <div class="ongoing-costs">
-          <div class="oc-title">Ongoing costs when you own (per month)</div>
-          <div class="oc-items">
-            <div class="oc-item"><span class="oc-name">Supabase</span><span class="oc-price">~$0–25/mo</span></div>
-            <div class="oc-item"><span class="oc-name">Twilio (SMS)</span><span class="oc-price">~$5–20/mo</span></div>
-            <div class="oc-item"><span class="oc-name">Resend (Email)</span><span class="oc-price">~$0–20/mo</span></div>
-            <div class="oc-item"><span class="oc-name">Vercel (Hosting)</span><span class="oc-price">~$0–20/mo</span></div>
-            <div class="oc-item"><span class="oc-name">Domain</span><span class="oc-price">~$1/mo</span></div>
-          </div>
-          <div class="oc-total">Total: roughly <span id="ocTotal">$25–65/mo</span> vs <span id="ocRentCompare" class="red">$0/mo</span> renting</div>
         </div>
       </div>
 
@@ -523,23 +474,13 @@ canvas#lineChart{width:100%;height:280px;display:block}
         <div class="bd-row"><span class="bd-name">Yearly software spend</span><span class="bd-val red" id="bdYearly">$0/yr</span></div>
         <div class="bd-row"><span class="bd-name">Spent so far (<span id="bdPastYrs">3</span> yrs)</span><span class="bd-val red" id="bdSpent">$0</span></div>
 <div class="bd-row"><span class="bd-name">Future spend (<span id="bdFutureYrs">10</span> yrs)</span><span class="bd-val red" id="bdFuture">$0</span></div>
-        <div class="bd-row"><span class="bd-name">Custom CRM one-time cost</span><span class="bd-val green" id="bdOwnCost">$10,000</span></div>
-        <div class="bd-row"><span class="bd-name">Ongoing costs over <span id="bdTotalYrs">13</span> yrs</span><span class="bd-val" id="bdOngoing">$0</span></div>
-        <div class="bd-row"><span class="bd-name">Total cost of owning</span><span class="bd-val green" id="bdOwnTotal">$0</span></div>
-        <div class="bd-row total"><span class="bd-name">Your total savings by owning</span><span class="bd-val green" id="bdSavings">$0</span></div>
+        <div class="bd-row total"><span class="bd-name">Total spent over time</span><span class="bd-val red" id="bdTotalAll">$0</span></div>
       </div>
 
-      <div class="breakeven">
-        <div class="be-icon">⚡</div>
-        <div class="be-text">Break-even point</div>
-        <div class="be-num" id="breakevenNum">— months</div>
-        <div class="be-desc" id="breakevenDesc">After that, you keep 100% of what you'd otherwise pay in subscription fees.</div>
-      </div>
-
-      <div class="cta" style="border:none;background:linear-gradient(135deg,rgba(59,130,246,.08),rgba(34,197,94,.06));margin-bottom:0">
-        <h2>Stop paying forever. Own it once.</h2>
-        <p>Custom CRM built around your workflow. Starting at $10K. One time. Done.</p>
-        <a href="/apply" class="cta-btn">Apply Now →</a>
+      <div class="cta" style="border:none;background:linear-gradient(135deg,rgba(239,68,68,.08),rgba(59,130,246,.06));margin-bottom:0">
+        <h2>Want a custom replacement? Get a quote in an hour.</h2>
+        <p>Tell us about your business and we'll send you a no-obligation estimate. No calls, no pressure.</p>
+        <a href="/apply" class="cta-btn">Get My Quote →</a>
         <p class="cta-note">Takes 3 minutes. No commitment.</p>
       </div>
     </div>
@@ -551,8 +492,8 @@ canvas#lineChart{width:100%;height:280px;display:block}
 <div class="container" style="max-width:700px">
     <div class="cta" style="border:1px solid rgba(59,130,246,.25);padding:3.5rem 2.5rem}">
       <h2>Tired of paying month to month for software?</h2>
-      <p>Your software, made for the way you like to do business. Starting at $10K.</p>
-      <a href="/apply" class="cta-btn">Apply Now →</a>
+      <p>Get a no-obligation quote for a custom replacement — in an hour or less.</p>
+      <a href="/apply" class="cta-btn">Get My Quote →</a>
       <p class="cta-note">Takes 3 minutes. No commitment.</p>
     </div>
   </div>
@@ -919,24 +860,16 @@ function calculate() {
   const rentTotal = annual * totalYears;
   const ownSlider = document.getElementById('ownCostSlider');
   const own = ownSlider ? parseInt(ownSlider.value) : 10000;
-  const ongoingMonthly = 45;
-  const ongoingTotal = ongoingMonthly * 12 * totalYears;
-  const ownTotal = own + ongoingTotal;
-  const savings = rentTotal - ownTotal;
+  const savings = rentTotal - own;
 
   document.getElementById('rptSpentSoFar').textContent = fmt(spent);
   document.getElementById('rptSpentSoFarSub').textContent = `over the past ${years >= 10 ? '10+' : years} yrs`;
   document.getElementById('rptTotalSpend').textContent = fmt(rentTotal);
   document.getElementById('rptTotalSpendSub').textContent = `over ${totalYears >= 10 ? '10+' : totalYears} yrs`;
-  document.getElementById('rptOwnCost').textContent = fmt(ownTotal);
-  document.getElementById('rptOwnCostSub').textContent = `over ${totalYears >= 10 ? '10+' : totalYears} yrs`;
-  document.getElementById('rptSavings').textContent = fmt(savings);
-  document.getElementById('rptSavingsSub').textContent = savings > 0 ? `over ${totalYears >= 10 ? '10+' : totalYears} yrs` : 'break even soon';
-
   const badge = document.getElementById('reportBadge');
-  if (savings > 50000) badge.textContent = 'Bleeding Money';
-  else if (savings > 20000) badge.textContent = 'Losing Thousands';
-  else if (savings > 5000) badge.textContent = 'Wasting Money';
+  if (rentTotal > 100000) badge.textContent = 'Bleeding Money';
+  else if (rentTotal > 50000) badge.textContent = 'Losing Thousands';
+  else if (rentTotal > 10000) badge.textContent = 'Wasting Money';
   else badge.textContent = 'Time to Switch';
 
   document.getElementById('bdMonthly').textContent = fmt(monthly) + '/mo';
@@ -945,44 +878,12 @@ function calculate() {
   document.getElementById('bdPastYrs').textContent = years;
   document.getElementById('bdFuture').textContent = fmt(futureSpend);
   document.getElementById('bdFutureYrs').textContent = futureYears >= 10 ? '10+' : futureYears;
-  document.getElementById('bdSavings').textContent = fmt(savings);
-  document.getElementById('bdOwnCost').textContent = fmt(own);
+  document.getElementById('bdTotalAll').textContent = fmt(rentTotal);
 
-  document.getElementById('bdOngoing').textContent = fmt(ongoingTotal);
-  document.getElementById('bdTotalYrs').textContent = totalYears >= 10 ? '10+' : totalYears;
-  document.getElementById('bdOwnTotal').textContent = fmt(ownTotal);
-
-  const beMonths = monthly > 0 ? Math.ceil(own / monthly) : 0;
-  document.getElementById('breakevenNum').textContent = beMonths + ' months';
-  if (beMonths > 0 && monthly > 0) {
-    document.getElementById('breakevenDesc').textContent = `After ${beMonths} months, you keep ${fmt(monthly)}/month in your pocket. That's ${fmt(annual)} every year.`;
-  }
-
-  // Animate bars
-  const rentPct = Math.min((rentTotal / Math.max(rentTotal, 1)) * 100, 100);
-  const ownPct = Math.min((ownTotal / rentTotal) * 100, 100);
+  // Animate bar
   const barRent = document.getElementById('barRent');
-  const barOwn = document.getElementById('barOwn');
   if (barRent) barRent.style.width = '100%';
-  if (barOwn) barOwn.style.width = ownPct + '%';
   document.getElementById('barRentVal').textContent = fmt(rentTotal);
-  document.getElementById('barOwnVal').textContent = fmt(ownTotal);
-  document.getElementById('barSavingsLabel').textContent = `Your savings over ${totalYears >= 10 ? '10+' : totalYears} years by owning`;
-  document.getElementById('barSavings').textContent = fmt(savings);
-  document.getElementById('ocRentCompare').textContent = fmt(monthly) + '/mo';
-  document.getElementById('ownCostDisplay').textContent = fmt(own);
-  // Update slider fill
-  if (ownSlider) {
-    const pct = ((own - 10000) / (100000 - 10000)) * 100;
-    ownSlider.style.background = `linear-gradient(90deg, var(--green) ${pct}%, var(--border-bright) ${pct}%)`;
-  }
-}
-
-function updateOwnCost() {
-  const ownSlider = document.getElementById('ownCostSlider');
-  const own = parseInt(ownSlider.value);
-  document.getElementById('ownCostDisplay').textContent = fmt(own);
-  calculate();
 }
 
 
