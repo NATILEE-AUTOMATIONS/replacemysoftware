@@ -876,7 +876,6 @@ function calculate() {
 
   document.getElementById('rptSpentSoFar').textContent = fmt(spent);
   document.getElementById('rptSpentSoFarSub').textContent = `over the past ${years >= 10 ? '10+' : years} yrs`;
-  document.getElementById('pastYrsLabel').textContent = years >= 10 ? '10+' : years;
   document.getElementById('pastYrsLabel2').textContent = years >= 10 ? '10+' : years;
   document.getElementById('futureYrsLabel').textContent = futureYears >= 10 ? '10+' : futureYears;
   document.getElementById('barLabelSpent').textContent = `Spent in the last ${years >= 10 ? '10+' : years} years`;
