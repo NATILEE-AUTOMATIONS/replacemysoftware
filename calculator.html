@@ -199,6 +199,10 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(6,7,9,.8);ba
 .bar-fill.total-bar{background:linear-gradient(90deg,rgba(239,68,68,.1),rgba(239,68,68,.4));border:1px solid rgba(239,68,68,.3)}
 .bar-row.total-row{margin-top:.5rem;padding-top:.5rem;border-top:1px solid var(--border)}
 .bar-row.total-row .bar-label{font-weight:700;color:var(--fg)}
+.cheaper-note{text-align:center;margin-top:1.25rem;padding:.875rem 1.25rem;border-radius:12px;background:rgba(59,130,246,.08);border:1px solid rgba(59,130,246,.2);display:flex;align-items:center;justify-content:center;gap:.75rem;flex-wrap:wrap}
+.cheaper-text{font-size:1.05rem;font-weight:600;color:var(--fg)}
+.cheaper-link{font-size:1.05rem;font-weight:700;color:var(--accent-light);text-decoration:none;white-space:nowrap}
+.cheaper-link:hover{text-decoration:underline}
 .bar-val{font-family:var(--fd);font-weight:800;font-size:1.15rem;color:#fff;white-space:nowrap;margin-left:.75rem}
 .bar-savings{margin-top:1.5rem;padding:1.25rem 1.5rem;background:linear-gradient(135deg,rgba(34,197,94,.08),rgba(59,130,246,.06));border:1px solid rgba(34,197,94,.2);border-radius:14px;display:flex;justify-content:space-between;align-items:center}
 .bar-savings-label{font-size:1.1rem;font-weight:600;color:var(--fg)}
@@ -481,6 +485,10 @@ canvas#lineChart{width:100%;height:280px;display:block}
               <div class="bar-fill total-bar" id="barTotal" style="width:0"></div>
               <span class="bar-val" id="barTotalVal">$0</span>
             </div>
+          </div>
+          <div class="cheaper-note" id="cheaperNote">
+            <span class="cheaper-text">A custom CRM is a lot cheaper.</span>
+            <a href="/apply" class="cheaper-link">Get a Free Quote →</a>
           </div>
         </div>
       </div>
@@ -908,6 +916,14 @@ function calculate() {
   document.getElementById('barSpentVal').textContent = fmt(spent);
   document.getElementById('barFutureVal').textContent = fmt(futureSpend);
   document.getElementById('barTotalVal').textContent = fmt(rentTotal);
+
+  // Cheaper note - compare total to $10K starting price
+  const cheaperNote = document.getElementById('cheaperNote');
+  const cheaperText = cheaperNote.querySelector('.cheaper-text');
+  if (rentTotal > 50000) cheaperText.textContent = 'A custom CRM is a lot cheaper.';
+  else if (rentTotal > 20000) cheaperText.textContent = 'A custom CRM is much cheaper.';
+  else if (rentTotal > 10000) cheaperText.textContent = 'A custom CRM is cheaper.';
+  else cheaperText.textContent = 'A custom CRM could save you money.';
 }
 
 
