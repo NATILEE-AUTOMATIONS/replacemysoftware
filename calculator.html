@@ -502,24 +502,11 @@ canvas#lineChart{width:100%;height:280px;display:block}
         <div class="bd-row total"><span class="bd-name">Total spent over time</span><span class="bd-val red" id="bdTotalAll">$0</span></div>
       </div>
 
-      <div class="cta" style="border:none;background:linear-gradient(135deg,rgba(239,68,68,.08),rgba(59,130,246,.06));margin-bottom:0">
-        <h2>Want a custom replacement? Get a quote in an hour.</h2>
-        <p>Tell us about your business and we'll send you a no-obligation estimate. No calls, no pressure.</p>
-        <a href="/apply" class="cta-btn">Get My Quote →</a>
+      <div class="cta" style="border:none;background:linear-gradient(135deg,rgba(59,130,246,.08),rgba(34,197,94,.04));margin-bottom:0">
+        <h2 id="bottomCtaTitle">A custom CRM will save you thousands.</h2>
+        <a href="/apply" class="cta-btn">Get a Free Quote →</a>
         <p class="cta-note">Takes 3 minutes. No commitment.</p>
       </div>
-    </div>
-  </div>
-</section>
-
-<!-- Bottom CTA -->
-<section style="padding:4rem 0 5rem;position:relative">
-<div class="container" style="max-width:700px">
-    <div class="cta" style="border:1px solid rgba(59,130,246,.25);padding:3.5rem 2.5rem}">
-      <h2>Tired of paying month to month for software?</h2>
-      <p>Get a no-obligation quote for a custom replacement — in an hour or less.</p>
-      <a href="/apply" class="cta-btn">Get My Quote →</a>
-      <p class="cta-note">Takes 3 minutes. No commitment.</p>
     </div>
   </div>
 </section>
@@ -898,6 +885,13 @@ function calculate() {
   else if (rentTotal > 20000) ctaText.textContent = 'A custom CRM is much cheaper.';
   else if (rentTotal > 10000) ctaText.textContent = 'A custom CRM is cheaper.';
   else ctaText.textContent = 'A custom CRM could save you money.';
+
+  // Update bottom CTA with years
+  const bottomCta = document.getElementById('bottomCtaTitle');
+  if (bottomCta) {
+    const yrs = totalYears >= 10 ? '10+' : totalYears;
+    bottomCta.textContent = `A custom CRM will save you thousands over the next ${yrs} years.`;
+  }
 
   document.getElementById('bdMonthly').textContent = fmt(monthly) + '/mo';
   document.getElementById('bdYearly').textContent = fmt(annual) + '/yr';
