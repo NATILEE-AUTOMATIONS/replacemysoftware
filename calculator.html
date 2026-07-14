@@ -92,7 +92,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(6,7,9,.8);ba
 .quick-cost .qc-wrap:focus-within{border-color:var(--accent);box-shadow:0 0 0 4px var(--accent-soft)}
 .quick-cost .qc-dollar{font-family:var(--fd);font-size:3rem;font-weight:800;color:var(--muted)}
 .quick-cost .qc-input{background:none;border:none;color:var(--fg);font-family:var(--fd);font-size:3rem;font-weight:800;width:200px;text-align:center;outline:none}
-.quick-cost .qc-input::placeholder{color:var(--muted-2)}
+.qc-input::-webkit-outer-spin-button,.qc-input::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+.qc-input[type=number]{-moz-appearance:textfield;text-align:center}
 .quick-cost .qc-per{font-size:1.2rem;color:var(--muted);font-weight:500}
 .quick-cost .qc-hint{margin-top:1.5rem;font-size:1rem;color:var(--muted-2);max-width:480px;margin-left:auto;margin-right:auto}
 
@@ -120,6 +121,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(6,7,9,.8);ba
 .field-group .lbl{font-size:1rem;color:var(--accent-light);font-weight:700;white-space:nowrap;font-family:var(--fd)}
 .field-group input{width:100%;background:transparent;border:none;color:var(--fg);font-size:1.4rem;font-family:var(--fm);font-weight:700;text-align:left;outline:none;min-width:0}
 .field-group input::placeholder{color:#4a4d56;font-weight:400}
+.field-group input::-webkit-outer-spin-button,.field-group input::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
 .field-group input::-webkit-outer-spin-button,.field-group input::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
 .field-group input[type=number]{-moz-appearance:textfield}
 
