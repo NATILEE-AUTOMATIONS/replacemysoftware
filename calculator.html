@@ -253,6 +253,28 @@ canvas#lineChart{width:100%;height:280px;display:block}
 .bd-row.total .bd-name{color:var(--fg);font-weight:700;font-size:1.05rem}
 .bd-row.total .bd-val{font-size:1.3rem}
 
+
+/* Mode toggle */
+.mode-toggle{display:flex;gap:.25rem;background:var(--bg-elev);border:1px solid var(--border);border-radius:14px;padding:.3rem;margin-bottom:2rem;width:fit-content;margin-left:auto;margin-right:auto}
+.mode-btn{padding:.7rem 1.5rem;border:none;background:transparent;color:var(--muted);font-weight:600;font-size:.95rem;border-radius:10px;cursor:pointer;transition:all .2s;font-family:var(--fd)}
+.mode-btn.active{background:var(--accent);color:#fff;box-shadow:0 2px 12px var(--accent-glow)}
+
+/* Quick cost input */
+.quick-cost{display:none;text-align:center;padding:2.5rem 1rem}
+.quick-cost.active{display:block}
+.quick-cost .qc-label{font-size:1.1rem;color:var(--muted);margin-bottom:1.25rem;font-weight:500}
+.quick-cost .qc-wrap{display:inline-flex;align-items:center;gap:.5rem;background:var(--bg-elev);border:2px solid var(--border-bright);border-radius:20px;padding:1rem 1.5rem;transition:all .2s}
+.quick-cost .qc-wrap:focus-within{border-color:var(--accent);box-shadow:0 0 0 4px var(--accent-soft)}
+.quick-cost .qc-dollar{font-family:var(--fd);font-size:2.5rem;font-weight:800;color:var(--muted)}
+.quick-cost .qc-input{background:none;border:none;color:var(--fg);font-family:var(--fd);font-size:2.5rem;font-weight:800;width:180px;text-align:center;outline:none}
+.quick-cost .qc-input::placeholder{color:var(--muted-2)}
+.quick-cost .qc-per{font-size:1rem;color:var(--muted);font-weight:500}
+.quick-cost .qc-hint{margin-top:1rem;font-size:.85rem;color:var(--muted-2)}
+
+/* Tool by tool view */
+.tool-by-tool{display:none}
+.tool-by-tool.active{display:block}
+
 @media(max-width:600px){
   body{font-size:17px}
   .hero{padding:5.5rem 0 1rem}
@@ -275,6 +297,12 @@ canvas#lineChart{width:100%;height:280px;display:block}
   .custom-input{width:100%}
   .custom-add{width:100%;justify-content:center}
   .field-group input{font-size:1.2rem}
+  .mode-btn{padding:.6rem 1.1rem;font-size:.85rem}
+  .quick-cost{padding:2rem 1rem}
+  .quick-cost .qc-input{font-size:2rem;width:140px}
+  .quick-cost .qc-dollar{font-size:2rem}
+  .quick-cost .qc-wrap{padding:.8rem 1.2rem}
+
   .gen-btn{font-size:1.1rem;padding:1.1rem 2rem}
   .report-card{padding:1.5rem 1.25rem}
   .chart-wrap{padding:1rem .5rem}
@@ -301,7 +329,7 @@ canvas#lineChart{width:100%;height:280px;display:block}
   <div class="container">
     <div class="hero-badge"><span class="dot"></span> Free Tool — No Signup Required</div>
     <h1>How Much Is Your<br><span class="gradient-red">Software Costing You?</span></h1>
-    <p class="hero-sub">Pick the tools you pay for. We'll show you exactly how much you've spent — and how much you'd save by owning instead of renting.</p>
+    <p class="hero-sub">Enter what you pay monthly for software. We'll show you exactly how much you've spent — and how much you'd save by owning instead of renting.</p>
   </div>
 </section>
 
@@ -309,13 +337,32 @@ canvas#lineChart{width:100%;height:280px;display:block}
 <section class="section">
   <div class="container">
     <div class="section-label">Step 1</div>
-    <h2 class="section-title">Which tools do you pay for?</h2>
-    <p class="section-desc">Tap each tool you use. Enter what you pay per month.</p>
-    <div class="tool-grid" id="toolGrid"></div>
-    <div class="custom-tool">
-      <input type="text" class="custom-input" id="customName" placeholder="Add another tool (e.g. CompanyCam)">
-      <input type="number" class="custom-input" id="customPrice" placeholder="$ per mo" style="max-width:160px" min="0">
-      <button class="custom-add" onclick="addCustomTool()">+ Add Tool</button>
+    <h2 class="section-title">What do you spend on software?</h2>
+    <div class="mode-toggle">
+      <button class="mode-btn active" id="modeQuick" onclick="switchMode('quick')">Total Cost</button>
+      <button class="mode-btn" id="modeTools" onclick="switchMode('tools')">Tool by Tool</button>
+    </div>
+
+    <!-- Quick: total monthly cost -->
+    <div class="quick-cost active" id="quickPanel">
+      <div class="qc-label">How much do you spend per month on all your software?</div>
+      <div class="qc-wrap">
+        <span class="qc-dollar">$</span>
+        <input type="number" class="qc-input" id="quickMonthly" placeholder="0" min="0" oninput="syncQuick()">
+        <span class="qc-per">/ mo</span>
+      </div>
+      <div class="qc-hint">Include CRM, scheduling, invoicing, estimating, communication — everything you pay for monthly.</div>
+    </div>
+
+    <!-- Tool by tool -->
+    <div class="tool-by-tool" id="toolsPanel">
+      <p class="section-desc">Tap each tool you use. Enter what you pay per month.</p>
+      <div class="tool-grid" id="toolGrid"></div>
+      <div class="custom-tool">
+        <input type="text" class="custom-input" id="customName" placeholder="Add another tool (e.g. CompanyCam)">
+        <input type="number" class="custom-input" id="customPrice" placeholder="$ per mo" style="max-width:160px" min="0">
+        <button class="custom-add" onclick="addCustomTool()">+ Add Tool</button>
+      </div>
     </div>
   </div>
 </section>
@@ -661,7 +708,38 @@ futureTicks.forEach(t => t.addEventListener('click', () => {
   futureSlider.dispatchEvent(new Event('input'));
 }));
 
+function switchMode(mode) {
+  const quick = document.getElementById('quickPanel');
+  const tools = document.getElementById('toolsPanel');
+  const btnQ = document.getElementById('modeQuick');
+  const btnT = document.getElementById('modeTools');
+  if (mode === 'quick') {
+    quick.classList.add('active');
+    tools.classList.remove('active');
+    btnQ.classList.add('active');
+    btnT.classList.remove('active');
+  } else {
+    quick.classList.remove('active');
+    tools.classList.add('active');
+    btnQ.classList.remove('active');
+    btnT.classList.add('active');
+  }
+}
+
+function syncQuick() {
+  const val = parseFloat(document.getElementById('quickMonthly').value) || 0;
+  // Update activeTools to reflect quick total as a single pseudo-tool
+  activeTools = {};
+  if (val > 0) {
+    activeTools['_quick'] = { name: 'Your Software', price: val, seats: 1 };
+  }
+}
+
 function generateReport() {
+  // Sync quick mode if active
+  const quickActive = document.getElementById('quickPanel').classList.contains('active');
+  if (quickActive) syncQuick();
+
   const tools = Object.values(activeTools);
   const monthly = tools.reduce((s, t) => s + (t.price * t.seats), 0);
   if (tools.length === 0 || monthly === 0) return;
