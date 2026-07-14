@@ -311,22 +311,27 @@ canvas#lineChart{width:100%;height:280px;display:block}
     <h2 class="step-title">What do you spend on software?</h2>
     <p class="step-desc">Enter your total monthly cost or pick tools one by one.</p>
     <div class="mode-toggle">
+      <button class="mode-btn active" id="modeMonthly" onclick="switchFreq('monthly')">Monthly</button>
+      <button class="mode-btn" id="modeYearly" onclick="switchFreq('yearly')">Yearly</button>
+    </div>
+
+    <div class="mode-toggle" style="margin-top:.75rem">
       <button class="mode-btn active" id="modeQuick" onclick="switchMode('quick')">Total Cost</button>
       <button class="mode-btn" id="modeTools" onclick="switchMode('tools')">Tool by Tool</button>
     </div>
 
     <div class="quick-cost" id="quickPanel">
-      <div class="qc-label">How much do you spend per month on all your software?</div>
+      <div class="qc-label">How much do you spend <span id="qcFreqLabel">per month</span> on all your software?</div>
       <div class="qc-wrap">
         <span class="qc-dollar">$</span>
         <input type="number" class="qc-input" id="quickMonthly" placeholder="0" min="0" oninput="syncQuick()">
-        <span class="qc-per">/ mo</span>
+        <span class="qc-per" id="qcPer">/ mo</span>
       </div>
-      <div class="qc-hint">Include CRM, scheduling, invoicing, estimating, communication — everything you pay for monthly.</div>
+      <div class="qc-hint">Include CRM, scheduling, invoicing, estimating, communication — everything you pay for.</div>
     </div>
 
     <div class="quick-cost" id="toolsPanel" style="display:none">
-      <p class="step-desc" style="text-align:left;margin-bottom:1.5rem">Tap each tool you use. Enter what you pay per month.</p>
+      <p class="step-desc" style="text-align:left;margin-bottom:1.5rem">Tap each tool you use. Enter what you pay <span id="toolFreqLabel">per month</span>.</p>
       <div class="tool-grid" id="toolGrid"></div>
       <div class="custom-tool">
         <input type="text" class="custom-input" id="customName" placeholder="Add another tool (e.g. CompanyCam)">
@@ -535,6 +540,29 @@ function goToStep(step) {
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
+// Frequency toggle
+let freq = 'monthly';
+function switchFreq(f) {
+  freq = f;
+  document.getElementById('modeMonthly').classList.toggle('active', f === 'monthly');
+  document.getElementById('modeYearly').classList.toggle('active', f === 'yearly');
+  const per = document.getElementById('qcPer');
+  const qcLbl = document.getElementById('qcFreqLabel');
+  const toolLbl = document.getElementById('toolFreqLabel');
+  if (f === 'yearly') {
+    per.textContent = '/ yr';
+    if (qcLbl) qcLbl.textContent = 'per year';
+    if (toolLbl) toolLbl.textContent = 'per year';
+  } else {
+    per.textContent = '/ mo';
+    if (qcLbl) qcLbl.textContent = 'per month';
+    if (toolLbl) toolLbl.textContent = 'per month';
+  }
+  document.querySelectorAll('[id^="price_"]').forEach(inp => {
+    inp.placeholder = f === 'yearly' ? 'Enter /yr' : 'Enter /mo';
+  });
+}
+
 // Mode toggle (Step 1)
 function switchMode(mode) {
   const quick = document.getElementById('quickPanel');
@@ -558,7 +586,7 @@ function syncQuick() {
   const val = parseFloat(document.getElementById('quickMonthly').value) || 0;
   activeTools = {};
   if (val > 0) {
-    activeTools['_quick'] = { name: 'Your Software', price: val, seats: 1 };
+    activeTools['_quick'] = { name: 'Your Software', price: val, seats: 1, freq };
   }
 }
 
@@ -589,7 +617,7 @@ function toggleTool(i) {
     card.classList.remove('selected');
   } else {
     const price = parseFloat(document.getElementById('price_' + i).value) || 0;
-    activeTools[i] = { ...TOOLS[i], price, seats: 1 };
+    activeTools[i] = { ...TOOLS[i], price, seats: 1, freq };
     card.classList.add('selected');
     setTimeout(() => {
       const input = document.getElementById('price_' + i);
@@ -631,7 +659,7 @@ function addCustomTool() {
     </div>
   `;
   grid.appendChild(card);
-  activeTools[id] = { name, price: price || 0, seats: 1 };
+  activeTools[id] = { name, price: price || 0, seats: 1, freq };
   nameEl.value = '';
   priceEl.value = '';
 }
@@ -737,7 +765,10 @@ function generateReport() {
   if (quickVisible) syncQuick();
 
   const tools = Object.values(activeTools);
-  const monthly = tools.reduce((s, t) => s + (t.price * t.seats), 0);
+  const monthly = tools.reduce((s, t) => {
+    const m = t.freq === 'yearly' ? t.price / 12 : t.price;
+    return s + m * t.seats;
+  }, 0);
   if (tools.length === 0 || monthly === 0) {
     alert('Please enter your monthly software cost first.');
     goToStep(1);
@@ -766,7 +797,10 @@ function calculate() {
   const tools = Object.values(activeTools);
   const years = parseInt(document.getElementById('yearsSlider').value);
   const futureYears = parseInt(document.getElementById('futureSlider').value);
-  const monthly = tools.reduce((s, t) => s + (t.price * t.seats), 0);
+  const monthly = tools.reduce((s, t) => {
+    const m = t.freq === 'yearly' ? t.price / 12 : t.price;
+    return s + m * t.seats;
+  }, 0);
   const annual = monthly * 12;
   const spent = annual * years;
   const futureSpend = annual * futureYears;
@@ -931,7 +965,10 @@ function drawChart(monthly, pastYears, futureYears) {
 window.addEventListener('resize', () => {
   if (document.getElementById('results').classList.contains('active')) {
     const tools = Object.values(activeTools);
-    const monthly = tools.reduce((s, t) => s + (t.price * t.seats), 0);
+    const monthly = tools.reduce((s, t) => {
+      const m = t.freq === 'yearly' ? t.price / 12 : t.price;
+      return s + m * t.seats;
+    }, 0);
     if (monthly > 0) {
       const pastYrs = parseInt(document.getElementById('yearsSlider').value);
       const futureYrs = parseInt(document.getElementById('futureSlider').value);
