@@ -449,14 +449,14 @@ canvas#lineChart{width:100%;height:280px;display:block}
 
       <div class="stat-grid">
         <div class="stat-item danger">
-          <div class="lbl">Spent so far</div>
+          <div class="lbl">Spent in the last <span id="pastYrsLabel2">3</span> years</div>
           <div class="val" id="rptSpentSoFar">$0</div>
           <div class="sub" id="rptSpentSoFarSub">over the past 3 yrs</div>
         </div>
         <div class="stat-item danger">
-          <div class="lbl">Total SaaS spend</div>
+          <div class="lbl">Projected SaaS spend</div>
           <div class="val" id="rptTotalSpend">$0</div>
-          <div class="sub" id="rptTotalSpendSub">over all years</div>
+          <div class="sub" id="rptTotalSpendSub">over the next <span id="futureYrsLabel">10</span> years</div>
         </div>
         <div class="stat-cta">
           <p class="stat-cta-text">A custom CRM is cheaper.</p>
@@ -470,21 +470,21 @@ canvas#lineChart{width:100%;height:280px;display:block}
         </div>
         <div class="bar-compare">
           <div class="bar-row">
-            <div class="bar-label">Spent so far</div>
+            <div class="bar-label" id="barLabelSpent">Spent in the last 3 years</div>
             <div class="bar-track">
               <div class="bar-fill rent" id="barSpent" style="width:0"></div>
               <span class="bar-val" id="barSpentVal">$0</span>
             </div>
           </div>
           <div class="bar-row">
-            <div class="bar-label">Future spend</div>
+            <div class="bar-label" id="barLabelFuture">Projected for the next 10 years</div>
             <div class="bar-track">
               <div class="bar-fill future" id="barFuture" style="width:0"></div>
               <span class="bar-val" id="barFutureVal">$0</span>
             </div>
           </div>
           <div class="bar-row total-row">
-            <div class="bar-label">Total</div>
+            <div class="bar-label" id="barLabelTotal">Total over 10+ years</div>
             <div class="bar-track">
               <div class="bar-fill total-bar" id="barTotal" style="width:0"></div>
               <span class="bar-val" id="barTotalVal">$0</span>
@@ -497,9 +497,9 @@ canvas#lineChart{width:100%;height:280px;display:block}
         <h4>Cost Breakdown</h4>
         <div class="bd-row"><span class="bd-name">Monthly software spend</span><span class="bd-val red" id="bdMonthly">$0/mo</span></div>
         <div class="bd-row"><span class="bd-name">Yearly software spend</span><span class="bd-val red" id="bdYearly">$0/yr</span></div>
-        <div class="bd-row"><span class="bd-name">Spent so far (<span id="bdPastYrs">3</span> yrs)</span><span class="bd-val red" id="bdSpent">$0</span></div>
-<div class="bd-row"><span class="bd-name">Future spend (<span id="bdFutureYrs">10</span> yrs)</span><span class="bd-val red" id="bdFuture">$0</span></div>
-        <div class="bd-row total"><span class="bd-name">Total spent over time</span><span class="bd-val red" id="bdTotalAll">$0</span></div>
+        <div class="bd-row"><span class="bd-name">Spent in the last <span id="bdPastYrs">3</span> years</span><span class="bd-val red" id="bdSpent">$0</span></div>
+<div class="bd-row"><span class="bd-name">Projected for the next <span id="bdFutureYrs">10</span> years</span><span class="bd-val red" id="bdFuture">$0</span></div>
+        <div class="bd-row total"><span class="bd-name">Total projected spend</span><span class="bd-val red" id="bdTotalAll">$0</span></div>
       </div>
 
       <div class="cta" style="border:none;background:linear-gradient(135deg,rgba(59,130,246,.08),rgba(34,197,94,.04));margin-bottom:0">
@@ -876,6 +876,12 @@ function calculate() {
 
   document.getElementById('rptSpentSoFar').textContent = fmt(spent);
   document.getElementById('rptSpentSoFarSub').textContent = `over the past ${years >= 10 ? '10+' : years} yrs`;
+  document.getElementById('pastYrsLabel').textContent = years >= 10 ? '10+' : years;
+  document.getElementById('pastYrsLabel2').textContent = years >= 10 ? '10+' : years;
+  document.getElementById('futureYrsLabel').textContent = futureYears >= 10 ? '10+' : futureYears;
+  document.getElementById('barLabelSpent').textContent = `Spent in the last ${years >= 10 ? '10+' : years} years`;
+  document.getElementById('barLabelFuture').textContent = `Projected for the next ${futureYears >= 10 ? '10+' : futureYears} years`;
+  document.getElementById('barLabelTotal').textContent = `Total over ${totalYears >= 10 ? '10+' : totalYears} years`;
   document.getElementById('rptTotalSpend').textContent = fmt(rentTotal);
   document.getElementById('rptTotalSpendSub').textContent = `over ${totalYears >= 10 ? '10+' : totalYears} yrs`;
   document.getElementById('chartTitle').textContent = `Your Software Spend Over ${totalYears >= 10 ? '10+' : totalYears} Years`;
