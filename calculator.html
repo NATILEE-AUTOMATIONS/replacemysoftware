@@ -380,16 +380,16 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(6,7,9,.85);b
 
 <script>
 const TOOLS = [
-  { name: 'JobNimbus', price: 65, note: 'Pro plan' },
-  { name: 'ServiceTitan', price: 300, note: 'Avg plan' },
-  { name: 'Housecall Pro', price: 49, note: 'Basic plan' },
-  { name: 'SalesRabbit', price: 40, note: 'Pro plan' },
-  { name: 'Jobber', price: 49, note: 'Grow plan' },
-  { name: 'Aspire', price: 150, note: 'Avg plan' },
-  { name: 'LMN', price: 99, note: 'Pro plan' },
-  { name: 'AccuLynx', price: 79, note: 'Standard plan' },
-  { name: 'CompanyCam', price: 24, note: 'Pro plan' },
-  { name: 'Hatch', price: 35, note: 'Avg plan' }
+  { name: 'JobNimbus' },
+  { name: 'ServiceTitan' },
+  { name: 'Housecall Pro' },
+  { name: 'SalesRabbit' },
+  { name: 'Jobber' },
+  { name: 'Aspire' },
+  { name: 'LMN' },
+  { name: 'AccuLynx' },
+  { name: 'CompanyCam' },
+  { name: 'Hatch' }
 ];
 
 let activeTools = {};
@@ -404,12 +404,11 @@ function renderTools() {
         <div class="tool-card-name">${t.name}</div>
         <div class="tool-check">${checkSVG}</div>
       </div>
-      <div class="tool-card-price">$<span id="priceDisplay_${i}">${t.price}</span><span class="per">/mo</span></div>
-      <div class="tool-card-note">${t.note} — tap to edit</div>
+      <div class="tool-card-note">Tap to select & enter your monthly cost</div>
       <div class="tool-fields" onclick="event.stopPropagation()">
         <div class="field-group">
           <span class="lbl">$/mo</span>
-          <input type="number" id="price_${i}" value="${t.price}" min="0" max="9999" onchange="updatePrice(${i}, this.value)" oninput="updatePrice(${i}, this.value)">
+          <input type="number" id="price_${i}" placeholder="0" min="0" max="9999" onchange="updatePrice(${i}, this.value)" oninput="updatePrice(${i}, this.value)">
         </div>
       </div>
     </div>
@@ -422,7 +421,7 @@ function toggleTool(i) {
     delete activeTools[i];
     card.classList.remove('selected');
   } else {
-    const price = parseFloat(document.getElementById('price_' + i).value) || TOOLS[i].price;
+    const price = parseFloat(document.getElementById('price_' + i).value) || 0;
     activeTools[i] = { ...TOOLS[i], price, seats: 1 };
     card.classList.add('selected');
   }
@@ -431,7 +430,6 @@ function toggleTool(i) {
 
 function updatePrice(i, val) {
   const price = Math.max(0, parseFloat(val) || 0);
-  document.getElementById('priceDisplay_' + i).textContent = price;
   if (activeTools[i]) {
     activeTools[i].price = price;
     calculate();
@@ -469,12 +467,11 @@ function addCustomTool() {
       <div class="tool-card-name">${name}</div>
       <div class="tool-check">${checkSVG}</div>
     </div>
-    <div class="tool-card-price">$<span id="priceDisplay_${id}">${price}</span><span class="per">/mo</span></div>
     <div class="tool-card-note">Custom tool — tap to remove</div>
     <div class="tool-fields" onclick="event.stopPropagation()">
       <div class="field-group">
         <span class="lbl">$/mo</span>
-        <input type="number" id="price_${id}" value="${price}" min="0" max="9999" onchange="updateCustomPrice('${id}', this.value)" oninput="updateCustomPrice('${id}', this.value)">
+        <input type="number" id="price_${id}" placeholder="0" min="0" max="9999" onchange="updateCustomPrice('${id}', this.value)" oninput="updateCustomPrice('${id}', this.value)">
       </div>
     </div>
   `;
