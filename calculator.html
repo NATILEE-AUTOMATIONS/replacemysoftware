@@ -527,7 +527,14 @@ function goToStep(step) {
     const title = document.getElementById('step3Title');
     const yLabel = document.getElementById('yearsLabel');
     if (selected.length > 0) {
-      const names = selected.map(t => t.name).join(', ');
+      let names;
+      if (selected.length === 1) {
+        names = selected[0].name;
+      } else if (selected.length === 2) {
+        names = `${selected[0].name} and ${selected[1].name}`;
+      } else {
+        names = selected.slice(0, -1).map(t => t.name).join(', ') + ', and ' + selected[selected.length - 1].name;
+      }
       title.textContent = `How long have you been using ${names}?`;
       yLabel.textContent = `Years using ${names}`;
     } else {
