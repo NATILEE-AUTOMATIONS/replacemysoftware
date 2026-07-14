@@ -417,7 +417,7 @@ canvas#lineChart{width:100%;height:280px;display:block}
     </div>
     <div class="time-section" style="margin-top:1.5rem">
       <div class="time-label">How many more years do you plan to keep using them?</div>
-      <div class="time-display" id="futureDisplay">10<span class="unit">+ yrs</span></div>
+      <div class="time-display" id="futureDisplay">10<span class="unit"> yrs</span></div>
       <div class="slider-wrap">
         <div class="slider-track-vis" id="futureTicks">
           <span class="slider-tick" data-val="1">1</span>
@@ -466,7 +466,7 @@ canvas#lineChart{width:100%;height:280px;display:block}
 
       <div class="chart-wrap">
         <div class="chart-head">
-          <div class="chart-title">Your Software Spend</div>
+          <div class="chart-title" id="chartTitle">Your Software Spend</div>
         </div>
         <div class="bar-compare">
           <div class="bar-row">
@@ -806,7 +806,7 @@ slider.addEventListener('input', function() {
 
 futureSlider.addEventListener('input', function() {
   const v = parseInt(this.value);
-  futureDisplay.innerHTML = (v >= 10 ? '10+' : v) + '<span class="unit"> yrs</span>';
+  futureDisplay.innerHTML = v + '<span class="unit"> yrs</span>';
   futureTicks.forEach(t => t.classList.toggle('active', parseInt(t.dataset.val) === v));
   updateSliderFill(this);
 });
@@ -875,9 +875,10 @@ function calculate() {
   const savings = rentTotal - own;
 
   document.getElementById('rptSpentSoFar').textContent = fmt(spent);
-  document.getElementById('rptSpentSoFarSub').textContent = `over the past ${years >= 10 ? '10+' : years} yrs`;
+  document.getElementById('rptSpentSoFarSub').textContent = `over the past ${years} yrs`;
   document.getElementById('rptTotalSpend').textContent = fmt(rentTotal);
-  document.getElementById('rptTotalSpendSub').textContent = `over ${totalYears >= 10 ? '10+' : totalYears} yrs`;
+  document.getElementById('rptTotalSpendSub').textContent = `over ${totalYears} yrs`;
+  document.getElementById('chartTitle').textContent = `Your Software Spend Over ${totalYears} Years`;
 
   // Update CTA text based on spend
   const ctaText = document.querySelector('.stat-cta-text');
@@ -889,8 +890,7 @@ function calculate() {
   // Update bottom CTA with years
   const bottomCta = document.getElementById('bottomCtaTitle');
   if (bottomCta) {
-    const yrs = totalYears >= 10 ? '10+' : totalYears;
-    bottomCta.textContent = `A custom CRM will save you thousands over the next ${yrs} years.`;
+    bottomCta.textContent = `A custom CRM will save you thousands over the next ${totalYears} years.`;
   }
 
   document.getElementById('bdMonthly').textContent = fmt(monthly) + '/mo';
@@ -898,7 +898,7 @@ function calculate() {
   document.getElementById('bdSpent').textContent = fmt(spent);
   document.getElementById('bdPastYrs').textContent = years;
   document.getElementById('bdFuture').textContent = fmt(futureSpend);
-  document.getElementById('bdFutureYrs').textContent = futureYears >= 10 ? '10+' : futureYears;
+  document.getElementById('bdFutureYrs').textContent = futureYears;
   document.getElementById('bdTotalAll').textContent = fmt(rentTotal);
 
   // Animate bars - proportionally scaled to total
