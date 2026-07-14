@@ -197,6 +197,62 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(6,7,9,.8);ba
 @keyframes fadeUp{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:translateY(0)}}
 
 /* Mobile */
+
+/* Generate button */
+.gen-wrap{text-align:center;padding:1rem 0 2rem}
+.gen-btn{display:inline-flex;align-items:center;gap:.6rem;padding:1.2rem 3rem;background:linear-gradient(135deg,var(--accent),#2563eb);color:#fff;border:none;border-radius:16px;font-weight:700;font-size:1.25rem;cursor:pointer;transition:all .25s;box-shadow:0 4px 24px var(--accent-glow);font-family:var(--fd);letter-spacing:-.01em}
+.gen-btn:hover{transform:translateY(-3px);box-shadow:0 8px 40px var(--accent-glow)}
+.gen-btn:active{transform:translateY(-1px)}
+.gen-btn .arrow{font-size:1.4rem;transition:transform .2s}
+.gen-btn:hover .arrow{transform:translateX(4px)}
+.gen-btn.loading{pointer-events:none;opacity:.7}
+
+/* Report */
+.report-card{background:var(--bg-card);border:1px solid var(--border);border-radius:24px;padding:2.5rem;overflow:hidden;position:relative}
+.report-card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--accent),transparent)}
+.report-header{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;margin-bottom:2rem}
+.report-header h3{font-family:var(--fd);font-size:1.5rem;font-weight:800;letter-spacing:-.02em}
+.report-header .badge{font-size:.8rem;padding:.4rem 1rem;border-radius:999px;background:var(--red-soft);color:var(--red-light);font-weight:700;text-transform:uppercase;letter-spacing:.08em;font-family:var(--fd)}
+
+/* Stat grid */
+.stat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-bottom:2rem}
+.stat-item{background:var(--bg-elev);border:1px solid var(--border);border-radius:16px;padding:1.5rem 1.25rem;text-align:center;position:relative;overflow:hidden}
+.stat-item .lbl{font-size:.85rem;color:var(--muted);margin-bottom:.5rem;font-weight:500}
+.stat-item .val{font-family:var(--fd);font-size:clamp(1.5rem,4vw,2rem);font-weight:800;line-height:1;letter-spacing:-.03em}
+.stat-item .sub{font-size:.75rem;color:var(--muted-2);margin-top:.4rem}
+.stat-item.danger .val{color:var(--red-light)}
+.stat-item.danger{border-color:rgba(239,68,68,.15)}
+.stat-item.danger::after{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--red),transparent)}
+.stat-item.success .val{color:var(--green-light)}
+.stat-item.success{border-color:rgba(34,197,94,.15)}
+.stat-item.success::after{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--green),transparent)}
+.stat-item.neutral .val{color:var(--accent-light)}
+.stat-item.neutral::after{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--accent),transparent)}
+
+/* Line chart */
+.chart-wrap{background:var(--bg-elev);border:1px solid var(--border);border-radius:20px;padding:2rem;margin-bottom:2rem;position:relative;overflow:hidden}
+.chart-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:1.5rem;flex-wrap:wrap;gap:.5rem}
+.chart-title{font-family:var(--fd);font-weight:700;font-size:1.1rem}
+.chart-legend{display:flex;gap:1.25rem}
+.legend-item{display:flex;align-items:center;gap:.5rem;font-size:.85rem;color:var(--muted);font-weight:500}
+.legend-dot{width:12px;height:12px;border-radius:4px}
+.legend-dot.rent{background:linear-gradient(135deg,#ef4444,#f87171)}
+.legend-dot.own{background:linear-gradient(135deg,#22c55e,#4ade80)}
+canvas#lineChart{width:100%;height:280px;display:block}
+
+/* Breakdown */
+.breakdown{background:var(--bg-elev);border:1px solid var(--border);border-radius:20px;padding:1.75rem;margin-bottom:2rem}
+.breakdown h4{font-family:var(--fd);font-size:1.05rem;font-weight:700;margin-bottom:1rem}
+.bd-row{display:flex;justify-content:space-between;align-items:center;padding:.7rem 0;border-bottom:1px solid var(--border)}
+.bd-row:last-child{border-bottom:none}
+.bd-row .bd-name{font-weight:500;color:var(--muted);font-size:.95rem}
+.bd-row .bd-val{font-family:var(--fd);font-weight:700;font-size:1.05rem}
+.bd-row .bd-val.red{color:var(--red-light)}
+.bd-row .bd-val.green{color:var(--green-light)}
+.bd-row.total{padding-top:1.25rem;margin-top:.5rem;border-top:2px solid var(--border-bright)}
+.bd-row.total .bd-name{color:var(--fg);font-weight:700;font-size:1.05rem}
+.bd-row.total .bd-val{font-size:1.3rem}
+
 @media(max-width:600px){
   body{font-size:17px}
   .hero{padding:5.5rem 0 1rem}
@@ -219,6 +275,10 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(6,7,9,.8);ba
   .custom-input{width:100%}
   .custom-add{width:100%;justify-content:center}
   .field-group input{font-size:1.2rem}
+  .gen-btn{font-size:1.1rem;padding:1.1rem 2rem}
+  .report-card{padding:1.5rem 1.25rem}
+  .chart-wrap{padding:1rem .5rem}
+  .stat-grid{grid-template-columns:1fr}
 }
 </style>
 </head>
@@ -295,65 +355,76 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(6,7,9,.8);ba
         <input type="range" class="slider" id="futureSlider" min="1" max="10" value="10" step="1">
       </div>
     </div>
+    <div class="gen-wrap">
+      <button class="gen-btn" id="genBtn" onclick="generateReport()">
+        Generate My Report
+        <span class="arrow">→</span>
+      </button>
+    </div>
   </div>
 </section>
 
 <!-- Results -->
 <section class="section results" id="results" style="display:none">
   <div class="container">
-    <div class="section-label">Your Numbers</div>
-    <h2 class="section-title">Here's the Reality</h2>
-
-    <div class="big-stats">
-      <div class="big-stat red">
-        <div class="stat-label">Spent on subscriptions so far</div>
-        <div class="stat-value" id="spentSoFar">$0</div>
-        <div class="stat-sub" id="spentSub">across all tools</div>
+    <div class="report-card">
+      <div class="report-header">
+        <h3>Your Software Cost Report</h3>
+        <span class="badge" id="reportBadge">Bleeding Money</span>
       </div>
-      <div class="big-stat red">
-        <div class="stat-label">Will spend over next <span id="futureYrsLabel">10</span> years</div>
-        <div class="stat-value" id="nextFive">$0</div>
-        <div class="stat-sub">if you keep renting</div>
-      </div>
-    </div>
 
-    <div class="compare">
-      <div class="compare-title">Renting vs. Owning</div>
-      <div class="compare-sub">Over <span id="chartYears">13</span> total years in business</div>
-      <div class="bars">
-        <div class="bar-row">
-          <div class="bar-head">
-            <div class="bar-name">SaaS Subscriptions <span class="tag rent">Renting</span></div>
-            <div class="bar-amount rent" id="rentAmount">$0</div>
-          </div>
-          <div class="bar-track"><div class="bar-fill rent" id="barRent"></div></div>
+      <div class="stat-grid">
+        <div class="stat-item danger">
+          <div class="lbl">Total SaaS spend</div>
+          <div class="val" id="rptTotalSpend">$0</div>
+          <div class="sub" id="rptTotalSpendSub">over all years</div>
         </div>
-        <div class="bar-row">
-          <div class="bar-head">
-            <div class="bar-name">Custom CRM <span class="tag own">Owning</span></div>
-            <div class="bar-amount own" id="ownAmount">$10,000</div>
-          </div>
-          <div class="bar-track"><div class="bar-fill own" id="barOwn"></div></div>
+        <div class="stat-item success">
+          <div class="lbl">If you owned instead</div>
+          <div class="val" id="rptOwnCost">$10,000</div>
+          <div class="sub">one-time payment</div>
+        </div>
+        <div class="stat-item success">
+          <div class="lbl">You'd save</div>
+          <div class="val" id="rptSavings">$0</div>
+          <div class="sub" id="rptSavingsSub">by owning</div>
         </div>
       </div>
-    </div>
 
-    <div class="breakeven">
-      <div class="be-icon">⚡</div>
-      <div class="be-text">You'd break even in</div>
-      <div class="be-num" id="breakevenNum">— months</div>
-      <div class="be-desc" id="breakevenDesc">After that, every dollar you'd spend on SaaS is money in your pocket.</div>
-    </div>
+      <div class="chart-wrap">
+        <div class="chart-head">
+          <div class="chart-title">Cost Over Time</div>
+          <div class="chart-legend">
+            <div class="legend-item"><span class="legend-dot rent"></span> Renting SaaS</div>
+            <div class="legend-item"><span class="legend-dot own"></span> Owning Custom CRM</div>
+          </div>
+        </div>
+        <canvas id="lineChart" width="800" height="280"></canvas>
+      </div>
 
-    <div class="savings" id="savingsBox">
-      <p id="savingsText"></p>
-    </div>
+      <div class="breakdown">
+        <h4>Cost Breakdown</h4>
+        <div class="bd-row"><span class="bd-name">Monthly software spend</span><span class="bd-val red" id="bdMonthly">$0/mo</span></div>
+        <div class="bd-row"><span class="bd-name">Yearly software spend</span><span class="bd-val red" id="bdYearly">$0/yr</span></div>
+        <div class="bd-row"><span class="bd-name">Spent so far (<span id="bdPastYrs">3</span> yrs)</span><span class="bd-val red" id="bdSpent">$0</span></div>
+        <div class="bd-row"><span class="bd-name">Future spend (<span id="bdFutureYrs">10</span> yrs)</span><span class="bd-val red" id="bdFuture">$0</span></div>
+        <div class="bd-row"><span class="bd-name">Custom CRM one-time cost</span><span class="bd-val green">$10,000</span></div>
+        <div class="bd-row total"><span class="bd-name">Your total savings by owning</span><span class="bd-val green" id="bdSavings">$0</span></div>
+      </div>
 
-    <div class="cta">
-      <h2>Stop Renting. Own Your Tools.</h2>
-      <p>Get a custom CRM built around your workflow. Starting at $10K. One time.</p>
-      <a href="/apply" class="cta-btn">Apply Now →</a>
-      <p class="cta-note">Takes 3 minutes. No commitment.</p>
+      <div class="breakeven">
+        <div class="be-icon">⚡</div>
+        <div class="be-text">Break-even point</div>
+        <div class="be-num" id="breakevenNum">— months</div>
+        <div class="be-desc" id="breakevenDesc">After that, you keep 100% of what you'd otherwise pay in subscription fees.</div>
+      </div>
+
+      <div class="cta" style="border:none;background:linear-gradient(135deg,rgba(59,130,246,.08),rgba(34,197,94,.06));margin-bottom:0">
+        <h2>Stop paying forever. Own it once.</h2>
+        <p>Custom CRM built around your workflow. $10K. One time. Done.</p>
+        <a href="/apply" class="cta-btn">Apply Now →</a>
+        <p class="cta-note">Takes 3 minutes. No commitment.</p>
+      </div>
     </div>
   </div>
 </section>
@@ -361,7 +432,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(6,7,9,.8);ba
 <div class="container" id="emptyState" style="padding-bottom:3rem">
   <div class="results-empty">
     <span class="icon">👆</span>
-    Pick at least one tool above to see your numbers.
+    Select your tools and hit "Generate My Report" to see your numbers.
   </div>
 </div>
 
@@ -515,48 +586,37 @@ function calculate() {
   document.getElementById('results').style.display = 'block';
   document.getElementById('emptyState').style.display = 'none';
 
-  document.getElementById('spentSoFar').textContent = fmt(spent);
-  document.getElementById('spentSub').textContent = `across ${tools.length} tool${tools.length > 1 ? 's' : ''}`;
-  document.getElementById('nextFive').textContent = fmt(futureSpend);
-  document.getElementById('futureYrsLabel').textContent = futureYears >= 10 ? '10+' : futureYears;
-  document.getElementById('chartYears').textContent = totalYears >= 10 ? '10+' : totalYears;
-
   const rentTotal = annual * totalYears;
   const own = 10000;
-  const maxVal = Math.max(rentTotal, own);
-  const rentPct = (rentTotal / maxVal) * 100;
-  const ownPct = (own / maxVal) * 100;
+  const savings = rentTotal - own;
 
-  const barRent = document.getElementById('barRent');
-  const barOwn = document.getElementById('barOwn');
-  barRent.style.width = '0%';
-  barOwn.style.width = '0%';
-  barRent.textContent = fmt(rentTotal);
-  barOwn.textContent = fmt(own);
-  document.getElementById('rentAmount').textContent = fmt(rentTotal);
-  document.getElementById('ownAmount').textContent = fmt(own);
+  document.getElementById('rptTotalSpend').textContent = fmt(rentTotal);
+  document.getElementById('rptTotalSpendSub').textContent = `over ${totalYears >= 10 ? '10+' : totalYears} yrs`;
+  document.getElementById('rptOwnCost').textContent = fmt(own);
+  document.getElementById('rptSavings').textContent = fmt(savings);
+  document.getElementById('rptSavingsSub').textContent = savings > 0 ? 'by owning' : 'break even soon';
 
-  requestAnimationFrame(() => {
-    requestAnimationFrame(() => {
-      barRent.style.width = rentPct + '%';
-      barOwn.style.width = ownPct + '%';
-    });
-  });
+  const badge = document.getElementById('reportBadge');
+  if (savings > 50000) badge.textContent = 'Bleeding Money';
+  else if (savings > 20000) badge.textContent = 'Losing Thousands';
+  else if (savings > 5000) badge.textContent = 'Wasting Money';
+  else badge.textContent = 'Time to Switch';
+
+  document.getElementById('bdMonthly').textContent = fmt(monthly) + '/mo';
+  document.getElementById('bdYearly').textContent = fmt(annual) + '/yr';
+  document.getElementById('bdSpent').textContent = fmt(spent);
+  document.getElementById('bdPastYrs').textContent = years;
+  document.getElementById('bdFuture').textContent = fmt(futureSpend);
+  document.getElementById('bdFutureYrs').textContent = futureYears >= 10 ? '10+' : futureYears;
+  document.getElementById('bdSavings').textContent = fmt(savings);
 
   const beMonths = monthly > 0 ? Math.ceil(own / monthly) : 0;
   document.getElementById('breakevenNum').textContent = beMonths + ' months';
   if (beMonths > 0 && monthly > 0) {
-    document.getElementById('breakevenDesc').textContent = `After ${beMonths} months, you save ${fmt(monthly)}/month. That's ${fmt(annual)} back in your pocket every year.`;
+    document.getElementById('breakevenDesc').textContent = `After ${beMonths} months, you keep ${fmt(monthly)}/month in your pocket. That's ${fmt(annual)} every year.`;
   }
 
-  const totalSpend = spent + futureSpend;
-  const savings = totalSpend - own;
-  const savingsEl = document.getElementById('savingsText');
-  if (savings > 0) {
-    savingsEl.innerHTML = `Over ${totalYears >= 10 ? '10+' : totalYears} years, you'll spend <span class="num-red">${fmt(totalSpend)}</span> on subscriptions. A custom CRM would have cost <span class="num-green">$10,000</span>.<br><br>You'd save <span class="num-green">${fmt(savings)}</span>.`;
-  } else {
-    savingsEl.innerHTML = `You've spent <span class="num-red">${fmt(spent)}</span> so far. A custom CRM costs <span class="num-green">$10,000</span>.<br><br>You'll break even in <span class="num-green">${beMonths} months</span>, then save <span class="num-green">${fmt(monthly)}/month</span> forever.`;
-  }
+  drawChart(monthly, years, futureYears);
 }
 
 // Sliders
@@ -600,6 +660,164 @@ futureTicks.forEach(t => t.addEventListener('click', () => {
   futureSlider.value = t.dataset.val;
   futureSlider.dispatchEvent(new Event('input'));
 }));
+
+function generateReport() {
+  const tools = Object.values(activeTools);
+  const monthly = tools.reduce((s, t) => s + (t.price * t.seats), 0);
+  if (tools.length === 0 || monthly === 0) return;
+
+  const btn = document.getElementById('genBtn');
+  btn.classList.add('loading');
+  btn.innerHTML = 'Crunching numbers...';
+
+  setTimeout(() => {
+    calculate();
+    document.getElementById('results').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    btn.classList.remove('loading');
+    btn.innerHTML = 'Generate My Report <span class="arrow">\u2192</span>';
+  }, 600);
+}
+
+function drawChart(monthly, pastYears, futureYears) {
+  const canvas = document.getElementById('lineChart');
+  if (!canvas) return;
+  const dpr = window.devicePixelRatio || 1;
+  const rect = canvas.getBoundingClientRect();
+  canvas.width = rect.width * dpr;
+  canvas.height = 280 * dpr;
+  const ctx = canvas.getContext('2d');
+  ctx.scale(dpr, dpr);
+  const W = rect.width;
+  const H = 280;
+
+  ctx.clearRect(0, 0, W, H);
+
+  const totalYears = Math.max(pastYears + futureYears, 1);
+  const annual = monthly * 12;
+  const maxVal = Math.max(annual * totalYears, 10000) * 1.1;
+
+  const padL = 60, padR = 20, padT = 20, padB = 35;
+  const chartW = W - padL - padR;
+  const chartH = H - padT - padB;
+
+  // Grid lines
+  ctx.strokeStyle = 'rgba(255,255,255,0.04)';
+  ctx.lineWidth = 1;
+  const ySteps = 4;
+  for (let i = 0; i <= ySteps; i++) {
+    const y = padT + (chartH / ySteps) * i;
+    ctx.beginPath();
+    ctx.moveTo(padL, y);
+    ctx.lineTo(W - padR, y);
+    ctx.stroke();
+    const val = maxVal - (maxVal / ySteps) * i;
+    ctx.fillStyle = '#5a5d68';
+    ctx.font = '500 11px Inter, sans-serif';
+    ctx.textAlign = 'right';
+    ctx.fillText('$' + Math.round(val).toLocaleString(), padL - 8, y + 4);
+  }
+
+  // X axis labels
+  const xSteps = Math.min(totalYears, 10);
+  ctx.fillStyle = '#5a5d68';
+  ctx.font = '500 11px Inter, sans-serif';
+  ctx.textAlign = 'center';
+  for (let i = 0; i <= xSteps; i++) {
+    const yr = Math.round((totalYears / xSteps) * i);
+    const x = padL + (chartW / xSteps) * i;
+    ctx.fillText(yr === 0 ? 'Now' : 'Yr ' + yr, x, H - padB + 18);
+  }
+
+  // Past/Future divider
+  if (pastYears > 0 && futureYears > 0) {
+    const divX = padL + (chartW / totalYears) * pastYears;
+    ctx.strokeStyle = 'rgba(139,142,152,0.2)';
+    ctx.setLineDash([4, 4]);
+    ctx.beginPath();
+    ctx.moveTo(divX, padT);
+    ctx.lineTo(divX, H - padB);
+    ctx.stroke();
+    ctx.setLineDash([]);
+    ctx.fillStyle = '#8b8e98';
+    ctx.font = '600 10px Inter, sans-serif';
+    ctx.textAlign = 'center';
+    ctx.fillText('Today', divX, padT + 12);
+  }
+
+  // Renting line
+  ctx.strokeStyle = '#ef4444';
+  ctx.lineWidth = 3;
+  ctx.lineJoin = 'round';
+  ctx.lineCap = 'round';
+  ctx.beginPath();
+  for (let y = 0; y <= totalYears; y++) {
+    const val = annual * y;
+    const px = padL + (chartW / totalYears) * y;
+    const py = padT + chartH - (val / maxVal) * chartH;
+    if (y === 0) ctx.moveTo(px, py); else ctx.lineTo(px, py);
+  }
+  ctx.stroke();
+
+  // Fill under renting
+  ctx.lineTo(padL + chartW, H - padB);
+  ctx.lineTo(padL, H - padB);
+  ctx.closePath();
+  const rentGrad = ctx.createLinearGradient(0, padT, 0, H - padB);
+  rentGrad.addColorStop(0, 'rgba(239,68,68,0.15)');
+  rentGrad.addColorStop(1, 'rgba(239,68,68,0)');
+  ctx.fillStyle = rentGrad;
+  ctx.fill();
+
+  // Owning line (flat $10K)
+  ctx.strokeStyle = '#22c55e';
+  ctx.lineWidth = 3;
+  ctx.beginPath();
+  const ownY = padT + chartH - (10000 / maxVal) * chartH;
+  ctx.moveTo(padL, ownY);
+  ctx.lineTo(padL + chartW, ownY);
+  ctx.stroke();
+
+  // Fill under owning
+  ctx.lineTo(padL + chartW, H - padB);
+  ctx.lineTo(padL, H - padB);
+  ctx.closePath();
+  const ownGrad = ctx.createLinearGradient(0, ownY, 0, H - padB);
+  ownGrad.addColorStop(0, 'rgba(34,197,94,0.12)');
+  ownGrad.addColorStop(1, 'rgba(34,197,94,0)');
+  ctx.fillStyle = ownGrad;
+  ctx.fill();
+
+  // End points
+  ctx.fillStyle = '#ef4444';
+  ctx.beginPath();
+  const rentEndX = padL + chartW;
+  const rentEndY = padT + chartH - (annual * totalYears / maxVal) * chartH;
+  ctx.arc(rentEndX, rentEndY, 5, 0, Math.PI * 2);
+  ctx.fill();
+
+  ctx.fillStyle = '#22c55e';
+  ctx.beginPath();
+  ctx.arc(padL + chartW, ownY, 5, 0, Math.PI * 2);
+  ctx.fill();
+
+  // Labels at end points
+  ctx.font = '700 12px Outfit, sans-serif';
+  ctx.textAlign = 'left';
+  ctx.fillStyle = '#f87171';
+  ctx.fillText('$' + Math.round(annual * totalYears).toLocaleString(), rentEndX + 8, rentEndY + 4);
+  ctx.fillStyle = '#4ade80';
+  ctx.fillText('$10,000', padL + chartW + 8, ownY + 4);
+}
+
+window.addEventListener('resize', () => {
+  const tools = Object.values(activeTools);
+  const monthly = tools.reduce((s, t) => s + (t.price * t.seats), 0);
+  if (monthly > 0 && document.getElementById('results').style.display !== 'none') {
+    const pastYrs = parseInt(document.getElementById('yearsSlider').value);
+    const futureYrs = parseInt(document.getElementById('futureSlider').value);
+    drawChart(monthly, pastYrs, futureYrs);
+  }
+});
 
 updateSliderFill(slider);
 updateSliderFill(futureSlider);
