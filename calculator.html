@@ -315,11 +315,6 @@ canvas#lineChart{width:100%;height:280px;display:block}
       <button class="mode-btn" id="modeYearly" onclick="switchFreq('yearly')">Yearly</button>
     </div>
 
-    <div class="mode-toggle" style="margin-top:.75rem">
-      <button class="mode-btn active" id="modeQuick" onclick="switchMode('quick')">Total Cost</button>
-      <button class="mode-btn" id="modeTools" onclick="switchMode('tools')">Tool by Tool</button>
-    </div>
-
     <div class="quick-cost" id="quickPanel">
       <div class="qc-label">How much do you spend <span id="qcFreqLabel">per month</span> on all your software?</div>
       <div class="qc-wrap">
@@ -328,16 +323,6 @@ canvas#lineChart{width:100%;height:280px;display:block}
         <span class="qc-per" id="qcPer">/ mo</span>
       </div>
       <div class="qc-hint">Include CRM, scheduling, invoicing, estimating, communication — everything you pay for.</div>
-    </div>
-
-    <div class="quick-cost" id="toolsPanel" style="display:none">
-      <p class="step-desc" style="text-align:left;margin-bottom:1.5rem">Tap each tool you use. Enter what you pay <span id="toolFreqLabel">per month</span>.</p>
-      <div class="tool-grid" id="toolGrid"></div>
-      <div class="custom-tool">
-        <input type="text" class="custom-input" id="customName" placeholder="Add another tool (e.g. CompanyCam)">
-        <input type="number" class="custom-input" id="customPrice" placeholder="$ per mo" style="max-width:160px" min="0">
-        <button class="custom-add" onclick="addCustomTool()">+ Add Tool</button>
-      </div>
     </div>
 
     <div class="step-nav">
