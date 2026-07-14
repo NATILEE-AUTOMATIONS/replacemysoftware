@@ -409,7 +409,7 @@ canvas#lineChart{width:100%;height:280px;display:block}
         </div>
         <div class="stat-item success">
           <div class="lbl">If you owned instead</div>
-          <div class="val" id="rptOwnCost">$10,000</div>
+          <div class="val" id="rptOwnCost">Starting at $10K</div>
           <div class="sub">one-time payment</div>
         </div>
         <div class="stat-item success">
@@ -436,7 +436,7 @@ canvas#lineChart{width:100%;height:280px;display:block}
         <div class="bd-row"><span class="bd-name">Yearly software spend</span><span class="bd-val red" id="bdYearly">$0/yr</span></div>
         <div class="bd-row"><span class="bd-name">Spent so far (<span id="bdPastYrs">3</span> yrs)</span><span class="bd-val red" id="bdSpent">$0</span></div>
         <div class="bd-row"><span class="bd-name">Future spend (<span id="bdFutureYrs">10</span> yrs)</span><span class="bd-val red" id="bdFuture">$0</span></div>
-        <div class="bd-row"><span class="bd-name">Custom CRM one-time cost</span><span class="bd-val green">$10,000</span></div>
+        <div class="bd-row"><span class="bd-name">Custom CRM one-time cost</span><span class="bd-val green">Starting at $10K</span></div>
         <div class="bd-row total"><span class="bd-name">Your total savings by owning</span><span class="bd-val green" id="bdSavings">$0</span></div>
       </div>
 
@@ -449,7 +449,7 @@ canvas#lineChart{width:100%;height:280px;display:block}
 
       <div class="cta" style="border:none;background:linear-gradient(135deg,rgba(59,130,246,.08),rgba(34,197,94,.06));margin-bottom:0">
         <h2>Stop paying forever. Own it once.</h2>
-        <p>Custom CRM built around your workflow. $10K. One time. Done.</p>
+        <p>Custom CRM built around your workflow. Starting at $10K. One time. Done.</p>
         <a href="/apply" class="cta-btn">Apply Now →</a>
         <p class="cta-note">Takes 3 minutes. No commitment.</p>
       </div>
@@ -462,7 +462,7 @@ canvas#lineChart{width:100%;height:280px;display:block}
 <div class="container" style="max-width:700px">
     <div class="cta" style="border:1px solid rgba(59,130,246,.25);padding:3.5rem 2.5rem}">
       <h2>Tired of paying month to month for software?</h2>
-      <p>Get a custom CRM built around your workflow. $10K. One time. No more subscriptions.</p>
+      <p>Get a custom CRM built around your workflow. Starting at $10K. One time. No more subscriptions.</p>
       <a href="/apply" class="cta-btn">Apply Now →</a>
       <p class="cta-note">Takes 3 minutes. No commitment.</p>
     </div>
@@ -944,7 +944,7 @@ function drawChart(monthly, pastYears, futureYears) {
   ctx.fillStyle = '#f87171';
   ctx.fillText('$' + Math.round(annual * totalYears).toLocaleString(), rentEndX + 8, rentEndY + 4);
   ctx.fillStyle = '#4ade80';
-  ctx.fillText('$10,000', padL + chartW + 8, ownY + 4);
+  ctx.fillText('Starting at $10K', padL + chartW + 8, ownY + 4);
 }
 
 window.addEventListener('resize', () => {
