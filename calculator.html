@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>document.documentElement.classList.add("js-ready")</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-18299539049"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'AW-18299539049');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="google-site-verification" content="etitPt59OIFXf49QI2WmosNm3EIDRLzTJCyoia_2ZR4">
+<title>CRM Cost Calculator — How Much Are You Wasting? | Replace My Software</title>
+<link rel="canonical" href="https://replacemysoftware.com/calculator">
+<meta name="description" content="Free CRM ROI calculator. See how much you've spent on SaaS subscriptions like JobNimbus, ServiceTitan, Housecall Pro, and SalesRabbit. Compare renting vs owning your software.">
+<meta name="keywords" content="crm cost calculator, roofing software cost, jobnimbus cost, servicetitan cost, crm roi calculator, software rent vs buy">
+<link rel="icon" type="image/png" href="/logo.png">
+<link rel="apple-touch-icon" href="/logo.png">
+<meta property="og:title" content="CRM Cost Calculator — How Much Are You Wasting?">
+<meta property="og:description" content="See how much you've spent on SaaS subscriptions. Compare renting vs owning your CRM. Free tool.">
+<meta property="og:image" content="https://replacemysoftware.com/og-image-v3.png">
+<meta property="og:url" content="https://replacemysoftware.com/calculator">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="CRM Cost Calculator — How Much Are You Wasting?">
+<meta name="twitter:description" content="See how much you've spent on SaaS subscriptions. Compare renting vs owning your CRM. Free tool.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#060709;--bg-2:#0a0b0f;--bg-card:#0d0e12;--bg-hover:#14151a;--fg:#e8e9ed;--muted:#7a7d86;--border:#1a1b22;--accent:#3b82f6;--accent-light:#60a5fa;--accent-soft:rgba(59,130,246,.12);--accent-glow:rgba(59,130,246,.4);--green:#22c55e;--green-soft:rgba(34,197,94,.12);--red:#ef4444;--red-soft:rgba(239,68,68,.1);--orange:#f59e0b;--fd:'Space Grotesk',sans-serif;--fb:'Inter',sans-serif;--fm:'JetBrains Mono',monospace}
+*{margin:0;padding:0;box-sizing:border-box}html,body{max-width:100vw;overflow-x:hidden}
+body{background:var(--bg);color:var(--fg);font-family:var(--fb);font-size:19px;line-height:1.7;min-height:100vh}
+a{color:inherit;text-decoration:none}
+.container{max-width:820px;margin:0 auto;padding:0 1.5rem}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(6,7,9,.8);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+.nav-inner{max-width:820px;margin:0 auto;padding:.85rem 1.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem}
+.nav-brand{display:flex;align-items:center;gap:.6rem;font-family:var(--fd);font-weight:700;font-size:1.1rem;min-width:0}
+.nav-brand img{width:30px;height:30px;border-radius:6px;flex-shrink:0}
+.nav-brand .accent{color:var(--accent-light)}
+.nav-brand .brand-text{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.nav-cta{padding:.65rem 1.4rem;background:var(--accent);color:#fff;border-radius:8px;font-weight:600;font-size:.95rem;transition:all .2s;flex-shrink:0;white-space:nowrap}
+.nav-cta:hover{transform:translateY(-1px);box-shadow:0 4px 20px var(--accent-glow)}
+
+/* Hero */
+.hero{padding:7rem 0 2rem;text-align:center;position:relative;overflow:hidden}
+.hero-orb{position:absolute;border-radius:50%;filter:blur(80px);opacity:.1;pointer-events:none}
+.orb-1{width:500px;height:500px;background:var(--accent);top:-100px;left:50%;transform:translateX(-50%)}
+.orb-2{width:400px;height:400px;background:var(--red);top:200px;right:-100px;opacity:.06}
+.hero-badge{display:inline-flex;align-items:center;gap:.6rem;padding:.7rem 1.8rem;background:var(--green-soft);border:1px solid rgba(34,197,94,.25);border-radius:999px;font-size:1.1rem;color:var(--green);font-weight:600;margin-bottom:1.5rem}
+.hero h1{font-family:var(--fd);font-size:clamp(2.2rem,6vw,3.5rem);font-weight:700;line-height:1.15;letter-spacing:-.02em;margin-bottom:1rem}
+.hero h1 .red{color:var(--red)}
+.hero h1 .green{color:var(--green)}
+.hero-sub{font-size:1.25rem;color:var(--muted);max-width:600px;margin:0 auto}
+
+/* Calculator */
+.calc{padding:2rem 0 4rem}
+.calc-card{background:var(--bg-card);border:1px solid var(--border);border-radius:20px;padding:2.5rem;margin-bottom:1.5rem}
+.calc-card h2{font-family:var(--fd);font-size:1.5rem;font-weight:600;margin-bottom:.5rem;display:flex;align-items:center;gap:.6rem}
+.calc-card h2 .icon{width:36px;height:36px;border-radius:10px;background:var(--accent-soft);display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0}
+.calc-desc{color:var(--muted);font-size:1.05rem;margin-bottom:1.5rem}
+
+/* Tool selector */
+.tool-list{display:flex;flex-direction:column;gap:.75rem}
+.tool-row{display:flex;align-items:center;gap:1rem;padding:1rem 1.25rem;background:var(--bg-2);border:1px solid var(--border);border-radius:14px;transition:all .15s}
+.tool-row:hover{border-color:rgba(59,130,246,.3)}
+.tool-row.active{border-color:var(--accent);background:var(--accent-soft)}
+.tool-check{width:24px;height:24px;border-radius:8px;border:2px solid var(--border);display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0;transition:all .15s;font-size:.85rem;color:#fff}
+.tool-row.active .tool-check{background:var(--accent);border-color:var(--accent)}
+.tool-check::after{content:'✓';opacity:0;transition:opacity .1s}
+.tool-row.active .tool-check::after{opacity:1}
+.tool-info{flex:1;min-width:0}
+.tool-name{font-weight:600;font-size:1.1rem;color:var(--fg)}
+.tool-price{font-size:.9rem;color:var(--muted)}
+.tool-price strong{color:var(--accent-light);font-family:var(--fm)}
+.tool-inputs{display:flex;gap:.75rem;align-items:center;flex-shrink:0}
+.tool-seats{width:70px;background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:.6rem .75rem;color:var(--fg);font-size:1rem;font-family:var(--fm);text-align:center}
+.tool-seats:focus{outline:none;border-color:var(--accent)}
+.tool-seats-label{font-size:.75rem;color:var(--muted);white-space:nowrap}
+
+/* Custom tool */
+.add-custom{display:flex;gap:.75rem;margin-top:.75rem;align-items:center}
+.custom-name{flex:1;background:var(--bg-2);border:1px solid var(--border);border-radius:12px;padding:.75rem 1rem;color:var(--fg);font-size:1rem;font-family:var(--fb)}
+.custom-price{width:100px;background:var(--bg-2);border:1px solid var(--border);border-radius:12px;padding:.75rem 1rem;color:var(--fg);font-size:1rem;font-family:var(--fm)}
+.custom-add{padding:.75rem 1.2rem;background:var(--accent-soft);border:1px solid var(--accent);border-radius:12px;color:var(--accent-light);font-weight:600;cursor:pointer;font-size:.95rem;transition:all .15s;white-space:nowrap}
+.custom-add:hover{background:var(--accent);color:#fff}
+
+/* Years slider */
+.years-section{display:flex;flex-direction:column;align-items:center;gap:1rem;margin-top:1.5rem}
+.years-label{font-family:var(--fd);font-size:1.1rem;font-weight:600;color:var(--muted)}
+.years-value{font-family:var(--fd);font-size:3rem;font-weight:700;color:var(--accent-light);line-height:1}
+.years-slider{width:100%;max-width:400px;-webkit-appearance:none;appearance:none;height:8px;border-radius:4px;background:var(--border);outline:none}
+.years-slider::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:28px;height:28px;border-radius:50%;background:var(--accent);cursor:pointer;box-shadow:0 2px 12px var(--accent-glow);transition:transform .1s}
+.years-slider::-webkit-slider-thumb:hover{transform:scale(1.15)}
+.years-slider::-moz-range-thumb{width:28px;height:28px;border-radius:50%;background:var(--accent);cursor:pointer;border:none;box-shadow:0 2px 12px var(--accent-glow)}
+
+/* Results */
+.results{margin-top:2rem}
+.result-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1.5rem}
+.result-card{background:var(--bg-2);border:1px solid var(--border);border-radius:16px;padding:2rem;text-align:center}
+.result-card.red{border-color:rgba(239,68,68,.2);background:rgba(239,68,68,.04)}
+.result-card.green{border-color:rgba(34,197,94,.2);background:rgba(34,197,94,.04)}
+.result-label{font-size:.95rem;color:var(--muted);margin-bottom:.5rem;font-weight:500}
+.result-value{font-family:var(--fd);font-size:2.5rem;font-weight:700;line-height:1}
+.result-card.red .result-value{color:var(--red)}
+.result-card.green .result-value{color:var(--green)}
+.result-sub{font-size:.85rem;color:var(--muted);margin-top:.5rem}
+
+/* Chart */
+.chart-section{background:var(--bg-2);border:1px solid var(--border);border-radius:16px;padding:2rem;margin-bottom:1.5rem}
+.chart-title{font-family:var(--fd);font-size:1.2rem;font-weight:600;margin-bottom:1.5rem;text-align:center}
+.chart-bars{display:flex;flex-direction:column;gap:1.25rem}
+.chart-bar-row{display:flex;align-items:center;gap:1rem}
+.chart-bar-label{width:140px;font-size:.95rem;font-weight:600;color:var(--muted);flex-shrink:0;text-align:right}
+.chart-bar-track{flex:1;height:48px;background:var(--bg);border-radius:12px;overflow:hidden;position:relative}
+.chart-bar-fill{height:100%;border-radius:12px;display:flex;align-items:center;justify-content:flex-end;padding-right:1rem;font-family:var(--fm);font-weight:600;font-size:1rem;color:#fff;transition:width 1s cubic-bezier(.4,0,.2,1);width:0}
+.chart-bar-fill.rent{background:linear-gradient(90deg,var(--red),#dc2626)}
+.chart-bar-fill.own{background:linear-gradient(90deg,var(--green),#16a34a)}
+
+/* Break-even */
+.break-even{text-align:center;background:linear-gradient(135deg,rgba(34,197,94,.06),rgba(59,130,246,.06));border:1px solid rgba(34,197,94,.15);border-radius:16px;padding:2rem;margin-bottom:1.5rem}
+.break-even .be-label{font-size:1.1rem;color:var(--muted);margin-bottom:.5rem}
+.break-even .be-value{font-family:var(--fd);font-size:2.2rem;font-weight:700;color:var(--green)}
+.break-even .be-desc{font-size:1rem;color:var(--muted);margin-top:.5rem}
+
+/* Summary */
+.summary{text-align:center;padding:2rem;background:var(--bg-card);border:1px solid var(--border);border-radius:16px;margin-bottom:2rem}
+.summary p{font-size:1.3rem;color:var(--fg);line-height:1.5}
+.summary .highlight{color:var(--red);font-weight:700}
+.summary .save{color:var(--green);font-weight:700}
+
+/* CTA */
+.cta-section{text-align:center;padding:2.5rem 2rem;background:linear-gradient(135deg,var(--bg-card),var(--bg-2));border:1px solid rgba(59,130,246,.2);border-radius:20px;margin-bottom:3rem}
+.cta-section h2{font-family:var(--fd);font-size:2rem;font-weight:700;margin-bottom:1rem}
+.cta-section p{color:var(--muted);font-size:1.15rem;margin-bottom:1.5rem}
+.cta-btn{display:inline-flex;align-items:center;gap:.5rem;padding:1.1rem 2.5rem;background:var(--accent);color:#fff;border-radius:14px;font-weight:700;font-size:1.2rem;transition:all .2s;box-shadow:0 4px 24px var(--accent-glow)}
+.cta-btn:hover{transform:translateY(-2px);box-shadow:0 8px 32px var(--accent-glow)}
+.cta-note{font-size:.85rem;color:var(--muted);margin-top:.75rem}
+
+/* Empty state */
+.empty{display:none;text-align:center;padding:2rem;color:var(--muted);font-size:1.05rem}
+.empty.show{display:block}
+
+/* FAQ */
+.faq{padding:1rem 0 3rem}
+.faq h2{font-family:var(--fd);font-size:1.8rem;font-weight:700;text-align:center;margin-bottom:1.5rem}
+.faq-item{background:var(--bg-card);border:1px solid var(--border);border-radius:14px;padding:1.5rem;margin-bottom:.75rem;cursor:pointer;transition:border-color .15s}
+.faq-item:hover{border-color:rgba(59,130,246,.2)}
+.faq-q{font-weight:600;font-size:1.1rem;color:var(--fg);display:flex;justify-content:space-between;align-items:center}
+.faq-q::after{content:'+';font-size:1.5rem;color:var(--muted);transition:transform .2s}
+.faq-item.open .faq-q::after{transform:rotate(45deg)}
+.faq-a{display:none;margin-top:1rem;color:var(--muted);font-size:1rem;line-height:1.7}
+.faq-item.open .faq-a{display:block;animation:fadeIn .2s}
+@keyframes fadeIn{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:translateY(0)}}
+
+/* Mobile */
+@media(max-width:600px){
+  body{font-size:18px}
+  .hero{padding:5.5rem 0 2rem}
+  .nav-brand{font-size:.95rem}
+  .nav-brand img{width:26px;height:26px}
+  .nav-cta{padding:.5rem 1rem;font-size:.85rem}
+  .calc-card{padding:1.75rem 1.5rem}
+  .result-grid{grid-template-columns:1fr}
+  .result-value{font-size:2rem}
+  .chart-bar-label{width:90px;font-size:.85rem}
+  .chart-bar-track{height:40px}
+  .chart-bar-fill{font-size:.85rem;padding-right:.6rem}
+  .tool-row{flex-wrap:wrap;gap:.75rem}
+  .tool-inputs{width:100%;justify-content:flex-end}
+  .cta-section h2{font-size:1.5rem}
+  .cta-btn{font-size:1.05rem;padding:.9rem 2rem}
+  .years-value{font-size:2.5rem}
+  .add-custom{flex-wrap:wrap}
+  .custom-name{flex:1 1 100%}
+  .custom-price{width:auto;flex:1}
+  .custom-add{flex:1}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="/" class="nav-brand">
+      <img src="/logo.png" alt="">
+      <span class="brand-text">Replace<span class="accent">My</span>Software</span>
+    </a>
+    <a href="/apply" class="nav-cta">Apply Now</a>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="hero-orb orb-1"></div>
+  <div class="hero-orb orb-2"></div>
+  <div class="container">
+    <div class="hero-badge">📊 Free CRM Cost Calculator</div>
+    <h1>How Much Are You<br><span class="red">Wasting on SaaS?</span></h1>
+    <p class="hero-sub">Pick the tools you pay for. See what you've spent, what you'll spend, and how much you'd save by owning instead of renting.</p>
+  </div>
+</section>
+
+<!-- Calculator -->
+<section class="calc">
+  <div class="container">
+
+    <!-- Step 1: Tools -->
+    <div class="calc-card">
+      <h2><span class="icon">🔧</span> Your Current Tools</h2>
+      <p class="calc-desc">Check every tool you pay for. Enter how many users (seats) you have.</p>
+      <div class="tool-list" id="toolList">
+        <!-- Tools injected by JS -->
+      </div>
+      <div class="add-custom">
+        <input type="text" class="custom-name" id="customName" placeholder="Add another tool (e.g. CompanyCam)">
+        <input type="number" class="custom-price" id="customPrice" placeholder="$/mo" min="0">
+        <button class="custom-add" onclick="addCustomTool()">+ Add</button>
+      </div>
+    </div>
+
+    <!-- Step 2: Years -->
+    <div class="calc-card">
+      <h2><span class="icon">📅</span> How Long Have You Been Using These?</h2>
+      <p class="calc-desc">Drag to set how many years you've been paying for these tools (and want to project forward).</p>
+      <div class="years-section">
+        <div class="years-label">Years using these tools</div>
+        <div class="years-value" id="yearsValue">3</div>
+        <input type="range" class="years-slider" id="yearsSlider" min="1" max="10" value="3" step="1">
+      </div>
+    </div>
+
+    <!-- Results -->
+    <div class="results" id="results" style="display:none">
+      <div class="result-grid">
+        <div class="result-card red">
+          <div class="result-label">Total spent so far</div>
+          <div class="result-value" id="spentSoFar">$0</div>
+          <div class="result-sub" id="spentSub">across all tools</div>
+        </div>
+        <div class="result-card red">
+          <div class="result-label">Next 5 years at this rate</div>
+          <div class="result-value" id="nextFive">$0</div>
+          <div class="result-sub">if you keep renting</div>
+        </div>
+      </div>
+
+      <div class="chart-section">
+        <div class="chart-title">Renting vs. Owning — Over <span id="chartYears">3</span> Years</div>
+        <div class="chart-bars">
+          <div class="chart-bar-row">
+            <div class="chart-bar-label">SaaS Subscriptions</div>
+            <div class="chart-bar-track"><div class="chart-bar-fill rent" id="barRent">$0</div></div>
+          </div>
+          <div class="chart-bar-row">
+            <div class="chart-bar-label">Custom CRM ($10K)</div>
+            <div class="chart-bar-track"><div class="chart-bar-fill own" id="barOwn">$10,000</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="break-even">
+        <div class="be-label">You'd break even in</div>
+        <div class="be-value" id="breakEven">— months</div>
+        <div class="be-desc" id="breakEvenDesc">After that, you're saving money every month.</div>
+      </div>
+
+      <div class="summary" id="summary">
+        <p id="summaryText"></p>
+      </div>
+
+      <div class="cta-section">
+        <h2>Stop Renting. Own Your Tools.</h2>
+        <p>Get a custom CRM built around your workflow. Starting at $10K. One time.</p>
+        <a href="/apply" class="cta-btn">Apply Now →</a>
+        <p class="cta-note">Takes 3 minutes. No commitment.</p>
+      </div>
+    </div>
+
+    <div class="empty" id="emptyState">
+      👆 Pick at least one tool above to see your numbers.
+    </div>
+
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq">
+  <div class="container">
+    <h2>Questions</h2>
+    <div class="faq-item" onclick="this.classList.toggle('open')">
+      <div class="faq-q">Is this calculator free to use?</div>
+      <div class="faq-a">Yes. No signup, no email required. You can use it as many times as you want.</div>
+    </div>
+    <div class="faq-item" onclick="this.classList.toggle('open')">
+      <div class="faq-q">Are the tool prices accurate?</div>
+      <div class="faq-a">Prices are based on publicly listed starting rates as of 2026. Actual costs vary by plan, add-ons, and negotiation. Most companies pay more than the listed price after add-ons and per-seat increases.</div>
+    </div>
+    <div class="faq-item" onclick="this.classList.toggle('open')">
+      <div class="faq-q">What does a custom CRM actually cost?</div>
+      <div class="faq-a">Our custom CRMs start at $10K, one time. You own the code. No monthly per-seat fees. Optional retainer available for updates and maintenance. Compare that to paying $300-800/month forever.</div>
+    </div>
+    <div class="faq-item" onclick="this.classList.toggle('open')">
+      <div class="faq-q">What about hosting and ongoing costs?</div>
+      <div class="faq-a">Hosting on Vercel is free for most small businesses. Supabase (database) is free up to 500MB. Email alerts via Resend are free up to 3,000/month. Your only real ongoing cost is your domain (~$15/year). Optional retainer for updates is available if you want help maintaining it.</div>
+    </div>
+    <div class="faq-item" onclick="this.classList.toggle('open')">
+      <div class="faq-q">Can I add tools that aren't listed?</div>
+      <div class="faq-a">Yes. Use the "Add another tool" field to enter any software name and its monthly price per seat.</div>
+    </div>
+  </div>
+</section>
+
+<script>
+const TOOLS = [
+  { name: 'JobNimbus', price: 65, note: 'Pro plan, per user' },
+  { name: 'ServiceTitan', price: 300, note: 'Estimated avg per user' },
+  { name: 'Housecall Pro', price: 49, note: 'Basic plan, per user' },
+  { name: 'SalesRabbit', price: 40, note: 'Pro plan, per user' },
+  { name: 'Jobber', price: 49, note: 'Grow plan, per user' },
+  { name: 'Aspire (CSL)', price: 150, note: 'Estimated avg per user' },
+  { name: 'LMN', price: 99, note: 'Pro plan, per user' },
+  { name: 'CompanyCam', price: 24, note: 'Pro plan, per user' },
+  { name: 'AccuLynx', price: 79, note: 'Standard, per user' },
+  { name: 'Hatch', price: 35, note: 'Estimated, per user' }
+];
+
+let activeTools = {};
+
+function renderTools() {
+  const list = document.getElementById('toolList');
+  list.innerHTML = TOOLS.map((t, i) => `
+    <div class="tool-row" data-tool="${i}" onclick="toggleTool(${i})">
+      <div class="tool-check"></div>
+      <div class="tool-info">
+        <div class="tool-name">${t.name}</div>
+        <div class="tool-price"><strong>$${t.price}</strong>/mo per seat — ${t.note}</div>
+      </div>
+      <div class="tool-inputs">
+        <input type="number" class="tool-seats" value="1" min="1" max="100" onclick="event.stopPropagation()" onchange="updateSeats(${i}, this.value)" oninput="updateSeats(${i}, this.value)">
+        <span class="tool-seats-label">seats</span>
+      </div>
+    </div>
+  `).join('');
+}
+
+function toggleTool(i) {
+  const row = document.querySelector(`[data-tool="${i}"]`);
+  if (activeTools[i]) {
+    delete activeTools[i];
+    row.classList.remove('active');
+  } else {
+    const seats = parseInt(row.querySelector('.tool-seats').value) || 1;
+    activeTools[i] = { ...TOOLS[i], seats };
+    row.classList.add('active');
+  }
+  calculate();
+}
+
+function updateSeats(i, val) {
+  if (activeTools[i]) {
+    activeTools[i].seats = Math.max(1, parseInt(val) || 1);
+    calculate();
+  }
+}
+
+function addCustomTool() {
+  const name = document.getElementById('customName').value.trim();
+  const price = parseFloat(document.getElementById('customPrice').value);
+  if (!name || !price || price < 0) return;
+  const id = 'custom_' + Date.now();
+  const list = document.getElementById('toolList');
+  const div = document.createElement('div');
+  div.className = 'tool-row active';
+  div.dataset.tool = id;
+  div.onclick = () => { div.remove(); delete activeTools[id]; calculate(); };
+  div.innerHTML = `
+    <div class="tool-check"></div>
+    <div class="tool-info">
+      <div class="tool-name">${name}</div>
+      <div class="tool-price"><strong>$${price}</strong>/mo per seat — custom</div>
+    </div>
+    <div class="tool-inputs">
+      <input type="number" class="tool-seats" value="1" min="1" max="100" onclick="event.stopPropagation()" onchange="updateCustomSeats('${id}', this.value)" oninput="updateCustomSeats('${id}', this.value)">
+      <span class="tool-seats-label">seats</span>
+    </div>
+  `;
+  list.appendChild(div);
+  activeTools[id] = { name, price, seats: 1, custom: true };
+  document.getElementById('customName').value = '';
+  document.getElementById('customPrice').value = '';
+  calculate();
+}
+
+function updateCustomSeats(id, val) {
+  if (activeTools[id]) {
+    activeTools[id].seats = Math.max(1, parseInt(val) || 1);
+    calculate();
+  }
+}
+
+function calculate() {
+  const tools = Object.values(activeTools);
+  const years = parseInt(document.getElementById('yearsSlider').value);
+  const monthlyTotal = tools.reduce((sum, t) => sum + (t.price * t.seats), 0);
+  const annualTotal = monthlyTotal * 12;
+  const spentSoFar = annualTotal * years;
+  const nextFive = annualTotal * 5;
+
+  if (tools.length === 0) {
+    document.getElementById('results').style.display = 'none';
+    document.getElementById('emptyState').classList.add('show');
+    return;
+  }
+
+  document.getElementById('results').style.display = 'block';
+  document.getElementById('emptyState').classList.remove('show');
+
+  document.getElementById('spentSoFar').textContent = '$' + Math.round(spentSoFar).toLocaleString();
+  document.getElementById('nextFive').textContent = '$' + Math.round(nextFive).toLocaleString();
+  document.getElementById('chartYears').textContent = years;
+
+  // 10-year projection for chart
+  const tenYearRent = annualTotal * 10;
+  const ownCost = 10000;
+  const rentPct = Math.min(100, (tenYearRent / Math.max(tenYearRent, ownCost)) * 100);
+  const ownPct = Math.min(100, (ownCost / Math.max(tenYearRent, ownCost)) * 100);
+
+  const barRent = document.getElementById('barRent');
+  const barOwn = document.getElementById('barOwn');
+
+  // Reset for animation
+  barRent.style.width = '0%';
+  barOwn.style.width = '0%';
+  barRent.textContent = '$' + Math.round(tenYearRent).toLocaleString();
+  barOwn.textContent = '$10,000';
+
+  setTimeout(() => {
+    barRent.style.width = rentPct + '%';
+    barOwn.style.width = ownPct + '%';
+  }, 100);
+
+  // Break-even
+  const customCost = 10000;
+  const breakEvenMonths = monthlyTotal > 0 ? Math.ceil(customCost / monthlyTotal) : 0;
+  document.getElementById('breakEven').textContent = breakEvenMonths + ' months';
+  if (breakEvenMonths > 0) {
+    document.getElementById('breakEvenDesc').textContent = `After ${breakEvenMonths} months, you're saving ${Math.round(monthlyTotal).toLocaleString()}/month. Over ${years} years, that's $${Math.round(spentSoFar - customCost).toLocaleString()} saved.`;
+  }
+
+  // Summary
+  const savings = spentSoFar - customCost;
+  let summaryHTML = '';
+  if (savings > 0) {
+    summaryHTML = `You've spent <span class="highlight">$${Math.round(spentSoFar).toLocaleString()}</span> on subscriptions over ${years} years. A custom CRM would have cost <span class="save">$10,000</span>. You'd have saved <span class="save">$${Math.round(savings).toLocaleString()}</span>.`;
+  } else {
+    const remaining = customCost - spentSoFar;
+    summaryHTML = `You've spent <span class="highlight">$${Math.round(spentSoFar).toLocaleString()}</span> so far. A custom CRM costs <span class="save">$10,000</span>. You'll break even in <span class="save">${breakEvenMonths} months</span>, then save <span class="save">$${Math.round(monthlyTotal).toLocaleString()}/month</span> forever.`;
+  }
+  document.getElementById('summaryText').innerHTML = summaryHTML;
+}
+
+document.getElementById('yearsSlider').addEventListener('input', function() {
+  document.getElementById('yearsValue').textContent = this.value;
+  calculate();
+});
+
+renderTools();
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Is this CRM cost calculator free to use?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Yes. No signup, no email required. You can use it as many times as you want." }
+    },
+    {
+      "@type": "Question",
+      "name": "Are the tool prices accurate?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Prices are based on publicly listed starting rates as of 2026. Actual costs vary by plan, add-ons, and negotiation. Most companies pay more than the listed price after add-ons and per-seat increases." }
+    },
+    {
+      "@type": "Question",
+      "name": "What does a custom CRM actually cost?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Our custom CRMs start at $10K, one time. You own the code. No monthly per-seat fees. Optional retainer available for updates and maintenance. Compare that to paying $300-800/month forever." }
+    },
+    {
+      "@type": "Question",
+      "name": "What about hosting and ongoing costs?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Hosting on Vercel is free for most small businesses. Supabase (database) is free up to 500MB. Email alerts via Resend are free up to 3,000/month. Your only real ongoing cost is your domain (~$15/year). Optional retainer for updates is available if you want help maintaining it." }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I add tools that aren't listed?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Yes. Use the Add another tool field to enter any software name and its monthly price per seat." }
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "CRM Cost Calculator",
+  "url": "https://replacemysoftware.com/calculator",
+  "description": "Free CRM ROI calculator. See how much you've spent on SaaS subscriptions and compare renting vs owning your CRM.",
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "Web",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "publisher": { "@type": "Organization", "name": "Replace My Software", "url": "https://replacemysoftware.com" }
+}
+</script>
+</body>
+</html>

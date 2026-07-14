@@ -64,6 +64,10 @@
     {
       "source": "/hermes-setup",
       "destination": "/hermes-setup.html"
+    },
+    {
+      "source": "/calculator",
+      "destination": "/calculator.html"
     }
   ],
   "headers": [
