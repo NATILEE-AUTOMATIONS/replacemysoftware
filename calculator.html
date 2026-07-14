@@ -188,6 +188,18 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(6,7,9,.8);ba
 .stat-item.success::after{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--green),transparent)}
 
 .chart-wrap{background:var(--bg-elev);border:1px solid var(--border);border-radius:20px;padding:2.5rem;margin-bottom:2.5rem;position:relative;overflow:hidden}
+/* Bar comparison */
+.bar-compare{display:flex;flex-direction:column;gap:1.5rem;padding:1rem 0}
+.bar-row{display:flex;flex-direction:column;gap:.5rem}
+.bar-label{font-size:1rem;color:var(--muted);font-weight:600}
+.bar-track{height:56px;background:var(--bg-elev);border-radius:14px;overflow:hidden;position:relative}
+.bar-fill{height:100%;border-radius:14px;display:flex;align-items:center;justify-content:flex-end;padding:0 1.25rem;transition:width 1s cubic-bezier(.16,1,.3,1);min-width:80px}
+.bar-fill.rent{background:linear-gradient(90deg,rgba(239,68,68,.15),rgba(239,68,68,.5))}
+.bar-fill.own{background:linear-gradient(90deg,rgba(34,197,94,.15),rgba(34,197,94,.5))}
+.bar-val{font-family:var(--fd);font-weight:800;font-size:1.15rem;color:#fff;white-space:nowrap}
+.bar-savings{margin-top:1.5rem;padding:1.25rem 1.5rem;background:linear-gradient(135deg,rgba(34,197,94,.08),rgba(59,130,246,.06));border:1px solid rgba(34,197,94,.2);border-radius:14px;display:flex;justify-content:space-between;align-items:center}
+.bar-savings-label{font-size:1.1rem;font-weight:600;color:var(--fg)}
+.bar-savings-val{font-family:var(--fd);font-size:1.8rem;font-weight:800;color:var(--green-light)}
 .chart-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:1.5rem;flex-wrap:wrap;gap:.5rem}
 .chart-title{font-family:var(--fd);font-weight:700;font-size:1.15rem}
 .chart-legend{display:flex;gap:1.25rem}
@@ -430,13 +442,34 @@ canvas#lineChart{width:100%;height:280px;display:block}
 
       <div class="chart-wrap">
         <div class="chart-head">
-          <div class="chart-title">Cost Over Time</div>
+          <div class="chart-title">Renting vs Owning</div>
           <div class="chart-legend">
             <div class="legend-item"><span class="legend-dot rent"></span> Renting SaaS</div>
             <div class="legend-item"><span class="legend-dot own"></span> Owning Custom CRM</div>
           </div>
         </div>
-        <canvas id="lineChart" width="800" height="280"></canvas>
+        <div class="bar-compare">
+          <div class="bar-row">
+            <div class="bar-label">You'll spend renting</div>
+            <div class="bar-track">
+              <div class="bar-fill rent" id="barRent" style="width:0">
+                <span class="bar-val" id="barRentVal">$0</span>
+              </div>
+            </div>
+          </div>
+          <div class="bar-row">
+            <div class="bar-label">You'd spend owning</div>
+            <div class="bar-track">
+              <div class="bar-fill own" id="barOwn" style="width:0">
+                <span class="bar-val" id="barOwnVal">Starting at $10K</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="bar-savings">
+          <span class="bar-savings-label">Your savings by owning</span>
+          <span class="bar-savings-val" id="barSavings">$0</span>
+        </div>
       </div>
 
       <div class="breakdown">
@@ -868,146 +901,18 @@ function calculate() {
     document.getElementById('breakevenDesc').textContent = `After ${beMonths} months, you keep ${fmt(monthly)}/month in your pocket. That's ${fmt(annual)} every year.`;
   }
 
-  drawChart(monthly, years, futureYears);
+  // Animate bars
+  const rentPct = Math.min((rentTotal / Math.max(rentTotal, 1)) * 100, 100);
+  const ownPct = Math.min((own / rentTotal) * 100, 100);
+  const barRent = document.getElementById('barRent');
+  const barOwn = document.getElementById('barOwn');
+  if (barRent) barRent.style.width = '100%';
+  if (barOwn) barOwn.style.width = ownPct + '%';
+  document.getElementById('barRentVal').textContent = fmt(rentTotal);
+  document.getElementById('barOwnVal').textContent = 'Starting at $10K';
+  document.getElementById('barSavings').textContent = fmt(savings);
 }
 
-// Line chart
-function drawChart(monthly, pastYears, futureYears) {
-  const canvas = document.getElementById('lineChart');
-  if (!canvas) return;
-  const dpr = window.devicePixelRatio || 1;
-  const rect = canvas.getBoundingClientRect();
-  canvas.width = rect.width * dpr;
-  canvas.height = 280 * dpr;
-  const ctx = canvas.getContext('2d');
-  ctx.scale(dpr, dpr);
-  const W = rect.width;
-  const H = 280;
-
-  ctx.clearRect(0, 0, W, H);
-
-  const totalYears = Math.max(pastYears + futureYears, 1);
-  const annual = monthly * 12;
-  const maxVal = Math.max(annual * totalYears, 10000) * 1.1;
-
-  const padL = 60, padR = 20, padT = 20, padB = 35;
-  const chartW = W - padL - padR;
-  const chartH = H - padT - padB;
-
-  ctx.strokeStyle = 'rgba(255,255,255,0.04)';
-  ctx.lineWidth = 1;
-  const ySteps = 4;
-  for (let i = 0; i <= ySteps; i++) {
-    const y = padT + (chartH / ySteps) * i;
-    ctx.beginPath();
-    ctx.moveTo(padL, y);
-    ctx.lineTo(W - padR, y);
-    ctx.stroke();
-    const val = maxVal - (maxVal / ySteps) * i;
-    ctx.fillStyle = '#5a5d68';
-    ctx.font = '500 11px Inter, sans-serif';
-    ctx.textAlign = 'right';
-    ctx.fillText('$' + Math.round(val).toLocaleString(), padL - 8, y + 4);
-  }
-
-  const xSteps = Math.min(totalYears, 10);
-  ctx.fillStyle = '#5a5d68';
-  ctx.font = '500 11px Inter, sans-serif';
-  ctx.textAlign = 'center';
-  for (let i = 0; i <= xSteps; i++) {
-    const yr = Math.round((totalYears / xSteps) * i);
-    const x = padL + (chartW / xSteps) * i;
-    ctx.fillText(yr === 0 ? 'Now' : 'Yr ' + yr, x, H - padB + 18);
-  }
-
-  if (pastYears > 0 && futureYears > 0) {
-    const divX = padL + (chartW / totalYears) * pastYears;
-    ctx.strokeStyle = 'rgba(139,142,152,0.2)';
-    ctx.setLineDash([4, 4]);
-    ctx.beginPath();
-    ctx.moveTo(divX, padT);
-    ctx.lineTo(divX, H - padB);
-    ctx.stroke();
-    ctx.setLineDash([]);
-    ctx.fillStyle = '#8b8e98';
-    ctx.font = '600 10px Inter, sans-serif';
-    ctx.textAlign = 'center';
-    ctx.fillText('Today', divX, padT + 12);
-  }
-
-  ctx.strokeStyle = '#ef4444';
-  ctx.lineWidth = 3;
-  ctx.lineJoin = 'round';
-  ctx.lineCap = 'round';
-  ctx.beginPath();
-  for (let y = 0; y <= totalYears; y++) {
-    const val = annual * y;
-    const px = padL + (chartW / totalYears) * y;
-    const py = padT + chartH - (val / maxVal) * chartH;
-    if (y === 0) ctx.moveTo(px, py); else ctx.lineTo(px, py);
-  }
-  ctx.stroke();
-
-  ctx.lineTo(padL + chartW, H - padB);
-  ctx.lineTo(padL, H - padB);
-  ctx.closePath();
-  const rentGrad = ctx.createLinearGradient(0, padT, 0, H - padB);
-  rentGrad.addColorStop(0, 'rgba(239,68,68,0.15)');
-  rentGrad.addColorStop(1, 'rgba(239,68,68,0)');
-  ctx.fillStyle = rentGrad;
-  ctx.fill();
-
-  ctx.strokeStyle = '#22c55e';
-  ctx.lineWidth = 3;
-  ctx.beginPath();
-  const ownY = padT + chartH - (10000 / maxVal) * chartH;
-  ctx.moveTo(padL, ownY);
-  ctx.lineTo(padL + chartW, ownY);
-  ctx.stroke();
-
-  ctx.lineTo(padL + chartW, H - padB);
-  ctx.lineTo(padL, H - padB);
-  ctx.closePath();
-  const ownGrad = ctx.createLinearGradient(0, ownY, 0, H - padB);
-  ownGrad.addColorStop(0, 'rgba(34,197,94,0.12)');
-  ownGrad.addColorStop(1, 'rgba(34,197,94,0)');
-  ctx.fillStyle = ownGrad;
-  ctx.fill();
-
-  ctx.fillStyle = '#ef4444';
-  ctx.beginPath();
-  const rentEndX = padL + chartW;
-  const rentEndY = padT + chartH - (annual * totalYears / maxVal) * chartH;
-  ctx.arc(rentEndX, rentEndY, 5, 0, Math.PI * 2);
-  ctx.fill();
-
-  ctx.fillStyle = '#22c55e';
-  ctx.beginPath();
-  ctx.arc(padL + chartW, ownY, 5, 0, Math.PI * 2);
-  ctx.fill();
-
-  ctx.font = '700 12px Outfit, sans-serif';
-  ctx.textAlign = 'left';
-  ctx.fillStyle = '#f87171';
-  ctx.fillText('$' + Math.round(annual * totalYears).toLocaleString(), rentEndX + 8, rentEndY + 4);
-  ctx.fillStyle = '#4ade80';
-  ctx.fillText('Starting at $10K', padL + chartW + 8, ownY + 4);
-}
-
-window.addEventListener('resize', () => {
-  if (document.getElementById('results').classList.contains('active')) {
-    const tools = Object.values(activeTools);
-    const monthly = tools.reduce((s, t) => {
-      const m = t.freq === 'yearly' ? t.price / 12 : t.price;
-      return s + m * t.seats;
-    }, 0);
-    if (monthly > 0) {
-      const pastYrs = parseInt(document.getElementById('yearsSlider').value);
-      const futureYrs = parseInt(document.getElementById('futureSlider').value);
-      drawChart(monthly, pastYrs, futureYrs);
-    }
-  }
-});
 
 updateSliderFill(slider);
 updateSliderFill(futureSlider);
