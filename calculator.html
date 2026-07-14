@@ -494,6 +494,27 @@ const checkSVG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" str
 
 // Step navigation
 function goToStep(step) {
+  // If results, handle specially
+  if (step === 'results') {
+    document.querySelectorAll('.step-panel').forEach(p => p.classList.remove('active'));
+    document.getElementById('results').classList.add('active');
+    for (let i = 1; i <= 3; i++) {
+      const dot = document.getElementById('dot' + i);
+      dot.classList.remove('active');
+      dot.classList.add('done');
+      dot.innerHTML = '✓';
+    }
+    document.getElementById('line1').classList.add('done');
+    document.getElementById('line2').classList.add('done');
+    const activePanel = document.querySelector('.step-panel.active');
+    if (activePanel) {
+      const rect = activePanel.getBoundingClientRect();
+      const offset = rect.top + window.scrollY - 120;
+      window.scrollTo({ top: offset, behavior: 'smooth' });
+    }
+    return;
+  }
+
   document.querySelectorAll('.step-panel').forEach(p => p.classList.remove('active'));
   document.getElementById('step' + step).classList.add('active');
   currentStep = step;
@@ -523,21 +544,6 @@ function goToStep(step) {
   }
   document.getElementById('line1').classList.toggle('done', step > 1);
   document.getElementById('line2').classList.toggle('done', step > 2);
-
-  // If results, show it
-  if (step === 'results') {
-    document.querySelectorAll('.step-panel').forEach(p => p.classList.remove('active'));
-    document.getElementById('results').classList.add('active');
-    // Mark all done
-    for (let i = 1; i <= 3; i++) {
-      const dot = document.getElementById('dot' + i);
-      dot.classList.remove('active');
-      dot.classList.add('done');
-      dot.innerHTML = '✓';
-    }
-    document.getElementById('line1').classList.add('done');
-    document.getElementById('line2').classList.add('done');
-  }
 
   // Scroll to top of the active step panel instead of page top
   const activePanel = document.querySelector('.step-panel.active');
