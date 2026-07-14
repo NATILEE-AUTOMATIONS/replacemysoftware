@@ -488,7 +488,7 @@ canvas#lineChart{width:100%;height:280px;display:block}
           </div>
         </div>
         <div class="bar-savings">
-          <span class="bar-savings-label">Your savings by owning</span>
+          <span class="bar-savings-label" id="barSavingsLabel">Your savings by owning</span>
           <span class="bar-savings-val" id="barSavings">$0</span>
         </div>
       </div>
@@ -931,7 +931,7 @@ function calculate() {
   document.getElementById('rptOwnCost').textContent = fmt(ownTotal);
   document.getElementById('rptOwnCostSub').textContent = `over ${totalYears >= 10 ? '10+' : totalYears} yrs`;
   document.getElementById('rptSavings').textContent = fmt(savings);
-  document.getElementById('rptSavingsSub').textContent = savings > 0 ? 'by owning' : 'break even soon';
+  document.getElementById('rptSavingsSub').textContent = savings > 0 ? `over ${totalYears >= 10 ? '10+' : totalYears} yrs` : 'break even soon';
 
   const badge = document.getElementById('reportBadge');
   if (savings > 50000) badge.textContent = 'Bleeding Money';
@@ -967,6 +967,7 @@ function calculate() {
   if (barOwn) barOwn.style.width = ownPct + '%';
   document.getElementById('barRentVal').textContent = fmt(rentTotal);
   document.getElementById('barOwnVal').textContent = fmt(ownTotal);
+  document.getElementById('barSavingsLabel').textContent = `Your savings over ${totalYears >= 10 ? '10+' : totalYears} years by owning`;
   document.getElementById('barSavings').textContent = fmt(savings);
   document.getElementById('ocRentCompare').textContent = fmt(monthly) + '/mo';
   document.getElementById('ownCostDisplay').textContent = fmt(own);
