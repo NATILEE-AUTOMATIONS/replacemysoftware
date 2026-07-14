@@ -949,15 +949,9 @@ function calculate() {
   document.getElementById('bdSavings').textContent = fmt(savings);
   document.getElementById('bdOwnCost').textContent = fmt(own);
 
-  // Ongoing costs over time (use mid-range: $45/mo avg)
-  const ongoingMonthly = 45;
-  const ongoingTotal = ongoingMonthly * 12 * totalYears;
-  const ownTotal = own + ongoingTotal;
-  const savingsWithOngoing = rentTotal - ownTotal;
   document.getElementById('bdOngoing').textContent = fmt(ongoingTotal);
   document.getElementById('bdTotalYrs').textContent = totalYears >= 10 ? '10+' : totalYears;
   document.getElementById('bdOwnTotal').textContent = fmt(ownTotal);
-  document.getElementById('bdSavings').textContent = fmt(savingsWithOngoing);
 
   const beMonths = monthly > 0 ? Math.ceil(own / monthly) : 0;
   document.getElementById('breakevenNum').textContent = beMonths + ' months';
