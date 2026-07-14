@@ -26,9 +26,9 @@
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#060709;--bg-2:#0a0b0f;--bg-card:#0e0f14;--bg-elev:#13141c;--fg:#f0f1f5;--muted:#8b8e98;--muted-2:#5a5d68;--border:#1e1f28;--border-bright:#2e2f3a;--accent:#3b82f6;--accent-light:#60a5fa;--accent-soft:rgba(59,130,246,.1);--accent-glow:rgba(59,130,246,.4);--green:#22c55e;--green-light:#4ade80;--green-soft:rgba(34,197,94,.1);--red:#ef4444;--red-light:#f87171;--red-soft:rgba(239,68,68,.08);--orange:#f59e0b;--fd:'Outfit',sans-serif;--fb:'Inter',sans-serif;--fm:'JetBrains Mono',monospace}
+:root{--bg:#060709;--bg-2:#0a0b0f;--bg-card:#0e0f14;--bg-elev:#13141c;--fg:#f0f1f5;--muted:#8b8e98;--muted-2:#5a5d68;--border:#1e1f28;--border-bright:#2e2f3a;--accent:#3b82f6;--accent-light:#60a5fa;--accent-soft:rgba(59,130,246,.1);--accent-glow:rgba(59,130,246,.4);--green:#22c55e;--green-light:#4ade80;--green-soft:rgba(34,197,94,.1);--red:#ef4444;--red-light:#f87171;--red-soft:rgba(239,68,68,.08);--orange:#f59e0b;--fd:'Outfit',sans-serif;--fb:'Inter',sans-serif;--fm:'Inter',sans-serif}
 *{margin:0;padding:0;box-sizing:border-box}html,body{max-width:100vw;overflow-x:hidden}
 body{background:var(--bg);color:var(--fg);font-family:var(--fb);font-size:18px;line-height:1.6;min-height:100vh;-webkit-font-smoothing:antialiased}
 a{color:inherit;text-decoration:none}
@@ -264,20 +264,35 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(6,7,9,.8);ba
 <section class="section">
   <div class="container">
     <div class="section-label">Step 2</div>
-    <h2 class="section-title">How long have you been using them?</h2>
+    <h2 class="section-title">How long have you been in business?</h2>
+    <p class="section-desc">Drag the slider to match your years in business.</p>
     <div class="time-section">
-      <div class="time-label">Years paying for these tools</div>
+      <div class="time-label">Years in business</div>
       <div class="time-display" id="yearsDisplay">3<span class="unit"> yrs</span></div>
       <div class="slider-wrap">
         <div class="slider-track-vis" id="sliderTicks">
-          <span class="slider-tick" data-val="1">1</span>
+          <span class="slider-tick" data-val="0">0</span>
           <span class="slider-tick" data-val="2">2</span>
           <span class="slider-tick active" data-val="3">3</span>
           <span class="slider-tick" data-val="5">5</span>
           <span class="slider-tick" data-val="7">7</span>
-          <span class="slider-tick" data-val="10">10</span>
+          <span class="slider-tick" data-val="10">10+</span>
         </div>
-        <input type="range" class="slider" id="yearsSlider" min="1" max="10" value="3" step="1">
+        <input type="range" class="slider" id="yearsSlider" min="0" max="10" value="3" step="1">
+      </div>
+    </div>
+    <div class="time-section" style="margin-top:1rem">
+      <div class="time-label">How many more years do you plan to run this business?</div>
+      <div class="time-display" id="futureDisplay">10<span class="unit">+ yrs</span></div>
+      <div class="slider-wrap">
+        <div class="slider-track-vis" id="futureTicks">
+          <span class="slider-tick" data-val="1">1</span>
+          <span class="slider-tick" data-val="3">3</span>
+          <span class="slider-tick" data-val="5">5</span>
+          <span class="slider-tick" data-val="7">7</span>
+          <span class="slider-tick active" data-val="10">10+</span>
+        </div>
+        <input type="range" class="slider" id="futureSlider" min="1" max="10" value="10" step="1">
       </div>
     </div>
   </div>
@@ -291,12 +306,12 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(6,7,9,.8);ba
 
     <div class="big-stats">
       <div class="big-stat red">
-        <div class="stat-label">Spent so far</div>
+        <div class="stat-label">Spent on subscriptions so far</div>
         <div class="stat-value" id="spentSoFar">$0</div>
         <div class="stat-sub" id="spentSub">across all tools</div>
       </div>
       <div class="big-stat red">
-        <div class="stat-label">Next 5 years at this rate</div>
+        <div class="stat-label">Will spend over next <span id="futureYrsLabel">10</span> years</div>
         <div class="stat-value" id="nextFive">$0</div>
         <div class="stat-sub">if you keep renting</div>
       </div>
@@ -304,7 +319,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(6,7,9,.8);ba
 
     <div class="compare">
       <div class="compare-title">Renting vs. Owning</div>
-      <div class="compare-sub">Over <span id="chartYears">3</span> years of use</div>
+      <div class="compare-sub">Over <span id="chartYears">13</span> total years in business</div>
       <div class="bars">
         <div class="bar-row">
           <div class="bar-head">
@@ -485,10 +500,12 @@ function fmt(n) { return '$' + Math.round(n).toLocaleString(); }
 function calculate() {
   const tools = Object.values(activeTools);
   const years = parseInt(document.getElementById('yearsSlider').value);
+  const futureYears = parseInt(document.getElementById('futureSlider').value);
   const monthly = tools.reduce((s, t) => s + (t.price * t.seats), 0);
   const annual = monthly * 12;
   const spent = annual * years;
-  const next5 = annual * 5;
+  const futureSpend = annual * futureYears;
+  const totalYears = years + futureYears;
 
   if (tools.length === 0 || monthly === 0) {
     document.getElementById('results').style.display = 'none';
@@ -500,22 +517,23 @@ function calculate() {
 
   document.getElementById('spentSoFar').textContent = fmt(spent);
   document.getElementById('spentSub').textContent = `across ${tools.length} tool${tools.length > 1 ? 's' : ''}`;
-  document.getElementById('nextFive').textContent = fmt(next5);
-  document.getElementById('chartYears').textContent = years;
+  document.getElementById('nextFive').textContent = fmt(futureSpend);
+  document.getElementById('futureYrsLabel').textContent = futureYears >= 10 ? '10+' : futureYears;
+  document.getElementById('chartYears').textContent = totalYears >= 10 ? '10+' : totalYears;
 
-  const rent10 = annual * 10;
+  const rentTotal = annual * totalYears;
   const own = 10000;
-  const maxVal = Math.max(rent10, own);
-  const rentPct = (rent10 / maxVal) * 100;
+  const maxVal = Math.max(rentTotal, own);
+  const rentPct = (rentTotal / maxVal) * 100;
   const ownPct = (own / maxVal) * 100;
 
   const barRent = document.getElementById('barRent');
   const barOwn = document.getElementById('barOwn');
   barRent.style.width = '0%';
   barOwn.style.width = '0%';
-  barRent.textContent = fmt(rent10);
+  barRent.textContent = fmt(rentTotal);
   barOwn.textContent = fmt(own);
-  document.getElementById('rentAmount').textContent = fmt(rent10);
+  document.getElementById('rentAmount').textContent = fmt(rentTotal);
   document.getElementById('ownAmount').textContent = fmt(own);
 
   requestAnimationFrame(() => {
@@ -531,44 +549,60 @@ function calculate() {
     document.getElementById('breakevenDesc').textContent = `After ${beMonths} months, you save ${fmt(monthly)}/month. That's ${fmt(annual)} back in your pocket every year.`;
   }
 
-  const savings = spent - own;
+  const totalSpend = spent + futureSpend;
+  const savings = totalSpend - own;
   const savingsEl = document.getElementById('savingsText');
   if (savings > 0) {
-    savingsEl.innerHTML = `You've spent <span class="num-red">${fmt(spent)}</span> on subscriptions over ${years} year${years > 1 ? 's' : ''}. A custom CRM would have cost <span class="num-green">$10,000</span>.<br><br>You'd have saved <span class="num-green">${fmt(savings)}</span>.`;
+    savingsEl.innerHTML = `Over ${totalYears >= 10 ? '10+' : totalYears} years, you'll spend <span class="num-red">${fmt(totalSpend)}</span> on subscriptions. A custom CRM would have cost <span class="num-green">$10,000</span>.<br><br>You'd save <span class="num-green">${fmt(savings)}</span>.`;
   } else {
     savingsEl.innerHTML = `You've spent <span class="num-red">${fmt(spent)}</span> so far. A custom CRM costs <span class="num-green">$10,000</span>.<br><br>You'll break even in <span class="num-green">${beMonths} months</span>, then save <span class="num-green">${fmt(monthly)}/month</span> forever.`;
   }
 }
 
-// Slider
+// Sliders
 const slider = document.getElementById('yearsSlider');
 const yearsDisplay = document.getElementById('yearsDisplay');
-const ticks = document.querySelectorAll('.slider-tick');
+const ticks = document.querySelectorAll('#sliderTicks .slider-tick');
 
-function updateSliderFill() {
-  const pct = ((slider.value - 1) / 9) * 100;
-  slider.style.setProperty('--fill', pct + '%');
+const futureSlider = document.getElementById('futureSlider');
+const futureDisplay = document.getElementById('futureDisplay');
+const futureTicks = document.querySelectorAll('#futureTicks .slider-tick');
+
+function updateSliderFill(s) {
+  const min = parseInt(s.min);
+  const max = parseInt(s.max);
+  const pct = ((parseInt(s.value) - min) / (max - min)) * 100;
+  s.style.setProperty('--fill', pct + '%');
 }
 
 slider.addEventListener('input', function() {
   const v = parseInt(this.value);
   yearsDisplay.innerHTML = v + '<span class="unit"> yrs</span>';
-  ticks.forEach(t => {
-    t.classList.toggle('active', parseInt(t.dataset.val) === v);
-  });
-  updateSliderFill();
+  ticks.forEach(t => t.classList.toggle('active', parseInt(t.dataset.val) === v));
+  updateSliderFill(this);
   calculate();
 });
 
-ticks.forEach(t => {
-  t.addEventListener('click', () => {
-    const v = parseInt(t.dataset.val);
-    slider.value = v;
-    slider.dispatchEvent(new Event('input'));
-  });
+futureSlider.addEventListener('input', function() {
+  const v = parseInt(this.value);
+  futureDisplay.innerHTML = (v >= 10 ? '10+' : v) + '<span class="unit"> yrs</span>';
+  futureTicks.forEach(t => t.classList.toggle('active', parseInt(t.dataset.val) === v));
+  updateSliderFill(this);
+  calculate();
 });
 
-updateSliderFill();
+ticks.forEach(t => t.addEventListener('click', () => {
+  slider.value = t.dataset.val;
+  slider.dispatchEvent(new Event('input'));
+}));
+
+futureTicks.forEach(t => t.addEventListener('click', () => {
+  futureSlider.value = t.dataset.val;
+  futureSlider.dispatchEvent(new Event('input'));
+}));
+
+updateSliderFill(slider);
+updateSliderFill(futureSlider);
 renderTools();
 </script>
 <script type="application/ld+json">
