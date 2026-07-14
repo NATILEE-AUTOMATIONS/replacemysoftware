@@ -66,32 +66,29 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(6,7,9,.85);b
 
 /* Tool grid */
 .tool-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:.75rem;margin-bottom:1rem}
-.tool-card{position:relative;background:var(--bg-card);border:2px solid var(--border-bright);border-radius:16px;padding:1.25rem;cursor:pointer;transition:all .25s cubic-bezier(.4,0,.2,1);overflow:hidden}
+.tool-card{position:relative;background:var(--bg-elev);border:2px solid #2a2b35;border-radius:16px;padding:1.5rem 1.25rem;cursor:pointer;transition:all .25s cubic-bezier(.4,0,.2,1);overflow:hidden}
 .tool-card::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,var(--accent-soft),transparent);opacity:0;transition:opacity .2s;pointer-events:none}
-.tool-card:hover{border-color:rgba(59,130,246,.4);transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.3),0 0 20px rgba(59,130,246,.1)}
-.tool-card.selected{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent),0 0 24px var(--accent-glow),0 8px 32px rgba(0,0,0,.3)}
+.tool-card:hover{border-color:rgba(59,130,246,.5);transform:translateY(-3px);box-shadow:0 12px 32px rgba(0,0,0,.4),0 0 28px rgba(59,130,246,.15)}
+.tool-card.selected{border-color:var(--accent);background:var(--bg-card);box-shadow:0 0 0 2px var(--accent),0 0 32px var(--accent-glow),0 8px 32px rgba(0,0,0,.4)}
 .tool-card.selected::before{opacity:1}
-.tool-card-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:.5rem;position:relative}
-.tool-card-name{font-family:var(--fd);font-weight:700;font-size:1.1rem;color:var(--fg)}
-.tool-check{width:26px;height:26px;border-radius:8px;border:2px solid var(--border-bright);display:flex;align-items:center;justify-content:center;transition:all .15s;flex-shrink:0}
+.tool-card-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:.75rem;position:relative}
+.tool-card-name{font-family:var(--fd);font-weight:700;font-size:1.3rem;color:var(--fg)}
+.tool-check{width:32px;height:32px;border-radius:10px;border:2px solid #3a3b45;display:flex;align-items:center;justify-content:center;transition:all .15s;flex-shrink:0;background:var(--bg)}
 .tool-card.selected .tool-check{background:var(--accent);border-color:var(--accent)}
-.tool-check svg{width:14px;height:14px;color:#fff;opacity:0;transition:opacity .1s}
+.tool-check svg{width:16px;height:16px;color:#fff;opacity:0;transition:opacity .1s}
 .tool-card.selected .tool-check svg{opacity:1}
-.tool-card-price{font-family:var(--fm);font-size:1.3rem;font-weight:700;color:var(--accent-light);position:relative}
-.tool-card-price .per{font-size:.75rem;color:var(--muted);font-weight:400}
-.tool-card-note{font-size:.78rem;color:var(--muted-2);position:relative}
+.tool-card-note{font-size:1rem;color:var(--muted);position:relative;font-weight:500}
 
 /* Price + seats input on selected */
-.tool-fields{margin-top:.75rem;display:flex;gap:.6rem;position:relative;opacity:0;max-height:0;overflow:hidden;transition:all .25s}
-.tool-card.selected .tool-fields{opacity:1;max-height:80px}
-.field-group{display:flex;align-items:center;gap:.4rem;background:var(--bg);border:1px solid var(--border-bright);border-radius:10px;padding:.35rem .55rem;flex:1}
-.field-group .lbl{font-size:.75rem;color:var(--muted);font-weight:600;white-space:nowrap}
-.field-group input{width:100%;background:transparent;border:none;color:var(--fg);font-size:1rem;font-family:var(--fm);font-weight:700;text-align:center;outline:none;min-width:0}
+.tool-fields{margin-top:1rem;display:flex;gap:.6rem;position:relative;opacity:0;max-height:0;overflow:hidden;transition:all .25s}
+.tool-card.selected .tool-fields{opacity:1;max-height:100px}
+.field-group{display:flex;align-items:center;gap:.5rem;background:var(--bg);border:2px solid #3a3b45;border-radius:12px;padding:.5rem .75rem;flex:1}
+.field-group:focus-within{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
+.field-group .lbl{font-size:.9rem;color:var(--accent-light);font-weight:700;white-space:nowrap}
+.field-group input{width:100%;background:transparent;border:none;color:var(--fg);font-size:1.3rem;font-family:var(--fm);font-weight:700;text-align:center;outline:none;min-width:0}
+.field-group input::placeholder{color:var(--muted-2);font-weight:400}
 .field-group input::-webkit-outer-spin-button,.field-group input::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
 .field-group input[type=number]{-moz-appearance:textfield}
-.seats-btn{width:26px;height:26px;border-radius:7px;border:none;background:var(--bg-elev);color:var(--fg);font-size:1rem;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .1s;flex-shrink:0}
-.seats-btn:hover{background:var(--accent);color:#fff}
-.seats-val{font-family:var(--fm);font-size:1rem;font-weight:700;color:var(--fg);min-width:24px;text-align:center}
 
 /* Custom tool */
 .custom-tool{display:flex;gap:.6rem;margin-top:.75rem;flex-wrap:wrap}
@@ -404,7 +401,7 @@ function renderTools() {
         <div class="tool-card-name">${t.name}</div>
         <div class="tool-check">${checkSVG}</div>
       </div>
-      <div class="tool-card-note">Tap to select & enter your monthly cost</div>
+      <div class="tool-card-note">Tap to select — enter your monthly cost below</div>
       <div class="tool-fields" onclick="event.stopPropagation()">
         <div class="field-group">
           <span class="lbl">$/mo</span>
