@@ -195,7 +195,10 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(6,7,9,.8);ba
 .bar-track{height:56px;background:var(--bg-elev);border-radius:14px;overflow:visible;position:relative;display:flex;align-items:center;padding:0 .75rem}
 .bar-fill{height:100%;border-radius:14px;transition:width 1s cubic-bezier(.16,1,.3,1);min-width:0}
 .bar-fill.rent{background:linear-gradient(90deg,rgba(239,68,68,.15),rgba(239,68,68,.5))}
-.bar-fill.own{background:linear-gradient(90deg,rgba(34,197,94,.15),rgba(34,197,94,.5))}
+.bar-fill.future{background:linear-gradient(90deg,rgba(251,146,60,.15),rgba(251,146,60,.5))}
+.bar-fill.total-bar{background:linear-gradient(90deg,rgba(239,68,68,.1),rgba(239,68,68,.4));border:1px solid rgba(239,68,68,.3)}
+.bar-row.total-row{margin-top:.5rem;padding-top:.5rem;border-top:1px solid var(--border)}
+.bar-row.total-row .bar-label{font-weight:700;color:var(--fg)}
 .bar-val{font-family:var(--fd);font-weight:800;font-size:1.15rem;color:#fff;white-space:nowrap;margin-left:.75rem}
 .bar-savings{margin-top:1.5rem;padding:1.25rem 1.5rem;background:linear-gradient(135deg,rgba(34,197,94,.08),rgba(59,130,246,.06));border:1px solid rgba(34,197,94,.2);border-radius:14px;display:flex;justify-content:space-between;align-items:center}
 .bar-savings-label{font-size:1.1rem;font-weight:600;color:var(--fg)}
@@ -459,10 +462,24 @@ canvas#lineChart{width:100%;height:280px;display:block}
         </div>
         <div class="bar-compare">
           <div class="bar-row">
-            <div class="bar-label">Renting software</div>
+            <div class="bar-label">Spent so far</div>
             <div class="bar-track">
-              <div class="bar-fill rent" id="barRent" style="width:0"></div>
-              <span class="bar-val" id="barRentVal">$0</span>
+              <div class="bar-fill rent" id="barSpent" style="width:0"></div>
+              <span class="bar-val" id="barSpentVal">$0</span>
+            </div>
+          </div>
+          <div class="bar-row">
+            <div class="bar-label">Future spend</div>
+            <div class="bar-track">
+              <div class="bar-fill future" id="barFuture" style="width:0"></div>
+              <span class="bar-val" id="barFutureVal">$0</span>
+            </div>
+          </div>
+          <div class="bar-row total-row">
+            <div class="bar-label">Total</div>
+            <div class="bar-track">
+              <div class="bar-fill total-bar" id="barTotal" style="width:0"></div>
+              <span class="bar-val" id="barTotalVal">$0</span>
             </div>
           </div>
         </div>
@@ -880,10 +897,17 @@ function calculate() {
   document.getElementById('bdFutureYrs').textContent = futureYears >= 10 ? '10+' : futureYears;
   document.getElementById('bdTotalAll').textContent = fmt(rentTotal);
 
-  // Animate bar
-  const barRent = document.getElementById('barRent');
-  if (barRent) barRent.style.width = '100%';
-  document.getElementById('barRentVal').textContent = fmt(rentTotal);
+  // Animate bars - proportionally scaled to total
+  const maxVal = Math.max(spent, futureSpend, rentTotal, 1);
+  const barSpent = document.getElementById('barSpent');
+  const barFuture = document.getElementById('barFuture');
+  const barTotal = document.getElementById('barTotal');
+  if (barSpent) barSpent.style.width = (spent / maxVal * 100) + '%';
+  if (barFuture) barFuture.style.width = (futureSpend / maxVal * 100) + '%';
+  if (barTotal) barTotal.style.width = (rentTotal / maxVal * 100) + '%';
+  document.getElementById('barSpentVal').textContent = fmt(spent);
+  document.getElementById('barFutureVal').textContent = fmt(futureSpend);
+  document.getElementById('barTotalVal').textContent = fmt(rentTotal);
 }
 
 
