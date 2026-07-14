@@ -353,10 +353,10 @@ canvas#lineChart{width:100%;height:280px;display:block}
 <!-- Step 3: Timeline -->
 <div class="step-panel" id="step3">
   <div class="container">
-    <h2 class="step-title">How long have you been in business?</h2>
+    <h2 class="step-title" id="step3Title">How long have you been using these tools?</h2>
     <p class="step-desc">This helps us calculate your total spend over time.</p>
     <div class="time-section">
-      <div class="time-label">Years in business</div>
+      <div class="time-label" id="yearsLabel">Years using these tools</div>
       <div class="time-display" id="yearsDisplay">3<span class="unit"> yrs</span></div>
       <div class="slider-wrap">
         <div class="slider-track-vis" id="sliderTicks">
@@ -371,7 +371,7 @@ canvas#lineChart{width:100%;height:280px;display:block}
       </div>
     </div>
     <div class="time-section" style="margin-top:1.5rem">
-      <div class="time-label">How many more years do you plan to run this business?</div>
+      <div class="time-label">How many more years do you plan to keep using them?</div>
       <div class="time-display" id="futureDisplay">10<span class="unit">+ yrs</span></div>
       <div class="slider-wrap">
         <div class="slider-track-vis" id="futureTicks">
@@ -437,7 +437,7 @@ canvas#lineChart{width:100%;height:280px;display:block}
         <div class="bd-row"><span class="bd-name">Monthly software spend</span><span class="bd-val red" id="bdMonthly">$0/mo</span></div>
         <div class="bd-row"><span class="bd-name">Yearly software spend</span><span class="bd-val red" id="bdYearly">$0/yr</span></div>
         <div class="bd-row"><span class="bd-name">Spent so far (<span id="bdPastYrs">3</span> yrs)</span><span class="bd-val red" id="bdSpent">$0</span></div>
-        <div class="bd-row"><span class="bd-name">Future spend (<span id="bdFutureYrs">10</span> yrs)</span><span class="bd-val red" id="bdFuture">$0</span></div>
+<div class="bd-row"><span class="bd-name">Future spend (<span id="bdFutureYrs">10</span> yrs)</span><span class="bd-val red" id="bdFuture">$0</span></div>
         <div class="bd-row"><span class="bd-name">Custom CRM one-time cost</span><span class="bd-val green">Starting at $10K</span></div>
         <div class="bd-row total"><span class="bd-name">Your total savings by owning</span><span class="bd-val green" id="bdSavings">$0</span></div>
       </div>
@@ -497,6 +497,21 @@ function goToStep(step) {
   document.querySelectorAll('.step-panel').forEach(p => p.classList.remove('active'));
   document.getElementById('step' + step).classList.add('active');
   currentStep = step;
+
+  // Update step 3 title based on tool selection
+  if (step === 3 || step === '3') {
+    const selected = Object.values(selectedToolsStep2);
+    const title = document.getElementById('step3Title');
+    const yLabel = document.getElementById('yearsLabel');
+    if (selected.length > 0) {
+      const names = selected.map(t => t.name).join(', ');
+      title.textContent = `How long have you been using ${names}?`;
+      yLabel.textContent = `Years using ${names}`;
+    } else {
+      title.textContent = 'How long have you been using your tools?';
+      yLabel.textContent = 'Years using your tools';
+    }
+  }
 
   // Update progress bar
   for (let i = 1; i <= 3; i++) {
