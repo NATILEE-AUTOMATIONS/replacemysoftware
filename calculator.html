@@ -77,17 +77,21 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(6,7,9,.85);b
 .tool-card.selected .tool-check{background:var(--accent);border-color:var(--accent)}
 .tool-check svg{width:14px;height:14px;color:#fff;opacity:0;transition:opacity .1s}
 .tool-card.selected .tool-check svg{opacity:1}
-.tool-card-price{font-family:var(--fm);font-size:1.4rem;font-weight:700;color:var(--accent-light);position:relative}
-.tool-card-price .per{font-size:.8rem;color:var(--muted);font-weight:400}
-.tool-card-note{font-size:.8rem;color:var(--muted-2);position:relative}
+.tool-card-price{font-family:var(--fm);font-size:1.3rem;font-weight:700;color:var(--accent-light);position:relative}
+.tool-card-price .per{font-size:.75rem;color:var(--muted);font-weight:400}
+.tool-card-note{font-size:.78rem;color:var(--muted-2);position:relative}
 
-/* Seats input on selected */
-.seats-wrap{margin-top:.75rem;display:flex;align-items:center;gap:.6rem;background:var(--bg);border:1px solid var(--border-bright);border-radius:10px;padding:.4rem .6rem;position:relative;opacity:0;max-height:0;overflow:hidden;transition:all .2s}
-.tool-card.selected .seats-wrap{opacity:1;max-height:60px}
-.seats-label{font-size:.85rem;color:var(--muted);font-weight:500}
-.seats-btn{width:28px;height:28px;border-radius:8px;border:none;background:var(--bg-elev);color:var(--fg);font-size:1.1rem;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .1s;flex-shrink:0}
+/* Price + seats input on selected */
+.tool-fields{margin-top:.75rem;display:flex;gap:.6rem;position:relative;opacity:0;max-height:0;overflow:hidden;transition:all .25s}
+.tool-card.selected .tool-fields{opacity:1;max-height:80px}
+.field-group{display:flex;align-items:center;gap:.4rem;background:var(--bg);border:1px solid var(--border-bright);border-radius:10px;padding:.35rem .55rem;flex:1}
+.field-group .lbl{font-size:.75rem;color:var(--muted);font-weight:600;white-space:nowrap}
+.field-group input{width:100%;background:transparent;border:none;color:var(--fg);font-size:1rem;font-family:var(--fm);font-weight:700;text-align:center;outline:none;min-width:0}
+.field-group input::-webkit-outer-spin-button,.field-group input::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+.field-group input[type=number]{-moz-appearance:textfield}
+.seats-btn{width:26px;height:26px;border-radius:7px;border:none;background:var(--bg-elev);color:var(--fg);font-size:1rem;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .1s;flex-shrink:0}
 .seats-btn:hover{background:var(--accent);color:#fff}
-.seats-val{font-family:var(--fm);font-size:1.1rem;font-weight:700;color:var(--fg);min-width:30px;text-align:center}
+.seats-val{font-family:var(--fm);font-size:1rem;font-weight:700;color:var(--fg);min-width:24px;text-align:center}
 
 /* Custom tool */
 .custom-tool{display:flex;gap:.6rem;margin-top:.75rem;flex-wrap:wrap}
@@ -212,6 +216,10 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(6,7,9,.85);b
   .custom-tool{flex-direction:column}
   .custom-input{width:100%}
   .custom-add{width:100%;justify-content:center}
+  .tool-fields{flex-direction:column;gap:.5rem}
+  .tool-card.selected .tool-fields{max-height:140px}
+  .field-group{width:100%}
+  .field-group .lbl{font-size:.7rem}
 }
 </style>
 </head>
@@ -396,13 +404,19 @@ function renderTools() {
         <div class="tool-card-name">${t.name}</div>
         <div class="tool-check">${checkSVG}</div>
       </div>
-      <div class="tool-card-price">$${t.price}<span class="per">/seat/mo</span></div>
-      <div class="tool-card-note">${t.note}</div>
-      <div class="seats-wrap" onclick="event.stopPropagation()">
-        <span class="seats-label">Seats</span>
-        <button class="seats-btn" onclick="adjustSeats(${i},-1)">−</button>
-        <span class="seats-val" id="seats_${i}">1</span>
-        <button class="seats-btn" onclick="adjustSeats(${i},1)">+</button>
+      <div class="tool-card-price">$<span id="priceDisplay_${i}">${t.price}</span><span class="per">/seat/mo</span></div>
+      <div class="tool-card-note">${t.note} — tap to edit price</div>
+      <div class="tool-fields" onclick="event.stopPropagation()">
+        <div class="field-group">
+          <span class="lbl">$/mo</span>
+          <input type="number" id="price_${i}" value="${t.price}" min="0" max="9999" onchange="updatePrice(${i}, this.value)" oninput="updatePrice(${i}, this.value)">
+        </div>
+        <div class="field-group" style="flex:0 0 auto">
+          <span class="lbl">Seats</span>
+          <button class="seats-btn" onclick="adjustSeats(${i},-1)">−</button>
+          <span class="seats-val" id="seats_${i}">1</span>
+          <button class="seats-btn" onclick="adjustSeats(${i},1)">+</button>
+        </div>
       </div>
     </div>
   `).join('');
@@ -414,11 +428,21 @@ function toggleTool(i) {
     delete activeTools[i];
     card.classList.remove('selected');
   } else {
+    const price = parseFloat(document.getElementById('price_' + i).value) || TOOLS[i].price;
     const seats = parseInt(document.getElementById('seats_' + i).textContent) || 1;
-    activeTools[i] = { ...TOOLS[i], seats };
+    activeTools[i] = { ...TOOLS[i], price, seats };
     card.classList.add('selected');
   }
   calculate();
+}
+
+function updatePrice(i, val) {
+  const price = Math.max(0, parseFloat(val) || 0);
+  document.getElementById('priceDisplay_' + i).textContent = price;
+  if (activeTools[i]) {
+    activeTools[i].price = price;
+    calculate();
+  }
 }
 
 function adjustSeats(i, delta) {
@@ -452,13 +476,19 @@ function addCustomTool() {
       <div class="tool-card-name">${name}</div>
       <div class="tool-check">${checkSVG}</div>
     </div>
-    <div class="tool-card-price">$${price}<span class="per">/seat/mo</span></div>
+    <div class="tool-card-price">$<span id="priceDisplay_${id}">${price}</span><span class="per">/seat/mo</span></div>
     <div class="tool-card-note">Custom tool — tap to remove</div>
-    <div class="seats-wrap" onclick="event.stopPropagation()">
-      <span class="seats-label">Seats</span>
-      <button class="seats-btn" onclick="adjustCustomSeats('${id}',-1,this)">−</button>
-      <span class="seats-val" id="seats_${id}">1</span>
-      <button class="seats-btn" onclick="adjustCustomSeats('${id}',1,this)">+</button>
+    <div class="tool-fields" onclick="event.stopPropagation()">
+      <div class="field-group">
+        <span class="lbl">$/mo</span>
+        <input type="number" id="price_${id}" value="${price}" min="0" max="9999" onchange="updateCustomPrice('${id}', this.value)" oninput="updateCustomPrice('${id}', this.value)">
+      </div>
+      <div class="field-group" style="flex:0 0 auto">
+        <span class="lbl">Seats</span>
+        <button class="seats-btn" onclick="adjustCustomSeats('${id}',-1,this)">−</button>
+        <span class="seats-val" id="seats_${id}">1</span>
+        <button class="seats-btn" onclick="adjustCustomSeats('${id}',1,this)">+</button>
+      </div>
     </div>
   `;
   grid.appendChild(card);
@@ -476,6 +506,16 @@ function adjustCustomSeats(id, delta, btn) {
   el.textContent = val;
   if (activeTools[id]) {
     activeTools[id].seats = val;
+    calculate();
+  }
+}
+
+function updateCustomPrice(id, val) {
+  const price = Math.max(0, parseFloat(val) || 0);
+  const display = document.getElementById('priceDisplay_' + id);
+  if (display) display.textContent = price;
+  if (activeTools[id]) {
+    activeTools[id].price = price;
     calculate();
   }
 }
