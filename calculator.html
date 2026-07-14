@@ -70,6 +70,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(6,7,9,.8);ba
 
 /* Steps section */
 .steps-section{padding:2rem 0 4rem;position:relative}
+.steps-section .container{display:flex;justify-content:center;align-items:center;flex-direction:column}
 .steps-section::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:1px;height:40px;background:linear-gradient(180deg,transparent,var(--border-bright))}
 
 /* Step panels */
@@ -291,7 +292,7 @@ canvas#lineChart{width:100%;height:280px;display:block}
 
 <!-- Progress bar + Steps -->
 <section class="steps-section">
-<div class="container">
+<div class="container" style="text-align:center">
 <div class="progress-bar" id="progressBar">
   <div class="pb-step">
     <div class="pb-dot active" id="dot1">1</div>
