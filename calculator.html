@@ -46,7 +46,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(6,7,9,.8);ba
 .nav-cta{padding:.6rem 1.4rem;background:var(--accent);color:#fff;border-radius:10px;font-weight:600;font-size:.95rem;transition:all .2s;flex-shrink:0;white-space:nowrap}
 .nav-cta:hover{transform:translateY(-1px);box-shadow:0 4px 20px var(--accent-glow)}
 
-.hero{padding:7rem 0 2rem;text-align:center;position:relative;overflow:hidden}
+.hero{padding:8rem 0 3rem;text-align:center;position:relative;overflow:hidden;min-height:55vh;display:flex;align-items:center;justify-content:center}
 .hero-orb{position:absolute;border-radius:50%;filter:blur(120px);pointer-events:none}
 .orb-1{width:700px;height:700px;background:var(--accent);top:-250px;left:50%;transform:translateX(-50%);opacity:.08}
 .orb-2{width:400px;height:400px;background:var(--red);top:150px;right:-100px;opacity:.04}
@@ -68,7 +68,11 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(6,7,9,.8);ba
 
 .container{max-width:900px;margin:0 auto;padding:0 1.5rem}
 
-/* Step sections */
+/* Steps section */
+.steps-section{padding:2rem 0 4rem;position:relative}
+.steps-section::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:1px;height:40px;background:linear-gradient(180deg,transparent,var(--border-bright))}
+
+/* Step panels */
 .step-panel{display:none;animation:fadeUp .4s ease}
 .step-panel.active{display:block;padding-bottom:3rem}
 @keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
@@ -230,7 +234,7 @@ canvas#lineChart{width:100%;height:280px;display:block}
 
 @media(max-width:600px){
   body{font-size:17px}
-  .hero{padding:5.5rem 0 1rem}
+  .hero{padding:5rem 0 2rem;min-height:auto}
   .nav-brand{font-size:.95rem}
   .nav-brand img{width:26px;height:26px}
   .nav-cta{padding:.5rem 1.1rem;font-size:.85rem}
@@ -282,7 +286,9 @@ canvas#lineChart{width:100%;height:280px;display:block}
   </div>
 </section>
 
-<!-- Progress bar -->
+<!-- Progress bar + Steps -->
+<section class="steps-section">
+<div class="container">
 <div class="progress-bar" id="progressBar">
   <div class="pb-step">
     <div class="pb-dot active" id="dot1">1</div>
@@ -296,6 +302,8 @@ canvas#lineChart{width:100%;height:280px;display:block}
     <div class="pb-dot" id="dot3">3</div>
   </div>
 </div>
+</div>
+</section>
 
 <!-- Step 1: Cost -->
 <div class="step-panel active" id="step1">
@@ -460,9 +468,9 @@ canvas#lineChart{width:100%;height:280px;display:block}
 </section>
 
 <!-- Bottom CTA -->
-<section style="padding:1rem 0 4rem">
-  <div class="container">
-    <div class="cta" style="border:1px solid rgba(59,130,246,.25)">
+<section style="padding:4rem 0 5rem;position:relative">
+<div class="container" style="max-width:700px">
+    <div class="cta" style="border:1px solid rgba(59,130,246,.25);padding:3.5rem 2.5rem}">
       <h2>Tired of paying month to month for software?</h2>
       <p>Get a custom CRM built around your workflow. $10K. One time. No more subscriptions.</p>
       <a href="/apply" class="cta-btn">Apply Now →</a>
