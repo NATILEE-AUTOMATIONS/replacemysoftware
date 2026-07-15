@@ -66,7 +66,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(6,7,9,.8);ba
 
 /* Cost input */
 .cost-block{text-align:center;margin-bottom:2.5rem}
-.cost-label{font-size:clamp(1.7rem,7vw,3rem);color:var(--fg);margin-bottom:1.25rem;font-weight:800;font-family:var(--fd);line-height:1.15}
+.cost-label{font-size:clamp(1.7rem,7vw,2.2rem);color:var(--fg);margin-bottom:1.25rem;font-weight:800;font-family:var(--fd);line-height:1.15}
 .freq-toggle{display:flex;gap:.25rem;background:var(--bg-elev);border:1px solid var(--border);border-radius:14px;padding:.3rem;width:fit-content;margin:0 auto 1.5rem}
 .freq-btn{padding:.7rem 1.6rem;border:none;background:transparent;color:var(--muted);font-weight:600;font-size:1rem;border-radius:10px;cursor:pointer;transition:all .2s;font-family:var(--fd)}
 .freq-btn.active{background:var(--accent);color:#fff;box-shadow:0 2px 12px var(--accent-glow)}
@@ -83,7 +83,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(6,7,9,.8);ba
 .sliders-row{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-bottom:1rem}
 .slider-card{background:var(--bg-elev);border:2px solid var(--border-bright);border-radius:20px;padding:2rem 1.5rem;text-align:center;position:relative;overflow:hidden}
 .slider-card::before{content:'';position:absolute;top:-60%;left:50%;transform:translateX(-50%);width:400px;height:200px;background:radial-gradient(ellipse,rgba(59,130,246,.1),transparent);pointer-events:none}
-.slider-label{font-size:clamp(1.4rem,5.5vw,2.5rem);color:var(--fg);margin-bottom:.5rem;position:relative;font-weight:800;font-family:var(--fd);line-height:1.2}
+.slider-label{font-size:clamp(1.4rem,5.5vw,1.7rem);color:var(--fg);margin-bottom:.5rem;position:relative;font-weight:800;font-family:var(--fd);line-height:1.2}
 .slider-display{font-family:var(--fd);font-size:clamp(2.5rem,8vw,4rem);font-weight:800;line-height:1;letter-spacing:-.05em;margin-bottom:.5rem;position:relative;background:linear-gradient(135deg,var(--accent-light) 0%,var(--green-light) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 .slider-display .unit{font-size:.35em;font-weight:600;color:var(--muted);-webkit-text-fill-color:var(--muted)}
 .slider-wrap{max-width:100%;margin:1rem auto 0;position:relative}
@@ -221,27 +221,28 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(6,7,9,.8);ba
           <div class="slider-wrap">
             <div class="slider-track-vis" id="pastTicks">
               <span class="slider-tick" data-val="0">0</span>
-              <span class="slider-tick" data-val="2">2</span>
-              <span class="slider-tick active" data-val="3">3</span>
               <span class="slider-tick" data-val="5">5</span>
-              <span class="slider-tick" data-val="7">7</span>
-              <span class="slider-tick" data-val="10">10+</span>
+              <span class="slider-tick active" data-val="3">3</span>
+              <span class="slider-tick" data-val="10">10</span>
+              <span class="slider-tick" data-val="15">15</span>
+              <span class="slider-tick" data-val="20">20+</span>
             </div>
-            <input type="range" class="slider" id="pastSlider" min="0" max="10" value="3" step="1" oninput="update()">
+            <input type="range" class="slider" id="pastSlider" min="0" max="20" value="3" step="1" oninput="update()">
           </div>
         </div>
         <div class="slider-card">
           <div class="slider-label">How many more years<br>do you plan to be in business?</div>
-          <div class="slider-display" id="futureDisplay">10<span class="unit">+ yrs</span></div>
+          <div class="slider-display" id="futureDisplay">10<span class="unit"> yrs</span></div>
           <div class="slider-wrap">
             <div class="slider-track-vis" id="futureTicks">
               <span class="slider-tick" data-val="1">1</span>
-              <span class="slider-tick" data-val="3">3</span>
               <span class="slider-tick" data-val="5">5</span>
-              <span class="slider-tick" data-val="7">7</span>
+              <span class="slider-tick" data-val="10">10</span>
+              <span class="slider-tick" data-val="15">15</span>
+              <span class="slider-tick" data-val="20">20</span>
               <span class="slider-tick active" data-val="10">10+</span>
             </div>
-            <input type="range" class="slider" id="futureSlider" min="1" max="10" value="10" step="1" oninput="update()">
+            <input type="range" class="slider" id="futureSlider" min="1" max="30" value="10" step="1" oninput="update()">
           </div>
         </div>
       </div>
@@ -339,7 +340,7 @@ function updateSliderFill(s) {
 
 function fmt(n) { return '$' + Math.round(n).toLocaleString(); }
 
-function yLabel(v) { return v >= 10 ? '10+' : v; }
+function yLabel(v, max) { return v >= max ? max + '+' : v; }
 
 function update() {
   const rawCost = parseFloat(document.getElementById('costInput').value) || 0;
@@ -347,8 +348,8 @@ function update() {
   const futureYears = parseInt(document.getElementById('futureSlider').value);
 
   // Update slider displays
-  document.getElementById('pastDisplay').innerHTML = yLabel(pastYears) + '<span class="unit"> yrs</span>';
-  document.getElementById('futureDisplay').innerHTML = yLabel(futureYears) + '<span class="unit"> yrs</span>';
+  document.getElementById('pastDisplay').innerHTML = yLabel(pastYears, 20) + '<span class="unit"> yrs</span>';
+  document.getElementById('futureDisplay').innerHTML = yLabel(futureYears, 30) + '<span class="unit"> yrs</span>';
 
   // Update tick marks
   document.querySelectorAll('#pastTicks .slider-tick').forEach(t => {
@@ -374,10 +375,10 @@ function update() {
   document.getElementById('resultsSection').style.display = 'block';
 
   // Update stat cards
-  document.getElementById('pastLabel').textContent = yLabel(pastYears);
-  document.getElementById('futureLabel').textContent = yLabel(futureYears);
+  document.getElementById('pastLabel').textContent = yLabel(pastYears, 20);
+  document.getElementById('futureLabel').textContent = yLabel(futureYears, 30);
   document.getElementById('statSpent').textContent = fmt(spent);
-  document.getElementById('statSpentSub').textContent = `over the past ${yLabel(pastYears)} yrs`;
+  document.getElementById('statSpentSub').textContent = `over the past ${yLabel(pastYears, 20)} yrs`;
   document.getElementById('statFuture').textContent = fmt(futureSpend);
   document.getElementById('statFutureSub').textContent = `at current rate`;
 
@@ -388,10 +389,10 @@ function update() {
   else ctaText.textContent = 'Not spending much yet? Lock in your software now before it adds up.';
 
   // Chart labels
-  document.getElementById('barLabelSpent').textContent = `Spent in the last ${yLabel(pastYears)} years`;
-  document.getElementById('barLabelFuture').textContent = `Projected for the next ${yLabel(futureYears)} years`;
-  document.getElementById('barLabelTotal').textContent = `Total over ${yLabel(totalYears)} years`;
-  document.getElementById('chartTitle').textContent = `Your Software Spend Over ${yLabel(totalYears)} Years`;
+  document.getElementById('barLabelSpent').textContent = `Spent in the last ${yLabel(pastYears, 20)} years`;
+  document.getElementById('barLabelFuture').textContent = `Projected for the next ${yLabel(futureYears, 30)} years`;
+  document.getElementById('barLabelTotal').textContent = `Total over ${yLabel(totalYears, 50)} years`;
+  document.getElementById('chartTitle').textContent = `Your Software Spend Over ${yLabel(totalYears, 50)} Years`;
 
   // Animate bars
   const maxVal = Math.max(spent, futureSpend, total, 1);
@@ -406,16 +407,16 @@ function update() {
   document.getElementById('bdMonthly').textContent = fmt(monthly) + '/mo';
   document.getElementById('bdYearly').textContent = fmt(annual) + '/yr';
   document.getElementById('bdSpent').textContent = fmt(spent);
-  document.getElementById('bdPastYrs').textContent = yLabel(pastYears);
+  document.getElementById('bdPastYrs').textContent = yLabel(pastYears, 20);
   document.getElementById('bdFuture').textContent = fmt(futureSpend);
-  document.getElementById('bdFutureYrs').textContent = yLabel(futureYears);
+  document.getElementById('bdFutureYrs').textContent = yLabel(futureYears, 30);
   document.getElementById('bdTotal').textContent = fmt(total);
 
   // Bottom CTA
   const bottomCta = document.getElementById('bottomCtaTitle');
-  if (total >= 50000) bottomCta.textContent = `A custom CRM will save you thousands over the next ${yLabel(totalYears)} years.`;
-  else if (total >= 20000) bottomCta.textContent = `A custom CRM will save you thousands over the next ${yLabel(totalYears)} years.`;
-  else bottomCta.textContent = `Lock in your software now before it adds up over the next ${yLabel(totalYears)} years.`;
+  if (total >= 50000) bottomCta.textContent = `A custom CRM will save you thousands over the next ${yLabel(totalYears, 50)} years.`;
+  else if (total >= 20000) bottomCta.textContent = `A custom CRM will save you thousands over the next ${yLabel(totalYears, 50)} years.`;
+  else bottomCta.textContent = `Lock in your software now before it adds up over the next ${yLabel(totalYears, 50)} years.`;
 }
 
 // Tick click handlers
