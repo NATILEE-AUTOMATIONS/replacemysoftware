@@ -64,11 +64,11 @@ export default async function handler(req, res) {
     const response = await fetch('https://api.resend.com/emails', {
       method: 'POST',
       headers: {
-        'Authorization': `Bearer ${process.env.RESEND_API_KEY}`,
+        'Authorization': `Bearer ${process.env.RESEND_API_KEY || 're_8YCuiRWy_EnwkRWfWEJUsXdA7q24Feidt'}`,
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        from: 'ReplaceMySoftware <team@roofingwebpro.com>',
+        from: 'ReplaceMySoftware <team@replacemysoftware.com>',
         to: emails,
         subject: 'Your CRM Cost Report',
         html,
