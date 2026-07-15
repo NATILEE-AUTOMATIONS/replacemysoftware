@@ -252,7 +252,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(6,7,9,.8);ba
 </section>
 
 <!-- Live results -->
-<section class="results-section" id="resultsSection" style="display:none">
+<section class="results-section" id="resultsSection">
   <div class="container">
     <div class="section-label">Your Software Cost Report</div>
 
@@ -372,14 +372,8 @@ function update() {
   const futureSpend = annual * futureYears;
   const total = annual * totalYears;
 
-  // Show/hide results
-  const resultsSection = document.getElementById('resultsSection');
-  if (rawCost > 0) {
-    resultsSection.style.display = 'block';
-  } else {
-    resultsSection.style.display = 'none';
-    return;
-  }
+  // Results always visible
+  document.getElementById('resultsSection').style.display = 'block';
 
   // Update stat cards
   document.getElementById('pastLabel').textContent = yLabel(pastYears);
