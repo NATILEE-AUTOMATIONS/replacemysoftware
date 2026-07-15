@@ -414,7 +414,10 @@ function update() {
   document.getElementById('bdTotal').textContent = fmt(total);
 
   // Bottom CTA
-  document.getElementById('bottomCtaTitle').textContent = `A custom CRM will save you thousands over the next ${yLabel(totalYears)} years.`;
+  const bottomCta = document.getElementById('bottomCtaTitle');
+  if (total >= 50000) bottomCta.textContent = `A custom CRM will save you thousands over the next ${yLabel(totalYears)} years.`;
+  else if (total >= 20000) bottomCta.textContent = `A custom CRM will save you thousands over the next ${yLabel(totalYears)} years.`;
+  else bottomCta.textContent = `Lock in your software now before it adds up over the next ${yLabel(totalYears)} years.`;
 }
 
 // Tick click handlers
