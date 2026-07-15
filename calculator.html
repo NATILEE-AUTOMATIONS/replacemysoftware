@@ -414,9 +414,9 @@ function update() {
 
   // Bottom CTA
   const bottomCta = document.getElementById('bottomCtaTitle');
-  if (total >= 50000) bottomCta.textContent = `A custom CRM will save you thousands over the next ${yLabel(totalYears, 50)} years.`;
-  else if (total >= 20000) bottomCta.textContent = `A custom CRM will save you thousands over the next ${yLabel(totalYears, 50)} years.`;
-  else bottomCta.textContent = `Lock in your software now before it adds up over the next ${yLabel(totalYears, 50)} years.`;
+  if (total >= 50000) bottomCta.textContent = `A custom CRM will save you thousands over the next ${yLabel(futureYears, 30)} years.`;
+  else if (total >= 20000) bottomCta.textContent = `A custom CRM will save you thousands over the next ${yLabel(futureYears, 30)} years.`;
+  else bottomCta.textContent = `Lock in your software now before it adds up over the next ${yLabel(futureYears, 30)} years.`;
 }
 
 // Tick click handlers
