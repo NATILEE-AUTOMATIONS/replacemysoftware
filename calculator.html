@@ -66,7 +66,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(6,7,9,.8);ba
 
 /* Cost input */
 .cost-block{text-align:center;margin-bottom:2.5rem}
-.cost-label{font-size:1.3rem;color:var(--muted);margin-bottom:1rem;font-weight:500}
+.cost-label{font-size:clamp(1.5rem,4vw,2rem);color:var(--fg);margin-bottom:1.25rem;font-weight:700;font-family:var(--fd);line-height:1.2}
 .freq-toggle{display:flex;gap:.25rem;background:var(--bg-elev);border:1px solid var(--border);border-radius:14px;padding:.3rem;width:fit-content;margin:0 auto 1.5rem}
 .freq-btn{padding:.7rem 1.6rem;border:none;background:transparent;color:var(--muted);font-weight:600;font-size:1rem;border-radius:10px;cursor:pointer;transition:all .2s;font-family:var(--fd)}
 .freq-btn.active{background:var(--accent);color:#fff;box-shadow:0 2px 12px var(--accent-glow)}
@@ -77,13 +77,13 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(6,7,9,.8);ba
 .cost-input::-webkit-outer-spin-button,.cost-input::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
 .cost-input[type=number]{-moz-appearance:textfield;text-align:center}
 .cost-per{font-size:1.2rem;color:var(--muted);font-weight:500}
-.cost-hint{margin-top:1rem;font-size:1rem;color:var(--muted-2);max-width:480px;margin-left:auto;margin-right:auto}
+.cost-hint{margin-top:1rem;font-size:1.05rem;color:var(--muted);max-width:480px;margin-left:auto;margin-right:auto}
 
 /* Sliders */
 .sliders-row{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-bottom:1rem}
 .slider-card{background:var(--bg-elev);border:2px solid var(--border-bright);border-radius:20px;padding:2rem 1.5rem;text-align:center;position:relative;overflow:hidden}
 .slider-card::before{content:'';position:absolute;top:-60%;left:50%;transform:translateX(-50%);width:400px;height:200px;background:radial-gradient(ellipse,rgba(59,130,246,.1),transparent);pointer-events:none}
-.slider-label{font-size:1.1rem;color:var(--muted);margin-bottom:.5rem;position:relative;font-weight:500}
+.slider-label{font-size:clamp(1.25rem,3.5vw,1.6rem);color:var(--fg);margin-bottom:.5rem;position:relative;font-weight:700;font-family:var(--fd);line-height:1.25}
 .slider-display{font-family:var(--fd);font-size:clamp(2.5rem,8vw,4rem);font-weight:800;line-height:1;letter-spacing:-.05em;margin-bottom:.5rem;position:relative;background:linear-gradient(135deg,var(--accent-light) 0%,var(--green-light) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 .slider-display .unit{font-size:.35em;font-weight:600;color:var(--muted);-webkit-text-fill-color:var(--muted)}
 .slider-wrap{max-width:100%;margin:1rem auto 0;position:relative}
@@ -202,6 +202,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(6,7,9,.8);ba
       <!-- Cost input -->
       <div class="cost-block">
         <div class="cost-label">How much do you spend <span id="freqLabel">per month</span> on software?</div>
+        <div style="font-size:1.05rem;color:var(--muted);margin-bottom:1.5rem;font-weight:500">Include CRM, scheduling, invoicing — everything you pay for.</div>
         <div class="freq-toggle">
           <button class="freq-btn active" id="btnMonthly" onclick="switchFreq('monthly')">Monthly</button>
           <button class="freq-btn" id="btnYearly" onclick="switchFreq('yearly')">Yearly</button>
@@ -211,7 +212,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(6,7,9,.8);ba
           <input type="number" class="cost-input" id="costInput" placeholder="0" min="0" inputmode="decimal" pattern="[0-9]*" oninput="update()">
           <span class="cost-per" id="costPer">/ mo</span>
         </div>
-        <div class="cost-hint">Include CRM, scheduling, invoicing, estimating — everything you pay for.</div>
       </div>
 
       <!-- Sliders -->
