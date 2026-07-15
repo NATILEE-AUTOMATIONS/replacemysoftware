@@ -199,6 +199,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(6,7,9,.8);ba
   .freq-btn{padding:.9rem 1.8rem;font-size:1.2rem}
   .tools-list-title{font-size:1.6rem}
   .tool-pill{font-size:1.2rem;padding:.8rem 1.5rem}
+  .email-popup{left:50%;right:auto;transform:translateX(-50%);max-width:90vw}
+  .email-popup-toggle{text-align:center}
   .section-label{font-size:1.8rem}
   .stat-item .lbl{font-size:1.2rem}
   .stat-item .val{font-size:2.2rem}
@@ -381,10 +383,10 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(6,7,9,.8);ba
 
 <!-- Email capture popup -->
 <div class="email-popup" id="emailPopup">
-  <button class="email-popup-toggle" onclick="expandEmailPopup()">📧 Email This Breakdown</button>
+  <button class="email-popup-toggle" onclick="expandEmailPopup()">Email This Breakdown</button>
   <div class="email-popup-card">
     <button class="email-popup-close" onclick="collapseEmailPopup()">✕</button>
-    <h3>📧 Email This Breakdown</h3>
+    <h3>Email This Breakdown</h3>
     <p>Want a copy of these numbers? Drop your email and we'll send it over.</p>
     <div class="email-popup-form">
       <input type="email" id="emailInput" placeholder="you@example.com">
