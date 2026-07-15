@@ -201,8 +201,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(6,7,9,.8);ba
 
       <!-- Cost input -->
       <div class="cost-block">
-        <div class="cost-label">How much do you spend <span id="freqLabel">per month</span> on software?</div>
-        <div style="font-size:1.05rem;color:var(--muted);margin-bottom:1.5rem;font-weight:500">Include CRM, scheduling, invoicing — everything you pay for.</div>
+        <div class="cost-label">How much do you spend on your CRM?</div>
         <div class="freq-toggle">
           <button class="freq-btn active" id="btnMonthly" onclick="switchFreq('monthly')">Monthly</button>
           <button class="freq-btn" id="btnYearly" onclick="switchFreq('yearly')">Yearly</button>
@@ -328,7 +327,6 @@ function switchFreq(f) {
   document.getElementById('btnMonthly').classList.toggle('active', f === 'monthly');
   document.getElementById('btnYearly').classList.toggle('active', f === 'yearly');
   document.getElementById('costPer').textContent = f === 'yearly' ? '/ yr' : '/ mo';
-  document.getElementById('freqLabel').textContent = f === 'yearly' ? 'per year' : 'per month';
   update();
 }
 
