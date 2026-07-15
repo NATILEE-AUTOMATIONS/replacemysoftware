@@ -68,7 +68,7 @@ export default async function handler(req, res) {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        from: 'ReplaceMySoftware <team@roofingwebpro.com>',
+        from: 'ReplaceMySoftware <team@replacemysoftware.com>',
         to: emails,
         subject: 'Your CRM Cost Report',
         html,
