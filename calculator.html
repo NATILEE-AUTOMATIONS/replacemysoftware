@@ -102,7 +102,25 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(6,7,9,.8);ba
 .slider::-moz-range-thumb{width:36px;height:36px;border-radius:50%;background:#fff;cursor:grab;border:none;box-shadow:0 0 0 5px rgba(59,130,246,.2),0 6px 20px rgba(0,0,0,.3)}
 
 /* Results */
-.results-section{padding:2rem 0 4rem}
+.email-popup{display:none;position:fixed;bottom:0;left:0;right:0;z-index:100;padding:1.5rem;animation:slideUp .3s ease}
+.email-popup.show{display:block}
+@keyframes slideUp{from{transform:translateY(100%)}to{transform:translateY(0)}}
+.email-popup-card{background:var(--bg-elev);border:2px solid var(--border-bright);border-radius:20px;padding:2rem;max-width:480px;margin:0 auto;position:relative;box-shadow:0 -10px 40px rgba(0,0,0,.5)}
+.email-popup-card h3{font-family:var(--fd);font-size:1.4rem;font-weight:800;margin-bottom:.5rem}
+.email-popup-card p{color:var(--muted);font-size:1rem;margin-bottom:1.25rem}
+.email-popup-close{position:absolute;top:1rem;right:1rem;background:none;border:none;color:var(--muted);font-size:1.3rem;cursor:pointer;padding:.25rem .5rem}
+.email-popup-close:hover{color:var(--fg)}
+.email-popup-form{display:flex;gap:.75rem;margin-bottom:1rem}
+.email-popup-form input{flex:1;padding:.8rem 1rem;background:var(--bg);border:2px solid var(--border-bright);border-radius:12px;color:var(--fg);font-size:1rem;font-family:inherit}
+.email-popup-form input:focus{outline:none;border-color:var(--accent)}
+.email-popup-form button{padding:.8rem 1.5rem;background:var(--accent);color:#fff;border:none;border-radius:12px;font-weight:700;font-size:1rem;cursor:pointer;white-space:nowrap;transition:transform .15s}
+.email-popup-form button:hover{transform:translateY(-1px)}
+.email-popup-form button:disabled{opacity:.5;cursor:default}
+.email-popup-list{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:.5rem}
+.email-chip{display:inline-flex;align-items:center;gap:.4rem;padding:.4rem .8rem;background:rgba(59,130,246,.1);border:1px solid rgba(59,130,246,.2);border-radius:999px;font-size:.85rem;color:var(--accent-light)}
+.email-chip button{background:none;border:none;color:var(--muted);cursor:pointer;font-size:1rem;line-height:1;padding:0}
+.email-chip button:hover{color:var(--red)}
+.email-popup-status{font-size:.9rem;color:var(--green-light);text-align:center;min-height:1.2rem}
 .results-section .container{display:flex;flex-direction:column;align-items:center}
 .section-label{text-align:center;font-family:var(--fd);font-size:clamp(1.8rem,5vw,2.8rem);font-weight:800;color:var(--fg);margin-bottom:3.5rem;letter-spacing:-.02em}
 .section-label .hl{color:var(--red-light)}
@@ -357,6 +375,22 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(6,7,9,.8);ba
     </div>
   </div>
 </section>
+
+<!-- Email capture popup -->
+<div class="email-popup" id="emailPopup">
+  <div class="email-popup-card">
+    <button class="email-popup-close" onclick="closeEmailPopup()">✕</button>
+    <h3>📧 Email This Breakdown</h3>
+    <p>Want a copy of these numbers? Drop your email and we'll send it over.</p>
+    <div class="email-popup-form">
+      <input type="email" id="emailInput" placeholder="you@example.com">
+      <button onclick="sendEmailBreakdown()">Send It</button>
+    </div>
+    <div class="email-popup-list" id="emailList"></div>
+    <div class="email-popup-status" id="emailStatus"></div>
+  </div>
+</div>
+
 </main>
 
 <script>
@@ -481,6 +515,63 @@ document.querySelectorAll('#futureTicks .slider-tick').forEach(t => {
 updateSliderFill(document.getElementById('pastSlider'));
 updateSliderFill(document.getElementById('futureSlider'));
 update();
+
+// Email popup logic
+let emailShown = false;
+let emailList = [];
+
+function checkEmailPopup() {
+  const cost = parseFloat(document.getElementById('costInput').value) || 0;
+  if (cost <= 0 || emailShown) return;
+  const breakdown = document.querySelector('.breakdown');
+  const rect = breakdown.getBoundingClientRect();
+  if (rect.top < window.innerHeight * 0.7) {
+    emailShown = true;
+    document.getElementById('emailPopup').classList.add('show');
+  }
+}
+
+window.addEventListener('scroll', checkEmailPopup);
+
+function closeEmailPopup() {
+  document.getElementById('emailPopup').classList.remove('show');
+}
+
+function sendEmailBreakdown() {
+  const input = document.getElementById('emailInput');
+  const email = input.value.trim();
+  if (!email || !email.includes('@')) {
+    document.getElementById('emailStatus').textContent = 'Please enter a valid email.';
+    document.getElementById('emailStatus').style.color = 'var(--red-light)';
+    return;
+  }
+  if (emailList.length >= 10) {
+    document.getElementById('emailStatus').textContent = 'Max 10 emails reached.';
+    document.getElementById('emailStatus').style.color = 'var(--red-light)';
+    return;
+  }
+  if (emailList.includes(email)) {
+    document.getElementById('emailStatus').textContent = 'Already added.';
+    document.getElementById('emailStatus').style.color = 'var(--red-light)';
+    return;
+  }
+  emailList.push(email);
+  input.value = '';
+  renderEmailList();
+  document.getElementById('emailStatus').textContent = 'Added! We\'ll send the breakdown to ' + emailList.length + ' email' + (emailList.length > 1 ? 's' : '') + '.';
+  document.getElementById('emailStatus').style.color = 'var(--green-light)';
+}
+
+function removeEmail(idx) {
+  emailList.splice(idx, 1);
+  renderEmailList();
+  document.getElementById('emailStatus').textContent = '';
+}
+
+function renderEmailList() {
+  const container = document.getElementById('emailList');
+  container.innerHTML = emailList.map((e, i) => '<span class="email-chip">' + e + ' <button onclick="removeEmail(' + i + ')" aria-label="Remove">\u2715</button></span>').join('');
+}
 </script>
 <script type="application/ld+json">
 {
