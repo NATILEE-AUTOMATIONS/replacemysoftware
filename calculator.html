@@ -391,8 +391,8 @@ function update() {
   // Chart labels
   document.getElementById('barLabelSpent').textContent = `Spent in the last ${yLabel(pastYears, 20)} years`;
   document.getElementById('barLabelFuture').textContent = `Projected for the next ${yLabel(futureYears, 30)} years`;
-  document.getElementById('barLabelTotal').textContent = `Total over ${yLabel(totalYears, 50)} years`;
-  document.getElementById('chartTitle').textContent = `Your Software Spend Over ${yLabel(totalYears, 50)} Years`;
+  document.getElementById('barLabelTotal').textContent = `Total over the next ${yLabel(futureYears, 30)} years`;
+  document.getElementById('chartTitle').textContent = `Your Software Spend Over the Next ${yLabel(futureYears, 30)} Years`;
 
   // Animate bars
   const maxVal = Math.max(spent, futureSpend, total, 1);
