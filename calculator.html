@@ -190,7 +190,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(6,7,9,.8);ba
   <div class="hero-orb orb-2"></div>
   <div class="container">
     <div class="hero-badge"><span class="dot"></span> Free Tool — No Signup Required</div>
-    <h1>How Much Is Your<br><span class="gradient-red">Software Costing You?</span></h1>
+    <h1>How Much Is Your<br><span class="gradient-red">CRM Costing You?</span></h1>
     <p class="hero-sub">See exactly how much you've spent — and how much more you'll spend if you keep renting.</p>
   </div>
 </section>
@@ -255,7 +255,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(6,7,9,.8);ba
 <!-- Live results -->
 <section class="results-section" id="resultsSection">
   <div class="container">
-    <div class="section-label">Your Software <span class="hl">Cost Report</span></div>
+    <div class="section-label">Your CRM <span class="hl">Cost Report</span></div>
 
     <div class="stat-grid">
       <div class="stat-item danger">
@@ -276,7 +276,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(6,7,9,.8);ba
 
     <div class="chart-wrap">
       <div class="chart-head">
-        <div class="chart-title" id="chartTitle">Your Software Spend Over 10+ Years</div>
+        <div class="chart-title" id="chartTitle">Your CRM Spend Over 10+ Years</div>
       </div>
       <div class="bar-compare">
         <div class="bar-row">
@@ -305,8 +305,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(6,7,9,.8);ba
 
     <div class="breakdown">
       <h4>Cost Breakdown</h4>
-      <div class="bd-row"><span class="bd-name">Monthly software spend</span><span class="bd-val red" id="bdMonthly">$0/mo</span></div>
-      <div class="bd-row"><span class="bd-name">Yearly software spend</span><span class="bd-val red" id="bdYearly">$0/yr</span></div>
+      <div class="bd-row"><span class="bd-name">Monthly CRM spend</span><span class="bd-val red" id="bdMonthly">$0/mo</span></div>
+      <div class="bd-row"><span class="bd-name">Yearly CRM spend</span><span class="bd-val red" id="bdYearly">$0/yr</span></div>
       <div class="bd-row"><span class="bd-name">Spent in the last <span id="bdPastYrs">3</span> years</span><span class="bd-val red" id="bdSpent">$0</span></div>
       <div class="bd-row"><span class="bd-name">Projected for the next <span id="bdFutureYrs">10</span> years</span><span class="bd-val red" id="bdFuture">$0</span></div>
       <div class="bd-row total"><span class="bd-name">Total projected spend</span><span class="bd-val red" id="bdTotal">$0</span></div>
@@ -387,13 +387,13 @@ function update() {
   const ctaText = document.getElementById('ctaText');
   if (total >= 50000) ctaText.textContent = 'A custom CRM is a lot cheaper.';
   else if (total >= 20000) ctaText.textContent = 'A custom CRM is much cheaper.';
-  else ctaText.textContent = 'Not spending much yet? Lock in your software now before it adds up.';
+  else ctaText.textContent = 'Not spending much yet? Lock in your CRM now before it adds up.';
 
   // Chart labels
   document.getElementById('barLabelSpent').textContent = `Spent in the last ${yLabel(pastYears, 20)} years`;
   document.getElementById('barLabelFuture').textContent = `Projected for the next ${yLabel(futureYears, 30)} years`;
   document.getElementById('barLabelTotal').textContent = `Total over the next ${yLabel(futureYears, 30)} years`;
-  document.getElementById('chartTitle').textContent = `Your Software Spend Over the Next ${yLabel(futureYears, 30)} Years`;
+  document.getElementById('chartTitle').textContent = `Your CRM Spend Over the Next ${yLabel(futureYears, 30)} Years`;
 
   // Animate bars
   const maxVal = Math.max(spent, futureSpend, total, 1);
@@ -417,7 +417,7 @@ function update() {
   const bottomCta = document.getElementById('bottomCtaTitle');
   if (total >= 50000) bottomCta.textContent = `A custom CRM will save you thousands over the next ${yLabel(futureYears, 30)} years.`;
   else if (total >= 20000) bottomCta.textContent = `A custom CRM will save you thousands over the next ${yLabel(futureYears, 30)} years.`;
-  else bottomCta.textContent = `Lock in your software now before it adds up over the next ${yLabel(futureYears, 30)} years.`;
+  else bottomCta.textContent = `Lock in your CRM now before it adds up over the next ${yLabel(futureYears, 30)} years.`;
 }
 
 // Tick click handlers
