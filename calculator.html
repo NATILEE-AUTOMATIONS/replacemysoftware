@@ -276,7 +276,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(6,7,9,.8);ba
 
     <div class="chart-wrap">
       <div class="chart-head">
-        <div class="chart-title" id="chartTitle">Your CRM Spend Over 10+ Years</div>
+        <div class="chart-title" id="chartTitle">Your <span class="hl">CRM Spend</span> Over 10+ Years</div>
       </div>
       <div class="bar-compare">
         <div class="bar-row">
@@ -393,7 +393,7 @@ function update() {
   document.getElementById('barLabelSpent').textContent = `Spent in the last ${yLabel(pastYears, 20)} years`;
   document.getElementById('barLabelFuture').textContent = `Projected for the next ${yLabel(futureYears, 30)} years`;
   document.getElementById('barLabelTotal').textContent = `Total over the next ${yLabel(futureYears, 30)} years`;
-  document.getElementById('chartTitle').textContent = `Your CRM Spend Over the Next ${yLabel(futureYears, 30)} Years`;
+  document.getElementById('chartTitle').innerHTML = `Your <span class="hl">CRM Spend</span> Over the Next ${yLabel(futureYears, 30)} Years`;
 
   // Animate bars
   const maxVal = Math.max(spent, futureSpend, total, 1);
