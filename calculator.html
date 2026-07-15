@@ -14,7 +14,7 @@
 <meta name="google-site-verification" content="etitPt59OIFXf49QI2WmosNm3EIDRLzTJCyoia_2ZR4">
 <title>CRM Cost Calculator — How Much Is Your Software Costing You? | Replace My Software</title>
 <link rel="canonical" href="https://replacemysoftware.com/calculator">
-<meta name="description" content="Free CRM ROI calculator. See exactly how much you've spent on JobNimbus, ServiceTitan, Housecall Pro, and other SaaS tools. Compare renting vs owning.">
+<meta name="description" content="Free CRM ROI calculator. See exactly how much you've spent on SaaS tools and how much you'd save by owning custom software.">
 <meta name="keywords" content="crm cost calculator, roofing software cost, jobnimbus cost, servicetitan cost, crm roi calculator, software rent vs buy">
 <link rel="icon" type="image/png" href="/logo.png">
 <link rel="apple-touch-icon" href="/logo.png">
@@ -28,12 +28,12 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#060709;--bg-2:#0a0b0f;--bg-card:#0e0f14;--bg-elev:#13141c;--fg:#f0f1f5;--muted:#8b8e98;--muted-2:#5a5d68;--border:#1e1f28;--border-bright:#2e2f3a;--accent:#3b82f6;--accent-light:#60a5fa;--accent-soft:rgba(59,130,246,.1);--accent-glow:rgba(59,130,246,.4);--green:#22c55e;--green-light:#4ade80;--green-soft:rgba(34,197,94,.1);--red:#ef4444;--red-light:#f87171;--red-soft:rgba(239,68,68,.08);--fd:'Outfit',sans-serif;--fb:'Inter',sans-serif;--fm:'Inter',sans-serif}
+:root{--bg:#060709;--bg-2:#0a0b0f;--bg-card:#0e0f14;--bg-elev:#13141c;--fg:#f0f1f5;--muted:#8b8e98;--muted-2:#5a5d68;--border:#1e1f28;--border-bright:#2e2f3a;--accent:#3b82f6;--accent-light:#60a5fa;--accent-soft:rgba(59,130,246,.1);--accent-glow:rgba(59,130,246,.4);--green:#22c55e;--green-light:#4ade80;--green-soft:rgba(34,197,94,.1);--red:#ef4444;--red-light:#f87171;--red-soft:rgba(239,68,68,.08);--orange:#fb923c;--fd:'Outfit',sans-serif;--fb:'Inter',sans-serif}
 *{margin:0;padding:0;box-sizing:border-box}html,body{max-width:100vw;overflow-x:hidden}
 body{background:var(--bg);color:var(--fg);font-family:var(--fb);font-size:18px;line-height:1.6;min-height:100vh;-webkit-font-smoothing:antialiased}
 a{color:inherit;text-decoration:none}
 button{font-family:var(--fb)}
-
+input{font-family:var(--fb)}
 body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellipse 80% 50% at 50% -10%,rgba(59,130,246,.08),transparent),radial-gradient(ellipse 60% 40% at 80% 80%,rgba(239,68,68,.04),transparent);pointer-events:none;z-index:0}
 main{position:relative;z-index:1}
 
@@ -46,7 +46,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(6,7,9,.8);ba
 .nav-cta{padding:.6rem 1.4rem;background:var(--accent);color:#fff;border-radius:10px;font-weight:600;font-size:.95rem;transition:all .2s;flex-shrink:0;white-space:nowrap}
 .nav-cta:hover{transform:translateY(-1px);box-shadow:0 4px 20px var(--accent-glow)}
 
-.hero{padding:8rem 0 3rem;text-align:center;position:relative;overflow:hidden;min-height:55vh;display:flex;align-items:center;justify-content:center}
+.hero{padding:8rem 0 2rem;text-align:center;position:relative;overflow:hidden}
 .hero-orb{position:absolute;border-radius:50%;filter:blur(120px);pointer-events:none}
 .orb-1{width:700px;height:700px;background:var(--accent);top:-250px;left:50%;transform:translateX(-50%);opacity:.08}
 .orb-2{width:400px;height:400px;background:var(--red);top:150px;right:-100px;opacity:.04}
@@ -57,91 +57,38 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(6,7,9,.8);ba
 .hero h1 .gradient-red{background:linear-gradient(135deg,#f87171 0%,#ef4444 50%,#dc2626 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 .hero-sub{font-size:1.2rem;color:var(--muted);max-width:560px;margin:0 auto;line-height:1.5;font-weight:400}
 
-/* Progress bar */
-.progress-bar{display:flex;align-items:center;justify-content:center;gap:0;max-width:420px;margin:0 auto 3.5rem;padding:0 .5rem}
-.pb-step{display:flex;align-items:center;gap:0;flex:1}
-.pb-dot{width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--fd);font-weight:800;font-size:1.1rem;border:2px solid var(--border-bright);background:var(--bg-elev);color:var(--muted-2);transition:all .3s;flex-shrink:0}
-.pb-dot.active{border-color:var(--accent);background:var(--accent);color:#fff;box-shadow:0 0 0 4px var(--accent-soft),0 4px 20px var(--accent-glow)}
-.pb-dot.done{border-color:var(--green);background:var(--green);color:#fff}
-.pb-line{flex:1;height:3px;background:var(--border-bright);border-radius:2px;margin:0 .5rem;transition:background .3s}
-.pb-line.done{background:var(--green)}
-
 .container{max-width:900px;margin:0 auto;padding:0 1.5rem}
 
-/* Steps section */
-.steps-section{padding:2rem 0 4rem;position:relative}
-.steps-section .container{display:flex;justify-content:center;align-items:center;flex-direction:column}
-.steps-section::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:1px;height:40px;background:linear-gradient(180deg,transparent,var(--border-bright))}
+/* Input section */
+.input-section{padding:2rem 0 1rem}
+.input-card{background:var(--bg-card);border:2px solid var(--border-bright);border-radius:24px;padding:2.5rem 2rem;position:relative;overflow:hidden}
+.input-card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--accent),transparent)}
 
-/* Step panels */
-.step-panel{display:none;animation:fadeUp .4s ease}
-.step-panel.active{display:block;padding-bottom:3rem}
-@keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
-
-.step-title{font-family:var(--fd);font-size:clamp(1.8rem,5vw,2.6rem);font-weight:800;letter-spacing:-.02em;text-align:center;margin-bottom:1rem;line-height:1.15}
-.step-desc{text-align:center;color:var(--muted);font-size:1.2rem;margin-bottom:3rem;line-height:1.5}
-
-/* Mode toggle */
-.mode-toggle{display:flex;gap:.25rem;background:var(--bg-elev);border:1px solid var(--border);border-radius:14px;padding:.3rem;margin-bottom:3rem;width:fit-content;margin-left:auto;margin-right:auto}
-.mode-btn{padding:.8rem 1.8rem;border:none;background:transparent;color:var(--muted);font-weight:600;font-size:1.05rem;border-radius:10px;cursor:pointer;transition:all .2s;font-family:var(--fd)}
-.mode-btn.active{background:var(--accent);color:#fff;box-shadow:0 2px 12px var(--accent-glow)}
-
-/* Quick cost input */
-.quick-cost{text-align:center;padding:2rem 0}
-.quick-cost .qc-label{font-size:1.3rem;color:var(--muted);margin-bottom:1.5rem;font-weight:500}
-.quick-cost .qc-wrap{display:inline-flex;align-items:center;gap:.5rem;background:var(--bg-elev);border:2px solid var(--border-bright);border-radius:20px;padding:1.2rem 2rem;transition:all .2s}
-.quick-cost .qc-wrap:focus-within{border-color:var(--accent);box-shadow:0 0 0 4px var(--accent-soft)}
-.quick-cost .qc-dollar{font-family:var(--fd);font-size:3rem;font-weight:800;color:var(--muted)}
-.quick-cost .qc-input{background:none;border:none;color:var(--fg);font-family:var(--fd);font-size:3rem;font-weight:800;width:200px;text-align:center;outline:none}
-.qc-input::-webkit-outer-spin-button,.qc-input::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
-.qc-input[type=number]{-moz-appearance:textfield;text-align:center}
-.quick-cost .qc-per{font-size:1.2rem;color:var(--muted);font-weight:500}
-.quick-cost .qc-hint{margin-top:1.5rem;font-size:1rem;color:var(--muted-2);max-width:480px;margin-left:auto;margin-right:auto}
-
-/* Tool grid */
-.tool-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.25rem;margin-bottom:2rem}
-.tool-card{position:relative;background:var(--bg-elev);border:2px solid #2a2b36;border-radius:18px;padding:1.5rem 1.35rem;cursor:pointer;transition:all .3s cubic-bezier(.34,1.56,.64,1);overflow:hidden}
-.tool-card::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(59,130,246,.06),transparent 60%);opacity:0;transition:opacity .3s;pointer-events:none}
-.tool-card::after{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--accent),transparent);opacity:0;transition:opacity .3s}
-.tool-card:hover{border-color:rgba(59,130,246,.45);transform:translateY(-3px);box-shadow:0 12px 36px rgba(0,0,0,.4),0 0 28px rgba(59,130,246,.08)}
-.tool-card.selected{border-color:var(--accent);background:var(--bg-card);box-shadow:0 0 0 2px var(--accent),0 0 40px var(--accent-glow),0 8px 32px rgba(0,0,0,.4)}
-.tool-card.selected::before{opacity:1}
-.tool-card.selected::after{opacity:1}
-.tool-card-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:.5rem;position:relative}
-.tool-card-name{font-family:var(--fd);font-weight:700;font-size:1.35rem;color:var(--fg);letter-spacing:-.01em}
-.tool-check{width:34px;height:34px;border-radius:10px;border:2px solid #3a3b48;display:flex;align-items:center;justify-content:center;transition:all .2s;flex-shrink:0;background:var(--bg)}
-.tool-card.selected .tool-check{background:var(--accent);border-color:var(--accent);transform:scale(1.05)}
-.tool-check svg{width:18px;height:18px;color:#fff;opacity:0;transition:opacity .15s}
-.tool-card.selected .tool-check svg{opacity:1}
-.tool-card-note{font-size:1rem;color:var(--muted);position:relative;font-weight:500;line-height:1.4}
-.tool-card.selected .tool-card-note{color:var(--accent-light)}
-.tool-fields{margin-top:1rem;display:flex;gap:.6rem;position:relative;opacity:0;max-height:0;overflow:hidden;transition:all .3s}
-.tool-card.selected .tool-fields{opacity:1;max-height:100px;margin-top:1rem}
-.field-group{display:flex;align-items:center;gap:.6rem;background:var(--bg);border:2px solid #3a3b48;border-radius:14px;padding:.6rem .9rem;flex:1;transition:all .2s}
-.field-group:focus-within{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
-.field-group .lbl{font-size:1rem;color:var(--accent-light);font-weight:700;white-space:nowrap;font-family:var(--fd)}
-.field-group input{width:100%;background:transparent;border:none;color:var(--fg);font-size:1.4rem;font-family:var(--fm);font-weight:700;text-align:left;outline:none;min-width:0}
-.field-group input::placeholder{color:#4a4d56;font-weight:400}
-.field-group input::-webkit-outer-spin-button,.field-group input::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
-.field-group input::-webkit-outer-spin-button,.field-group input::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
-.field-group input[type=number]{-moz-appearance:textfield}
-
-.custom-tool{display:flex;gap:.6rem;margin-top:1.5rem;flex-wrap:wrap}
-.custom-input{flex:1;min-width:140px;background:var(--bg-elev);border:2px solid #2a2b36;border-radius:14px;padding:.9rem 1.1rem;color:var(--fg);font-size:1.05rem;font-family:var(--fb);transition:all .2s}
-.custom-input:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
-.custom-input::placeholder{color:#5a5d68}
-.custom-add{padding:.9rem 1.5rem;background:transparent;border:2px dashed #3a3b48;border-radius:14px;color:var(--accent-light);font-weight:600;cursor:pointer;font-size:1rem;transition:all .2s;white-space:nowrap;font-family:var(--fd)}
-.custom-add:hover{border-color:var(--accent);background:var(--accent-soft);border-style:solid}
+/* Cost input */
+.cost-block{text-align:center;margin-bottom:2.5rem}
+.cost-label{font-size:1.3rem;color:var(--muted);margin-bottom:1rem;font-weight:500}
+.freq-toggle{display:flex;gap:.25rem;background:var(--bg-elev);border:1px solid var(--border);border-radius:14px;padding:.3rem;width:fit-content;margin:0 auto 1.5rem}
+.freq-btn{padding:.7rem 1.6rem;border:none;background:transparent;color:var(--muted);font-weight:600;font-size:1rem;border-radius:10px;cursor:pointer;transition:all .2s;font-family:var(--fd)}
+.freq-btn.active{background:var(--accent);color:#fff;box-shadow:0 2px 12px var(--accent-glow)}
+.cost-wrap{display:inline-flex;align-items:center;gap:.5rem;background:var(--bg-elev);border:2px solid var(--border-bright);border-radius:20px;padding:1.2rem 2rem;transition:all .2s}
+.cost-wrap:focus-within{border-color:var(--accent);box-shadow:0 0 0 4px var(--accent-soft)}
+.cost-dollar{font-family:var(--fd);font-size:3rem;font-weight:800;color:var(--muted)}
+.cost-input{background:none;border:none;color:var(--fg);font-family:var(--fd);font-size:3rem;font-weight:800;width:200px;text-align:center;outline:none}
+.cost-input::-webkit-outer-spin-button,.cost-input::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+.cost-input[type=number]{-moz-appearance:textfield;text-align:center}
+.cost-per{font-size:1.2rem;color:var(--muted);font-weight:500}
+.cost-hint{margin-top:1rem;font-size:1rem;color:var(--muted-2);max-width:480px;margin-left:auto;margin-right:auto}
 
 /* Sliders */
-.time-section{background:var(--bg-card);border:2px solid #2a2b36;border-radius:24px;padding:3rem 2rem;text-align:center;position:relative;overflow:hidden}
-.time-section::before{content:'';position:absolute;top:-60%;left:50%;transform:translateX(-50%);width:500px;height:250px;background:radial-gradient(ellipse,rgba(59,130,246,.12),transparent);pointer-events:none}
-.time-label{font-size:1.2rem;color:var(--muted);margin-bottom:.5rem;position:relative;font-weight:500}
-.time-display{font-family:var(--fd);font-size:clamp(3.5rem,12vw,6rem);font-weight:800;line-height:1;letter-spacing:-.05em;margin-bottom:.5rem;position:relative;background:linear-gradient(135deg,var(--accent-light) 0%,var(--green-light) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.time-display .unit{font-size:.35em;font-weight:600;color:var(--muted);-webkit-text-fill-color:var(--muted)}
-.slider-wrap{max-width:440px;margin:1.5rem auto 0;position:relative}
-.slider-track-vis{display:flex;justify-content:space-between;margin-bottom:.6rem;padding:0 2px}
-.slider-tick{font-size:.9rem;color:var(--muted-2);font-weight:600;cursor:pointer;transition:color .15s;font-family:var(--fd)}
+.sliders-row{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-bottom:1rem}
+.slider-card{background:var(--bg-elev);border:2px solid var(--border-bright);border-radius:20px;padding:2rem 1.5rem;text-align:center;position:relative;overflow:hidden}
+.slider-card::before{content:'';position:absolute;top:-60%;left:50%;transform:translateX(-50%);width:400px;height:200px;background:radial-gradient(ellipse,rgba(59,130,246,.1),transparent);pointer-events:none}
+.slider-label{font-size:1.1rem;color:var(--muted);margin-bottom:.5rem;position:relative;font-weight:500}
+.slider-display{font-family:var(--fd);font-size:clamp(2.5rem,8vw,4rem);font-weight:800;line-height:1;letter-spacing:-.05em;margin-bottom:.5rem;position:relative;background:linear-gradient(135deg,var(--accent-light) 0%,var(--green-light) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.slider-display .unit{font-size:.35em;font-weight:600;color:var(--muted);-webkit-text-fill-color:var(--muted)}
+.slider-wrap{max-width:100%;margin:1rem auto 0;position:relative}
+.slider-track-vis{display:flex;justify-content:space-between;margin-bottom:.5rem;padding:0 2px}
+.slider-tick{font-size:.85rem;color:var(--muted-2);font-weight:600;cursor:pointer;transition:color .15s;font-family:var(--fd)}
 .slider-tick:hover{color:var(--muted)}
 .slider-tick.active{color:var(--accent-light)}
 .slider{-webkit-appearance:none;appearance:none;width:100%;height:8px;border-radius:4px;background:linear-gradient(90deg,var(--accent) 0%,var(--accent) var(--fill,30%),#2a2b36 var(--fill,30%),#2a2b36 100%);outline:none}
@@ -150,32 +97,12 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(6,7,9,.8);ba
 .slider::-webkit-slider-thumb:active{cursor:grabbing;transform:scale(1.05);box-shadow:0 0 0 8px rgba(59,130,246,.25),0 6px 20px rgba(0,0,0,.3)}
 .slider::-moz-range-thumb{width:36px;height:36px;border-radius:50%;background:#fff;cursor:grab;border:none;box-shadow:0 0 0 5px rgba(59,130,246,.2),0 6px 20px rgba(0,0,0,.3)}
 
-/* Nav buttons */
-.step-nav{display:flex;justify-content:center;align-items:center;margin-top:3.5rem;gap:1rem}
-.btn-back{padding:1rem 2rem;background:transparent;border:2px solid var(--border-bright);color:var(--muted);border-radius:14px;font-weight:600;font-size:1.1rem;cursor:pointer;transition:all .2s;font-family:var(--fd)}
-.btn-back:hover{border-color:var(--muted);color:var(--fg)}
-.btn-next{padding:1.2rem 3rem;background:linear-gradient(135deg,var(--accent),#2563eb);color:#fff;border:none;border-radius:14px;font-weight:700;font-size:1.25rem;cursor:pointer;transition:all .25s;box-shadow:0 4px 24px var(--accent-glow);font-family:var(--fd);letter-spacing:-.01em}
-.btn-next:hover{transform:translateY(-2px);box-shadow:0 8px 36px var(--accent-glow)}
-.btn-next:disabled{opacity:.4;pointer-events:none}
-.btn-next .arrow{font-size:1.3rem;transition:transform .2s}
-.btn-next:hover .arrow{transform:translateX(4px)}
+/* Results */
+.results-section{padding:1rem 0 4rem}
+.results-section .container{display:flex;flex-direction:column;align-items:center}
+.section-label{text-align:center;font-family:var(--fd);font-size:1.4rem;font-weight:700;color:var(--muted);margin-bottom:2rem;letter-spacing:-.01em}
 
-/* Generate button */
-.gen-btn{display:inline-flex;align-items:center;gap:.6rem;padding:1.3rem 3.5rem;background:linear-gradient(135deg,var(--accent),#2563eb);color:#fff;border:none;border-radius:16px;font-weight:700;font-size:1.35rem;cursor:pointer;transition:all .25s;box-shadow:0 4px 24px var(--accent-glow);font-family:var(--fd);letter-spacing:-.01em}
-.gen-btn:hover{transform:translateY(-3px);box-shadow:0 8px 40px var(--accent-glow)}
-.gen-btn:active{transform:translateY(-1px)}
-.gen-btn .arrow{font-size:1.4rem;transition:transform .2s}
-.gen-btn:hover .arrow{transform:translateX(4px)}
-.gen-btn.loading{pointer-events:none;opacity:.7}
-
-/* Report */
-.report-card{background:var(--bg-card);border:1px solid var(--border);border-radius:24px;padding:3rem;overflow:hidden;position:relative}
-.report-card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--accent),transparent)}
-.report-header{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;margin-bottom:2rem}
-.report-header h3{font-family:var(--fd);font-size:1.6rem;font-weight:800;letter-spacing:-.02em}
-.report-header .badge{font-size:.85rem;padding:.5rem 1.2rem;border-radius:999px;background:var(--red-soft);color:var(--red-light);font-weight:700;text-transform:uppercase;letter-spacing:.08em;font-family:var(--fd)}
-
-.stat-grid{display:grid;grid-template-columns:repeat(2,1fr) auto;gap:1.25rem;margin-bottom:2.5rem;align-items:stretch}
+.stat-grid{display:grid;grid-template-columns:repeat(2,1fr) auto;gap:1.25rem;margin-bottom:2rem;align-items:stretch;width:100%}
 .stat-item{background:var(--bg-elev);border:1px solid var(--border);border-radius:16px;padding:1.75rem 1.25rem;text-align:center;position:relative;overflow:hidden}
 .stat-item .lbl{font-size:.95rem;color:var(--muted);margin-bottom:.5rem;font-weight:500}
 .stat-item .val{font-family:var(--fd);font-size:clamp(1.6rem,4.5vw,2.2rem);font-weight:800;line-height:1;letter-spacing:-.03em}
@@ -183,130 +110,64 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(6,7,9,.8);ba
 .stat-item.danger .val{color:var(--red-light)}
 .stat-item.danger{border-color:rgba(239,68,68,.15)}
 .stat-item.danger::after{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--red),transparent)}
-.stat-item.success .val{color:var(--green-light)}
-.stat-item.success{border-color:rgba(34,197,94,.15)}
-.stat-item.success::after{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--green),transparent)}
+.stat-cta{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.75rem;padding:1.5rem 1.75rem;background:rgba(59,130,246,.06);border:1px solid rgba(59,130,246,.2);border-radius:16px;min-width:200px}
+.stat-cta-text{font-size:1.1rem;font-weight:600;color:var(--fg);text-align:center;line-height:1.4}
+.stat-cta-btn{display:inline-block;padding:.7rem 1.5rem;border-radius:10px;background:var(--accent);color:#fff;font-size:1rem;font-weight:700;text-decoration:none;white-space:nowrap;transition:transform .15s,box-shadow .15s}
+.stat-cta-btn:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(59,130,246,.3)}
 
-.chart-wrap{background:var(--bg-elev);border:1px solid var(--border);border-radius:20px;padding:2.5rem;margin-bottom:2.5rem;position:relative;overflow:hidden}
-/* Bar comparison */
+/* Chart */
+.chart-wrap{background:var(--bg-elev);border:1px solid var(--border);border-radius:20px;padding:2.5rem;width:100%;margin-bottom:2rem;position:relative;overflow:hidden}
+.chart-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:1.5rem;flex-wrap:wrap;gap:.5rem}
+.chart-title{font-family:var(--fd);font-weight:700;font-size:1.15rem}
 .bar-compare{display:flex;flex-direction:column;gap:1.5rem;padding:1rem 0}
 .bar-row{display:flex;flex-direction:column;gap:.5rem}
 .bar-label{font-size:1rem;color:var(--muted);font-weight:600}
-.bar-track{height:56px;background:var(--bg-elev);border-radius:14px;overflow:visible;position:relative;display:flex;align-items:center;padding:0 .75rem}
-.bar-fill{height:100%;border-radius:14px;transition:width 1s cubic-bezier(.16,1,.3,1);min-width:0}
+.bar-track{height:56px;background:var(--bg);border-radius:14px;overflow:visible;position:relative;display:flex;align-items:center;padding:0 .75rem}
+.bar-fill{height:100%;border-radius:14px;transition:width .6s cubic-bezier(.16,1,.3,1);min-width:0}
 .bar-fill.rent{background:linear-gradient(90deg,rgba(239,68,68,.15),rgba(239,68,68,.5))}
 .bar-fill.future{background:linear-gradient(90deg,rgba(251,146,60,.15),rgba(251,146,60,.5))}
 .bar-fill.total-bar{background:linear-gradient(90deg,rgba(239,68,68,.1),rgba(239,68,68,.4));border:1px solid rgba(239,68,68,.3)}
 .bar-row.total-row{margin-top:.5rem;padding-top:.5rem;border-top:1px solid var(--border)}
 .bar-row.total-row .bar-label{font-weight:700;color:var(--fg)}
-.cheaper-note{display:none}
-.stat-cta{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.75rem;padding:1.5rem 1.75rem;background:rgba(59,130,246,.06);border:1px solid rgba(59,130,246,.2);border-radius:16px;min-width:200px}
-.stat-cta-text{font-size:1.1rem;font-weight:600;color:var(--fg);text-align:center;line-height:1.4}
-.stat-cta-btn{display:inline-block;padding:.7rem 1.5rem;border-radius:10px;background:var(--accent);color:#fff;font-size:1rem;font-weight:700;text-decoration:none;white-space:nowrap;transition:transform .15s,box-shadow .15s}
-.stat-cta-btn:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(59,130,246,.3)}
 .bar-val{font-family:var(--fd);font-weight:800;font-size:1.15rem;color:#fff;white-space:nowrap;margin-left:.75rem}
-.bar-savings{margin-top:1.5rem;padding:1.25rem 1.5rem;background:linear-gradient(135deg,rgba(34,197,94,.08),rgba(59,130,246,.06));border:1px solid rgba(34,197,94,.2);border-radius:14px;display:flex;justify-content:space-between;align-items:center}
-.bar-savings-label{font-size:1.1rem;font-weight:600;color:var(--fg)}
-.bar-savings-val{font-family:var(--fd);font-size:1.8rem;font-weight:800;color:var(--green-light)}
-/* Own cost slider */
-.own-control{background:var(--bg-elev);border:1px solid var(--border);border-radius:16px;padding:2rem;margin-bottom:2.5rem}
-.own-control-head{text-align:center;margin-bottom:1.5rem}
-.own-control-title{font-size:1.3rem;font-weight:700;color:var(--fg);margin-bottom:.5rem}
-.own-control-desc{font-size:1rem;color:var(--muted)}
-.own-slider-wrap{display:flex;align-items:center;gap:1rem;max-width:500px;margin:0 auto 1rem}
-.own-slider-min,.own-slider-max{font-size:1rem;font-weight:700;color:var(--muted);white-space:nowrap}
-.own-slider-min{color:var(--green-light)}
-.own-slider-max{color:var(--muted-2)}
-#ownCostSlider{flex:1;-webkit-appearance:none;appearance:none;height:8px;border-radius:4px;background:linear-gradient(90deg,var(--green),var(--accent));outline:none;cursor:pointer}
-#ownCostSlider::-webkit-slider-thumb{-webkit-appearance:none;width:28px;height:28px;border-radius:50%;background:#fff;border:3px solid var(--green);cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,.3)}
-#ownCostSlider::-moz-range-thumb{width:28px;height:28px;border-radius:50%;background:#fff;border:3px solid var(--green);cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,.3)}
-.own-cost-display{text-align:center;font-family:var(--fd);font-size:2.5rem;font-weight:800;color:var(--green-light);margin-bottom:1.5rem}
-/* Ongoing costs */
-.ongoing-costs{border-top:1px solid var(--border);padding-top:1.5rem}
-.oc-title{font-size:1.1rem;font-weight:600;color:var(--fg);margin-bottom:1rem;text-align:center}
-.oc-items{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:.75rem;margin-bottom:1rem}
-.oc-item{display:flex;justify-content:space-between;align-items:center;padding:.75rem 1rem;background:var(--bg);border:1px solid var(--border);border-radius:10px}
-.oc-name{font-size:.95rem;font-weight:600;color:var(--fg)}
-.oc-price{font-size:.9rem;color:var(--muted)}
-.oc-total{text-align:center;font-size:1.05rem;color:var(--muted);font-weight:600}
-.oc-total .red{color:var(--red-light);font-weight:700}
-@media(max-width:600px){.oc-items{grid-template-columns:1fr}}
-.chart-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:1.5rem;flex-wrap:wrap;gap:.5rem}
-.chart-title{font-family:var(--fd);font-weight:700;font-size:1.15rem}
-.chart-legend{display:flex;gap:1.25rem}
-.legend-item{display:flex;align-items:center;gap:.5rem;font-size:.9rem;color:var(--muted);font-weight:500}
-.legend-dot{width:12px;height:12px;border-radius:4px}
-.legend-dot.rent{background:linear-gradient(135deg,#ef4444,#f87171)}
-.legend-dot.own{background:linear-gradient(135deg,#22c55e,#4ade80)}
-canvas#lineChart{width:100%;height:280px;display:block}
 
-.breakdown{background:var(--bg-elev);border:1px solid var(--border);border-radius:20px;padding:2.25rem;margin-bottom:2.5rem}
+/* Breakdown */
+.breakdown{background:var(--bg-elev);border:1px solid var(--border);border-radius:20px;padding:2.25rem;width:100%;margin-bottom:2rem}
 .breakdown h4{font-family:var(--fd);font-size:1.1rem;font-weight:700;margin-bottom:1rem}
 .bd-row{display:flex;justify-content:space-between;align-items:center;padding:.7rem 0;border-bottom:1px solid var(--border)}
 .bd-row:last-child{border-bottom:none}
 .bd-row .bd-name{font-weight:500;color:var(--muted);font-size:1rem}
 .bd-row .bd-val{font-family:var(--fd);font-weight:700;font-size:1.1rem}
 .bd-row .bd-val.red{color:var(--red-light)}
-.bd-row .bd-val.green{color:var(--green-light)}
 .bd-row.total{padding-top:1.25rem;margin-top:.5rem;border-top:2px solid var(--border-bright)}
 .bd-row.total .bd-name{color:var(--fg);font-weight:700;font-size:1.1rem}
 .bd-row.total .bd-val{font-size:1.4rem}
 
-.breakeven{background:linear-gradient(135deg,rgba(34,197,94,.08),rgba(59,130,246,.06));border:1px solid rgba(34,197,94,.2);border-radius:24px;padding:3rem 2rem;text-align:center;margin-bottom:2.5rem;position:relative;overflow:hidden}
-.breakeven::before{content:'';position:absolute;top:-50%;left:50%;transform:translateX(-50%);width:350px;height:250px;background:radial-gradient(ellipse,rgba(34,197,94,.12),transparent);pointer-events:none}
-.be-icon{font-size:2.5rem;margin-bottom:.5rem;position:relative}
-.be-text{font-size:1.2rem;color:var(--muted);margin-bottom:.5rem;position:relative;font-weight:500}
-.be-num{font-family:var(--fd);font-size:clamp(2.2rem,7vw,3.5rem);font-weight:800;color:var(--green-light);line-height:1;position:relative;letter-spacing:-.03em}
-.be-desc{font-size:1.05rem;color:var(--muted);margin-top:.75rem;position:relative;line-height:1.5}
-
-.cta{background:linear-gradient(135deg,var(--bg-card),var(--bg-elev));border:1px solid rgba(59,130,246,.25);border-radius:24px;padding:2.5rem 2rem;text-align:center;margin-bottom:3rem;position:relative;overflow:hidden}
+/* Bottom CTA */
+.cta{background:linear-gradient(135deg,var(--bg-card),var(--bg-elev));border:1px solid rgba(59,130,246,.25);border-radius:24px;padding:2.5rem 2rem;text-align:center;width:100%;position:relative;overflow:hidden}
 .cta::before{content:'';position:absolute;top:-100px;left:50%;transform:translateX(-50%);width:500px;height:300px;background:radial-gradient(ellipse,var(--accent-soft),transparent);opacity:.6;pointer-events:none}
 .cta h2{font-family:var(--fd);font-size:clamp(1.6rem,4vw,2.2rem);font-weight:800;margin-bottom:.75rem;position:relative;letter-spacing:-.02em}
-.cta p{color:var(--muted);font-size:1.1rem;margin-bottom:1.5rem;position:relative}
 .cta-btn{display:inline-flex;align-items:center;gap:.5rem;padding:1.1rem 2.8rem;background:var(--accent);color:#fff;border-radius:14px;font-weight:700;font-size:1.2rem;transition:all .2s;box-shadow:0 4px 24px var(--accent-glow);position:relative;font-family:var(--fd)}
 .cta-btn:hover{transform:translateY(-2px);box-shadow:0 8px 36px var(--accent-glow);background:var(--accent-light)}
 .cta-note{font-size:.85rem;color:var(--muted-2);margin-top:.75rem;position:relative}
 
-.faq-section{padding:1rem 0 3rem}
-.faq-section h2{font-family:var(--fd);font-size:1.8rem;font-weight:700;text-align:center;margin-bottom:1.5rem}
-.faq-item{background:var(--bg-card);border:1px solid var(--border);border-radius:14px;padding:1.25rem 1.5rem;margin-bottom:.6rem;cursor:pointer;transition:all .15s}
-.faq-item:hover{border-color:rgba(59,130,246,.15)}
-.faq-item.open{border-color:rgba(59,130,246,.25)}
-.faq-q{font-weight:600;font-size:1.05rem;color:var(--fg);display:flex;justify-content:space-between;align-items:center;gap:1rem;font-family:var(--fd)}
-.faq-q::after{content:'';width:20px;height:20px;flex-shrink:0;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%237a7d86' stroke-width='2.5' stroke-linecap='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E") center/contain no-repeat;transition:transform .2s}
-.faq-item.open .faq-q::after{transform:rotate(180deg)}
-.faq-a{display:none;margin-top:.85rem;color:var(--muted);font-size:.95rem;line-height:1.65}
-.faq-item.open .faq-a{display:block;animation:fadeUp .2s ease}
-
 @media(max-width:600px){
   body{font-size:17px}
-  .hero{padding:5rem 0 2rem;min-height:auto}
+  .hero{padding:5rem 0 1.5rem}
   .nav-brand{font-size:.95rem}
   .nav-brand img{width:26px;height:26px}
   .nav-cta{padding:.5rem 1.1rem;font-size:.85rem}
-  .tool-grid{grid-template-columns:1fr;gap:.75rem}
-  .tool-card{padding:1.25rem 1.1rem}
-  .tool-card-name{font-size:1.2rem}
-  .mode-btn{padding:.6rem 1.1rem;font-size:.95rem}
-  .quick-cost .qc-input{font-size:2.2rem;width:150px}
-  .quick-cost .qc-dollar{font-size:2.2rem}
-  .quick-cost .qc-wrap{padding:1rem 1.3rem}
-  .quick-cost .qc-label{font-size:1.1rem}
-  .custom-tool{flex-direction:column}
-  .custom-input{width:100%}
-  .custom-add{width:100%;justify-content:center}
-  .field-group input{font-size:1.2rem}
-  .time-section{padding:2rem 1.5rem}
-  .progress-bar{max-width:300px;padding:0 .25rem;margin-bottom:3rem}
-  .pb-dot{width:38px;height:38px;font-size:.95rem}
-  .step-title{font-size:1.6rem}
-  .step-desc{font-size:1.05rem}
-  .gen-btn{font-size:1.15rem;padding:1.1rem 2.5rem}
-  .report-card{padding:1.5rem 1.25rem}
-  .chart-wrap{padding:1rem .5rem}
+  .input-card{padding:1.5rem 1.25rem}
+  .cost-input{font-size:2.2rem;width:150px}
+  .cost-dollar{font-size:2.2rem}
+  .cost-wrap{padding:1rem 1.3rem}
+  .cost-label{font-size:1.1rem}
+  .sliders-row{grid-template-columns:1fr;gap:1rem}
+  .slider-card{padding:1.5rem 1.25rem}
   .stat-grid{grid-template-columns:1fr}
-  .step-nav{flex-direction:column-reverse;gap:.75rem}
-  .btn-back,.btn-next{width:100%;text-align:center;justify-content:center}
+  .chart-wrap{padding:1.5rem 1rem}
+  .breakdown{padding:1.5rem 1.25rem}
+  .freq-btn{padding:.6rem 1.2rem;font-size:.95rem}
 }
 </style>
 </head>
@@ -329,466 +190,147 @@ canvas#lineChart{width:100%;height:280px;display:block}
   <div class="container">
     <div class="hero-badge"><span class="dot"></span> Free Tool — No Signup Required</div>
     <h1>How Much Is Your<br><span class="gradient-red">Software Costing You?</span></h1>
-    <p class="hero-sub">Find out exactly how much you've spent on software — and how much you'd save by owning instead of renting.</p>
+    <p class="hero-sub">See exactly how much you've spent — and how much more you'll spend if you keep renting.</p>
   </div>
 </section>
 
-<!-- Progress bar + Steps -->
-<section class="steps-section">
-<div class="container" style="text-align:center">
-<div class="progress-bar" id="progressBar">
-  <div class="pb-step">
-    <div class="pb-dot active" id="dot1">1</div>
-    <div class="pb-line" id="line1"></div>
+<!-- Single page: inputs + live results -->
+<section class="input-section">
+  <div class="container">
+    <div class="input-card">
+
+      <!-- Cost input -->
+      <div class="cost-block">
+        <div class="cost-label">How much do you spend <span id="freqLabel">per month</span> on software?</div>
+        <div class="freq-toggle">
+          <button class="freq-btn active" id="btnMonthly" onclick="switchFreq('monthly')">Monthly</button>
+          <button class="freq-btn" id="btnYearly" onclick="switchFreq('yearly')">Yearly</button>
+        </div>
+        <div class="cost-wrap">
+          <span class="cost-dollar">$</span>
+          <input type="number" class="cost-input" id="costInput" placeholder="0" min="0" oninput="update()">
+          <span class="cost-per" id="costPer">/ mo</span>
+        </div>
+        <div class="cost-hint">Include CRM, scheduling, invoicing, estimating — everything you pay for.</div>
+      </div>
+
+      <!-- Sliders -->
+      <div class="sliders-row">
+        <div class="slider-card">
+          <div class="slider-label">How many years have you<br>been using these tools?</div>
+          <div class="slider-display" id="pastDisplay">3<span class="unit"> yrs</span></div>
+          <div class="slider-wrap">
+            <div class="slider-track-vis" id="pastTicks">
+              <span class="slider-tick" data-val="0">0</span>
+              <span class="slider-tick" data-val="2">2</span>
+              <span class="slider-tick active" data-val="3">3</span>
+              <span class="slider-tick" data-val="5">5</span>
+              <span class="slider-tick" data-val="7">7</span>
+              <span class="slider-tick" data-val="10">10+</span>
+            </div>
+            <input type="range" class="slider" id="pastSlider" min="0" max="10" value="3" step="1" oninput="update()">
+          </div>
+        </div>
+        <div class="slider-card">
+          <div class="slider-label">How many more years<br>do you plan to be in business?</div>
+          <div class="slider-display" id="futureDisplay">10<span class="unit">+ yrs</span></div>
+          <div class="slider-wrap">
+            <div class="slider-track-vis" id="futureTicks">
+              <span class="slider-tick" data-val="1">1</span>
+              <span class="slider-tick" data-val="3">3</span>
+              <span class="slider-tick" data-val="5">5</span>
+              <span class="slider-tick" data-val="7">7</span>
+              <span class="slider-tick active" data-val="10">10+</span>
+            </div>
+            <input type="range" class="slider" id="futureSlider" min="1" max="10" value="10" step="1" oninput="update()">
+          </div>
+        </div>
+      </div>
+
+    </div>
   </div>
-  <div class="pb-step">
-    <div class="pb-dot" id="dot2">2</div>
-    <div class="pb-line" id="line2"></div>
-  </div>
-  <div class="pb-step">
-    <div class="pb-dot" id="dot3">3</div>
-  </div>
-</div>
-</div>
 </section>
 
-<!-- Step 1: Cost -->
-<div class="step-panel active" id="step1">
+<!-- Live results -->
+<section class="results-section" id="resultsSection" style="display:none">
   <div class="container">
-    <h2 class="step-title">What do you spend on software?</h2>
-    <p class="step-desc">Enter your total monthly cost or pick tools one by one.</p>
-    <div class="mode-toggle">
-      <button class="mode-btn active" id="modeMonthly" onclick="switchFreq('monthly')">Monthly</button>
-      <button class="mode-btn" id="modeYearly" onclick="switchFreq('yearly')">Yearly</button>
-    </div>
+    <div class="section-label">Your Software Cost Report</div>
 
-    <div class="quick-cost" id="quickPanel">
-      <div class="qc-label">How much do you spend <span id="qcFreqLabel">per month</span> on all your software?</div>
-      <div class="qc-wrap">
-        <span class="qc-dollar">$</span>
-        <input type="number" class="qc-input" id="quickMonthly" placeholder="0" min="0" oninput="syncQuick()">
-        <span class="qc-per" id="qcPer">/ mo</span>
+    <div class="stat-grid">
+      <div class="stat-item danger">
+        <div class="lbl">Spent in the last <span id="pastLabel">3</span> years</div>
+        <div class="val" id="statSpent">$0</div>
+        <div class="sub" id="statSpentSub">over the past 3 yrs</div>
       </div>
-      <div class="qc-hint">Include CRM, scheduling, invoicing, estimating, communication — everything you pay for.</div>
-    </div>
-
-    <div class="step-nav">
-      <button class="btn-next" onclick="goToStep(2)">See How Much You've Spent <span class="arrow">→</span></button>
-    </div>
-  </div>
-</div>
-
-<!-- Step 2: Tools (which ones) -->
-<div class="step-panel" id="step2">
-  <div class="container">
-    <h2 class="step-title">Which tools do you use?</h2>
-    <p class="step-desc">Pick the software you're currently paying for. This helps us understand your stack.</p>
-    <div class="tool-grid" id="toolGrid2"></div>
-    <div class="custom-tool">
-      <input type="text" class="custom-input" id="customName2" placeholder="Add another tool">
-      <button class="custom-add" onclick="addCustomTool2()">+ Add Tool</button>
-    </div>
-    <div class="step-nav">
-      <button class="btn-back" onclick="goToStep(1)">← Back</button>
-      <button class="btn-next" onclick="goToStep(3)">Almost Done <span class="arrow">→</span></button>
-    </div>
-  </div>
-</div>
-
-<!-- Step 3: Timeline -->
-<div class="step-panel" id="step3">
-  <div class="container">
-    <h2 class="step-title" id="step3Title">How long have you been using these tools?</h2>
-    <p class="step-desc">This helps us calculate your total spend over time.</p>
-    <div class="time-section">
-      <div class="time-label" id="yearsLabel">Years using these tools</div>
-      <div class="time-display" id="yearsDisplay">3<span class="unit"> yrs</span></div>
-      <div class="slider-wrap">
-        <div class="slider-track-vis" id="sliderTicks">
-          <span class="slider-tick" data-val="0">0</span>
-          <span class="slider-tick" data-val="2">2</span>
-          <span class="slider-tick active" data-val="3">3</span>
-          <span class="slider-tick" data-val="5">5</span>
-          <span class="slider-tick" data-val="7">7</span>
-          <span class="slider-tick" data-val="10">10+</span>
-        </div>
-        <input type="range" class="slider" id="yearsSlider" min="0" max="10" value="3" step="1">
+      <div class="stat-item danger">
+        <div class="lbl">Projected for the next <span id="futureLabel">10</span> years</div>
+        <div class="val" id="statFuture">$0</div>
+        <div class="sub" id="statFutureSub">at current rate</div>
+      </div>
+      <div class="stat-cta">
+        <p class="stat-cta-text" id="ctaText">A custom CRM is cheaper.</p>
+        <a href="/apply" class="stat-cta-btn">Get a Free Quote →</a>
       </div>
     </div>
-    <div class="time-section" style="margin-top:1.5rem">
-      <div class="time-label">How many more years do you plan to keep using them?</div>
-      <div class="time-display" id="futureDisplay">10<span class="unit">+ yrs</span></div>
-      <div class="slider-wrap">
-        <div class="slider-track-vis" id="futureTicks">
-          <span class="slider-tick" data-val="1">1</span>
-          <span class="slider-tick" data-val="3">3</span>
-          <span class="slider-tick" data-val="5">5</span>
-          <span class="slider-tick" data-val="7">7</span>
-          <span class="slider-tick active" data-val="10">10+</span>
-        </div>
-        <input type="range" class="slider" id="futureSlider" min="1" max="10" value="10" step="1">
-      </div>
-    </div>
-    <div class="step-nav" style="margin-top:3rem">
-      <button class="btn-back" onclick="goToStep(2)">← Back</button>
-      <button class="gen-btn" id="genBtn" onclick="generateReport()">
-        Generate My Report
-        <span class="arrow">→</span>
-      </button>
-    </div>
-  </div>
-</div>
 
-<!-- Results -->
-<section class="step-panel" id="results">
-  <div class="container">
-    <div class="report-card">
-      <div class="report-header">
-        <h3>Your Software Cost Report</h3>
+    <div class="chart-wrap">
+      <div class="chart-head">
+        <div class="chart-title" id="chartTitle">Your Software Spend Over 10+ Years</div>
       </div>
-
-      <div class="stat-grid">
-        <div class="stat-item danger">
-          <div class="lbl">Spent in the last <span id="pastYrsLabel2">3</span> years</div>
-          <div class="val" id="rptSpentSoFar">$0</div>
-          <div class="sub" id="rptSpentSoFarSub">over the past 3 yrs</div>
-        </div>
-        <div class="stat-item danger">
-          <div class="lbl">Projected SaaS spend</div>
-          <div class="val" id="rptTotalSpend">$0</div>
-          <div class="sub" id="rptTotalSpendSub">over the next <span id="futureYrsLabel">10</span> years</div>
-        </div>
-        <div class="stat-cta">
-          <p class="stat-cta-text">A custom CRM is cheaper.</p>
-          <a href="/apply" class="stat-cta-btn">Get a Free Quote →</a>
-        </div>
-      </div>
-
-      <div class="chart-wrap">
-        <div class="chart-head">
-          <div class="chart-title" id="chartTitle">Your Software Spend</div>
-        </div>
-        <div class="bar-compare">
-          <div class="bar-row">
-            <div class="bar-label" id="barLabelSpent">Spent in the last 3 years</div>
-            <div class="bar-track">
-              <div class="bar-fill rent" id="barSpent" style="width:0"></div>
-              <span class="bar-val" id="barSpentVal">$0</span>
-            </div>
+      <div class="bar-compare">
+        <div class="bar-row">
+          <div class="bar-label" id="barLabelSpent">Spent in the last 3 years</div>
+          <div class="bar-track">
+            <div class="bar-fill rent" id="barSpent" style="width:0"></div>
+            <span class="bar-val" id="barSpentVal">$0</span>
           </div>
-          <div class="bar-row">
-            <div class="bar-label" id="barLabelFuture">Projected for the next 10 years</div>
-            <div class="bar-track">
-              <div class="bar-fill future" id="barFuture" style="width:0"></div>
-              <span class="bar-val" id="barFutureVal">$0</span>
-            </div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label" id="barLabelFuture">Projected for the next 10 years</div>
+          <div class="bar-track">
+            <div class="bar-fill future" id="barFuture" style="width:0"></div>
+            <span class="bar-val" id="barFutureVal">$0</span>
           </div>
-          <div class="bar-row total-row">
-            <div class="bar-label" id="barLabelTotal">Total over 10+ years</div>
-            <div class="bar-track">
-              <div class="bar-fill total-bar" id="barTotal" style="width:0"></div>
-              <span class="bar-val" id="barTotalVal">$0</span>
-            </div>
+        </div>
+        <div class="bar-row total-row">
+          <div class="bar-label" id="barLabelTotal">Total over 10+ years</div>
+          <div class="bar-track">
+            <div class="bar-fill total-bar" id="barTotal" style="width:0"></div>
+            <span class="bar-val" id="barTotalVal">$0</span>
           </div>
         </div>
       </div>
+    </div>
 
-      <div class="breakdown">
-        <h4>Cost Breakdown</h4>
-        <div class="bd-row"><span class="bd-name">Monthly software spend</span><span class="bd-val red" id="bdMonthly">$0/mo</span></div>
-        <div class="bd-row"><span class="bd-name">Yearly software spend</span><span class="bd-val red" id="bdYearly">$0/yr</span></div>
-        <div class="bd-row"><span class="bd-name">Spent in the last <span id="bdPastYrs">3</span> years</span><span class="bd-val red" id="bdSpent">$0</span></div>
-<div class="bd-row"><span class="bd-name">Projected for the next <span id="bdFutureYrs">10</span> years</span><span class="bd-val red" id="bdFuture">$0</span></div>
-        <div class="bd-row total"><span class="bd-name">Total projected spend</span><span class="bd-val red" id="bdTotalAll">$0</span></div>
-      </div>
+    <div class="breakdown">
+      <h4>Cost Breakdown</h4>
+      <div class="bd-row"><span class="bd-name">Monthly software spend</span><span class="bd-val red" id="bdMonthly">$0/mo</span></div>
+      <div class="bd-row"><span class="bd-name">Yearly software spend</span><span class="bd-val red" id="bdYearly">$0/yr</span></div>
+      <div class="bd-row"><span class="bd-name">Spent in the last <span id="bdPastYrs">3</span> years</span><span class="bd-val red" id="bdSpent">$0</span></div>
+      <div class="bd-row"><span class="bd-name">Projected for the next <span id="bdFutureYrs">10</span> years</span><span class="bd-val red" id="bdFuture">$0</span></div>
+      <div class="bd-row total"><span class="bd-name">Total projected spend</span><span class="bd-val red" id="bdTotal">$0</span></div>
+    </div>
 
-      <div class="cta" style="border:none;background:linear-gradient(135deg,rgba(59,130,246,.08),rgba(34,197,94,.04));margin-bottom:0">
-        <h2 id="bottomCtaTitle">A custom CRM will save you thousands.</h2>
-        <a href="/apply" class="cta-btn">Get a Free Quote →</a>
-        <p class="cta-note">Takes 3 minutes. No commitment.</p>
-      </div>
+    <div class="cta">
+      <h2 id="bottomCtaTitle">A custom CRM will save you thousands over the next 10+ years.</h2>
+      <a href="/apply" class="cta-btn">Get a Free Quote →</a>
+      <p class="cta-note">Starting at $10K. Takes 3 minutes. No commitment.</p>
     </div>
   </div>
 </section>
 </main>
 
 <script>
-const TOOLS = [
-  { name: 'JobNimbus' },
-  { name: 'ServiceTitan' },
-  { name: 'Housecall Pro' },
-  { name: 'SalesRabbit' },
-  { name: 'Jobber' },
-  { name: 'Aspire' },
-  { name: 'LMN' },
-  { name: 'AccuLynx' },
-  { name: 'CompanyCam' },
-  { name: 'Hatch' }
-];
-
-let activeTools = {};
-let selectedToolsStep2 = {};
-let currentStep = 1;
-
-const checkSVG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>';
-
-// Step navigation
-function goToStep(step) {
-  // If results, handle specially
-  if (step === 'results') {
-    document.querySelectorAll('.step-panel').forEach(p => p.classList.remove('active'));
-    document.getElementById('results').classList.add('active');
-    for (let i = 1; i <= 3; i++) {
-      const dot = document.getElementById('dot' + i);
-      dot.classList.remove('active');
-      dot.classList.add('done');
-      dot.innerHTML = '✓';
-    }
-    document.getElementById('line1').classList.add('done');
-    document.getElementById('line2').classList.add('done');
-    const activePanel = document.querySelector('.step-panel.active');
-    if (activePanel) {
-      const rect = activePanel.getBoundingClientRect();
-      const offset = rect.top + window.scrollY - 120;
-      window.scrollTo({ top: offset, behavior: 'smooth' });
-    }
-    return;
-  }
-
-  document.querySelectorAll('.step-panel').forEach(p => p.classList.remove('active'));
-  document.getElementById('step' + step).classList.add('active');
-  currentStep = step;
-
-  // Update step 3 title based on tool selection
-  if (step === 3 || step === '3') {
-    const selected = Object.values(selectedToolsStep2);
-    const title = document.getElementById('step3Title');
-    const yLabel = document.getElementById('yearsLabel');
-    if (selected.length > 0) {
-      let names;
-      if (selected.length === 1) {
-        names = selected[0].name;
-      } else if (selected.length === 2) {
-        names = `${selected[0].name} and ${selected[1].name}`;
-      } else {
-        names = selected.slice(0, -1).map(t => t.name).join(', ') + ', and ' + selected[selected.length - 1].name;
-      }
-      title.textContent = `How long have you been using ${names}?`;
-      yLabel.textContent = `Years using ${names}`;
-    } else {
-      title.textContent = 'How long have you been using your tools?';
-      yLabel.textContent = 'Years using your tools';
-    }
-  }
-
-  // Update progress bar
-  for (let i = 1; i <= 3; i++) {
-    const dot = document.getElementById('dot' + i);
-    dot.classList.remove('active', 'done');
-    if (i < step) { dot.classList.add('done'); dot.innerHTML = '✓'; }
-    else if (i === step) { dot.classList.add('active'); dot.innerHTML = i; }
-    else { dot.innerHTML = i; }
-  }
-  document.getElementById('line1').classList.toggle('done', step > 1);
-  document.getElementById('line2').classList.toggle('done', step > 2);
-
-  // Scroll to top of the active step panel instead of page top
-  const activePanel = document.querySelector('.step-panel.active');
-  if (activePanel) {
-    const rect = activePanel.getBoundingClientRect();
-    const offset = rect.top + window.scrollY - 120; // account for nav bar
-    window.scrollTo({ top: offset, behavior: 'smooth' });
-  } else {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  }
-}
-
-// Frequency toggle
 let freq = 'monthly';
+
 function switchFreq(f) {
   freq = f;
-  document.getElementById('modeMonthly').classList.toggle('active', f === 'monthly');
-  document.getElementById('modeYearly').classList.toggle('active', f === 'yearly');
-  const per = document.getElementById('qcPer');
-  const qcLbl = document.getElementById('qcFreqLabel');
-  const toolLbl = document.getElementById('toolFreqLabel');
-  if (f === 'yearly') {
-    per.textContent = '/ yr';
-    if (qcLbl) qcLbl.textContent = 'per year';
-    if (toolLbl) toolLbl.textContent = 'per year';
-  } else {
-    per.textContent = '/ mo';
-    if (qcLbl) qcLbl.textContent = 'per month';
-    if (toolLbl) toolLbl.textContent = 'per month';
-  }
-  document.querySelectorAll('[id^="price_"]').forEach(inp => {
-    inp.placeholder = f === 'yearly' ? 'Enter /yr' : 'Enter /mo';
-  });
+  document.getElementById('btnMonthly').classList.toggle('active', f === 'monthly');
+  document.getElementById('btnYearly').classList.toggle('active', f === 'yearly');
+  document.getElementById('costPer').textContent = f === 'yearly' ? '/ yr' : '/ mo';
+  document.getElementById('freqLabel').textContent = f === 'yearly' ? 'per year' : 'per month';
+  update();
 }
-
-// Mode toggle (Step 1)
-function switchMode(mode) {
-  const quick = document.getElementById('quickPanel');
-  const tools = document.getElementById('toolsPanel');
-  const btnQ = document.getElementById('modeQuick');
-  const btnT = document.getElementById('modeTools');
-  if (mode === 'quick') {
-    quick.style.display = 'block';
-    tools.style.display = 'none';
-    btnQ.classList.add('active');
-    btnT.classList.remove('active');
-  } else {
-    quick.style.display = 'none';
-    tools.style.display = 'block';
-    btnQ.classList.remove('active');
-    btnT.classList.add('active');
-  }
-}
-
-function syncQuick() {
-  const val = parseFloat(document.getElementById('quickMonthly').value) || 0;
-  activeTools = {};
-  if (val > 0) {
-    activeTools['_quick'] = { name: 'Your Software', price: val, seats: 1, freq };
-  }
-}
-
-// Tool grid (Step 1 - tool by tool mode)
-function renderTools() {
-  const grid = document.getElementById('toolGrid');
-  grid.innerHTML = TOOLS.map((t, i) => `
-    <div class="tool-card" data-tool="${i}" onclick="toggleTool(${i})">
-      <div class="tool-card-top">
-        <div class="tool-card-name">${t.name}</div>
-        <div class="tool-check">${checkSVG}</div>
-      </div>
-      <div class="tool-card-note">Tap to select — enter your monthly cost</div>
-      <div class="tool-fields" onclick="event.stopPropagation()">
-        <div class="field-group">
-          <span class="lbl">$</span>
-          <input type="number" id="price_${i}" placeholder="Enter /mo" min="0" max="9999" onchange="updatePrice(${i}, this.value)" oninput="updatePrice(${i}, this.value)">
-        </div>
-      </div>
-    </div>
-  `).join('');
-}
-
-function toggleTool(i) {
-  const card = document.querySelector(`[data-tool="${i}"]`);
-  if (activeTools[i]) {
-    delete activeTools[i];
-    card.classList.remove('selected');
-  } else {
-    const price = parseFloat(document.getElementById('price_' + i).value) || 0;
-    activeTools[i] = { ...TOOLS[i], price, seats: 1, freq };
-    card.classList.add('selected');
-    setTimeout(() => {
-      const input = document.getElementById('price_' + i);
-      if (input && !input.value) input.focus();
-    }, 300);
-  }
-}
-
-function updatePrice(i, val) {
-  const price = Math.max(0, parseFloat(val) || 0);
-  if (activeTools[i]) {
-    activeTools[i].price = price;
-  }
-}
-
-function addCustomTool() {
-  const nameEl = document.getElementById('customName');
-  const priceEl = document.getElementById('customPrice');
-  const name = nameEl.value.trim();
-  const price = parseFloat(priceEl.value);
-  if (!name) { nameEl.focus(); return; }
-  const id = 'c_' + Date.now();
-  const grid = document.getElementById('toolGrid');
-  const card = document.createElement('div');
-  card.className = 'tool-card selected';
-  card.dataset.tool = id;
-  card.onclick = () => { card.remove(); delete activeTools[id]; };
-  card.innerHTML = `
-    <div class="tool-card-top">
-      <div class="tool-card-name">${name}</div>
-      <div class="tool-check">${checkSVG}</div>
-    </div>
-    <div class="tool-card-note">Custom tool — tap to remove</div>
-    <div class="tool-fields" onclick="event.stopPropagation()">
-      <div class="field-group">
-        <span class="lbl">$</span>
-        <input type="number" id="price_${id}" value="${price || ''}" placeholder="Enter /mo" min="0" max="9999" onchange="updateCustomPrice('${id}', this.value)" oninput="updateCustomPrice('${id}', this.value)">
-      </div>
-    </div>
-  `;
-  grid.appendChild(card);
-  activeTools[id] = { name, price: price || 0, seats: 1, freq };
-  nameEl.value = '';
-  priceEl.value = '';
-}
-
-function updateCustomPrice(id, val) {
-  const price = Math.max(0, parseFloat(val) || 0);
-  if (activeTools[id]) {
-    activeTools[id].price = price;
-  }
-}
-
-// Step 2: Tool selection (no prices, just which ones)
-function renderTools2() {
-  const grid = document.getElementById('toolGrid2');
-  grid.innerHTML = TOOLS.map((t, i) => `
-    <div class="tool-card" data-tool2="${i}" onclick="toggleTool2(${i})">
-      <div class="tool-card-top">
-        <div class="tool-card-name">${t.name}</div>
-        <div class="tool-check">${checkSVG}</div>
-      </div>
-      <div class="tool-card-note">Tap to select</div>
-    </div>
-  `).join('');
-}
-
-function toggleTool2(i) {
-  const card = document.querySelector(`[data-tool2="${i}"]`);
-  if (selectedToolsStep2[i]) {
-    delete selectedToolsStep2[i];
-    card.classList.remove('selected');
-  } else {
-    selectedToolsStep2[i] = { ...TOOLS[i] };
-    card.classList.add('selected');
-  }
-}
-
-function addCustomTool2() {
-  const nameEl = document.getElementById('customName2');
-  const name = nameEl.value.trim();
-  if (!name) { nameEl.focus(); return; }
-  const id = 'c2_' + Date.now();
-  const grid = document.getElementById('toolGrid2');
-  const card = document.createElement('div');
-  card.className = 'tool-card selected';
-  card.dataset.tool2 = id;
-  card.onclick = () => { card.remove(); delete selectedToolsStep2[id]; };
-  card.innerHTML = `
-    <div class="tool-card-top">
-      <div class="tool-card-name">${name}</div>
-      <div class="tool-check">${checkSVG}</div>
-    </div>
-    <div class="tool-card-note">Custom tool — tap to remove</div>
-  `;
-  grid.appendChild(card);
-  selectedToolsStep2[id] = { name };
-  nameEl.value = '';
-}
-
-// Sliders
-const slider = document.getElementById('yearsSlider');
-const yearsDisplay = document.getElementById('yearsDisplay');
-const ticks = document.querySelectorAll('#sliderTicks .slider-tick');
-
-const futureSlider = document.getElementById('futureSlider');
-const futureDisplay = document.getElementById('futureDisplay');
-const futureTicks = document.querySelectorAll('#futureTicks .slider-tick');
 
 function updateSliderFill(s) {
   const min = parseInt(s.min);
@@ -797,132 +339,109 @@ function updateSliderFill(s) {
   s.style.setProperty('--fill', pct + '%');
 }
 
-slider.addEventListener('input', function() {
-  const v = parseInt(this.value);
-  yearsDisplay.innerHTML = (v >= 10 ? '10+' : v) + '<span class="unit"> yrs</span>';
-  ticks.forEach(t => t.classList.toggle('active', parseInt(t.dataset.val) === v));
-  updateSliderFill(this);
-});
+function fmt(n) { return '$' + Math.round(n).toLocaleString(); }
 
-futureSlider.addEventListener('input', function() {
-  const v = parseInt(this.value);
-  futureDisplay.innerHTML = (v >= 10 ? '10+' : v) + '<span class="unit"> yrs</span>';
-  futureTicks.forEach(t => t.classList.toggle('active', parseInt(t.dataset.val) === v));
-  updateSliderFill(this);
-});
+function yLabel(v) { return v >= 10 ? '10+' : v; }
 
-ticks.forEach(t => t.addEventListener('click', () => {
-  slider.value = t.dataset.val;
-  slider.dispatchEvent(new Event('input'));
-}));
+function update() {
+  const rawCost = parseFloat(document.getElementById('costInput').value) || 0;
+  const pastYears = parseInt(document.getElementById('pastSlider').value);
+  const futureYears = parseInt(document.getElementById('futureSlider').value);
 
-futureTicks.forEach(t => t.addEventListener('click', () => {
-  futureSlider.value = t.dataset.val;
-  futureSlider.dispatchEvent(new Event('input'));
-}));
+  // Update slider displays
+  document.getElementById('pastDisplay').innerHTML = yLabel(pastYears) + '<span class="unit"> yrs</span>';
+  document.getElementById('futureDisplay').innerHTML = yLabel(futureYears) + '<span class="unit"> yrs</span>';
 
-// Generate report
-function generateReport() {
-  // Sync quick mode if active
-  const quickVisible = document.getElementById('quickPanel').style.display !== 'none';
-  if (quickVisible) syncQuick();
+  // Update tick marks
+  document.querySelectorAll('#pastTicks .slider-tick').forEach(t => {
+    t.classList.toggle('active', parseInt(t.dataset.val) === pastYears);
+  });
+  document.querySelectorAll('#futureTicks .slider-tick').forEach(t => {
+    t.classList.toggle('active', parseInt(t.dataset.val) === futureYears);
+  });
 
-  const tools = Object.values(activeTools);
-  const monthly = tools.reduce((s, t) => {
-    const m = t.freq === 'yearly' ? t.price / 12 : t.price;
-    return s + m * t.seats;
-  }, 0);
-  if (tools.length === 0 || monthly === 0) {
-    alert('Please enter your monthly software cost first.');
-    goToStep(1);
+  // Update slider fills
+  updateSliderFill(document.getElementById('pastSlider'));
+  updateSliderFill(document.getElementById('futureSlider'));
+
+  // Convert to monthly
+  const monthly = freq === 'yearly' ? rawCost / 12 : rawCost;
+  const annual = monthly * 12;
+  const totalYears = pastYears + futureYears;
+  const spent = annual * pastYears;
+  const futureSpend = annual * futureYears;
+  const total = annual * totalYears;
+
+  // Show/hide results
+  const resultsSection = document.getElementById('resultsSection');
+  if (rawCost > 0) {
+    resultsSection.style.display = 'block';
+  } else {
+    resultsSection.style.display = 'none';
     return;
   }
 
-  const btn = document.getElementById('genBtn');
-  if (btn) {
-    btn.classList.add('loading');
-    btn.innerHTML = 'Crunching numbers...';
-  }
+  // Update stat cards
+  document.getElementById('pastLabel').textContent = yLabel(pastYears);
+  document.getElementById('futureLabel').textContent = yLabel(futureYears);
+  document.getElementById('statSpent').textContent = fmt(spent);
+  document.getElementById('statSpentSub').textContent = `over the past ${yLabel(pastYears)} yrs`;
+  document.getElementById('statFuture').textContent = fmt(futureSpend);
+  document.getElementById('statFutureSub').textContent = `at current rate`;
 
-  setTimeout(() => {
-    calculate();
-    goToStep('results');
-    if (btn) {
-      btn.classList.remove('loading');
-      btn.innerHTML = 'Generate My Report <span class="arrow">→</span>';
-    }
-  }, 600);
-}
-
-function fmt(n) { return '$' + Math.round(n).toLocaleString(); }
-
-function calculate() {
-  const tools = Object.values(activeTools);
-  const years = parseInt(document.getElementById('yearsSlider').value);
-  const futureYears = parseInt(document.getElementById('futureSlider').value);
-  const monthly = tools.reduce((s, t) => {
-    const m = t.freq === 'yearly' ? t.price / 12 : t.price;
-    return s + m * t.seats;
-  }, 0);
-  const annual = monthly * 12;
-  const spent = annual * years;
-  const futureSpend = annual * futureYears;
-  const totalYears = years + futureYears;
-
-  const rentTotal = annual * totalYears;
-  const ownSlider = document.getElementById('ownCostSlider');
-  const own = ownSlider ? parseInt(ownSlider.value) : 10000;
-  const savings = rentTotal - own;
-
-  document.getElementById('rptSpentSoFar').textContent = fmt(spent);
-  document.getElementById('rptSpentSoFarSub').textContent = `over the past ${years >= 10 ? '10+' : years} yrs`;
-  document.getElementById('pastYrsLabel2').textContent = years >= 10 ? '10+' : years;
-  document.getElementById('futureYrsLabel').textContent = futureYears >= 10 ? '10+' : futureYears;
-  document.getElementById('barLabelSpent').textContent = `Spent in the last ${years >= 10 ? '10+' : years} years`;
-  document.getElementById('barLabelFuture').textContent = `Projected for the next ${futureYears >= 10 ? '10+' : futureYears} years`;
-  document.getElementById('barLabelTotal').textContent = `Total over ${totalYears >= 10 ? '10+' : totalYears} years`;
-  document.getElementById('rptTotalSpend').textContent = fmt(rentTotal);
-  document.getElementById('rptTotalSpendSub').textContent = `over ${totalYears >= 10 ? '10+' : totalYears} yrs`;
-  document.getElementById('chartTitle').textContent = `Your Software Spend Over ${totalYears >= 10 ? '10+' : totalYears} Years`;
-
-  // Update CTA text based on spend
-  const ctaText = document.querySelector('.stat-cta-text');
-  if (rentTotal > 50000) ctaText.textContent = 'A custom CRM is a lot cheaper.';
-  else if (rentTotal > 20000) ctaText.textContent = 'A custom CRM is much cheaper.';
-  else if (rentTotal > 10000) ctaText.textContent = 'A custom CRM is cheaper.';
+  // CTA text
+  const ctaText = document.getElementById('ctaText');
+  if (total > 50000) ctaText.textContent = 'A custom CRM is a lot cheaper.';
+  else if (total > 20000) ctaText.textContent = 'A custom CRM is much cheaper.';
+  else if (total > 10000) ctaText.textContent = 'A custom CRM is cheaper.';
   else ctaText.textContent = 'A custom CRM could save you money.';
 
-  // Update bottom CTA with years
-  const bottomCta = document.getElementById('bottomCtaTitle');
-  if (bottomCta) {
-    bottomCta.textContent = `A custom CRM will save you thousands over the next ${totalYears >= 10 ? '10+' : totalYears} years.`;
-  }
+  // Chart labels
+  document.getElementById('barLabelSpent').textContent = `Spent in the last ${yLabel(pastYears)} years`;
+  document.getElementById('barLabelFuture').textContent = `Projected for the next ${yLabel(futureYears)} years`;
+  document.getElementById('barLabelTotal').textContent = `Total over ${yLabel(totalYears)} years`;
+  document.getElementById('chartTitle').textContent = `Your Software Spend Over ${yLabel(totalYears)} Years`;
 
+  // Animate bars
+  const maxVal = Math.max(spent, futureSpend, total, 1);
+  document.getElementById('barSpent').style.width = (spent / maxVal * 100) + '%';
+  document.getElementById('barFuture').style.width = (futureSpend / maxVal * 100) + '%';
+  document.getElementById('barTotal').style.width = (total / maxVal * 100) + '%';
+  document.getElementById('barSpentVal').textContent = fmt(spent);
+  document.getElementById('barFutureVal').textContent = fmt(futureSpend);
+  document.getElementById('barTotalVal').textContent = fmt(total);
+
+  // Breakdown
   document.getElementById('bdMonthly').textContent = fmt(monthly) + '/mo';
   document.getElementById('bdYearly').textContent = fmt(annual) + '/yr';
   document.getElementById('bdSpent').textContent = fmt(spent);
-  document.getElementById('bdPastYrs').textContent = years >= 10 ? '10+' : years;
+  document.getElementById('bdPastYrs').textContent = yLabel(pastYears);
   document.getElementById('bdFuture').textContent = fmt(futureSpend);
-  document.getElementById('bdFutureYrs').textContent = futureYears >= 10 ? '10+' : futureYears;
-  document.getElementById('bdTotalAll').textContent = fmt(rentTotal);
+  document.getElementById('bdFutureYrs').textContent = yLabel(futureYears);
+  document.getElementById('bdTotal').textContent = fmt(total);
 
-  // Animate bars - proportionally scaled to total
-  const maxVal = Math.max(spent, futureSpend, rentTotal, 1);
-  const barSpent = document.getElementById('barSpent');
-  const barFuture = document.getElementById('barFuture');
-  const barTotal = document.getElementById('barTotal');
-  if (barSpent) barSpent.style.width = (spent / maxVal * 100) + '%';
-  if (barFuture) barFuture.style.width = (futureSpend / maxVal * 100) + '%';
-  if (barTotal) barTotal.style.width = (rentTotal / maxVal * 100) + '%';
-  document.getElementById('barSpentVal').textContent = fmt(spent);
-  document.getElementById('barFutureVal').textContent = fmt(futureSpend);
-  document.getElementById('barTotalVal').textContent = fmt(rentTotal);
+  // Bottom CTA
+  document.getElementById('bottomCtaTitle').textContent = `A custom CRM will save you thousands over the next ${yLabel(totalYears)} years.`;
 }
 
+// Tick click handlers
+document.querySelectorAll('#pastTicks .slider-tick').forEach(t => {
+  t.addEventListener('click', () => {
+    document.getElementById('pastSlider').value = t.dataset.val;
+    update();
+  });
+});
+document.querySelectorAll('#futureTicks .slider-tick').forEach(t => {
+  t.addEventListener('click', () => {
+    document.getElementById('futureSlider').value = t.dataset.val;
+    update();
+  });
+});
 
-updateSliderFill(slider);
-updateSliderFill(futureSlider);
-renderTools2();
+// Init
+updateSliderFill(document.getElementById('pastSlider'));
+updateSliderFill(document.getElementById('futureSlider'));
+update();
 </script>
 <script type="application/ld+json">
 {
@@ -930,10 +449,8 @@ renderTools2();
   "@type": "FAQPage",
   "mainEntity": [
     { "@type": "Question", "name": "Is this calculator free?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. No signup, no email, no catch. Use it as many times as you want." } },
-    { "@type": "Question", "name": "Are the prices accurate?", "acceptedAnswer": { "@type": "Answer", "text": "Prices are based on publicly listed starting rates as of 2026. Actual costs vary by plan, add-ons, and number of seats. Most companies pay more than the listed price after add-ons and per-seat increases." } },
-    { "@type": "Question", "name": "What does a custom CRM cost?", "acceptedAnswer": { "@type": "Answer", "text": "Our custom CRMs start at $10K — one time. You own the code. No monthly per-seat fees. Optional retainer available for updates and maintenance." } },
-    { "@type": "Question", "name": "What about ongoing costs?", "acceptedAnswer": { "@type": "Answer", "text": "Hosting on Vercel is free for most small businesses. Supabase is free up to 500MB. Resend is free up to 3,000 emails/month. Your only real ongoing cost is your domain (~$15/year)." } },
-    { "@type": "Question", "name": "Can I add tools that aren't listed?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Use the Add another tool field to enter any software name and its monthly price." } }
+    { "@type": "Question", "name": "What does a custom CRM cost?", "acceptedAnswer": { "@type": "Answer", "text": "Our custom CRMs start at $10K — one time. No monthly per-seat fees. Optional retainer available for updates and maintenance." } },
+    { "@type": "Question", "name": "What about ongoing costs?", "acceptedAnswer": { "@type": "Answer", "text": "Hosting on Vercel is free for most small businesses. Supabase is free up to 500MB. Resend is free up to 3,000 emails/month. Your only real ongoing cost is your domain (~$15/year)." } }
   ]
 }
 </script>
