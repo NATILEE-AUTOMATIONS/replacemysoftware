@@ -536,14 +536,27 @@ let emailList = [];
 
 function checkEmailPopup() {
   const cost = parseFloat(document.getElementById('costInput').value) || 0;
-  if (cost <= 0 || emailShown) return;
+  if (cost <= 0) return;
   const breakdown = document.querySelector('.breakdown');
   const rect = breakdown.getBoundingClientRect();
-  if (rect.top < window.innerHeight * 0.7) {
+  const popup = document.getElementById('emailPopup');
+  
+  // Show popup when breakdown section is visible
+  if (rect.top < window.innerHeight * 0.7 && !emailShown) {
     emailShown = true;
-    const popup = document.getElementById('emailPopup');
     popup.classList.add('show');
     popup.classList.add('collapsed');
+  }
+  
+  // Hide when scrolled to bottom of page, show again when scrolled back up
+  if (emailShown) {
+    const scrollPosition = window.innerHeight + window.scrollY;
+    const pageHeight = document.body.scrollHeight;
+    if (scrollPosition >= pageHeight - 100) {
+      popup.style.display = 'none';
+    } else {
+      popup.style.display = '';
+    }
   }
 }
 
