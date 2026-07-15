@@ -558,8 +558,43 @@ function sendEmailBreakdown() {
   emailList.push(email);
   input.value = '';
   renderEmailList();
-  document.getElementById('emailStatus').textContent = 'Added! We\'ll send the breakdown to ' + emailList.length + ' email' + (emailList.length > 1 ? 's' : '') + '.';
+  document.getElementById('emailStatus').textContent = 'Added! Sending report now...';
   document.getElementById('emailStatus').style.color = 'var(--green-light)';
+
+  // Send to API
+  const cost = parseFloat(document.getElementById('costInput').value) || 0;
+  const monthly = freq === 'monthly' ? cost : cost / 12;
+  const annual = monthly * 12;
+  const pastYears = parseInt(document.getElementById('pastSlider').value);
+  const futureYears = parseInt(document.getElementById('futureSlider').value);
+  const totalYears = pastYears + futureYears;
+
+  fetch('https://replacemysoftware.vercel.app/api/send-breakdown', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      emails: emailList,
+      breakdown: {
+        monthly: fmt(monthly) + '/mo',
+        yearly: fmt(annual) + '/yr',
+        pastYears: yLabel(pastYears, 20),
+        futureYears: yLabel(futureYears, 30),
+        spent: fmt(annual * pastYears),
+        future: fmt(annual * futureYears),
+        total: fmt(annual * totalYears)
+      }
+    })
+  }).then(r => r.json()).then(data => {
+    if (data.success) {
+      document.getElementById('emailStatus').textContent = 'Sent! Check your inbox.';
+    } else {
+      document.getElementById('emailStatus').textContent = 'Error sending. Try again.';
+      document.getElementById('emailStatus').style.color = 'var(--red-light)';
+    }
+  }).catch(() => {
+    document.getElementById('emailStatus').textContent = 'Error sending. Try again.';
+    document.getElementById('emailStatus').style.color = 'var(--red-light)';
+  });
 }
 
 function removeEmail(idx) {
