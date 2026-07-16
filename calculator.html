@@ -102,7 +102,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(6,7,9,.8);ba
 .slider::-moz-range-thumb{width:36px;height:36px;border-radius:50%;background:#fff;cursor:grab;border:none;box-shadow:0 0 0 5px rgba(59,130,246,.2),0 6px 20px rgba(0,0,0,.3)}
 
 /* Results */
-.email-popup{display:none;position:fixed;bottom:1.5rem;right:1.5rem;z-index:100;max-width:380px}
+.email-popup{display:none;position:fixed;bottom:1.5rem;right:1.5rem;z-index:100;max-width:380px;transition:opacity .3s ease}
 .email-popup.show{display:block;animation:popupFadeIn .8s ease-out forwards}
 .email-popup.show .email-popup-card{display:block}
 .email-popup.collapsed .email-popup-card{display:none}
@@ -548,21 +548,24 @@ function checkEmailPopup() {
   const rect = breakdown.getBoundingClientRect();
   const popup = document.getElementById('emailPopup');
   
-  // Show popup when breakdown section is visible
-  if (rect.top < window.innerHeight * 0.7 && !emailShown) {
+  // Show popup sooner — when breakdown is halfway into viewport
+  if (rect.top < window.innerHeight * 0.9 && !emailShown) {
     emailShown = true;
     popup.classList.add('show');
     popup.classList.add('collapsed');
   }
   
-  // Hide when scrolled to bottom of page, show again when scrolled back up
+  // Fade out near bottom, fade back in when scrolled up
   if (emailShown) {
     const scrollPosition = window.innerHeight + window.scrollY;
     const pageHeight = document.body.scrollHeight;
-    if (scrollPosition >= pageHeight - 100) {
-      popup.style.display = 'none';
+    const distFromBottom = pageHeight - scrollPosition;
+    if (distFromBottom < 200) {
+      popup.style.opacity = Math.max(0, distFromBottom / 200);
+      popup.style.pointerEvents = distFromBottom < 50 ? 'none' : 'auto';
     } else {
-      popup.style.display = '';
+      popup.style.opacity = '';
+      popup.style.pointerEvents = '';
     }
   }
 }
