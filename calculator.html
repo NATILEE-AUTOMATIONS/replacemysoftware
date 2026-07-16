@@ -103,13 +103,11 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(6,7,9,.8);ba
 
 /* Results */
 .email-popup{display:none;position:fixed;bottom:1.5rem;right:1.5rem;z-index:100;max-width:380px}
-.email-popup.show{display:block;animation:popupGlow .6s ease-out}
-.email-popup.show .email-popup-card{display:block;animation:popupFade .5s .15s both ease-out}
+.email-popup.show{display:block;animation:popupFadeIn .8s ease-out forwards}
+.email-popup.show .email-popup-card{display:block}
 .email-popup.collapsed .email-popup-card{display:none}
-.email-popup.show .email-popup-toggle{animation:toggleGlow .6s ease-out}
-@keyframes popupGlow{0%{opacity:0;transform:translateY(20px)}60%{opacity:1;transform:translateY(-2px)}100%{opacity:1;transform:translateY(0)}}
-@keyframes popupFade{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
-@keyframes toggleGlow{0%{opacity:0;box-shadow:0 0 0 0 rgba(59,130,246,0)}50%{opacity:1;box-shadow:0 0 20px 4px rgba(59,130,246,.3)}100%{box-shadow:0 4px 20px rgba(59,130,246,.4)}}
+.email-popup.show .email-popup-toggle{animation:popupFadeIn .8s ease-out forwards}
+@keyframes popupFadeIn{from{opacity:0}to{opacity:1}}
 .email-popup-toggle{transition:transform .2s ease, box-shadow .2s ease}
 .email-popup-toggle:hover{transform:translateY(-2px);box-shadow:0 6px 28px rgba(59,130,246,.55)}
 .email-popup-card{transition:box-shadow .2s ease}
