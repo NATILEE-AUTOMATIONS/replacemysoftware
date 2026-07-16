@@ -159,7 +159,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(6,7,9,.8);ba
 .bar-fill.total-bar{background:linear-gradient(90deg,rgba(239,68,68,.1),rgba(239,68,68,.4));border:1px solid rgba(239,68,68,.3)}
 .bar-row.total-row{margin-top:.5rem;padding-top:.5rem;border-top:1px solid var(--border)}
 .bar-row.total-row .bar-label{font-weight:700;color:var(--fg)}
-.bar-val{font-family:var(--fd);font-weight:800;font-size:1.15rem;color:#fff;white-space:nowrap;margin-left:.75rem}
+.bar-val{font-family:var(--fd);font-weight:800;font-size:1.15rem;color:#fff;white-space:nowrap;position:absolute;right:.75rem;z-index:2;text-shadow:0 1px 4px rgba(0,0,0,.5)}
 
 /* Breakdown */
 .breakdown{background:var(--bg-elev);border:2px solid var(--border-bright);border-radius:20px;padding:2.5rem;width:100%;margin-bottom:3rem}
@@ -382,7 +382,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(6,7,9,.8);ba
       <div class="bd-row"><span class="bd-name">Yearly CRM spend</span><span class="bd-val red" id="bdYearly">$0/yr</span></div>
       <div class="bd-row"><span class="bd-name">Spent in the last <span id="bdPastYrs">3</span> years</span><span class="bd-val red" id="bdSpent">$0</span></div>
       <div class="bd-row"><span class="bd-name">Projected for the next <span id="bdFutureYrs">10</span> years</span><span class="bd-val red" id="bdFuture">$0</span></div>
-      <div class="bd-row total"><span class="bd-name">Total projected spend</span><span class="bd-val red" id="bdTotal">$0</span></div>
+      <div class="bd-row total"><span class="bd-name">Total spend over <span id="bdTotalYrs">10</span> years</span><span class="bd-val red" id="bdTotal">$0</span></div>
     </div>
 
     <div class="cta">
@@ -491,8 +491,8 @@ function update() {
   // Chart labels
   document.getElementById('barLabelSpent').textContent = `Spent in the last ${yLabel(pastYears, 20)} years`;
   document.getElementById('barLabelFuture').textContent = `Projected for the next ${yLabel(futureYears, 30)} years`;
-  document.getElementById('barLabelTotal').textContent = `Total over the next ${yLabel(futureYears, 30)} years`;
-  document.getElementById('chartTitle').innerHTML = `Your <span class="hl">CRM Spend</span> Over the Next ${yLabel(futureYears, 30)} Years`;
+  document.getElementById('barLabelTotal').textContent = `Total over ${yLabel(totalYears, 50)} years`;
+  document.getElementById('chartTitle').innerHTML = `Your <span class="hl">CRM Spend</span> Over ${yLabel(totalYears, 50)} Years`;
 
   // Animate bars
   const maxVal = Math.max(spent, futureSpend, total, 1);
@@ -511,12 +511,13 @@ function update() {
   document.getElementById('bdFuture').textContent = fmt(futureSpend);
   document.getElementById('bdFutureYrs').textContent = yLabel(futureYears, 30);
   document.getElementById('bdTotal').textContent = fmt(total);
+  document.getElementById('bdTotalYrs').textContent = yLabel(totalYears, 50);
 
   // Bottom CTA
   const bottomCta = document.getElementById('bottomCtaTitle');
-  if (total >= 50000) bottomCta.textContent = `A custom CRM will save you thousands over the next ${yLabel(futureYears, 30)} years.`;
-  else if (total >= 20000) bottomCta.textContent = `A custom CRM will save you thousands over the next ${yLabel(futureYears, 30)} years.`;
-  else bottomCta.textContent = `Lock in your CRM now before it adds up over the next ${yLabel(futureYears, 30)} years.`;
+  if (total >= 50000) bottomCta.textContent = `A custom CRM will save you thousands over ${yLabel(totalYears, 50)} years.`;
+  else if (total >= 20000) bottomCta.textContent = `A custom CRM will save you thousands over ${yLabel(totalYears, 50)} years.`;
+  else bottomCta.textContent = `Lock in your CRM now before it adds up over ${yLabel(totalYears, 50)} years.`;
 }
 
 // Tick click handlers
