@@ -102,8 +102,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(6,7,9,.8);ba
 .slider::-moz-range-thumb{width:36px;height:36px;border-radius:50%;background:#fff;cursor:grab;border:none;box-shadow:0 0 0 5px rgba(59,130,246,.2),0 6px 20px rgba(0,0,0,.3)}
 
 /* Results */
-.email-modal{display:none;position:fixed;inset:0;z-index:200;align-items:center;justify-content:center}
-.email-modal.show{display:flex;animation:modalFadeIn .3s ease}
+.email-modal{display:none;position:fixed;inset:0;z-index:200;align-items:center;justify-content:center;opacity:0;transition:opacity .3s ease;pointer-events:none}
+.email-modal.show{display:flex;opacity:1;pointer-events:auto}
 .email-modal-overlay{position:absolute;inset:0;background:rgba(0,0,0,.7);backdrop-filter:blur(4px)}
 .email-modal-card{position:relative;background:var(--bg-elev);border:2px solid var(--border-bright);border-radius:20px;padding:2rem;width:90%;max-width:420px;box-shadow:0 12px 48px rgba(0,0,0,.6);animation:modalSlide .4s ease-out}
 @keyframes modalFadeIn{from{opacity:0}to{opacity:1}}
@@ -122,6 +122,11 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(6,7,9,.8);ba
 .email-chip button{background:none;border:none;color:var(--muted);cursor:pointer;font-size:.95rem;line-height:1;padding:0}
 .email-chip button:hover{color:var(--red)}
 .email-modal-status{font-size:.9rem;color:var(--green-light);text-align:center;min-height:1.1rem}
+
+.email-fab{position:fixed;bottom:1.5rem;right:1.5rem;z-index:100;padding:.8rem 1.4rem;background:var(--accent);color:#fff;border:none;border-radius:14px;font-weight:700;font-size:1rem;cursor:pointer;font-family:var(--fd);box-shadow:0 4px 20px rgba(59,130,246,.4);display:none;opacity:0;transition:opacity .4s ease,transform .2s ease}
+.email-fab.visible{display:block}
+.email-fab.show{opacity:1}
+.email-fab:hover{transform:translateY(-2px);box-shadow:0 6px 28px rgba(59,130,246,.55)}
 .results-section .container{display:flex;flex-direction:column;align-items:center}
 .section-label{text-align:center;font-family:var(--fd);font-size:clamp(1.8rem,5vw,2.8rem);font-weight:800;color:var(--fg);margin-bottom:3.5rem;letter-spacing:-.02em}
 .section-label .hl{color:var(--red-light)}
@@ -204,6 +209,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(6,7,9,.8);ba
   .email-modal-form button{font-size:1.2rem;padding:1rem}
   .email-modal-close{font-size:1.4rem;top:1rem;right:1rem}
   .email-modal-status{font-size:1rem}
+  .email-fab{bottom:1rem;right:1rem;left:50%;transform:translateX(-50%);max-width:92vw;text-align:center;font-size:1.1rem;padding:.9rem 1.5rem}
   .email-chip{font-size:.95rem;padding:.4rem .8rem}
   .section-label{font-size:1.8rem}
   .stat-item .lbl{font-size:1.2rem}
@@ -385,6 +391,9 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(6,7,9,.8);ba
   </div>
 </section>
 
+<!-- Floating email button -->
+<button class="email-fab" id="emailFab" onclick="openEmailModal()">Email Report</button>
+
 <!-- Email capture modal -->
 <div class="email-modal" id="emailModal">
   <div class="email-modal-overlay" onclick="closeEmailModal()"></div>
@@ -528,6 +537,7 @@ update();
 
 // Email modal logic
 let emailList = [];
+let emailFabShown = false;
 
 function openEmailModal() {
   document.getElementById('emailModal').classList.add('show');
@@ -541,6 +551,38 @@ function closeEmailModal() {
 window.addEventListener('keydown', e => {
   if (e.key === 'Escape') closeEmailModal();
 });
+
+// Floating email button: show when breakdown visible, fade out at bottom, fade in on scroll up
+function checkEmailFab() {
+  const fab = document.getElementById('emailFab');
+  const breakdown = document.querySelector('.breakdown');
+  if (!breakdown) return;
+  const rect = breakdown.getBoundingClientRect();
+  const cost = parseFloat(document.getElementById('costInput').value) || 0;
+  
+  // Show FAB once breakdown is visible and cost entered
+  if (rect.top < window.innerHeight * 0.9 && cost > 0 && !emailFabShown) {
+    emailFabShown = true;
+    fab.classList.add('visible');
+    requestAnimationFrame(() => fab.classList.add('show'));
+  }
+  
+  if (emailFabShown) {
+    const scrollPosition = window.innerHeight + window.scrollY;
+    const pageHeight = document.body.scrollHeight;
+    const distFromBottom = pageHeight - scrollPosition;
+    // Fade out near bottom, fade in when scrolled back up
+    if (distFromBottom < 200) {
+      fab.style.opacity = Math.max(0, distFromBottom / 200);
+      fab.style.pointerEvents = distFromBottom < 50 ? 'none' : 'auto';
+    } else {
+      fab.style.opacity = '';
+      fab.style.pointerEvents = '';
+    }
+  }
+}
+
+window.addEventListener('scroll', checkEmailFab);
 
 function sendEmailBreakdown() {
   const input = document.getElementById('emailInput');
