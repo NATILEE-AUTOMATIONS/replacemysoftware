@@ -103,11 +103,20 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(6,7,9,.8);ba
 
 /* Results */
 .email-popup{display:none;position:fixed;bottom:1.5rem;right:1.5rem;z-index:100;max-width:380px}
-.email-popup.show{display:block}
-.email-popup.show .email-popup-card{display:block;animation:slideUp .3s ease}
+.email-popup.show{display:block;animation:popupEntrance .5s cubic-bezier(.34,1.56,.64,1)}
+.email-popup.show .email-popup-card{display:block;animation:cardSlide .4s .1s both ease-out}
 .email-popup.collapsed .email-popup-card{display:none}
-@keyframes slideUp{from{transform:translateY(20px);opacity:0}to{transform:translateY(0);opacity:1}}
+.email-popup.show .email-popup-toggle{animation:togglePop .4s cubic-bezier(.34,1.56,.64,1)}
+@keyframes popupEntrance{from{transform:translateY(30px) scale(.85);opacity:0}to{transform:translateY(0) scale(1);opacity:1}}
+@keyframes cardSlide{from{transform:translateY(15px);opacity:0}to{transform:translateY(0);opacity:1}}
+@keyframes togglePop{from{transform:scale(.7);opacity:0}to{transform:scale(1);opacity:1}}
+.email-popup-toggle{transition:transform .2s ease, box-shadow .2s ease}
+.email-popup-toggle:hover{transform:translateY(-2px);box-shadow:0 6px 28px rgba(59,130,246,.55)}
+.email-popup-toggle::before{content:'';display:inline-block;width:8px;height:8px;border-radius:50%;background:#fff;margin-right:.5rem;animation:pulse 1.5s infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.7)}}
 .email-popup-toggle{display:none;width:100%;padding:1rem 1.25rem;background:var(--accent);color:#fff;border:none;border-radius:14px;font-weight:700;font-size:1rem;cursor:pointer;align-items:center;justify-content:center;gap:.5rem;font-family:var(--fd);box-shadow:0 4px 20px rgba(59,130,246,.4)}
+.email-popup-card{transition:transform .2s ease, box-shadow .2s ease}
+.email-popup-card:hover{box-shadow:0 12px 40px rgba(59,130,246,.2),0 8px 32px rgba(0,0,0,.5)}
 .email-popup.collapsed .email-popup-toggle{display:flex}
 .email-popup-card{background:var(--bg-elev);border:2px solid var(--border-bright);border-radius:16px;padding:1.5rem;position:relative;box-shadow:0 8px 32px rgba(0,0,0,.5)}
 .email-popup-card h3{font-family:var(--fd);font-size:1.2rem;font-weight:800;margin-bottom:.4rem;display:flex;align-items:center;gap:.4rem}
