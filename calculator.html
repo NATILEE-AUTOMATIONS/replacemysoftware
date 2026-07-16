@@ -114,7 +114,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(6,7,9,.8);ba
 .email-modal-close:hover{color:var(--fg);background:rgba(255,255,255,.05)}
 .email-modal-form{display:flex;flex-direction:column;gap:.6rem;margin-bottom:.75rem}
 .email-modal-form input{width:100%;padding:.9rem 1.1rem;background:var(--bg);border:2px solid var(--border-bright);border-radius:12px;color:var(--fg);font-size:1.05rem;font-family:inherit;box-sizing:border-box}
-.email-modal-form input:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
+.email-modal-form input:focus,.email-modal-form textarea:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
+.email-modal-form textarea{width:100%;padding:.9rem 1.1rem;background:var(--bg);border:2px solid var(--border-bright);border-radius:12px;color:var(--fg);font-size:1rem;font-family:inherit;box-sizing:border-box;resize:vertical;line-height:1.5}
 .email-modal-form button{width:100%;padding:.9rem 1rem;background:var(--accent);color:#fff;border:none;border-radius:12px;font-weight:700;font-size:1.05rem;cursor:pointer;transition:transform .15s;font-family:var(--fd)}
 .email-modal-form button:hover{transform:translateY(-1px)}
 .email-modal-list{display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:.5rem}
@@ -206,6 +207,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(6,7,9,.8);ba
   .email-modal-card h3{font-size:1.5rem}
   .email-modal-card p{font-size:1.1rem}
   .email-modal-form input{font-size:1.2rem;padding:1rem 1.2rem}
+  .email-modal-form textarea{font-size:1.1rem;padding:1rem 1.2rem}
   .email-modal-form button{font-size:1.2rem;padding:1rem}
   .email-modal-close{font-size:1.4rem;top:1rem;right:1rem}
   .email-modal-status{font-size:1rem}
@@ -399,11 +401,12 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(6,7,9,.8);ba
   <div class="email-modal-overlay" onclick="closeEmailModal()"></div>
   <div class="email-modal-card">
     <button class="email-modal-close" onclick="closeEmailModal()">✕</button>
-    <h3>Email This Breakdown</h3>
-    <p>Want a copy of these numbers? Drop your email and we'll send it over.</p>
+    <h3 id="emailModalTitle">Email This Breakdown</h3>
+    <p id="emailModalSub">Want a copy of these numbers? Drop your email and we'll send it over.</p>
     <div class="email-modal-form">
       <input type="email" id="emailInput" placeholder="you@example.com">
-      <button onclick="sendEmailBreakdown()">Send It</button>
+      <textarea id="emailMessage" rows="3" placeholder="Add a personal note (optional)">Check out this report on how much we're spending on our current CRM setup.</textarea>
+      <button id="emailSendBtn" onclick="sendEmailBreakdown()">Send It</button>
     </div>
     <div class="email-modal-list" id="emailList"></div>
     <div class="email-modal-status" id="emailStatus"></div>
@@ -605,8 +608,10 @@ function sendEmailBreakdown() {
   emailList.push(email);
   input.value = '';
   renderEmailList();
-  document.getElementById('emailStatus').textContent = 'Added! Sending report now...';
+  document.getElementById('emailStatus').textContent = 'Sending...';
   document.getElementById('emailStatus').style.color = 'var(--green-light)';
+
+  const message = document.getElementById('emailMessage').value.trim();
 
   // Send to API
   const cost = parseFloat(document.getElementById('costInput').value) || 0;
@@ -620,7 +625,8 @@ function sendEmailBreakdown() {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
-      emails: emailList,
+      email: email,
+      message: message,
       breakdown: {
         monthly: fmt(monthly) + '/mo',
         yearly: fmt(annual) + '/yr',
@@ -633,7 +639,13 @@ function sendEmailBreakdown() {
     })
   }).then(r => r.json()).then(data => {
     if (data.success) {
-      document.getElementById('emailStatus').textContent = 'Sent! Check your inbox.';
+      document.getElementById('emailStatus').textContent = 'Sent to ' + email + '!';
+      // After first send, update UI for "send to someone else"
+      if (emailList.length >= 1) {
+        document.getElementById('emailModalTitle').textContent = 'Send To Someone Else';
+        document.getElementById('emailModalSub').textContent = 'Want to share these numbers with your team or partner? Add another email.';
+        document.getElementById('emailSendBtn').textContent = 'Send It';
+      }
     } else {
       document.getElementById('emailStatus').textContent = 'Error sending. Try again.';
       document.getElementById('emailStatus').style.color = 'var(--red-light)';

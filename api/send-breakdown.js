@@ -19,14 +19,10 @@ export default async function handler(req, res) {
   }
 
   try {
-    const { emails, breakdown } = req.body;
+    const { email, message, breakdown } = req.body;
 
-    if (!emails || !Array.isArray(emails) || emails.length === 0) {
-      return res.status(400).json({ error: 'No emails provided' });
-    }
-
-    if (emails.length > 10) {
-      return res.status(400).json({ error: 'Max 10 emails' });
+    if (!email) {
+      return res.status(400).json({ error: 'No email provided' });
     }
 
     const rows = [
@@ -37,6 +33,8 @@ export default async function handler(req, res) {
       { label: 'Total Projected Spend', value: breakdown.total }
     ];
 
+    const messageHtml = message ? `<div style="margin-bottom:1.5rem;padding:1rem 1.25rem;background:rgba(255,255,255,.03);border-left:3px solid #3b82f6;border-radius:8px;"><p style="margin:0;font-size:1.05rem;color:#cbd5e1;font-style:italic;">${message}</p></div>` : '';
+
     const html = `
       <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; background: #060709; color: #f5f5f7; border-radius: 20px; overflow: hidden;">
         <div style="background: linear-gradient(135deg, #3b82f6, #1d4ed8); padding: 2rem; text-align: center;">
@@ -44,6 +42,7 @@ export default async function handler(req, res) {
         </div>
         <div style="padding: 2rem;">
           <p style="font-size: 1.1rem; color: #94a3b8; margin-bottom: 1.5rem;">Here's the breakdown from your CRM Cost Calculator:</p>
+          ${messageHtml}
           <table style="width: 100%; border-collapse: collapse;">
             ${rows.map(r => `
               <tr style="border-bottom: 1px solid #1e293b;">
@@ -61,7 +60,7 @@ export default async function handler(req, res) {
       </div>
     `;
 
-    const text = `Your CRM Cost Report\n\n${rows.map(r => `${r.label}: ${r.value}`).join('\n')}\n\nA custom CRM starts at $10K — one time.\nGet a free quote: https://replacemysoftware.com/apply`;
+    const text = `Your CRM Cost Report\n\n${message ? message + '\n\n' : ''}${rows.map(r => `${r.label}: ${r.value}`).join('\n')}\n\nA custom CRM starts at $10K — one time.\nGet a free quote: https://replacemysoftware.com/apply`;;
 
     const response = await fetch('https://api.resend.com/emails', {
       method: 'POST',
@@ -71,7 +70,7 @@ export default async function handler(req, res) {
       },
       body: JSON.stringify({
         from: 'ReplaceMySoftware <team@replacemysoftware.com>',
-        to: emails,
+        to: email,
         subject: 'Your CRM Cost Report',
         html,
         text
@@ -84,7 +83,7 @@ export default async function handler(req, res) {
       return res.status(500).json({ error: 'Failed to send email' });
     }
 
-    return res.status(200).json({ success: true, sent: emails.length });
+    return res.status(200).json({ success: true });
   } catch (err) {
     console.error('Send error:', err);
     return res.status(500).json({ error: 'Server error' });
