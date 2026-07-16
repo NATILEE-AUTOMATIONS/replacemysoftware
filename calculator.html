@@ -555,9 +555,9 @@ window.addEventListener('keydown', e => {
 // Floating email button: show when breakdown visible, fade out at bottom, fade in on scroll up
 function checkEmailFab() {
   const fab = document.getElementById('emailFab');
-  const breakdown = document.querySelector('.breakdown');
-  if (!breakdown) return;
-  const rect = breakdown.getBoundingClientRect();
+  const chart = document.querySelector('.chart-wrap');
+  if (!chart) return;
+  const rect = chart.getBoundingClientRect();
   const cost = parseFloat(document.getElementById('costInput').value) || 0;
   
   // Show FAB once breakdown is visible and cost entered
