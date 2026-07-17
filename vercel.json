@@ -68,6 +68,10 @@
     {
       "source": "/calculator",
       "destination": "/calculator.html"
+    },
+    {
+      "source": "/roofing-crm-quiz",
+      "destination": "/roofing-crm-quiz.html"
     }
   ],
   "headers": [
