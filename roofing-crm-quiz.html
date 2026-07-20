@@ -60,10 +60,10 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(6,7,9,.8);ba
 /* Hero */
 .hero{padding:8rem 0 2rem;text-align:center;position:relative;overflow:hidden}
 .hero-orb{position:absolute;border-radius:50%;filter:blur(120px);pointer-events:none}
-.orb-1{width:700px;height:700px;background:var(--roof);top:-250px;left:50%;transform:translateX(-50%);opacity:.09}
+.orb-1{width:700px;height:700px;background:var(--accent);top:-250px;left:50%;transform:translateX(-50%);opacity:.09}
 .orb-2{width:400px;height:400px;background:var(--accent);top:150px;right:-100px;opacity:.05}
 .hero-badge{display:inline-flex;align-items:center;gap:.5rem;padding:.6rem 1.5rem;background:var(--accent-soft);border:1px solid rgba(59,130,246,.25);border-radius:999px;font-size:1rem;color:var(--accent-light);font-weight:600;margin-bottom:1.5rem;font-family:var(--fd)}
-.hero-badge .dot{width:8px;height:8px;border-radius:50%;background:var(--roof);animation:pulse 2s infinite}
+.hero-badge .dot{width:8px;height:8px;border-radius:50%;background:var(--accent);animation:pulse 2s infinite}
 @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.8)}}
 .hero h1{font-family:var(--fd);font-size:clamp(2.2rem,6vw,3.8rem);font-weight:800;line-height:1.05;letter-spacing:-.03em;margin-bottom:1rem}
 .hero h1 .gradient-blue{background:linear-gradient(135deg,#93c5fd 0%,#60a5fa 45%,#3b82f6 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
@@ -75,13 +75,13 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(6,7,9,.8);ba
 /* Quiz */
 .quiz-section{padding:2rem 0 4rem}
 .quiz-card{background:var(--bg-card);border:2px solid var(--border-bright);border-radius:24px;padding:2.5rem 2rem;position:relative;overflow:hidden;min-height:520px}
-.quiz-card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--roof),transparent)}
+.quiz-card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--accent),transparent)}
 
 .progress-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:.75rem}
 .progress-label{font-family:var(--fd);font-weight:700;font-size:.95rem;letter-spacing:.12em;color:var(--accent-light);text-transform:uppercase}
 .progress-count{font-family:var(--fd);font-weight:700;font-size:.95rem;color:var(--muted)}
 .progress-track{height:8px;background:var(--bg-elev);border-radius:999px;overflow:hidden;margin-bottom:2rem;border:1px solid var(--border)}
-.progress-fill{height:100%;width:0%;border-radius:999px;background:linear-gradient(90deg,var(--roof),var(--accent-light));box-shadow:0 0 16px var(--accent-glow);transition:width .5s cubic-bezier(.16,1,.3,1)}
+.progress-fill{height:100%;width:0%;border-radius:999px;background:linear-gradient(90deg,var(--accent),var(--accent-light));box-shadow:0 0 16px var(--accent-glow);transition:width .5s cubic-bezier(.16,1,.3,1)}
 
 .q-stage{position:relative}
 .q-screen{display:none}
@@ -94,19 +94,19 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(6,7,9,.8);ba
 
 .answers{display:grid;grid-template-columns:1fr 1fr;gap:.9rem}
 .answer{position:relative;display:flex;align-items:center;gap:1rem;padding:1.15rem 1.2rem;background:var(--bg-elev);border:2px solid var(--border-bright);border-radius:16px;cursor:pointer;transition:all .18s ease;text-align:left;width:100%;color:var(--fg)}
-.answer:hover{border-color:var(--roof);transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.35),0 0 0 4px var(--accent-soft)}
+.answer:hover{border-color:var(--accent);transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.35),0 0 0 4px var(--accent-soft)}
 .answer .a-icon{font-size:1.6rem;line-height:1;flex-shrink:0;filter:saturate(1.1)}
 .answer .a-text{flex:1;min-width:0}
 .answer .a-label{font-family:var(--fd);font-weight:700;font-size:1.1rem;line-height:1.25;display:block}
 .answer .a-sub{font-size:.88rem;color:var(--muted);display:block;margin-top:.1rem}
 .answer .a-key{position:absolute;top:.55rem;right:.7rem;font-size:.72rem;font-weight:700;color:var(--muted-2);border:1px solid var(--border-bright);border-radius:6px;padding:.05rem .35rem;font-family:var(--fd)}
-.answer.picked{border-color:var(--roof);background:rgba(59,130,246,.08);box-shadow:0 0 0 4px var(--accent-soft),0 8px 24px rgba(0,0,0,.35)}
+.answer.picked{border-color:var(--accent);background:rgba(59,130,246,.12);box-shadow:0 0 0 4px var(--accent-soft),0 8px 24px rgba(0,0,0,.35)}
 .answer.picked .a-label{color:var(--accent-light)}
-.answer.picked::after{content:'';position:absolute;bottom:.6rem;right:.8rem;width:24px;height:24px;background:var(--roof);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.85rem;font-weight:800;animation:popIn .2s cubic-bezier(.16,1,.3,1)}
+.answer.picked::after{content:'✓';position:absolute;bottom:.6rem;right:.8rem;width:24px;height:24px;background:var(--accent);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.85rem;font-weight:800;animation:popIn .2s cubic-bezier(.16,1,.3,1)}
 @keyframes popIn{from{transform:scale(0)}to{transform:scale(1)}}
 
 .multi-actions{display:flex;justify-content:flex-end;margin-top:1.25rem}
-.multi-done{padding:.9rem 2.2rem;background:var(--roof);color:#fff;border:none;border-radius:12px;font-weight:800;font-size:1.05rem;cursor:pointer;transition:all .15s;font-family:var(--fd);box-shadow:0 4px 24px var(--accent-glow);opacity:.35;pointer-events:none}
+.multi-done{padding:.9rem 2.2rem;background:var(--accent);color:#fff;border:none;border-radius:12px;font-weight:800;font-size:1.05rem;cursor:pointer;transition:all .15s;font-family:var(--fd);box-shadow:0 4px 24px var(--accent-glow);opacity:.35;pointer-events:none}
 .multi-done.ready{opacity:1;pointer-events:auto}
 .multi-done.ready:hover{transform:translateY(-1px);background:var(--accent-light)}
 
@@ -121,7 +121,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(6,7,9,.8);ba
 .analyze.show{display:block;animation:qIn .4s ease}
 .scan-ring{width:120px;height:120px;margin:0 auto 2rem;position:relative}
 .scan-ring::before{content:'';position:absolute;inset:0;border-radius:50%;border:3px solid var(--border-bright)}
-.scan-ring::after{content:'';position:absolute;inset:0;border-radius:50%;border:3px solid transparent;border-top-color:var(--roof);animation:spin 1s linear infinite}
+.scan-ring::after{content:'';position:absolute;inset:0;border-radius:50%;border:3px solid transparent;border-top-color:var(--accent);animation:spin 1s linear infinite}
 .scan-ring .ring-icon{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:2.5rem;animation:ringPulse 1.2s ease-in-out infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
 @keyframes ringPulse{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(.9);opacity:.7}}
@@ -193,8 +193,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(6,7,9,.8);ba
 .capture p{color:var(--muted);font-size:1rem;margin-bottom:1.4rem;position:relative}
 .capture-form{display:flex;flex-direction:column;gap:.65rem;max-width:440px;margin:0 auto;position:relative}
 .capture-form input{width:100%;padding:.9rem 1.1rem;background:var(--bg);border:2px solid var(--border-bright);border-radius:12px;color:var(--fg);font-size:1.05rem;font-family:inherit}
-.capture-form input:focus{outline:none;border-color:var(--roof);box-shadow:0 0 0 3px var(--accent-soft)}
-.capture-form button{width:100%;padding:1rem;background:var(--roof);color:#fff;border:none;border-radius:12px;font-weight:800;font-size:1.1rem;cursor:pointer;transition:all .15s;font-family:var(--fd);box-shadow:0 4px 24px var(--accent-glow)}
+.capture-form input:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
+.capture-form button{width:100%;padding:1rem;background:var(--accent);color:#fff;border:none;border-radius:12px;font-weight:800;font-size:1.1rem;cursor:pointer;transition:all .15s;font-family:var(--fd);box-shadow:0 4px 24px var(--accent-glow)}
 .capture-form button:hover{transform:translateY(-1px);box-shadow:0 8px 32px var(--accent-glow);background:var(--accent-light)}
 .capture-form button:disabled{opacity:.6;cursor:wait;transform:none}
 .capture-status{min-height:1.2rem;font-size:.95rem;margin-top:.6rem;position:relative}
@@ -209,7 +209,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(6,7,9,.8);ba
 /* Cross links + bottom CTA */
 .cross-links{display:flex;justify-content:center;gap:.6rem;flex-wrap:wrap;margin-top:2rem}
 .cross-link{padding:.55rem 1.1rem;background:var(--bg-elev);border:1px solid var(--border-bright);border-radius:999px;font-size:.9rem;color:var(--muted);font-weight:600;transition:all .15s}
-.cross-link:hover{color:var(--fg);border-color:var(--roof);transform:translateY(-1px)}
+.cross-link:hover{color:var(--fg);border-color:var(--accent);transform:translateY(-1px)}
 
 .cta-final{background:linear-gradient(135deg,var(--bg-card),var(--bg-elev));border:1px solid rgba(59,130,246,.25);border-radius:24px;padding:2.5rem 2rem;text-align:center;margin-top:3rem;position:relative;overflow:hidden}
 .cta-final::before{content:'';position:absolute;top:-100px;left:50%;transform:translateX(-50%);width:500px;height:300px;background:radial-gradient(ellipse,var(--accent-soft),transparent);opacity:.6;pointer-events:none}
@@ -583,36 +583,30 @@ function renderQ(i) {
         '</button>'
       ).join('') +
     '</div>';
-  if (q.multi) {
-    html += '<div class="multi-actions"><button class="multi-done" id="multiDone" onclick="finishMulti()">Continue →</button></div>';
-  }
+  html += '<div class="multi-actions"><button class="multi-done" id="multiDone" onclick="finishMulti()">Continue →</button></div>';
   el.innerHTML = html;
   stage.innerHTML = '';
   stage.appendChild(el);
-  if (q.multi) picked[cur] = [];
+  picked[cur] = Array.isArray(picked[cur]) ? picked[cur] : [];
+  // Restore previously picked answers
+  picked[cur].forEach(ai => {
+    const btn = el.querySelector('.answer[data-ai="' + ai + '"]');
+    if (btn) btn.classList.add('picked');
+  });
+  document.getElementById('multiDone').classList.toggle('ready', picked[cur].length >= 1);
 }
 
 function pick(ai, btn) {
   const q = QUESTIONS[cur];
-  if (q.multi) {
-    const sel = picked[cur];
-    const idx = sel.indexOf(ai);
-    if (idx >= 0) { sel.splice(idx, 1); btn.classList.remove('picked'); }
-    else { sel.push(ai); btn.classList.add('picked'); }
-    document.getElementById('multiDone').classList.toggle('ready', sel.length >= (q.min || 1));
-    return;
-  }
-  // single pick
-  if (stage.dataset.locked) return;
-  stage.dataset.locked = '1';
-  btn.classList.add('picked');
-  picked[cur] = ai;
-  setTimeout(advance, 320);
+  const sel = picked[cur];
+  const idx = sel.indexOf(ai);
+  if (idx >= 0) { sel.splice(idx, 1); btn.classList.remove('picked'); }
+  else { sel.push(ai); btn.classList.add('picked'); }
+  document.getElementById('multiDone').classList.toggle('ready', sel.length >= 1);
 }
 
 function finishMulti() {
-  const q = QUESTIONS[cur];
-  if (!picked[cur] || picked[cur].length < (q.min || 1)) return;
+  if (!picked[cur] || picked[cur].length < 1) return;
   advance();
 }
 
@@ -636,7 +630,7 @@ document.addEventListener('keydown', e => {
     const btns = stage.querySelectorAll('.answer');
     if (btns[n - 1]) btns[n - 1].click();
   }
-  if (e.key === 'Enter' && QUESTIONS[cur].multi) {
+  if (e.key === 'Enter') {
     const d = document.getElementById('multiDone');
     if (d && d.classList.contains('ready')) d.click();
   }
@@ -659,7 +653,7 @@ function gather() {
   const build = [], automate = [], integrate = [];
   const notes = [];
   QUESTIONS.forEach((q, qi) => {
-    const sel = q.multi ? (picked[qi] || []) : [picked[qi] ?? 0];
+    const sel = Array.isArray(picked[qi]) ? picked[qi] : [picked[qi] ?? 0];
     sel.forEach(ai => {
       const a = q.answers[ai];
       if (!a) return;
@@ -714,8 +708,11 @@ function showResults() {
   // Profile chips
   const chips = [];
   [0, 5, 7].forEach(qi => {
-    const a = QUESTIONS[qi].answers[picked[qi] ?? 0];
-    if (a && a.chip) chips.push(a.chip);
+    const sel = Array.isArray(picked[qi]) ? picked[qi] : [picked[qi] ?? 0];
+    sel.forEach(ai => {
+      const a = QUESTIONS[qi].answers[ai];
+      if (a && a.chip) chips.push(a.chip);
+    });
   });
   document.getElementById('profileChips').innerHTML = chips.map(c => '<span class="p-chip">' + c + '</span>').join('');
 
@@ -797,7 +794,7 @@ function submitLead(e) {
   const lines = ['CRM REPLACEMENT ASSESSMENT — Verdict: ' + score + '% replaceable', ''];
   lines.push('Answers:');
   QUESTIONS.forEach((q, qi) => {
-    const sel = q.multi ? (picked[qi] || []) : [picked[qi] ?? 0];
+    const sel = Array.isArray(picked[qi]) ? picked[qi] : [picked[qi] ?? 0];
     const labels = sel.map(ai => q.answers[ai] ? q.answers[ai].label : '—').join(', ');
     lines.push('• ' + q.kicker + ': ' + labels);
   });
