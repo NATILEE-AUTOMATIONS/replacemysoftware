@@ -24,7 +24,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#060709;--bg-2:#0a0b0f;--bg-card:#0d0e12;--bg-hover:#14151a;--fg:#f0f1f5;--muted:#9ea2ac;--border:#25262e;--accent:#3b82f6;--accent-light:#60a5fa;--accent-soft:rgba(59,130,246,.12);--accent-glow:rgba(59,130,246,.4);--green:#22c55e;--green-soft:rgba(34,197,94,.12);--orange:#f59e0b;--red:#ef4444;--red-soft:rgba(239,68,68,.1);--radius:12px;--fd:'Space Grotesk',sans-serif;--fb:'Inter',sans-serif;--fm:'JetBrains Mono',monospace}
+:root{--bg:#060709;--bg-2:#0a0b0f;--bg-card:#0d0e12;--bg-hover:#14151a;--fg:#f0f1f5;--muted:#9ea2ac;--muted-2:#5a5d68;--border:#25262e;--accent:#3b82f6;--accent-light:#60a5fa;--accent-soft:rgba(59,130,246,.12);--accent-glow:rgba(59,130,246,.4);--green:#22c55e;--green-soft:rgba(34,197,94,.12);--orange:#f59e0b;--red:#ef4444;--red-light:#f87171;--red-soft:rgba(239,68,68,.1);--radius:12px;--fd:'Space Grotesk',sans-serif;--fb:'Inter',sans-serif;--fm:'JetBrains Mono',monospace}
 *{margin:0;padding:0;box-sizing:border-box}html,body{max-width:100vw;overflow-x:hidden}
 body{background:var(--bg);color:var(--fg);font-family:var(--fb);font-size:16px;line-height:1.6;min-height:100vh}
 a{color:inherit;text-decoration:none}
@@ -57,7 +57,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(6,7,9,.7);ba
 .wizard-section{padding:2rem 0 5rem}
 .wizard{max-width:640px;margin:0 auto;padding:0 1.5rem}
 
-/* Progress bar — single line */
+/* Progress bar */
 .progress-bar{display:flex;align-items:center;justify-content:center;gap:0;margin-bottom:2.5rem;flex-wrap:nowrap;white-space:nowrap}
 .progress-step{display:flex;align-items:center;gap:0;flex-shrink:0}
 .progress-dot{width:36px;height:36px;border-radius:50%;background:var(--bg-card);border:2px solid var(--border);display:flex;align-items:center;justify-content:center;font-family:var(--fd);font-weight:700;font-size:.95rem;color:var(--muted);transition:all .3s;flex-shrink:0}
@@ -93,7 +93,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(6,7,9,.7);ba
 .option-card .opt-title{font-weight:600;font-size:1.15rem}
 .option-card .opt-desc{font-size:1rem;color:var(--muted)}
 
-/* Tool search — unified */
+/* Tool search */
 .tool-search-wrap{position:relative;margin-bottom:1rem}
 .tool-search{width:100%;padding:1.1rem 1rem 1.1rem 2.95rem;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);color:var(--fg);font-family:var(--fb);font-size:1.15rem;box-sizing:border-box}
 .tool-search:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
@@ -106,7 +106,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(6,7,9,.7);ba
 .tool-result-cat{font-size:.85rem;color:var(--muted);font-family:var(--fm)}
 .tool-result-add{padding:.6rem 1rem;cursor:pointer;transition:background .15s;display:flex;align-items:center;gap:.5rem;border-top:1px solid var(--border);color:var(--accent-light)}
 .tool-result-add:hover{background:var(--accent-soft)}
-.tool-result-add svg{flex-shrink:0}
 
 .tools-list{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:1rem;min-height:40px}
 .tool-chip{display:inline-flex;align-items:center;gap:.5rem;padding:.5rem .85rem .5rem 1rem;background:var(--accent-soft);border:1px solid rgba(59,130,246,.25);border-radius:20px;font-size:1.05rem;color:var(--accent-light);animation:chipIn .3s ease}
@@ -114,6 +113,42 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(6,7,9,.7);ba
 .tool-chip .remove{cursor:pointer;color:var(--muted);transition:color .2s;display:flex;align-items:center}
 .tool-chip .remove:hover{color:var(--red)}
 .tools-empty{color:var(--muted);font-size:.85rem;font-style:italic;padding:.5rem 0}
+
+/* Calculator */
+.replace-note{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:1rem 1.25rem;margin-bottom:1.5rem;font-size:.95rem}
+.replace-note-row{display:flex;align-items:flex-start;gap:.6rem;padding:.55rem 0}
+.replace-note-row+.replace-note-row{border-top:1px solid var(--border)}
+.replace-note-row span{flex-shrink:0;width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:700}
+.replace-note-row.yes span{background:var(--green-soft);color:var(--green)}
+.replace-note-row.no span{background:var(--red-soft);color:var(--red)}
+.replace-note-row strong{color:var(--fg)}
+.calc-tools-pills{display:flex;flex-wrap:wrap;gap:.4rem;min-height:28px}
+.calc-tools-pills .tool-chip{font-size:.85rem;padding:.35rem .7rem}
+.calc-tools-pills .calc-empty{color:var(--muted);font-size:.85rem;font-style:italic}
+.calc-block{text-align:center;margin-bottom:1.5rem}
+.calc-label{font-size:1.05rem;color:var(--muted);margin-bottom:1rem}
+.calc-freq-toggle{display:inline-flex;gap:0;margin-bottom:1rem;background:var(--bg-card);border-radius:8px;overflow:hidden;border:1px solid var(--border)}
+.calc-freq-btn{padding:.55rem 1.25rem;background:transparent;color:var(--muted);border:none;font-family:var(--fb);font-size:.95rem;font-weight:500;cursor:pointer;transition:all .2s}
+.calc-freq-btn.active{background:var(--accent);color:#fff}
+.calc-cost-wrap{display:inline-flex;align-items:center;gap:.25rem;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:1rem 1.5rem;transition:all .2s}
+.calc-cost-wrap:focus-within{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
+.calc-dollar{font-family:var(--fd);font-size:2rem;font-weight:700;color:var(--muted)}
+.calc-cost-input{background:none;border:none;color:var(--fg);font-family:var(--fd);font-size:2rem;font-weight:700;width:150px;text-align:center;outline:none}
+.calc-cost-input::placeholder{color:var(--muted-2)}
+.calc-per{font-size:1rem;color:var(--muted)}
+.calc-sliders{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1.5rem}
+.calc-slider-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:1.25rem}
+.calc-slider-label{font-size:.95rem;color:var(--muted);margin-bottom:.75rem}
+.calc-slider-display{font-family:var(--fd);font-size:1.5rem;font-weight:700;color:var(--accent-light);margin-bottom:.75rem}
+.calc-slider{width:100%;-webkit-appearance:none;height:6px;background:var(--border);border-radius:3px;outline:none;--fill:0%}
+.calc-slider::-webkit-slider-runnable-track{height:6px;border-radius:3px;background:linear-gradient(to right,var(--accent) var(--fill),var(--border) var(--fill))}
+.calc-slider::-webkit-slider-thumb{-webkit-appearance:none;width:20px;height:20px;background:var(--accent);border-radius:50%;cursor:pointer;margin-top:-7px;box-shadow:0 0 10px var(--accent-glow)}
+.calc-slider-ends{display:flex;justify-content:space-between;font-size:.75rem;color:var(--muted);margin-top:.35rem}
+.calc-result{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;margin-bottom:1.5rem}
+.calc-result-row{display:flex;justify-content:space-between;padding:.85rem 1.25rem;border-bottom:1px solid var(--border);font-size:.95rem}
+.calc-result-row:last-child{border-bottom:none}
+.calc-result-row.total{background:var(--accent-soft);font-weight:700;font-size:1.05rem}
+.calc-result-val{font-family:var(--fd);font-weight:700;color:var(--red-light)}
 
 /* Buttons */
 .step-actions{display:flex;justify-content:space-between;align-items:center;margin-top:2rem}
@@ -124,7 +159,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(6,7,9,.7);ba
 .btn-ghost{background:transparent;color:var(--muted);border:1px solid var(--border)}
 .btn-ghost:hover{color:var(--fg);border-color:var(--muted)}
 
-/* Summary step */
+/* Summary */
 .summary-card{background:var(--bg-card);border:1px solid var(--border);border-radius:16px;padding:1.75rem;margin-bottom:1.5rem}
 .summary-row{display:flex;justify-content:space-between;padding:.8rem 0;border-bottom:1px solid var(--border)}
 .summary-row:last-child{border-bottom:none}
@@ -133,7 +168,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(6,7,9,.7);ba
 .summary-tools{display:flex;flex-wrap:wrap;gap:.4rem;justify-content:flex-end}
 .summary-tools .tool-chip{font-size:.75rem;padding:.3rem .6rem}
 
-/* Success screen */
+/* Success */
 .success-screen{text-align:center;padding:3rem 0}
 .success-icon{width:64px;height:64px;border-radius:50%;background:var(--green-soft);display:flex;align-items:center;justify-content:center;margin:0 auto 1.5rem;animation:popIn .5s ease}
 @keyframes popIn{from{transform:scale(0)}to{transform:scale(1)}}
@@ -162,6 +197,9 @@ footer{border-top:1px solid var(--border);padding:2rem 0}
   .progress-line{width:16px}
   .progress-label{font-size:.75rem;margin-left:.35rem}
   .step-actions{flex-direction:row}
+  .calc-sliders{grid-template-columns:1fr}
+  .calc-cost-input{font-size:1.6rem;width:120px}
+  .calc-dollar{font-size:1.6rem}
 }
 @media(max-width:540px){
   .nav-inner{padding:.65rem 1rem}
@@ -172,7 +210,7 @@ footer{border-top:1px solid var(--border);padding:2rem 0}
   .progress-line{width:8px}
   .progress-label{display:none}
 }
-.reveal{opacity:1;transform:none;transition:all .7s cubic-bezier(.16,1,.3,1)}.reveal-left{opacity:1;transform:none;transition:all .7s cubic-bezier(.16,1,.3,1)}.reveal-scale{opacity:1;transform:none;transition:all .7s cubic-bezier(.16,1,.3,1)}.js-ready .reveal{opacity:0;transform:translateY(30px)}.js-ready .reveal.visible{opacity:1;transform:none}.js-ready .reveal-left{opacity:0;transform:translateX(-30px)}.js-ready .reveal-left.visible{opacity:1;transform:translateX(0)}.js-ready .reveal-scale{opacity:0;transform:scale(.95)}.js-ready .reveal-scale.visible{opacity:1;transform:scale(1)}</style>
+</style>
 </head>
 <body>
 <nav><div class="nav-inner">
@@ -186,82 +224,32 @@ footer{border-top:1px solid var(--border);padding:2rem 0}
 <div class="container">
 <div class="hero-badge"><span class="pulse"></span>Custom software application</div>
 <h1>Tell us about your <span class="highlight">business</span></h1>
-<p class="hero-sub">We build custom software around your actual workflow. Start by telling us how you operate.</p>
+<p class="hero-sub">We build custom software around your actual workflow. Start by telling us what tools you use.</p>
 </div>
 </section>
 
 <section class="wizard-section">
 <div class="wizard">
 
-<!-- Progress — 6 steps now, one line -->
+<!-- Progress bar -->
 <div class="progress-bar" id="progress-bar">
-<div class="progress-step active" data-step="1"><div class="progress-dot">1</div><span class="progress-label">Basics</span></div>
+<div class="progress-step active" data-step="1"><div class="progress-dot">1</div><span class="progress-label">Tools</span></div>
 <div class="progress-line"></div>
-<div class="progress-step" data-step="2"><div class="progress-dot">2</div><span class="progress-label">Team</span></div>
+<div class="progress-step" data-step="2"><div class="progress-dot">2</div><span class="progress-label">Cost</span></div>
 <div class="progress-line"></div>
-<div class="progress-step" data-step="3"><div class="progress-dot">3</div><span class="progress-label">Tools</span></div>
+<div class="progress-step" data-step="3"><div class="progress-dot">3</div><span class="progress-label">Team</span></div>
 <div class="progress-line"></div>
 <div class="progress-step" data-step="4"><div class="progress-dot">4</div><span class="progress-label">Revenue</span></div>
 <div class="progress-line"></div>
 <div class="progress-step" data-step="5"><div class="progress-dot">5</div><span class="progress-label">Problem</span></div>
 <div class="progress-line"></div>
-<div class="progress-step" data-step="6"><div class="progress-dot">6</div><span class="progress-label">Review</span></div>
+<div class="progress-step" data-step="6"><div class="progress-dot">6</div><span class="progress-label">Basics</span></div>
+<div class="progress-line"></div>
+<div class="progress-step" data-step="7"><div class="progress-dot">7</div><span class="progress-label">Review</span></div>
 </div>
 
-<!-- Step 1: Basics -->
+<!-- Step 1: Tools -->
 <div class="step active" data-step="1">
-<h2 class="step-title">Let's start with the basics</h2>
-<p class="step-sub">We'll use this to contact you with your custom plan.</p>
-<div class="field-row">
-<div class="field-group"><label class="field-label">Your name</label><input class="field-input" id="f-name" placeholder="John Smith"></div>
-<div class="field-group"><label class="field-label">Email</label><input class="field-input" id="f-email" type="email" placeholder="john@company.com"></div>
-</div>
-<div class="field-row">
-<div class="field-group"><label class="field-label">Phone</label><input class="field-input" id="f-phone" placeholder="(555) 123-4567"></div>
-<div class="field-group"><label class="field-label">Company name</label><input class="field-input" id="f-company" placeholder="Smith Landscaping LLC"></div>
-</div>
-<div class="field-group"><label class="field-label">Your role</label>
-<div class="option-grid" id="role-grid">
-<div class="option-card" data-value="Owner"><span class="opt-title">Owner / Founder</span></div>
-<div class="option-card" data-value="Manager"><span class="opt-title">Manager / Operations</span></div>
-<div class="option-card" data-value="Office"><span class="opt-title">Office / Admin</span></div>
-<div class="option-card" data-value="Other"><span class="opt-title">Other</span></div>
-</div>
-</div>
-<div class="step-actions">
-<div></div>
-<button class="btn btn-primary" onclick="nextStep()">Continue →</button>
-</div>
-</div>
-
-<!-- Step 2: Team -->
-<div class="step" data-step="2">
-<h2 class="step-title">Tell us about your team</h2>
-<p class="step-sub">This helps us understand the scale of software we'd build.</p>
-<div class="field-group"><label class="field-label">How many field workers do you have?</label>
-<div class="option-grid" id="field-workers-grid">
-<div class="option-card" data-value="1-2"><span class="opt-title">1-2</span><span class="opt-desc">Solo or duo</span></div>
-<div class="option-card" data-value="3-5"><span class="opt-title">3-5</span><span class="opt-desc">Small crew</span></div>
-<div class="option-card" data-value="6-10"><span class="opt-title">6-10</span><span class="opt-desc">Multiple crews</span></div>
-<div class="option-card" data-value="10+"><span class="opt-title">10+</span><span class="opt-desc">Large operation</span></div>
-</div>
-</div>
-<div class="field-group"><label class="field-label">How many office / admin staff?</label>
-<div class="option-grid" id="office-staff-grid">
-<div class="option-card" data-value="0"><span class="opt-title">0</span><span class="opt-desc">I handle everything</span></div>
-<div class="option-card" data-value="1-2"><span class="opt-title">1-2</span><span class="opt-desc">Small office</span></div>
-<div class="option-card" data-value="3-5"><span class="opt-title">3-5</span><span class="opt-desc">Full office team</span></div>
-<div class="option-card" data-value="5+"><span class="opt-title">5+</span><span class="opt-desc">Large admin team</span></div>
-</div>
-</div>
-<div class="step-actions">
-<button class="btn btn-ghost" onclick="prevStep()">← Back</button>
-<button class="btn btn-primary" onclick="nextStep()">Continue →</button>
-</div>
-</div>
-
-<!-- Step 3: Tools — unified search -->
-<div class="step" data-step="3">
 <h2 class="step-title">What software are you using now?</h2>
 <p class="step-sub">Search for tools you use. If it's not in our database, we'll add it as a custom entry.</p>
 
@@ -282,6 +270,87 @@ footer{border-top:1px solid var(--border);padding:2rem 0}
 <div class="option-card" data-value="1-99"><span class="opt-title">$1-99/mo</span><span class="opt-desc">Basic tools</span></div>
 <div class="option-card" data-value="100-299"><span class="opt-title">$100-299/mo</span><span class="opt-desc">Standard SaaS</span></div>
 <div class="option-card" data-value="300+"><span class="opt-title">$300+/mo</span><span class="opt-desc">Enterprise SaaS</span></div>
+</div>
+</div>
+<div class="step-actions">
+<div></div>
+<button class="btn btn-primary" onclick="nextStep()">Continue →</button>
+</div>
+</div>
+
+<!-- Step 2: Cost Calculator -->
+<div class="step" data-step="2">
+<h2 class="step-title">What's your CRM actually costing you?</h2>
+<p class="step-sub">We'll use this to show you how much you'd save by switching.</p>
+
+<div class="field-group">
+  <label class="field-label">Your current tools</label>
+  <div class="calc-tools-pills" id="calc-tools-pills"></div>
+</div>
+
+<div class="replace-note">
+  <div class="replace-note-row yes"><span>✓</span> <strong>We replace:</strong> CRMs, job management, invoicing, scheduling, client portals, proposals, automations — anything custom-built</div>
+  <div class="replace-note-row no"><span>✗</span> <strong>We don't replace:</strong> QuickBooks, Xero, Hover, EagleView, CompanyCam — specialized tools we integrate with</div>
+</div>
+
+<div class="calc-block">
+  <div class="calc-label">How much do you pay per month for your CRM(s)?</div>
+  <div class="calc-freq-toggle">
+    <button class="calc-freq-btn active" id="calcBtnMonthly" onclick="calcSwitchFreq('monthly')">Monthly</button>
+    <button class="calc-freq-btn" id="calcBtnYearly" onclick="calcSwitchFreq('yearly')">Yearly</button>
+  </div>
+  <div class="calc-cost-wrap">
+    <span class="calc-dollar">$</span>
+    <input type="text" class="calc-cost-input" id="calcCostInput" placeholder="189" inputmode="decimal" pattern="[0-9]*" oninput="calcUpdate()">
+    <span class="calc-per" id="calcPer">/ mo</span>
+  </div>
+</div>
+
+<div class="calc-sliders">
+  <div class="calc-slider-card">
+    <div class="calc-slider-label">How long have you been paying?</div>
+    <div class="calc-slider-display" id="calcPastDisplay">3 yrs</div>
+    <input type="range" class="calc-slider" id="calcPastSlider" min="0" max="20" value="3" step="1" oninput="calcUpdate()">
+    <div class="calc-slider-ends"><span>0</span><span>20+ yrs</span></div>
+  </div>
+  <div class="calc-slider-card">
+    <div class="calc-slider-label">How long do you plan to stay in business?</div>
+    <div class="calc-slider-display" id="calcFutureDisplay">10 yrs</div>
+    <input type="range" class="calc-slider" id="calcFutureSlider" min="1" max="30" value="10" step="1" oninput="calcUpdate()">
+    <div class="calc-slider-ends"><span>1</span><span>30+ yrs</span></div>
+  </div>
+</div>
+
+<div class="calc-result" id="calcResult">
+  <div class="calc-result-row"><span>Spent so far</span><span class="calc-result-val" id="calcResultSpent">$0</span></div>
+  <div class="calc-result-row"><span>Projected future</span><span class="calc-result-val" id="calcResultFuture">$0</span></div>
+  <div class="calc-result-row total"><span>Total over time</span><span class="calc-result-val" id="calcResultTotal">$0</span></div>
+</div>
+
+<div class="step-actions">
+  <button class="btn btn-ghost" onclick="prevStep()">← Back</button>
+  <button class="btn btn-primary" onclick="nextStep()">Continue →</button>
+</div>
+</div>
+
+<!-- Step 3: Team -->
+<div class="step" data-step="3">
+<h2 class="step-title">Tell us about your team</h2>
+<p class="step-sub">This helps us understand the scale of software we'd build.</p>
+<div class="field-group"><label class="field-label">How many field workers do you have?</label>
+<div class="option-grid" id="field-workers-grid">
+<div class="option-card" data-value="1-2"><span class="opt-title">1-2</span><span class="opt-desc">Solo or duo</span></div>
+<div class="option-card" data-value="3-5"><span class="opt-title">3-5</span><span class="opt-desc">Small crew</span></div>
+<div class="option-card" data-value="6-10"><span class="opt-title">6-10</span><span class="opt-desc">Multiple crews</span></div>
+<div class="option-card" data-value="10+"><span class="opt-title">10+</span><span class="opt-desc">Large operation</span></div>
+</div>
+</div>
+<div class="field-group"><label class="field-label">How many office / admin staff?</label>
+<div class="option-grid" id="office-staff-grid">
+<div class="option-card" data-value="0"><span class="opt-title">0</span><span class="opt-desc">I handle everything</span></div>
+<div class="option-card" data-value="1-2"><span class="opt-title">1-2</span><span class="opt-desc">Small office</span></div>
+<div class="option-card" data-value="3-5"><span class="opt-title">3-5</span><span class="opt-desc">Full office team</span></div>
+<div class="option-card" data-value="5+"><span class="opt-title">5+</span><span class="opt-desc">Large admin team</span></div>
 </div>
 </div>
 <div class="step-actions">
@@ -308,7 +377,7 @@ footer{border-top:1px solid var(--border);padding:2rem 0}
 </div>
 </div>
 
-<!-- Step 5: Problem — own page -->
+<!-- Step 5: Problem -->
 <div class="step" data-step="5">
 <h2 class="step-title">What's your biggest problem?</h2>
 <p class="step-sub">Tell us what your current software can't do. This is the problem we'll solve.</p>
@@ -322,8 +391,34 @@ footer{border-top:1px solid var(--border);padding:2rem 0}
 </div>
 </div>
 
-<!-- Step 6: Review -->
+<!-- Step 6: Basics -->
 <div class="step" data-step="6">
+<h2 class="step-title">Almost done — how do we reach you?</h2>
+<p class="step-sub">We'll use this to send your custom plan and roadmap.</p>
+<div class="field-row">
+<div class="field-group"><label class="field-label">Your name</label><input class="field-input" id="f-name" placeholder="John Smith"></div>
+<div class="field-group"><label class="field-label">Email</label><input class="field-input" id="f-email" type="email" placeholder="john@company.com"></div>
+</div>
+<div class="field-row">
+<div class="field-group"><label class="field-label">Phone</label><input class="field-input" id="f-phone" placeholder="(555) 123-4567"></div>
+<div class="field-group"><label class="field-label">Company name</label><input class="field-input" id="f-company" placeholder="Smith Landscaping LLC"></div>
+</div>
+<div class="field-group"><label class="field-label">Your role</label>
+<div class="option-grid" id="role-grid">
+<div class="option-card" data-value="Owner"><span class="opt-title">Owner / Founder</span></div>
+<div class="option-card" data-value="Manager"><span class="opt-title">Manager / Operations</span></div>
+<div class="option-card" data-value="Office"><span class="opt-title">Office / Admin</span></div>
+<div class="option-card" data-value="Other"><span class="opt-title">Other</span></div>
+</div>
+</div>
+<div class="step-actions">
+<button class="btn btn-ghost" onclick="prevStep()">← Back</button>
+<button class="btn btn-primary" onclick="nextStep()">Continue →</button>
+</div>
+</div>
+
+<!-- Step 7: Review -->
+<div class="step" data-step="7">
 <h2 class="step-title">Review your application</h2>
 <p class="step-sub">Make sure everything looks right before submitting.</p>
 <div class="summary-card" id="summary-card"></div>
@@ -346,72 +441,100 @@ footer{border-top:1px solid var(--border);padding:2rem 0}
 </div>
 </section>
 
-<footer><div class="footer-inner">
-<a href="/" class="footer-brand"><img src="/logo.png" alt="RMS">Replace My <span class="accent">Software</span></a>
-<div class="footer-links"><a href="/">Home</a><a href="/apply">Apply</a><a href="mailto:team@roofingwebpro.com">Contact</a></div>
-<div style="font-size:.8rem;color:var(--muted);">© 2026 Replace My Software. Built by NATILEE AUTOMATIONS.</div>
-</div></footer>
+<footer>
+<div class="footer-inner">
+<div class="footer-brand"><img src="/logo.png" alt="RMS">Replace My <span class="accent">Software</span></div>
+<div class="footer-links">
+<a href="/">Home</a>
+<a href="/#features">Features</a>
+<a href="/#pricing">Pricing</a>
+<a href="/apply">Apply</a>
+<a href="/calculator">Calculator</a>
+</div>
+</div>
+</footer>
 
 <script>
+const totalSteps = 7;
 let currentStep = 1;
-const totalSteps = 6;
+const formData = {};
 const selectedTools = new Set();
-const formData = { role: '', fieldWorkers: '', officeStaff: '', softwareSpend: '', revenue: '' };
+let calcFreq = 'monthly';
 
+function fmt(v) { return '$' + Math.round(v).toLocaleString(); }
+function escStr(s) { return s.replace(/'/g, "\\'").replace(/"/g, '&quot;'); }
+function escHtml(s) { return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+
+// Calculator
+function calcSwitchFreq(f) {
+  calcFreq = f;
+  document.getElementById('calcBtnMonthly').classList.toggle('active', f === 'monthly');
+  document.getElementById('calcBtnYearly').classList.toggle('active', f === 'yearly');
+  document.getElementById('calcPer').textContent = f === 'yearly' ? '/ yr' : '/ mo';
+  calcUpdate();
+}
+function calcUpdate() {
+  const raw = parseFloat(document.getElementById('calcCostInput').value.replace(/[^0-9.]/g,'')) || 0;
+  const pastYrs = parseInt(document.getElementById('calcPastSlider').value);
+  const futureYrs = parseInt(document.getElementById('calcFutureSlider').value);
+  const monthly = calcFreq === 'yearly' ? raw / 12 : raw;
+  const annual = monthly * 12;
+  const spent = annual * pastYrs;
+  const future = annual * futureYrs;
+  const total = spent + future;
+  document.getElementById('calcPastDisplay').textContent = (pastYrs >= 20 ? '20+' : pastYrs) + ' yrs';
+  document.getElementById('calcFutureDisplay').textContent = (futureYrs >= 30 ? '30+' : futureYrs) + ' yrs';
+  document.getElementById('calcResultSpent').textContent = fmt(spent);
+  document.getElementById('calcResultFuture').textContent = fmt(future);
+  document.getElementById('calcResultTotal').textContent = fmt(total);
+  [document.getElementById('calcPastSlider'), document.getElementById('calcFutureSlider')].forEach(s => {
+    const pct = ((s.value - s.min) / (s.max - s.min)) * 100;
+    s.style.setProperty('--fill', pct + '%');
+  });
+}
+
+// Known tools
 const knownTools = [
+  { name: 'JobNimbus', cat: 'Roofing CRM' },
+  { name: 'AccuLynx', cat: 'Roofing CRM' },
+  { name: 'Roofr', cat: 'Roofing CRM' },
+  { name: 'SumoQuote', cat: 'Proposals' },
   { name: 'Service Autopilot', cat: 'Field service' },
   { name: 'Jobber', cat: 'Field service' },
   { name: 'Housecall Pro', cat: 'Field service' },
-  { name: 'Aspire', cat: 'Field service' },
-  { name: 'LMN', cat: 'Landscaping' },
-  { name: 'RealGreen', cat: 'Lawn care' },
-  { name: 'Clip', cat: 'Lawn care' },
-  { name: 'Yardbook', cat: 'Landscaping' },
+  { name: 'Hatch', cat: 'CRM' },
+  { name: 'Podium', cat: 'Reviews' },
+  { name: 'Weave', cat: 'Communication' },
+  { name: 'Thryv', cat: 'CRM' },
+  { name: 'Apptivo', cat: 'CRM' },
+  { name: 'ServiceTitan', cat: 'Field service' },
+  { name: 'EagleView', cat: 'Measurements' },
+  { name: 'Hover', cat: 'Measurements' },
+  { name: 'CompanyCam', cat: 'Photos' },
+  { name: 'JobProgress', cat: 'Roofing CRM' },
+  { name: 'Leap', cat: 'CRM' },
+  { name: 'CrewControl', cat: 'Roofing CRM' },
   { name: 'QuickBooks', cat: 'Accounting' },
-  { name: 'QuickBooks Online', cat: 'Accounting' },
   { name: 'Xero', cat: 'Accounting' },
-  { name: 'FreshBooks', cat: 'Accounting' },
-  { name: 'Stripe', cat: 'Payments' },
-  { name: 'Square', cat: 'Payments' },
-  { name: 'Google Sheets', cat: 'Spreadsheets' },
-  { name: 'Excel', cat: 'Spreadsheets' },
-  { name: 'Notion', cat: 'Notes' },
-  { name: 'Airtable', cat: 'Database' },
-  { name: 'Monday.com', cat: 'Project mgmt' },
-  { name: 'Asana', cat: 'Project mgmt' },
-  { name: 'Trello', cat: 'Project mgmt' },
-  { name: 'ClickUp', cat: 'Project mgmt' },
-  { name: 'HubSpot', cat: 'CRM' },
-  { name: 'HubSpot CRM', cat: 'CRM' },
   { name: 'Salesforce', cat: 'CRM' },
-  { name: 'Pipedrive', cat: 'CRM' },
-  { name: 'Zoho', cat: 'CRM' },
-  { name: 'Canva', cat: 'Design' },
-  { name: 'Adobe Creative Cloud', cat: 'Design' },
-  { name: 'Slack', cat: 'Communication' },
-  { name: 'Gmail', cat: 'Email' },
-  { name: 'Outlook', cat: 'Email' },
-  { name: 'WhatsApp', cat: 'Messaging' },
-  { name: 'Samsara', cat: 'GPS tracking' },
-  { name: 'Verizon Connect', cat: 'GPS tracking' },
-  { name: 'Clockify', cat: 'Time tracking' },
-  { name: 'HomeAdvisor', cat: 'Lead gen' },
-  { name: 'Angi', cat: 'Lead gen' },
-  { name: 'Thumbtack', cat: 'Lead gen' },
+  { name: 'HubSpot', cat: 'CRM' },
   { name: 'SalesRabbit', cat: 'Sales' },
-  { name: 'Mailchimp', cat: 'Email marketing' },
-  { name: 'Constant Contact', cat: 'Email marketing' },
-  { name: 'Facebook Ads', cat: 'Marketing' },
-  { name: 'Google Ads', cat: 'Marketing' },
   { name: 'Buildertrend', cat: 'Construction' },
   { name: 'Contractor Foreman', cat: 'Construction' },
   { name: 'Houzz Pro', cat: 'Home improvement' },
-  { name: 'RazorSync', cat: 'Field service' },
-  { name: 'FieldEdge', cat: 'Field service' },
-  { name: 'ServiceTitan', cat: 'Field service' },
-  { name: 'Workiz', cat: 'Field service' },
-  { name: 'ProValet', cat: 'Pool service' },
-  { name: 'Spark Pay', cat: 'Payments' },
+  { name: 'Monday.com', cat: 'Project mgmt' },
+  { name: 'Asana', cat: 'Project mgmt' },
+  { name: 'Google Sheets', cat: 'Spreadsheets' },
+  { name: 'Excel', cat: 'Spreadsheets' },
+  { name: 'Airtable', cat: 'Database' },
+  { name: 'Stripe', cat: 'Payments' },
+  { name: 'Square', cat: 'Payments' },
+  { name: 'Slack', cat: 'Communication' },
+  { name: 'Mailchimp', cat: 'Email marketing' },
+  { name: 'Canva', cat: 'Design' },
+  { name: 'HomeAdvisor', cat: 'Lead gen' },
+  { name: 'Angi', cat: 'Lead gen' },
+  { name: 'Thumbtack', cat: 'Lead gen' },
 ];
 
 // Option card selection
@@ -430,118 +553,68 @@ document.querySelectorAll('.option-grid').forEach(grid => {
   });
 });
 
-// Unified tool search — shows known matches + "add custom" option
+// Tool search
 function searchTools() {
   const query = document.getElementById('tool-search').value.trim();
   const results = document.getElementById('tool-results');
   if (!query) { results.classList.remove('show'); return; }
-  
   const queryLower = query.toLowerCase();
-  const matches = knownTools.filter(t => 
+  const matches = knownTools.filter(t =>
     t.name.toLowerCase().includes(queryLower) && !selectedTools.has(t.name)
   ).slice(0, 6);
-  
-  // Check if the typed text exactly matches a known tool (case-insensitive)
   const exactMatch = knownTools.some(t => t.name.toLowerCase() === queryLower);
-  
   let html = '';
-  
-  // Known matches
   if (matches.length > 0) {
-    html += matches.map(t => 
+    html += matches.map(t =>
       `<div class="tool-result" onclick="addTool('${escStr(t.name)}')"><span class="tool-result-name">${t.name}</span><span class="tool-result-cat">${t.cat}</span></div>`
     ).join('');
   }
-  
-  // Add custom option (if not an exact match of a known tool)
   if (!exactMatch && !selectedTools.has(query)) {
     html += `<div class="tool-result-add" onclick="addTool('${escStr(query)}')"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/></svg><span class="tool-result-name">Add "${escHtml(query)}" as a custom tool</span></div>`;
   }
-  
-  if (html) {
-    results.innerHTML = html;
-    results.classList.add('show');
-  } else {
-    results.classList.remove('show');
-  }
+  results.innerHTML = html;
+  results.classList.toggle('show', !!html);
 }
-
 function handleToolKey(event) {
   if (event.key === 'Enter') {
     event.preventDefault();
     const query = document.getElementById('tool-search').value.trim();
     if (!query) return;
-    const results = document.getElementById('tool-results');
-    // If there are visible results, click the first one
-    const firstResult = results.querySelector('.tool-result, .tool-result-add');
-    if (firstResult) {
-      firstResult.click();
-    } else if (!selectedTools.has(query)) {
-      addTool(query);
-    }
+    const firstResult = document.querySelector('#tool-results .tool-result, #tool-results .tool-result-add');
+    if (firstResult) firstResult.click();
+    else if (!selectedTools.has(query)) addTool(query);
   } else if (event.key === 'Escape') {
     document.getElementById('tool-results').classList.remove('show');
     document.getElementById('tool-search').blur();
   }
 }
-
-function escStr(s) {
-  return s.replace(/'/g, "\\'").replace(/"/g, '&quot;');
-}
-function escHtml(s) {
-  return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
-}
-
-// Click outside to close results
 document.addEventListener('click', (e) => {
-  if (!e.target.closest('.tool-search-wrap')) {
-    document.getElementById('tool-results').classList.remove('show');
-  }
+  if (!e.target.closest('.tool-search-wrap')) document.getElementById('tool-results').classList.remove('show');
 });
-
 function addTool(name) {
-  if (!selectedTools.has(name)) {
-    selectedTools.add(name);
-    renderTools();
-  }
+  if (!selectedTools.has(name)) { selectedTools.add(name); renderTools(); }
   document.getElementById('tool-search').value = '';
   document.getElementById('tool-results').classList.remove('show');
   document.getElementById('tool-search').focus();
 }
-
-function removeTool(name) {
-  selectedTools.delete(name);
-  renderTools();
-}
-
+function removeTool(name) { selectedTools.delete(name); renderTools(); }
 function renderTools() {
   const list = document.getElementById('tools-list');
   if (selectedTools.size === 0) {
     list.innerHTML = '<div class="tools-empty">No tools added yet. Start typing above.</div>';
     return;
   }
-  list.innerHTML = Array.from(selectedTools).map(name => 
+  list.innerHTML = Array.from(selectedTools).map(name =>
     `<div class="tool-chip">${escHtml(name)}<span class="remove" onclick="removeTool('${escStr(name)}')"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg></span></div>`
   ).join('');
 }
 
 // Step navigation
-function nextStep() {
-  if (currentStep < totalSteps) {
-    goToStep(currentStep + 1);
-  }
-}
-
-function prevStep() {
-  if (currentStep > 1) {
-    goToStep(currentStep - 1);
-  }
-}
-
+function nextStep() { if (currentStep < totalSteps) goToStep(currentStep + 1); }
+function prevStep() { if (currentStep > 1) goToStep(currentStep - 1); }
 function goToStep(step) {
   document.querySelectorAll('.step').forEach(s => s.classList.remove('active'));
   document.querySelector(`.step[data-step="${step}"]`).classList.add('active');
-  
   document.querySelectorAll('.progress-step').forEach(ps => {
     const psStep = parseInt(ps.dataset.step);
     ps.classList.remove('active', 'done');
@@ -551,30 +624,37 @@ function goToStep(step) {
   document.querySelectorAll('.progress-line').forEach((line, i) => {
     line.classList.toggle('done', i < step - 1);
   });
-  
   currentStep = step;
-  if (step === 6) buildSummary();
+  if (step === 2) {
+    const pills = document.getElementById('calc-tools-pills');
+    if (selectedTools.size > 0) {
+      pills.innerHTML = Array.from(selectedTools).map(n => `<span class="tool-chip">${escHtml(n)}</span>`).join('');
+    } else {
+      pills.innerHTML = '<span class="calc-empty">No tools selected — go back</span>';
+    }
+    calcUpdate();
+  }
+  if (step === 7) buildSummary();
   window.scrollTo({ top: document.querySelector('.wizard-section').offsetTop - 80, behavior: 'smooth' });
 }
 
 function buildSummary() {
   const tools = Array.from(selectedTools);
-  const toolsHtml = tools.length > 0 
+  const toolsHtml = tools.length > 0
     ? `<div class="summary-tools">${tools.map(t => `<div class="tool-chip">${escHtml(t)}</div>`).join('')}</div>`
     : '<span style="color:var(--muted)">None added</span>';
-  
   document.getElementById('summary-card').innerHTML = `
+    <div class="summary-row"><span class="summary-label">Current tools</span>${toolsHtml}</div>
+    <div class="summary-row"><span class="summary-label">CRM spend</span><span class="summary-value">${document.getElementById('calcResultTotal').textContent} total</span></div>
+    <div class="summary-row"><span class="summary-label">Field workers</span><span class="summary-value">${formData.fieldWorkers || '—'}</span></div>
+    <div class="summary-row"><span class="summary-label">Office staff</span><span class="summary-value">${formData.officeStaff || '—'}</span></div>
+    <div class="summary-row"><span class="summary-label">Annual revenue</span><span class="summary-value">${formData.revenue || '—'}</span></div>
+    <div class="summary-row"><span class="summary-label">Biggest problem</span><span class="summary-value" style="max-width:70%;">${escHtml(document.getElementById('f-pain').value || '—')}</span></div>
     <div class="summary-row"><span class="summary-label">Name</span><span class="summary-value">${escHtml(document.getElementById('f-name').value || '—')}</span></div>
     <div class="summary-row"><span class="summary-label">Email</span><span class="summary-value">${escHtml(document.getElementById('f-email').value || '—')}</span></div>
     <div class="summary-row"><span class="summary-label">Phone</span><span class="summary-value">${escHtml(document.getElementById('f-phone').value || '—')}</span></div>
     <div class="summary-row"><span class="summary-label">Company</span><span class="summary-value">${escHtml(document.getElementById('f-company').value || '—')}</span></div>
     <div class="summary-row"><span class="summary-label">Role</span><span class="summary-value">${formData.role || '—'}</span></div>
-    <div class="summary-row"><span class="summary-label">Field workers</span><span class="summary-value">${formData.fieldWorkers || '—'}</span></div>
-    <div class="summary-row"><span class="summary-label">Office staff</span><span class="summary-value">${formData.officeStaff || '—'}</span></div>
-    <div class="summary-row"><span class="summary-label">Current tools</span>${toolsHtml}</div>
-    <div class="summary-row"><span class="summary-label">Monthly software spend</span><span class="summary-value">${formData.softwareSpend || '—'}</span></div>
-    <div class="summary-row"><span class="summary-label">Annual revenue</span><span class="summary-value">${formData.revenue || '—'}</span></div>
-    <div class="summary-row"><span class="summary-label">Biggest problem</span><span class="summary-value" style="max-width:70%;">${escHtml(document.getElementById('f-pain').value || '—')}</span></div>
   `;
 }
 
@@ -582,7 +662,6 @@ async function submitApp() {
   const btn = document.getElementById('submit-btn');
   btn.disabled = true;
   btn.textContent = 'Submitting...';
-  
   const payload = {
     name: document.getElementById('f-name').value,
     email: document.getElementById('f-email').value,
@@ -593,16 +672,20 @@ async function submitApp() {
     officeStaff: formData.officeStaff,
     currentTools: Array.from(selectedTools),
     softwareSpend: formData.softwareSpend,
+    crmMonthlyCost: parseFloat(document.getElementById('calcCostInput').value||0),
+    crmCostFreq: calcFreq,
+    crmPastYears: parseInt(document.getElementById('calcPastSlider').value),
+    crmFutureYears: parseInt(document.getElementById('calcFutureSlider').value),
+    crmSpent: document.getElementById('calcResultSpent').textContent,
+    crmFuture: document.getElementById('calcResultFuture').textContent,
+    crmTotal: document.getElementById('calcResultTotal').textContent,
     revenue: formData.revenue,
     biggestProblem: document.getElementById('f-pain').value,
     source: 'replacemysoftware.com/apply'
   };
-  
   try {
     const r = await fetch('https://replacemysoftware.vercel.app/api/contact', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload)
+      method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload)
     });
     if (r.ok) {
       document.querySelectorAll('.step').forEach(s => s.classList.remove('active'));
