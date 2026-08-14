@@ -9,134 +9,150 @@
     gtag('config', 'AW-18299539049');
   </script>
 <meta charset="UTF-8">
-<meta name="description" content="Apply for custom software. Tell us about your business — we'll build the rest. Takes 2 minutes.">
+<meta name="description" content="Apply for custom roofing CRM. Tell us about your business — we'll build the rest. Takes 2 minutes.">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <meta name="google-site-verification" content="etitPt59OIFXf49QI2WmosNm3EIDRLzTJCyoia_2ZR4">
 <title>Apply | Replace My Software</title>
 <link rel="canonical" href="https://replacemysoftware.com/apply">
 <link rel="icon" type="image/png" href="/logo.png">
 <link rel="apple-touch-icon" href="/logo.png">
-<meta property="og:title" content="Apply for Custom Software — Replace My Software">
-<meta property="og:description" content="Tell us about your business. We'll build a custom tool around your actual workflow.">
+<meta property="og:title" content="Apply for Custom Roofing CRM — Replace My Software">
+<meta property="og:description" content="Tell us about your roofing business. We'll build a custom CRM around your actual workflow.">
 <meta property="og:image" content="https://replacemysoftware.com/og-image.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#060709;--bg-card:#0d0e12;--bg-hover:#14151a;--fg:#f0f1f5;--muted:#9ea2ac;--muted-2:#5a5d68;--border:#25262e;--accent:#3b82f6;--accent-light:#60a5fa;--accent-soft:rgba(59,130,246,.12);--accent-glow:rgba(59,130,246,.4);--green:#22c55e;--green-soft:rgba(34,197,94,.12);--red-light:#f87171;--red-soft:rgba(239,68,68,.1);--radius:14px;--fd:'Space Grotesk',sans-serif;--fb:'Inter',sans-serif}
+:root{--bg:#060709;--bg-card:#0d0e12;--bg-hover:#14151a;--fg:#f0f1f5;--muted:#9ea2ac;--muted-2:#5a5d68;--border:#25262e;--border-light:#2e2f38;--accent:#3b82f6;--accent-light:#60a5fa;--accent-soft:rgba(59,130,246,.1);--accent-glow:rgba(59,130,246,.35);--green:#22c55e;--green-soft:rgba(34,197,94,.1);--red-light:#f87171;--radius:14px;--fd:'Space Grotesk',sans-serif;--fb:'Inter',sans-serif}
 *{margin:0;padding:0;box-sizing:border-box}html,body{max-width:100vw;overflow-x:hidden}
 body{background:var(--bg);color:var(--fg);font-family:var(--fb);font-size:16px;line-height:1.6;min-height:100vh}
 a{color:inherit;text-decoration:none}
 
 /* Nav */
-nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(6,7,9,.7);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(6,7,9,.8);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
 .nav-inner{max-width:1200px;margin:0 auto;padding:.85rem 1.5rem;display:flex;align-items:center;justify-content:space-between}
 .nav-brand{display:flex;align-items:center;gap:.6rem;font-family:var(--fd);font-weight:700;font-size:1.1rem}
 .nav-brand img{width:30px;height:30px;border-radius:6px}
 .nav-brand .accent{color:var(--accent-light)}
-.nav-cta{padding:.6rem 1.25rem;background:var(--accent);color:#fff;border-radius:8px;font-weight:600;font-size:.9rem;transition:all .2s;box-shadow:0 4px 20px var(--accent-glow)}
-.nav-cta:hover{transform:translateY(-1px);box-shadow:0 6px 24px var(--accent-glow)}
 
-/* Main */
-.main{max-width:560px;margin:0 auto;padding:7rem 1.5rem 5rem}
+/* Container */
+.main{max-width:520px;margin:0 auto;padding:6.5rem 1.5rem 5rem}
 
 /* Progress */
-.progress{display:flex;align-items:center;gap:.5rem;margin-bottom:2.5rem}
-.progress-bar-bg{flex:1;height:4px;background:var(--border);border-radius:2px;overflow:hidden}
-.progress-bar-fill{height:100%;background:var(--accent);border-radius:2px;transition:width .4s ease;width:20%}
-.progress-text{font-size:.85rem;color:var(--muted);font-family:var(--fd);font-weight:600;white-space:nowrap}
+.progress{display:flex;align-items:center;gap:.75rem;margin-bottom:2rem}
+.progress-bar-bg{flex:1;height:3px;background:var(--border);border-radius:2px;overflow:hidden}
+.progress-bar-fill{height:100%;background:var(--accent);border-radius:2px;transition:width .4s cubic-bezier(.4,0,.2,1);width:25%}
+.progress-text{font-size:.8rem;color:var(--muted-2);font-family:var(--fd);font-weight:600;white-space:nowrap;letter-spacing:.03em}
 
 /* Steps */
-.step{display:none;animation:fadeIn .3s ease}
+.step{display:none;animation:fadeIn .35s cubic-bezier(.4,0,.2,1)}
 .step.active{display:block}
-@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
 
-.step-q{font-family:var(--fd);font-size:1.75rem;font-weight:700;margin-bottom:.4rem;letter-spacing:-.01em}
-.step-desc{color:var(--muted);font-size:.95rem;margin-bottom:1.75rem}
+.step-label{font-size:.8rem;font-weight:600;color:var(--accent-light);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.6rem}
+.step-q{font-family:var(--fd);font-size:1.6rem;font-weight:700;margin-bottom:.35rem;letter-spacing:-.02em;line-height:1.2}
+.step-desc{color:var(--muted);font-size:.9rem;margin-bottom:1.5rem}
 
-/* Chips */
-.chip-grid{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:1.5rem}
-.chip{padding:.7rem 1.1rem;background:var(--bg-card);border:1px solid var(--border);border-radius:10px;font-size:.95rem;font-weight:500;cursor:pointer;transition:all .15s;user-select:none}
-.chip:hover{border-color:var(--muted)}
-.chip.selected{background:var(--accent-soft);border-color:var(--accent);color:var(--accent-light)}
-.chip-sub{font-size:.8rem;color:var(--muted);margin-top:.15rem;font-weight:400}
+/* CRM cards */
+.crm-grid{display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin-bottom:1.25rem}
+.crm-card{background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:.85rem .9rem;cursor:pointer;transition:all .15s;display:flex;align-items:center;gap:.6rem;position:relative}
+.crm-card:hover{border-color:var(--border-light);background:var(--bg-hover)}
+.crm-card.selected{border-color:var(--accent);background:var(--accent-soft);box-shadow:0 0 0 1px var(--accent)}
+.crm-card-dot{width:8px;height:8px;border-radius:50%;background:var(--border);flex-shrink:0;transition:all .15s}
+.crm-card.selected .crm-card-dot{background:var(--accent);box-shadow:0 0 8px var(--accent-glow)}
+.crm-card-name{font-size:.9rem;font-weight:600;line-height:1.2}
 
 /* Search */
-.search-wrap{position:relative;margin-bottom:1rem}
-.search-input{width:100%;padding:1rem 1rem 1rem 2.8rem;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);color:var(--fg);font-family:var(--fb);font-size:1rem;box-sizing:border-box}
+.search-wrap{position:relative;margin-bottom:.75rem}
+.search-input{width:100%;padding:.85rem 1rem .85rem 2.7rem;background:var(--bg-card);border:1px solid var(--border);border-radius:10px;color:var(--fg);font-family:var(--fb);font-size:.95rem;box-sizing:border-box}
 .search-input:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
-.search-icon{position:absolute;left:1rem;top:50%;transform:translateY(-50%);color:var(--muted)}
-.search-results{position:absolute;top:calc(100% + .25rem);left:0;right:0;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);max-height:260px;overflow-y:auto;z-index:10;display:none;box-shadow:0 8px 30px rgba(0,0,0,.4)}
+.search-icon{position:absolute;left:.9rem;top:50%;transform:translateY(-50%);color:var(--muted)}
+.search-results{position:absolute;top:calc(100% + .25rem);left:0;right:0;background:var(--bg-card);border:1px solid var(--border);border-radius:10px;max-height:240px;overflow-y:auto;z-index:10;display:none;box-shadow:0 8px 30px rgba(0,0,0,.5)}
 .search-results.show{display:block}
-.search-result{padding:.7rem 1rem;cursor:pointer;transition:background .15s;display:flex;align-items:center;justify-content:space-between}
+.search-result{padding:.65rem .9rem;cursor:pointer;transition:background .15s;display:flex;align-items:center;justify-content:space-between}
 .search-result:hover{background:var(--bg-hover)}
-.search-result-name{font-size:.95rem}
-.search-result-cat{font-size:.8rem;color:var(--muted)}
-.search-result-add{padding:.7rem 1rem;cursor:pointer;display:flex;align-items:center;gap:.5rem;border-top:1px solid var(--border);color:var(--accent-light);font-size:.95rem}
+.search-result-name{font-size:.9rem}
+.search-result-cat{font-size:.75rem;color:var(--muted)}
+.search-result-add{padding:.65rem .9rem;cursor:pointer;display:flex;align-items:center;gap:.4rem;border-top:1px solid var(--border);color:var(--accent-light);font-size:.9rem}
 .search-result-add:hover{background:var(--accent-soft)}
 
 /* Selected tools */
-.tools-selected{display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:.5rem;min-height:36px}
-.tool-chip{display:inline-flex;align-items:center;gap:.4rem;padding:.4rem .75rem;background:var(--accent-soft);border:1px solid rgba(59,130,246,.25);border-radius:8px;font-size:.85rem;color:var(--accent-light)}
+.tools-selected{display:flex;flex-wrap:wrap;gap:.35rem;margin-bottom:.25rem;min-height:32px}
+.tool-chip{display:inline-flex;align-items:center;gap:.35rem;padding:.35rem .65rem;background:var(--accent-soft);border:1px solid rgba(59,130,246,.2);border-radius:7px;font-size:.8rem;color:var(--accent-light)}
 .tool-chip .remove{cursor:pointer;color:var(--muted);transition:color .2s;display:flex;align-items:center}
 .tool-chip .remove:hover{color:var(--red-light)}
-.tools-empty{color:var(--muted-2);font-size:.85rem;padding:.3rem 0}
+.tools-empty{color:var(--muted-2);font-size:.8rem;padding:.2rem 0}
+
+/* Section label */
+.section-label{font-size:.75rem;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin:1.25rem 0 .5rem}
+
+/* Chips */
+.chip-grid{display:flex;flex-wrap:wrap;gap:.4rem}
+.chip{padding:.6rem 1rem;background:var(--bg-card);border:1px solid var(--border);border-radius:9px;font-size:.9rem;font-weight:500;cursor:pointer;transition:all .15s;user-select:none}
+.chip:hover{border-color:var(--border-light);background:var(--bg-hover)}
+.chip.selected{background:var(--accent-soft);border-color:var(--accent);color:var(--accent-light)}
 
 /* Text inputs */
-.input{width:100%;padding:1rem 1.1rem;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);color:var(--fg);font-family:var(--fb);font-size:1rem;transition:border-color .2s,box-shadow .2s;box-sizing:border-box}
+.input{width:100%;padding:.9rem 1rem;background:var(--bg-card);border:1px solid var(--border);border-radius:10px;color:var(--fg);font-family:var(--fb);font-size:.95rem;transition:border-color .2s,box-shadow .2s;box-sizing:border-box}
 .input::placeholder{color:var(--muted-2)}
-.input:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft);background:var(--bg-hover)}
-textarea.input{resize:vertical;min-height:100px;font-family:var(--fb)}
-.input-row{display:grid;grid-template-columns:1fr 1fr;gap:.75rem}
+.input:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
+textarea.input{resize:vertical;min-height:80px;font-family:var(--fb)}
 
-/* Cost display */
-.cost-display{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:1.5rem;text-align:center;margin-bottom:1rem}
-.cost-amount{font-family:var(--fd);font-size:2.5rem;font-weight:700;color:var(--accent-light)}
-.cost-label{font-size:.85rem;color:var(--muted);margin-top:.25rem}
+/* Cost */
+.cost-display{background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:1.25rem;text-align:center;margin-bottom:.75rem}
+.cost-amount{font-family:var(--fd);font-size:2.25rem;font-weight:700;color:var(--accent-light);line-height:1}
+.cost-label{font-size:.8rem;color:var(--muted);margin-top:.2rem}
+.cost-slider{width:100%;-webkit-appearance:none;height:5px;background:var(--border);border-radius:3px;outline:none;margin-bottom:.35rem}
+.cost-slider::-webkit-slider-thumb{-webkit-appearance:none;width:18px;height:18px;background:var(--accent);border-radius:50%;cursor:pointer;box-shadow:0 0 8px var(--accent-glow)}
+.cost-slider::-moz-range-thumb{width:18px;height:18px;background:var(--accent);border-radius:50%;cursor:pointer;border:none}
+.cost-ends{display:flex;justify-content:space-between;font-size:.75rem;color:var(--muted);margin-bottom:.75rem}
+.cost-projection{background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:.85rem 1rem;margin-bottom:.5rem}
+.cost-projection-row{display:flex;justify-content:space-between;padding:.3rem 0;font-size:.85rem}
+.cost-projection-row .val{font-family:var(--fd);font-weight:700;color:var(--red-light)}
 
 /* Buttons */
-.actions{display:flex;justify-content:space-between;align-items:center;margin-top:1.5rem}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:.4rem;padding:1rem 1.75rem;border-radius:10px;font-family:var(--fb);font-weight:600;font-size:1rem;border:none;cursor:pointer;transition:all .2s}
-.btn-primary{background:var(--accent);color:#fff;box-shadow:0 6px 24px var(--accent-glow)}
-.btn-primary:hover{transform:translateY(-1px);box-shadow:0 8px 30px var(--accent-glow)}
+.actions{display:flex;justify-content:space-between;align-items:center;margin-top:1.5rem;gap:.5rem}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.35rem;padding:.9rem 1.6rem;border-radius:10px;font-family:var(--fb);font-weight:600;font-size:.95rem;border:none;cursor:pointer;transition:all .2s}
+.btn-primary{background:var(--accent);color:#fff;box-shadow:0 4px 20px var(--accent-glow);margin-left:auto}
+.btn-primary:hover{transform:translateY(-1px);box-shadow:0 6px 24px var(--accent-glow)}
 .btn-primary:disabled{opacity:.4;cursor:not-allowed;transform:none;box-shadow:none}
-.btn-ghost{background:transparent;color:var(--muted);border:1px solid var(--border)}
-.btn-ghost:hover{color:var(--fg);border-color:var(--muted)}
+.btn-back{background:transparent;color:var(--muted);border:1px solid var(--border);padding:.9rem 1.1rem}
+.btn-back:hover{color:var(--fg);border-color:var(--muted)}
 
 /* Success */
-.success{text-align:center;padding:3rem 0}
-.success-icon{width:56px;height:56px;border-radius:50%;background:var(--green-soft);display:flex;align-items:center;justify-content:center;margin:0 auto 1.25rem;animation:pop .4s ease}
+.success{text-align:center;padding:2.5rem 0}
+.success-icon{width:52px;height:52px;border-radius:50%;background:var(--green-soft);display:flex;align-items:center;justify-content:center;margin:0 auto 1rem;animation:pop .4s ease}
 @keyframes pop{from{transform:scale(0)}to{transform:scale(1)}}
-.success h2{font-family:var(--fd);font-size:1.5rem;margin-bottom:.5rem}
-.success p{color:var(--muted);margin-bottom:1.5rem}
+.success h2{font-family:var(--fd);font-size:1.4rem;margin-bottom:.4rem}
+.success p{color:var(--muted);margin-bottom:1.25rem;font-size:.9rem}
 
 /* Footer */
-footer{border-top:1px solid var(--border);padding:2rem 0}
-.footer-inner{max-width:1200px;margin:0 auto;padding:0 1.5rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
-.footer-brand{display:flex;align-items:center;gap:.5rem;font-family:var(--fd);font-weight:700;font-size:.95rem}
+footer{border-top:1px solid var(--border);padding:1.5rem 0}
+.footer-inner{max-width:1200px;margin:0 auto;padding:0 1.5rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.75rem}
+.footer-brand{display:flex;align-items:center;gap:.5rem;font-family:var(--fd);font-weight:700;font-size:.9rem}
 .footer-brand img{width:22px;height:22px;border-radius:5px}
 .footer-brand .accent{color:var(--accent-light)}
-.footer-links{display:flex;gap:1.5rem;font-size:.85rem}
+.footer-links{display:flex;gap:1.25rem;font-size:.8rem}
 .footer-links a{color:var(--muted);transition:color .2s}
 .footer-links a:hover{color:var(--fg)}
 
 @media(max-width:540px){
   .nav-inner{padding:.65rem 1rem}
-  .nav-brand{font-size:.9rem}
+  .nav-brand{font-size:.85rem}
   .nav-brand img{width:26px;height:26px}
-  .nav-cta{padding:.5rem .9rem;font-size:.8rem}
-  .main{padding:6rem 1.25rem 4rem}
-  .step-q{font-size:1.4rem}
-  .input-row{grid-template-columns:1fr}
-  .cost-amount{font-size:2rem}
-  .chip{padding:.6rem .9rem;font-size:.9rem}
+  .main{padding:5.5rem 1.1rem 4rem}
+  .step-q{font-size:1.3rem}
+  .crm-grid{grid-template-columns:1fr 1fr}
+  .cost-amount{font-size:1.85rem}
+  .chip{padding:.55rem .85rem;font-size:.85rem}
+  .crm-card{padding:.7rem .75rem}
+  .crm-card-name{font-size:.85rem}
 }
 </style>
 </head>
 <body>
 <nav><div class="nav-inner">
 <a href="/" class="nav-brand"><img src="/logo.png" alt="RMS">Replace My <span class="accent">Software</span></a>
-<a href="/apply" class="nav-cta">Apply →</a>
 </div></nav>
 
 <div class="main">
@@ -146,85 +162,93 @@ footer{border-top:1px solid var(--border);padding:2rem 0}
 <span class="progress-text" id="progress-text">1 / 4</span>
 </div>
 
-<!-- Step 1: What do you use? -->
+<!-- Step 1: CRM -->
 <div class="step active" data-step="1">
-<h2 class="step-q">What software do you use?</h2>
-<p class="step-desc">Search and add everything you pay for.</p>
+<div class="step-label">Step 1</div>
+<h2 class="step-q">Which roofing CRM are you using?</h2>
+<p class="step-desc">Tap all that apply.</p>
+<div class="crm-grid" id="crm-grid">
+<div class="crm-card" data-name="JobNimbus"><div class="crm-card-dot"></div><span class="crm-card-name">JobNimbus</span></div>
+<div class="crm-card" data-name="AccuLynx"><div class="crm-card-dot"></div><span class="crm-card-name">AccuLynx</span></div>
+<div class="crm-card" data-name="Roofr"><div class="crm-card-dot"></div><span class="crm-card-name">Roofr</span></div>
+<div class="crm-card" data-name="JobProgress"><div class="crm-card-dot"></div><span class="crm-card-name">JobProgress</span></div>
+<div class="crm-card" data-name="Leap"><div class="crm-card-dot"></div><span class="crm-card-name">Leap</span></div>
+<div class="crm-card" data-name="CrewControl"><div class="crm-card-dot"></div><span class="crm-card-name">CrewControl</span></div>
+</div>
+
+<div class="section-label">Other tools you pay for</div>
 <div class="search-wrap">
-<svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
-<input class="search-input" id="tool-search" placeholder="Search software..." oninput="searchTools()" onkeydown="handleToolKey(event)">
+<svg class="search-icon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+<input class="search-input" id="tool-search" placeholder="Search tools..." oninput="searchTools()" onkeydown="handleToolKey(event)">
 <div class="search-results" id="tool-results"></div>
 </div>
-<div class="tools-selected" id="tools-list"><span class="tools-empty">Nothing added yet</span></div>
+<div class="tools-selected" id="tools-list"><span class="tools-empty">Spreadsheets, QuickBooks, SalesRabbit...</span></div>
 <div class="actions"><div></div><button class="btn btn-primary" onclick="nextStep()">Continue →</button></div>
 </div>
 
 <!-- Step 2: Cost -->
 <div class="step" data-step="2">
-<h2 class="step-q">How much do you pay?</h2>
-<p class="step-desc">Monthly cost across all your tools.</p>
+<div class="step-label">Step 2</div>
+<h2 class="step-q">How much per month?</h2>
+<p class="step-desc">Total across all your software.</p>
 <div class="cost-display">
 <div class="cost-amount" id="cost-display">$0</div>
 <div class="cost-label">per month</div>
 </div>
-<input type="range" class="input" id="cost-slider" min="0" max="1000" value="0" step="25" style="padding:0;margin-bottom:.5rem;height:6px;-webkit-appearance:none;background:var(--border);border-radius:3px;outline:none">
-<div style="display:flex;justify-content:space-between;font-size:.8rem;color:var(--muted);margin-bottom:1rem"><span>$0</span><span>$1,000+</span></div>
-<div style="background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:1.25rem;margin-bottom:.5rem">
-<div style="display:flex;justify-content:space-between;padding:.4rem 0"><span style="color:var(--muted)">Over 5 years</span><span style="font-family:var(--fd);font-weight:700;color:var(--red-light)" id="cost-5yr">$0</span></div>
-<div style="display:flex;justify-content:space-between;padding:.4rem 0"><span style="color:var(--muted)">Over 10 years</span><span style="font-family:var(--fd);font-weight:700;color:var(--red-light)" id="cost-10yr">$0</span></div>
+<input type="range" class="cost-slider" id="cost-slider" min="0" max="1000" value="0" step="25">
+<div class="cost-ends"><span>$0</span><span>$1,000+</span></div>
+<div class="cost-projection">
+<div class="cost-projection-row"><span style="color:var(--muted)">5-year cost</span><span class="val" id="cost-5yr">$0</span></div>
+<div class="cost-projection-row"><span style="color:var(--muted)">10-year cost</span><span class="val" id="cost-10yr">$0</span></div>
 </div>
-<div class="actions"><button class="btn btn-ghost" onclick="prevStep()">←</button><button class="btn btn-primary" onclick="nextStep()">Continue →</button></div>
+<div class="actions"><button class="btn btn-back" onclick="prevStep()">←</button><button class="btn btn-primary" onclick="nextStep()">Continue →</button></div>
 </div>
 
 <!-- Step 3: Business -->
 <div class="step" data-step="3">
-<h2 class="step-q">Tell us about your team</h2>
+<div class="step-label">Step 3</div>
+<h2 class="step-q">Your business</h2>
 <p class="step-desc">A few quick details.</p>
-<div style="margin-bottom:1.25rem">
-<label style="display:block;font-size:.85rem;color:var(--muted);margin-bottom:.5rem;font-weight:500">Crew size</label>
+<div class="section-label" style="margin-top:0">Crew size</div>
 <div class="chip-grid" id="crew-grid">
 <div class="chip" data-value="1-2">1-2</div>
 <div class="chip" data-value="3-5">3-5</div>
 <div class="chip" data-value="6-10">6-10</div>
 <div class="chip" data-value="10+">10+</div>
 </div>
-</div>
-<div style="margin-bottom:1.25rem">
-<label style="display:block;font-size:.85rem;color:var(--muted);margin-bottom:.5rem;font-weight:500">Annual revenue</label>
+<div class="section-label">Annual revenue</div>
 <div class="chip-grid" id="revenue-grid">
 <div class="chip" data-value="<250K">Under $250K</div>
 <div class="chip" data-value="250K-500K">$250K-$500K</div>
 <div class="chip" data-value="500K-1M">$500K-$1M</div>
 <div class="chip" data-value="1M+">$1M+</div>
 </div>
-</div>
-<div style="margin-bottom:1.25rem">
-<label style="display:block;font-size:.85rem;color:var(--muted);margin-bottom:.5rem;font-weight:500">What's your biggest headache?</label>
-<textarea class="input" id="f-pain" placeholder="e.g., Can't route crews efficiently, invoicing is manual..." rows="3"></textarea>
-</div>
-<div class="actions"><button class="btn btn-ghost" onclick="prevStep()">←</button><button class="btn btn-primary" onclick="nextStep()">Continue →</button></div>
+<div class="section-label">Biggest headache</div>
+<textarea class="input" id="f-pain" placeholder="What wastes the most time?" rows="3"></textarea>
+<div class="actions"><button class="btn btn-back" onclick="prevStep()">←</button><button class="btn btn-primary" onclick="nextStep()">Continue →</button></div>
 </div>
 
 <!-- Step 4: Contact -->
 <div class="step" data-step="4">
+<div class="step-label">Step 4</div>
 <h2 class="step-q">Where do we send your plan?</h2>
-<p class="step-desc">We'll build a custom CRM roadmap within 24 hours.</p>
-<div style="display:flex;flex-direction:column;gap:.75rem">
+<p class="step-desc">Custom CRM roadmap within 24 hours.</p>
+<div style="display:flex;flex-direction:column;gap:.6rem">
 <input class="input" id="f-name" placeholder="Name">
 <input class="input" id="f-email" type="email" placeholder="Email">
 <input class="input" id="f-phone" placeholder="Phone (optional)">
 <input class="input" id="f-company" placeholder="Company (optional)">
 </div>
-<div class="actions"><button class="btn btn-ghost" onclick="prevStep()">←</button><button class="btn btn-primary" id="submit-btn" onclick="submitApp()">Submit →</button></div>
+<div class="actions"><button class="btn btn-back" onclick="prevStep()">←</button><button class="btn btn-primary" id="submit-btn" onclick="submitApp()">Submit →</button></div>
 </div>
 
 <!-- Success -->
 <div class="step" data-step="success">
 <div class="success">
-<div class="success-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></div>
+<div class="success-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></div>
 <h2>Got it!</h2>
 <p>Your custom plan is on the way. Check your inbox within 24 hours.</p>
-<a href="/" class="btn btn-ghost">← Home</a>
+<a href="/" class="btn btn-back">← Home</a>
 </div>
 </div>
 </div>
@@ -242,26 +266,32 @@ let currentStep = 1;
 const formData = {};
 const selectedTools = new Set();
 
+// CRM card multi-select
+document.querySelectorAll('#crm-grid .crm-card').forEach(card => {
+  card.addEventListener('click', () => {
+    card.classList.toggle('selected');
+    const name = card.dataset.name;
+    if (card.classList.contains('selected')) selectedTools.add(name);
+    else selectedTools.delete(name);
+    renderTools();
+  });
+});
+
 const knownTools = [
-  {name:'JobNimbus',cat:'Roofing CRM'},{name:'AccuLynx',cat:'Roofing CRM'},{name:'Roofr',cat:'Roofing CRM'},
   {name:'Service Autopilot',cat:'Field service'},{name:'Jobber',cat:'Field service'},{name:'Housecall Pro',cat:'Field service'},
-  {name:'ServiceTitan',cat:'Field service'},{name:'JobProgress',cat:'Roofing CRM'},{name:'Leap',cat:'CRM'},
-  {name:'Hatch',cat:'CRM'},{name:'Podium',cat:'Reviews'},{name:'Weave',cat:'Communication'},
-  {name:'Thryv',cat:'CRM'},{name:'SalesRabbit',cat:'Sales'},{name:'Buildertrend',cat:'Construction'},
-  {name:'Contractor Foreman',cat:'Construction'},{name:'Houzz Pro',cat:'Home improvement'},
-  {name:'SumoQuote',cat:'Proposals'},{name:'CrewControl',cat:'Roofing CRM'},
-  {name:'QuickBooks',cat:'Accounting'},{name:'Xero',cat:'Accounting'},
-  {name:'Salesforce',cat:'CRM'},{name:'HubSpot',cat:'CRM'},
-  {name:'Monday.com',cat:'Project mgmt'},{name:'Asana',cat:'Project mgmt'},
-  {name:'Google Sheets',cat:'Spreadsheets'},{name:'Excel',cat:'Spreadsheets'},
-  {name:'Stripe',cat:'Payments'},{name:'Square',cat:'Payments'},
-  {name:'HomeAdvisor',cat:'Lead gen'},{name:'Angi',cat:'Lead gen'},{name:'Thumbtack',cat:'Lead gen'},
+  {name:'ServiceTitan',cat:'Field service'},{name:'Hatch',cat:'CRM'},{name:'Podium',cat:'Reviews'},
+  {name:'Weave',cat:'Communication'},{name:'Thryv',cat:'CRM'},{name:'SalesRabbit',cat:'Sales'},
+  {name:'Buildertrend',cat:'Construction'},{name:'Contractor Foreman',cat:'Construction'},{name:'Houzz Pro',cat:'Home improvement'},
+  {name:'SumoQuote',cat:'Proposals'},{name:'QuickBooks',cat:'Accounting'},{name:'Xero',cat:'Accounting'},
+  {name:'Salesforce',cat:'CRM'},{name:'HubSpot',cat:'CRM'},{name:'Monday.com',cat:'Project mgmt'},
+  {name:'Asana',cat:'Project mgmt'},{name:'Google Sheets',cat:'Spreadsheets'},{name:'Excel',cat:'Spreadsheets'},
+  {name:'Stripe',cat:'Payments'},{name:'Square',cat:'Payments'},{name:'HomeAdvisor',cat:'Lead gen'},
+  {name:'Angi',cat:'Lead gen'},{name:'Thumbtack',cat:'Lead gen'},
 ];
 
 function escStr(s){return s.replace(/'/g,"\\'").replace(/"/g,'&quot;');}
 function escHtml(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
 
-// Tool search
 function searchTools(){
   const q=document.getElementById('tool-search').value.trim();
   const r=document.getElementById('tool-results');
@@ -280,11 +310,17 @@ function handleToolKey(e){
 }
 document.addEventListener('click',e=>{if(!e.target.closest('.search-wrap'))document.getElementById('tool-results').classList.remove('show');});
 function addTool(name){if(!selectedTools.has(name)){selectedTools.add(name);renderTools();}document.getElementById('tool-search').value='';document.getElementById('tool-results').classList.remove('show');document.getElementById('tool-search').focus();}
-function removeTool(name){selectedTools.delete(name);renderTools();}
+function removeTool(name){
+  selectedTools.delete(name);
+  // Uncheck CRM card if it exists
+  const card=document.querySelector(`#crm-grid .crm-card[data-name="${name}"]`);
+  if(card)card.classList.remove('selected');
+  renderTools();
+}
 function renderTools(){
   const l=document.getElementById('tools-list');
-  if(selectedTools.size===0){l.innerHTML='<span class="tools-empty">Nothing added yet</span>';return;}
-  l.innerHTML=Array.from(selectedTools).map(n=>`<div class="tool-chip">${escHtml(n)}<span class="remove" onclick="removeTool('${escStr(n)}')"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg></span></div>`).join('');
+  if(selectedTools.size===0){l.innerHTML='<span class="tools-empty">Spreadsheets, QuickBooks, SalesRabbit...</span>';return;}
+  l.innerHTML=Array.from(selectedTools).map(n=>`<div class="tool-chip">${escHtml(n)}<span class="remove" onclick="removeTool('${escStr(n)}')"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg></span></div>`).join('');
 }
 
 // Cost slider
@@ -322,7 +358,6 @@ function goToStep(step){
   window.scrollTo({top:0,behavior:'smooth'});
 }
 
-// Submit
 async function submitApp(){
   const btn=document.getElementById('submit-btn');
   btn.disabled=true;btn.textContent='Sending...';
