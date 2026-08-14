@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18299539049"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -10,10 +9,10 @@
     gtag('config', 'AW-18299539049');
   </script>
 <meta charset="UTF-8">
-<meta name="description" content="Apply for custom software built around your workflow. Tell us about your business — we'll tell you exactly what we'd build. Takes 3 minutes.">
+<meta name="description" content="Apply for custom software. Tell us about your business — we'll build the rest. Takes 2 minutes.">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <meta name="google-site-verification" content="etitPt59OIFXf49QI2WmosNm3EIDRLzTJCyoia_2ZR4">
-<title>Apply for Custom Software | Replace My Software</title>
+<title>Apply | Replace My Software</title>
 <link rel="canonical" href="https://replacemysoftware.com/apply">
 <link rel="icon" type="image/png" href="/logo.png">
 <link rel="apple-touch-icon" href="/logo.png">
@@ -22,9 +21,9 @@
 <meta property="og:image" content="https://replacemysoftware.com/og-image.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#060709;--bg-2:#0a0b0f;--bg-card:#0d0e12;--bg-hover:#14151a;--fg:#f0f1f5;--muted:#9ea2ac;--muted-2:#5a5d68;--border:#25262e;--accent:#3b82f6;--accent-light:#60a5fa;--accent-soft:rgba(59,130,246,.12);--accent-glow:rgba(59,130,246,.4);--green:#22c55e;--green-soft:rgba(34,197,94,.12);--orange:#f59e0b;--red:#ef4444;--red-light:#f87171;--red-soft:rgba(239,68,68,.1);--radius:12px;--fd:'Space Grotesk',sans-serif;--fb:'Inter',sans-serif;--fm:'JetBrains Mono',monospace}
+:root{--bg:#060709;--bg-card:#0d0e12;--bg-hover:#14151a;--fg:#f0f1f5;--muted:#9ea2ac;--muted-2:#5a5d68;--border:#25262e;--accent:#3b82f6;--accent-light:#60a5fa;--accent-soft:rgba(59,130,246,.12);--accent-glow:rgba(59,130,246,.4);--green:#22c55e;--green-soft:rgba(34,197,94,.12);--red-light:#f87171;--red-soft:rgba(239,68,68,.1);--radius:14px;--fd:'Space Grotesk',sans-serif;--fb:'Inter',sans-serif}
 *{margin:0;padding:0;box-sizing:border-box}html,body{max-width:100vw;overflow-x:hidden}
 body{background:var(--bg);color:var(--fg);font-family:var(--fb);font-size:16px;line-height:1.6;min-height:100vh}
 a{color:inherit;text-decoration:none}
@@ -35,667 +34,323 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(6,7,9,.7);ba
 .nav-brand{display:flex;align-items:center;gap:.6rem;font-family:var(--fd);font-weight:700;font-size:1.1rem}
 .nav-brand img{width:30px;height:30px;border-radius:6px}
 .nav-brand .accent{color:var(--accent-light)}
-.nav-links{display:flex;gap:2rem;align-items:center}
-.nav-links a{color:var(--muted);font-size:.9rem;font-weight:500;transition:color .2s}
-.nav-links a:hover{color:var(--fg)}
 .nav-cta{padding:.6rem 1.25rem;background:var(--accent);color:#fff;border-radius:8px;font-weight:600;font-size:.9rem;transition:all .2s;box-shadow:0 4px 20px var(--accent-glow)}
 .nav-cta:hover{transform:translateY(-1px);box-shadow:0 6px 24px var(--accent-glow)}
 
-/* Hero */
-.hero{position:relative;padding:8rem 0 3rem;overflow:hidden;text-align:center}
-.hero-orb{position:absolute;border-radius:50%;filter:blur(80px);opacity:.15;pointer-events:none}
-.orb-1{width:500px;height:500px;background:var(--accent);top:-100px;right:-100px}
-.orb-2{width:400px;height:400px;background:var(--green);bottom:-150px;left:-100px}
-.hero-badge{display:inline-flex;align-items:center;gap:.5rem;padding:.4rem .9rem;background:var(--accent-soft);border:1px solid rgba(59,130,246,.2);border-radius:20px;font-size:.85rem;color:var(--accent-light);font-weight:500;margin-bottom:1.5rem}
-.pulse{width:8px;height:8px;border-radius:50%;background:var(--accent-light);animation:pulse 2s infinite}
-@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
-.hero h1{font-family:var(--fd);font-size:3rem;font-weight:700;line-height:1.1;margin-bottom:1rem;letter-spacing:-.02em}
-.hero h1 .highlight{background:linear-gradient(135deg,var(--accent-light),var(--green));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.hero-sub{font-size:1.15rem;color:var(--muted);max-width:540px;margin:0 auto 1rem}
+/* Main */
+.main{max-width:560px;margin:0 auto;padding:7rem 1.5rem 5rem}
 
-/* Wizard */
-.wizard-section{padding:2rem 0 5rem}
-.wizard{max-width:640px;margin:0 auto;padding:0 1.5rem}
+/* Progress */
+.progress{display:flex;align-items:center;gap:.5rem;margin-bottom:2.5rem}
+.progress-bar-bg{flex:1;height:4px;background:var(--border);border-radius:2px;overflow:hidden}
+.progress-bar-fill{height:100%;background:var(--accent);border-radius:2px;transition:width .4s ease;width:20%}
+.progress-text{font-size:.85rem;color:var(--muted);font-family:var(--fd);font-weight:600;white-space:nowrap}
 
-/* Progress bar */
-.progress-bar{display:flex;align-items:center;justify-content:center;gap:0;margin-bottom:2.5rem;flex-wrap:nowrap;white-space:nowrap}
-.progress-step{display:flex;align-items:center;gap:0;flex-shrink:0}
-.progress-dot{width:36px;height:36px;border-radius:50%;background:var(--bg-card);border:2px solid var(--border);display:flex;align-items:center;justify-content:center;font-family:var(--fd);font-weight:700;font-size:.95rem;color:var(--muted);transition:all .3s;flex-shrink:0}
-.progress-step.active .progress-dot{background:var(--accent);border-color:var(--accent);color:#fff;box-shadow:0 0 20px var(--accent-glow)}
-.progress-step.done .progress-dot{background:var(--green);border-color:var(--green);color:#fff}
-.progress-line{width:28px;height:2px;background:var(--border);transition:background .3s;flex-shrink:0}
-.progress-line.done{background:var(--green)}
-.progress-label{font-size:.8rem;color:var(--muted);font-family:var(--fm);text-transform:uppercase;letter-spacing:.04em;margin-left:.5rem}
-
-.step{display:none;animation:slideIn .4s ease}
+/* Steps */
+.step{display:none;animation:fadeIn .3s ease}
 .step.active{display:block}
-@keyframes slideIn{from{opacity:0;transform:translateX(20px)}to{opacity:1;transform:translateX(0)}}
+@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
 
-.step-title{font-family:var(--fd);font-size:1.9rem;font-weight:700;margin-bottom:.6rem}
-.step-sub{color:var(--muted);font-size:1.15rem;margin-bottom:2rem;line-height:1.5}
+.step-q{font-family:var(--fd);font-size:1.75rem;font-weight:700;margin-bottom:.4rem;letter-spacing:-.01em}
+.step-desc{color:var(--muted);font-size:.95rem;margin-bottom:1.75rem}
 
-/* Form fields */
-.field-group{margin-bottom:1.75rem}
-.field-label{display:block;font-size:1.2rem;font-weight:600;margin-bottom:.6rem;color:var(--accent-light)}
-.field-hint{font-size:1rem;color:var(--muted);margin-bottom:.6rem}
-.field-input,.field-select,.field-textarea{width:100%;padding:1.1rem 1.2rem;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);color:var(--fg);font-family:var(--fb);font-size:1.15rem;transition:border-color .2s,box-shadow .2s;box-sizing:border-box}
-.field-input::placeholder,.field-textarea::placeholder{color:var(--muted)}
-.field-input:focus,.field-select:focus,.field-textarea:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft);background:var(--bg-hover)}
-.field-input:-webkit-autofill,.field-select:-webkit-autofill,.field-textarea:-webkit-autofill{-webkit-box-shadow:0 0 0 1000px var(--bg-card) inset!important;-webkit-text-fill-color:var(--fg)!important;caret-color:var(--fg);transition:background-color 9999s ease-in-out 0s}
-.field-textarea{resize:vertical;min-height:120px}
-.field-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+/* Chips */
+.chip-grid{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:1.5rem}
+.chip{padding:.7rem 1.1rem;background:var(--bg-card);border:1px solid var(--border);border-radius:10px;font-size:.95rem;font-weight:500;cursor:pointer;transition:all .15s;user-select:none}
+.chip:hover{border-color:var(--muted)}
+.chip.selected{background:var(--accent-soft);border-color:var(--accent);color:var(--accent-light)}
+.chip-sub{font-size:.8rem;color:var(--muted);margin-top:.15rem;font-weight:400}
 
-/* Option cards */
-.option-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:.75rem}
-.option-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:1.1rem;cursor:pointer;transition:all .2s;display:flex;flex-direction:column;gap:.3rem}
-.option-card:hover{border-color:var(--accent);background:var(--bg-hover)}
-.option-card.selected{border-color:var(--accent);background:var(--accent-soft);box-shadow:0 0 0 3px var(--accent-soft)}
-.option-card .opt-title{font-weight:600;font-size:1.15rem}
-.option-card .opt-desc{font-size:1rem;color:var(--muted)}
+/* Search */
+.search-wrap{position:relative;margin-bottom:1rem}
+.search-input{width:100%;padding:1rem 1rem 1rem 2.8rem;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);color:var(--fg);font-family:var(--fb);font-size:1rem;box-sizing:border-box}
+.search-input:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
+.search-icon{position:absolute;left:1rem;top:50%;transform:translateY(-50%);color:var(--muted)}
+.search-results{position:absolute;top:calc(100% + .25rem);left:0;right:0;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);max-height:260px;overflow-y:auto;z-index:10;display:none;box-shadow:0 8px 30px rgba(0,0,0,.4)}
+.search-results.show{display:block}
+.search-result{padding:.7rem 1rem;cursor:pointer;transition:background .15s;display:flex;align-items:center;justify-content:space-between}
+.search-result:hover{background:var(--bg-hover)}
+.search-result-name{font-size:.95rem}
+.search-result-cat{font-size:.8rem;color:var(--muted)}
+.search-result-add{padding:.7rem 1rem;cursor:pointer;display:flex;align-items:center;gap:.5rem;border-top:1px solid var(--border);color:var(--accent-light);font-size:.95rem}
+.search-result-add:hover{background:var(--accent-soft)}
 
-/* Tool search */
-.tool-search-wrap{position:relative;margin-bottom:1rem}
-.tool-search{width:100%;padding:1.1rem 1rem 1.1rem 2.95rem;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);color:var(--fg);font-family:var(--fb);font-size:1.15rem;box-sizing:border-box}
-.tool-search:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
-.tool-search-icon{position:absolute;left:1rem;top:50%;transform:translateY(-50%);color:var(--muted)}
-.tool-results{position:absolute;top:calc(100% + .25rem);left:0;right:0;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);max-height:300px;overflow-y:auto;z-index:10;display:none;box-shadow:0 8px 30px rgba(0,0,0,.4)}
-.tool-results.show{display:block}
-.tool-result{padding:.6rem 1rem;cursor:pointer;transition:background .15s;display:flex;align-items:center;justify-content:space-between}
-.tool-result:hover{background:var(--bg-hover)}
-.tool-result-name{font-size:1.05rem}
-.tool-result-cat{font-size:.85rem;color:var(--muted);font-family:var(--fm)}
-.tool-result-add{padding:.6rem 1rem;cursor:pointer;transition:background .15s;display:flex;align-items:center;gap:.5rem;border-top:1px solid var(--border);color:var(--accent-light)}
-.tool-result-add:hover{background:var(--accent-soft)}
-
-.tools-list{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:1rem;min-height:40px}
-.tool-chip{display:inline-flex;align-items:center;gap:.5rem;padding:.5rem .85rem .5rem 1rem;background:var(--accent-soft);border:1px solid rgba(59,130,246,.25);border-radius:20px;font-size:1.05rem;color:var(--accent-light);animation:chipIn .3s ease}
-@keyframes chipIn{from{opacity:0;transform:scale(.8)}to{opacity:1;transform:scale(1)}}
+/* Selected tools */
+.tools-selected{display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:.5rem;min-height:36px}
+.tool-chip{display:inline-flex;align-items:center;gap:.4rem;padding:.4rem .75rem;background:var(--accent-soft);border:1px solid rgba(59,130,246,.25);border-radius:8px;font-size:.85rem;color:var(--accent-light)}
 .tool-chip .remove{cursor:pointer;color:var(--muted);transition:color .2s;display:flex;align-items:center}
-.tool-chip .remove:hover{color:var(--red)}
-.tools-empty{color:var(--muted);font-size:.85rem;font-style:italic;padding:.5rem 0}
+.tool-chip .remove:hover{color:var(--red-light)}
+.tools-empty{color:var(--muted-2);font-size:.85rem;padding:.3rem 0}
 
-/* Calculator */
-.replace-note{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:1rem 1.25rem;margin-bottom:1.5rem;font-size:.95rem}
-.replace-note-row{display:flex;align-items:flex-start;gap:.6rem;padding:.55rem 0}
-.replace-note-row+.replace-note-row{border-top:1px solid var(--border)}
-.replace-note-row span{flex-shrink:0;width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:700}
-.replace-note-row.yes span{background:var(--green-soft);color:var(--green)}
-.replace-note-row.no span{background:var(--red-soft);color:var(--red)}
-.replace-note-row strong{color:var(--fg)}
-.calc-tools-pills{display:flex;flex-wrap:wrap;gap:.4rem;min-height:28px}
-.calc-tools-pills .tool-chip{font-size:.85rem;padding:.35rem .7rem}
-.calc-tools-pills .calc-empty{color:var(--muted);font-size:.85rem;font-style:italic}
-.calc-block{text-align:center;margin-bottom:1.5rem}
-.calc-label{font-size:1.05rem;color:var(--muted);margin-bottom:1rem}
-.calc-freq-toggle{display:inline-flex;gap:0;margin-bottom:1rem;background:var(--bg-card);border-radius:8px;overflow:hidden;border:1px solid var(--border)}
-.calc-freq-btn{padding:.55rem 1.25rem;background:transparent;color:var(--muted);border:none;font-family:var(--fb);font-size:.95rem;font-weight:500;cursor:pointer;transition:all .2s}
-.calc-freq-btn.active{background:var(--accent);color:#fff}
-.calc-cost-wrap{display:inline-flex;align-items:center;gap:.25rem;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:1rem 1.5rem;transition:all .2s}
-.calc-cost-wrap:focus-within{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
-.calc-dollar{font-family:var(--fd);font-size:2rem;font-weight:700;color:var(--muted)}
-.calc-cost-input{background:none;border:none;color:var(--fg);font-family:var(--fd);font-size:2rem;font-weight:700;width:150px;text-align:center;outline:none}
-.calc-cost-input::placeholder{color:var(--muted-2)}
-.calc-per{font-size:1rem;color:var(--muted)}
-.calc-sliders{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1.5rem}
-.calc-slider-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:1.25rem}
-.calc-slider-label{font-size:.95rem;color:var(--muted);margin-bottom:.75rem}
-.calc-slider-display{font-family:var(--fd);font-size:1.5rem;font-weight:700;color:var(--accent-light);margin-bottom:.75rem}
-.calc-slider{width:100%;-webkit-appearance:none;height:6px;background:var(--border);border-radius:3px;outline:none;--fill:0%}
-.calc-slider::-webkit-slider-runnable-track{height:6px;border-radius:3px;background:linear-gradient(to right,var(--accent) var(--fill),var(--border) var(--fill))}
-.calc-slider::-webkit-slider-thumb{-webkit-appearance:none;width:20px;height:20px;background:var(--accent);border-radius:50%;cursor:pointer;margin-top:-7px;box-shadow:0 0 10px var(--accent-glow)}
-.calc-slider-ends{display:flex;justify-content:space-between;font-size:.75rem;color:var(--muted);margin-top:.35rem}
-.calc-result{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;margin-bottom:1.5rem}
-.calc-result-row{display:flex;justify-content:space-between;padding:.85rem 1.25rem;border-bottom:1px solid var(--border);font-size:.95rem}
-.calc-result-row:last-child{border-bottom:none}
-.calc-result-row.total{background:var(--accent-soft);font-weight:700;font-size:1.05rem}
-.calc-result-val{font-family:var(--fd);font-weight:700;color:var(--red-light)}
+/* Text inputs */
+.input{width:100%;padding:1rem 1.1rem;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);color:var(--fg);font-family:var(--fb);font-size:1rem;transition:border-color .2s,box-shadow .2s;box-sizing:border-box}
+.input::placeholder{color:var(--muted-2)}
+.input:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft);background:var(--bg-hover)}
+textarea.input{resize:vertical;min-height:100px;font-family:var(--fb)}
+.input-row{display:grid;grid-template-columns:1fr 1fr;gap:.75rem}
+
+/* Cost display */
+.cost-display{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:1.5rem;text-align:center;margin-bottom:1rem}
+.cost-amount{font-family:var(--fd);font-size:2.5rem;font-weight:700;color:var(--accent-light)}
+.cost-label{font-size:.85rem;color:var(--muted);margin-top:.25rem}
 
 /* Buttons */
-.step-actions{display:flex;justify-content:space-between;align-items:center;margin-top:2rem}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;padding:1.1rem 1.85rem;border-radius:10px;font-family:var(--fb);font-weight:600;font-size:1.15rem;line-height:1;border:none;cursor:pointer;transition:all .2s;text-decoration:none}
-.btn-primary{background:var(--accent);color:#fff;box-shadow:0 8px 30px var(--accent-glow)}
-.btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 40px var(--accent-glow)}
+.actions{display:flex;justify-content:space-between;align-items:center;margin-top:1.5rem}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.4rem;padding:1rem 1.75rem;border-radius:10px;font-family:var(--fb);font-weight:600;font-size:1rem;border:none;cursor:pointer;transition:all .2s}
+.btn-primary{background:var(--accent);color:#fff;box-shadow:0 6px 24px var(--accent-glow)}
+.btn-primary:hover{transform:translateY(-1px);box-shadow:0 8px 30px var(--accent-glow)}
 .btn-primary:disabled{opacity:.4;cursor:not-allowed;transform:none;box-shadow:none}
 .btn-ghost{background:transparent;color:var(--muted);border:1px solid var(--border)}
 .btn-ghost:hover{color:var(--fg);border-color:var(--muted)}
 
-/* Summary */
-.summary-card{background:var(--bg-card);border:1px solid var(--border);border-radius:16px;padding:1.75rem;margin-bottom:1.5rem}
-.summary-row{display:flex;justify-content:space-between;padding:.8rem 0;border-bottom:1px solid var(--border)}
-.summary-row:last-child{border-bottom:none}
-.summary-label{color:var(--muted);font-size:1.1rem}
-.summary-value{font-weight:600;font-size:1.1rem;text-align:right;max-width:60%}
-.summary-tools{display:flex;flex-wrap:wrap;gap:.4rem;justify-content:flex-end}
-.summary-tools .tool-chip{font-size:.75rem;padding:.3rem .6rem}
-
 /* Success */
-.success-screen{text-align:center;padding:3rem 0}
-.success-icon{width:64px;height:64px;border-radius:50%;background:var(--green-soft);display:flex;align-items:center;justify-content:center;margin:0 auto 1.5rem;animation:popIn .5s ease}
-@keyframes popIn{from{transform:scale(0)}to{transform:scale(1)}}
-.success-icon svg{color:var(--green);width:32px;height:32px}
-.success-screen h2{font-family:var(--fd);font-size:1.5rem;margin-bottom:.5rem}
-.success-screen p{color:var(--muted);margin-bottom:1.5rem}
+.success{text-align:center;padding:3rem 0}
+.success-icon{width:56px;height:56px;border-radius:50%;background:var(--green-soft);display:flex;align-items:center;justify-content:center;margin:0 auto 1.25rem;animation:pop .4s ease}
+@keyframes pop{from{transform:scale(0)}to{transform:scale(1)}}
+.success h2{font-family:var(--fd);font-size:1.5rem;margin-bottom:.5rem}
+.success p{color:var(--muted);margin-bottom:1.5rem}
 
 /* Footer */
 footer{border-top:1px solid var(--border);padding:2rem 0}
 .footer-inner{max-width:1200px;margin:0 auto;padding:0 1.5rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
-.footer-brand{display:flex;align-items:center;gap:.5rem;font-family:var(--fd);font-weight:700;font-size:1rem}
-.footer-brand img{width:24px;height:24px;border-radius:5px}
+.footer-brand{display:flex;align-items:center;gap:.5rem;font-family:var(--fd);font-weight:700;font-size:.95rem}
+.footer-brand img{width:22px;height:22px;border-radius:5px}
 .footer-brand .accent{color:var(--accent-light)}
 .footer-links{display:flex;gap:1.5rem;font-size:.85rem}
 .footer-links a{color:var(--muted);transition:color .2s}
 .footer-links a:hover{color:var(--fg)}
 
-@media(max-width:768px){
-  .nav-links{display:none}
-  .hero{padding:6rem 0 2rem}
-  .hero h1{font-size:2.25rem}
-  .hero-sub{font-size:1.05rem}
-  .option-grid{grid-template-columns:1fr}
-  .field-row{grid-template-columns:1fr}
-  .progress-dot{width:32px;height:32px;font-size:.85rem}
-  .progress-line{width:16px}
-  .progress-label{font-size:.75rem;margin-left:.35rem}
-  .step-actions{flex-direction:row}
-  .calc-sliders{grid-template-columns:1fr}
-  .calc-cost-input{font-size:1.6rem;width:120px}
-  .calc-dollar{font-size:1.6rem}
-}
 @media(max-width:540px){
   .nav-inner{padding:.65rem 1rem}
   .nav-brand{font-size:.9rem}
   .nav-brand img{width:26px;height:26px}
   .nav-cta{padding:.5rem .9rem;font-size:.8rem}
-  .hero h1{font-size:1.85rem}
-  .progress-line{width:8px}
-  .progress-label{display:none}
+  .main{padding:6rem 1.25rem 4rem}
+  .step-q{font-size:1.4rem}
+  .input-row{grid-template-columns:1fr}
+  .cost-amount{font-size:2rem}
+  .chip{padding:.6rem .9rem;font-size:.9rem}
 }
 </style>
 </head>
 <body>
 <nav><div class="nav-inner">
 <a href="/" class="nav-brand"><img src="/logo.png" alt="RMS">Replace My <span class="accent">Software</span></a>
-<div class="nav-links"><a href="/">Home</a><a href="/#features">Features</a><a href="/#pricing">Pricing</a></div>
 <a href="/apply" class="nav-cta">Apply →</a>
 </div></nav>
 
-<section class="hero">
-<div class="hero-orb orb-1"></div><div class="hero-orb orb-2"></div>
-<div class="container">
-<div class="hero-badge"><span class="pulse"></span>Custom CRM application</div>
-<h1>Tell us about your <span class="highlight">business</span></h1>
-<p class="hero-sub">We build a custom CRM around your actual workflow — not another monthly SaaS subscription. Start by telling us what you're using now.</p>
-</div>
-</section>
-
-<section class="wizard-section">
-<div class="wizard">
-
-<!-- Progress bar -->
-<div class="progress-bar" id="progress-bar">
-<div class="progress-step active" data-step="1"><div class="progress-dot">1</div><span class="progress-label">Tools</span></div>
-<div class="progress-line"></div>
-<div class="progress-step" data-step="2"><div class="progress-dot">2</div><span class="progress-label">Cost</span></div>
-<div class="progress-line"></div>
-<div class="progress-step" data-step="3"><div class="progress-dot">3</div><span class="progress-label">Team</span></div>
-<div class="progress-line"></div>
-<div class="progress-step" data-step="4"><div class="progress-dot">4</div><span class="progress-label">Revenue</span></div>
-<div class="progress-line"></div>
-<div class="progress-step" data-step="5"><div class="progress-dot">5</div><span class="progress-label">Problem</span></div>
-<div class="progress-line"></div>
-<div class="progress-step" data-step="6"><div class="progress-dot">6</div><span class="progress-label">Basics</span></div>
-<div class="progress-line"></div>
-<div class="progress-step" data-step="7"><div class="progress-dot">7</div><span class="progress-label">Review</span></div>
+<div class="main">
+<!-- Progress -->
+<div class="progress">
+<div class="progress-bar-bg"><div class="progress-bar-fill" id="progress-fill"></div></div>
+<span class="progress-text" id="progress-text">1 / 4</span>
 </div>
 
-<!-- Step 1: Tools -->
+<!-- Step 1: What do you use? -->
 <div class="step active" data-step="1">
-<h2 class="step-title">What CRM are you using now?</h2>
-<p class="step-sub">Search for your current CRM or tools. If it's not in our database, we'll add it as a custom entry.</p>
-
-<div class="tool-search-wrap">
-<svg class="tool-search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
-<input class="tool-search" id="tool-search" placeholder="Search or type a tool name..." oninput="searchTools()" onkeydown="handleToolKey(event)">
-<div class="tool-results" id="tool-results"></div>
+<h2 class="step-q">What software do you use?</h2>
+<p class="step-desc">Search and add everything you pay for.</p>
+<div class="search-wrap">
+<svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+<input class="search-input" id="tool-search" placeholder="Search software..." oninput="searchTools()" onkeydown="handleToolKey(event)">
+<div class="search-results" id="tool-results"></div>
+</div>
+<div class="tools-selected" id="tools-list"><span class="tools-empty">Nothing added yet</span></div>
+<div class="actions"><div></div><button class="btn btn-primary" onclick="nextStep()">Continue →</button></div>
 </div>
 
-<div class="field-label" style="margin-top:1rem;">Your current CRM & tools</div>
-<div class="tools-list" id="tools-list">
-<div class="tools-empty" id="tools-empty">No CRM or tools added yet. Start typing above.</div>
-</div>
-
-<div class="field-group" style="margin-top:1.5rem;"><label class="field-label">How much do you pay per month for your CRM?</label>
-<div class="option-grid" id="software-spend-grid">
-<div class="option-card" data-value="0"><span class="opt-title">$0</span><span class="opt-desc">Spreadsheets & paper</span></div>
-<div class="option-card" data-value="1-99"><span class="opt-title">$1-99/mo</span><span class="opt-desc">Basic CRM</span></div>
-<div class="option-card" data-value="100-299"><span class="opt-title">$100-299/mo</span><span class="opt-desc">Standard CRM</span></div>
-<div class="option-card" data-value="300+"><span class="opt-title">$300+/mo</span><span class="opt-desc">Enterprise CRM</span></div>
-</div>
-</div>
-<div class="step-actions">
-<div></div>
-<button class="btn btn-primary" onclick="nextStep()">Continue →</button>
-</div>
-</div>
-
-<!-- Step 2: Cost Calculator -->
+<!-- Step 2: Cost -->
 <div class="step" data-step="2">
-<h2 class="step-title">What's your CRM actually costing you?</h2>
-<p class="step-sub">We'll use this to show you exactly how much you'd save by switching to a custom CRM.</p>
-
-<div class="field-group">
-  <label class="field-label">Your current tools</label>
-  <div class="calc-tools-pills" id="calc-tools-pills"></div>
+<h2 class="step-q">How much do you pay?</h2>
+<p class="step-desc">Monthly cost across all your tools.</p>
+<div class="cost-display">
+<div class="cost-amount" id="cost-display">$0</div>
+<div class="cost-label">per month</div>
+</div>
+<input type="range" class="input" id="cost-slider" min="0" max="1000" value="0" step="25" style="padding:0;margin-bottom:.5rem;height:6px;-webkit-appearance:none;background:var(--border);border-radius:3px;outline:none">
+<div style="display:flex;justify-content:space-between;font-size:.8rem;color:var(--muted);margin-bottom:1rem"><span>$0</span><span>$1,000+</span></div>
+<div style="background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:1.25rem;margin-bottom:.5rem">
+<div style="display:flex;justify-content:space-between;padding:.4rem 0"><span style="color:var(--muted)">Over 5 years</span><span style="font-family:var(--fd);font-weight:700;color:var(--red-light)" id="cost-5yr">$0</span></div>
+<div style="display:flex;justify-content:space-between;padding:.4rem 0"><span style="color:var(--muted)">Over 10 years</span><span style="font-family:var(--fd);font-weight:700;color:var(--red-light)" id="cost-10yr">$0</span></div>
+</div>
+<div class="actions"><button class="btn btn-ghost" onclick="prevStep()">←</button><button class="btn btn-primary" onclick="nextStep()">Continue →</button></div>
 </div>
 
-<div class="replace-note">
-  <div class="replace-note-row yes"><span>✓</span> <strong>We replace:</strong> Your CRM, job management, invoicing, scheduling, client portals, proposals, automations — all in one custom system</div>
-  <div class="replace-note-row no"><span>✗</span> <strong>We don't replace:</strong> QuickBooks, Xero, Hover, EagleView, CompanyCam — specialized tools we integrate with</div>
-</div>
-
-<div class="calc-block">
-  <div class="calc-label">How much do you pay per month for your CRM(s)?</div>
-  <div class="calc-freq-toggle">
-    <button class="calc-freq-btn active" id="calcBtnMonthly" onclick="calcSwitchFreq('monthly')">Monthly</button>
-    <button class="calc-freq-btn" id="calcBtnYearly" onclick="calcSwitchFreq('yearly')">Yearly</button>
-  </div>
-  <div class="calc-cost-wrap">
-    <span class="calc-dollar">$</span>
-    <input type="text" class="calc-cost-input" id="calcCostInput" placeholder="189" inputmode="decimal" pattern="[0-9]*" oninput="calcUpdate()">
-    <span class="calc-per" id="calcPer">/ mo</span>
-  </div>
-</div>
-
-<div class="calc-sliders">
-  <div class="calc-slider-card">
-    <div class="calc-slider-label">How long have you been paying?</div>
-    <div class="calc-slider-display" id="calcPastDisplay">3 yrs</div>
-    <input type="range" class="calc-slider" id="calcPastSlider" min="0" max="20" value="3" step="1" oninput="calcUpdate()">
-    <div class="calc-slider-ends"><span>0</span><span>20+ yrs</span></div>
-  </div>
-  <div class="calc-slider-card">
-    <div class="calc-slider-label">How long do you plan to stay in business?</div>
-    <div class="calc-slider-display" id="calcFutureDisplay">10 yrs</div>
-    <input type="range" class="calc-slider" id="calcFutureSlider" min="1" max="30" value="10" step="1" oninput="calcUpdate()">
-    <div class="calc-slider-ends"><span>1</span><span>30+ yrs</span></div>
-  </div>
-</div>
-
-<div class="calc-result" id="calcResult">
-  <div class="calc-result-row"><span>Spent so far</span><span class="calc-result-val" id="calcResultSpent">$0</span></div>
-  <div class="calc-result-row"><span>Projected future</span><span class="calc-result-val" id="calcResultFuture">$0</span></div>
-  <div class="calc-result-row total"><span>Total over time</span><span class="calc-result-val" id="calcResultTotal">$0</span></div>
-</div>
-
-<div class="step-actions">
-  <button class="btn btn-ghost" onclick="prevStep()">← Back</button>
-  <button class="btn btn-primary" onclick="nextStep()">Continue →</button>
-</div>
-</div>
-
-<!-- Step 3: Team -->
+<!-- Step 3: Business -->
 <div class="step" data-step="3">
-<h2 class="step-title">Tell us about your team</h2>
-<p class="step-sub">This helps us understand the scale of CRM we'd build for you.</p>
-<div class="field-group"><label class="field-label">How many field workers do you have?</label>
-<div class="option-grid" id="field-workers-grid">
-<div class="option-card" data-value="1-2"><span class="opt-title">1-2</span><span class="opt-desc">Solo or duo</span></div>
-<div class="option-card" data-value="3-5"><span class="opt-title">3-5</span><span class="opt-desc">Small crew</span></div>
-<div class="option-card" data-value="6-10"><span class="opt-title">6-10</span><span class="opt-desc">Multiple crews</span></div>
-<div class="option-card" data-value="10+"><span class="opt-title">10+</span><span class="opt-desc">Large operation</span></div>
+<h2 class="step-q">Tell us about your team</h2>
+<p class="step-desc">A few quick details.</p>
+<div style="margin-bottom:1.25rem">
+<label style="display:block;font-size:.85rem;color:var(--muted);margin-bottom:.5rem;font-weight:500">Crew size</label>
+<div class="chip-grid" id="crew-grid">
+<div class="chip" data-value="1-2">1-2</div>
+<div class="chip" data-value="3-5">3-5</div>
+<div class="chip" data-value="6-10">6-10</div>
+<div class="chip" data-value="10+">10+</div>
 </div>
 </div>
-<div class="field-group"><label class="field-label">How many office / admin staff?</label>
-<div class="option-grid" id="office-staff-grid">
-<div class="option-card" data-value="0"><span class="opt-title">0</span><span class="opt-desc">I handle everything</span></div>
-<div class="option-card" data-value="1-2"><span class="opt-title">1-2</span><span class="opt-desc">Small office</span></div>
-<div class="option-card" data-value="3-5"><span class="opt-title">3-5</span><span class="opt-desc">Full office team</span></div>
-<div class="option-card" data-value="5+"><span class="opt-title">5+</span><span class="opt-desc">Large admin team</span></div>
+<div style="margin-bottom:1.25rem">
+<label style="display:block;font-size:.85rem;color:var(--muted);margin-bottom:.5rem;font-weight:500">Annual revenue</label>
+<div class="chip-grid" id="revenue-grid">
+<div class="chip" data-value="<250K">Under $250K</div>
+<div class="chip" data-value="250K-500K">$250K-$500K</div>
+<div class="chip" data-value="500K-1M">$500K-$1M</div>
+<div class="chip" data-value="1M+">$1M+</div>
 </div>
 </div>
-<div class="step-actions">
-<button class="btn btn-ghost" onclick="prevStep()">← Back</button>
-<button class="btn btn-primary" onclick="nextStep()">Continue →</button>
+<div style="margin-bottom:1.25rem">
+<label style="display:block;font-size:.85rem;color:var(--muted);margin-bottom:.5rem;font-weight:500">What's your biggest headache?</label>
+<textarea class="input" id="f-pain" placeholder="e.g., Can't route crews efficiently, invoicing is manual..." rows="3"></textarea>
 </div>
+<div class="actions"><button class="btn btn-ghost" onclick="prevStep()">←</button><button class="btn btn-primary" onclick="nextStep()">Continue →</button></div>
 </div>
 
-<!-- Step 4: Revenue -->
+<!-- Step 4: Contact -->
 <div class="step" data-step="4">
-<h2 class="step-title">About your business</h2>
-<p class="step-sub">This stays confidential. It helps us scope the right solution.</p>
-<div class="field-group"><label class="field-label">Estimated annual revenue</label>
-<div class="option-grid" id="revenue-grid">
-<div class="option-card" data-value="<250K"><span class="opt-title">Under $250K</span><span class="opt-desc">Getting started</span></div>
-<div class="option-card" data-value="250K-500K"><span class="opt-title">$250K - $500K</span><span class="opt-desc">Growing</span></div>
-<div class="option-card" data-value="500K-1M"><span class="opt-title">$500K - $1M</span><span class="opt-desc">Established</span></div>
-<div class="option-card" data-value="1M+"><span class="opt-title">$1M+</span><span class="opt-desc">Scaling</span></div>
+<h2 class="step-q">Where do we send your plan?</h2>
+<p class="step-desc">We'll build a custom CRM roadmap within 24 hours.</p>
+<div style="display:flex;flex-direction:column;gap:.75rem">
+<input class="input" id="f-name" placeholder="Name">
+<input class="input" id="f-email" type="email" placeholder="Email">
+<input class="input" id="f-phone" placeholder="Phone (optional)">
+<input class="input" id="f-company" placeholder="Company (optional)">
 </div>
-</div>
-<div class="step-actions">
-<button class="btn btn-ghost" onclick="prevStep()">← Back</button>
-<button class="btn btn-primary" onclick="nextStep()">Continue →</button>
-</div>
-</div>
-
-<!-- Step 5: Problem -->
-<div class="step" data-step="5">
-<h2 class="step-title">What's your biggest CRM headache?</h2>
-<p class="step-sub">Tell us what your current CRM can't do. This is the problem we'll solve.</p>
-<div class="field-group">
-<p class="field-hint">Be as specific as you want. The more detail you give us, the better your custom CRM plan will be.</p>
-<textarea class="field-textarea" id="f-pain" placeholder="e.g., We use JobNimbus but our crew can't figure out the mobile app. We waste 3 hours every Sunday routing jobs by hand. Invoicing doesn't sync with QuickBooks so I spend every Friday night doing data entry..." rows="8"></textarea>
-</div>
-<div class="step-actions">
-<button class="btn btn-ghost" onclick="prevStep()">← Back</button>
-<button class="btn btn-primary" onclick="nextStep()">Continue →</button>
-</div>
-</div>
-
-<!-- Step 6: Basics -->
-<div class="step" data-step="6">
-<h2 class="step-title">Almost done — how do we reach you?</h2>
-<p class="step-sub">We'll use this to send your custom plan and roadmap.</p>
-<div class="field-row">
-<div class="field-group"><label class="field-label">Your name</label><input class="field-input" id="f-name" placeholder="John Smith"></div>
-<div class="field-group"><label class="field-label">Email</label><input class="field-input" id="f-email" type="email" placeholder="john@company.com"></div>
-</div>
-<div class="field-row">
-<div class="field-group"><label class="field-label">Phone</label><input class="field-input" id="f-phone" placeholder="(555) 123-4567"></div>
-<div class="field-group"><label class="field-label">Company name</label><input class="field-input" id="f-company" placeholder="Smith Landscaping LLC"></div>
-</div>
-<div class="field-group"><label class="field-label">Your role</label>
-<div class="option-grid" id="role-grid">
-<div class="option-card" data-value="Owner"><span class="opt-title">Owner / Founder</span></div>
-<div class="option-card" data-value="Manager"><span class="opt-title">Manager / Operations</span></div>
-<div class="option-card" data-value="Office"><span class="opt-title">Office / Admin</span></div>
-<div class="option-card" data-value="Other"><span class="opt-title">Other</span></div>
-</div>
-</div>
-<div class="step-actions">
-<button class="btn btn-ghost" onclick="prevStep()">← Back</button>
-<button class="btn btn-primary" onclick="nextStep()">Continue →</button>
-</div>
-</div>
-
-<!-- Step 7: Review -->
-<div class="step" data-step="7">
-<h2 class="step-title">Review your application</h2>
-<p class="step-sub">Make sure everything looks right before we build your custom CRM plan.</p>
-<div class="summary-card" id="summary-card"></div>
-<div class="step-actions">
-<button class="btn btn-ghost" onclick="prevStep()">← Back</button>
-<button class="btn btn-primary" id="submit-btn" onclick="submitApp()">Submit Application →</button>
-</div>
+<div class="actions"><button class="btn btn-ghost" onclick="prevStep()">←</button><button class="btn btn-primary" id="submit-btn" onclick="submitApp()">Submit →</button></div>
 </div>
 
 <!-- Success -->
 <div class="step" data-step="success">
-<div class="success-screen">
-<div class="success-icon"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></div>
-<h2>Application received!</h2>
-<p>We'll review your business and send a custom plan within 24 hours.</p>
-<a href="/" class="btn btn-ghost">← Back to Home</a>
+<div class="success">
+<div class="success-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></div>
+<h2>Got it!</h2>
+<p>Your custom plan is on the way. Check your inbox within 24 hours.</p>
+<a href="/" class="btn btn-ghost">← Home</a>
 </div>
 </div>
-
 </div>
-</section>
 
 <footer>
 <div class="footer-inner">
 <div class="footer-brand"><img src="/logo.png" alt="RMS">Replace My <span class="accent">Software</span></div>
-<div class="footer-links">
-<a href="/">Home</a>
-<a href="/#features">Features</a>
-<a href="/#pricing">Pricing</a>
-<a href="/apply">Apply</a>
-<a href="/calculator">Calculator</a>
-</div>
+<div class="footer-links"><a href="/">Home</a><a href="/#pricing">Pricing</a><a href="/calculator">Calculator</a></div>
 </div>
 </footer>
 
 <script>
-const totalSteps = 7;
+const totalSteps = 4;
 let currentStep = 1;
 const formData = {};
 const selectedTools = new Set();
-let calcFreq = 'monthly';
 
-function fmt(v) { return '$' + Math.round(v).toLocaleString(); }
-function escStr(s) { return s.replace(/'/g, "\\'").replace(/"/g, '&quot;'); }
-function escHtml(s) { return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
-
-// Calculator
-function calcSwitchFreq(f) {
-  calcFreq = f;
-  document.getElementById('calcBtnMonthly').classList.toggle('active', f === 'monthly');
-  document.getElementById('calcBtnYearly').classList.toggle('active', f === 'yearly');
-  document.getElementById('calcPer').textContent = f === 'yearly' ? '/ yr' : '/ mo';
-  calcUpdate();
-}
-function calcUpdate() {
-  const raw = parseFloat(document.getElementById('calcCostInput').value.replace(/[^0-9.]/g,'')) || 0;
-  const pastYrs = parseInt(document.getElementById('calcPastSlider').value);
-  const futureYrs = parseInt(document.getElementById('calcFutureSlider').value);
-  const monthly = calcFreq === 'yearly' ? raw / 12 : raw;
-  const annual = monthly * 12;
-  const spent = annual * pastYrs;
-  const future = annual * futureYrs;
-  const total = spent + future;
-  document.getElementById('calcPastDisplay').textContent = (pastYrs >= 20 ? '20+' : pastYrs) + ' yrs';
-  document.getElementById('calcFutureDisplay').textContent = (futureYrs >= 30 ? '30+' : futureYrs) + ' yrs';
-  document.getElementById('calcResultSpent').textContent = fmt(spent);
-  document.getElementById('calcResultFuture').textContent = fmt(future);
-  document.getElementById('calcResultTotal').textContent = fmt(total);
-  [document.getElementById('calcPastSlider'), document.getElementById('calcFutureSlider')].forEach(s => {
-    const pct = ((s.value - s.min) / (s.max - s.min)) * 100;
-    s.style.setProperty('--fill', pct + '%');
-  });
-}
-
-// Known tools
 const knownTools = [
-  { name: 'JobNimbus', cat: 'Roofing CRM' },
-  { name: 'AccuLynx', cat: 'Roofing CRM' },
-  { name: 'Roofr', cat: 'Roofing CRM' },
-  { name: 'SumoQuote', cat: 'Proposals' },
-  { name: 'Service Autopilot', cat: 'Field service' },
-  { name: 'Jobber', cat: 'Field service' },
-  { name: 'Housecall Pro', cat: 'Field service' },
-  { name: 'Hatch', cat: 'CRM' },
-  { name: 'Podium', cat: 'Reviews' },
-  { name: 'Weave', cat: 'Communication' },
-  { name: 'Thryv', cat: 'CRM' },
-  { name: 'Apptivo', cat: 'CRM' },
-  { name: 'ServiceTitan', cat: 'Field service' },
-  { name: 'EagleView', cat: 'Measurements' },
-  { name: 'Hover', cat: 'Measurements' },
-  { name: 'CompanyCam', cat: 'Photos' },
-  { name: 'JobProgress', cat: 'Roofing CRM' },
-  { name: 'Leap', cat: 'CRM' },
-  { name: 'CrewControl', cat: 'Roofing CRM' },
-  { name: 'QuickBooks', cat: 'Accounting' },
-  { name: 'Xero', cat: 'Accounting' },
-  { name: 'Salesforce', cat: 'CRM' },
-  { name: 'HubSpot', cat: 'CRM' },
-  { name: 'SalesRabbit', cat: 'Sales' },
-  { name: 'Buildertrend', cat: 'Construction' },
-  { name: 'Contractor Foreman', cat: 'Construction' },
-  { name: 'Houzz Pro', cat: 'Home improvement' },
-  { name: 'Monday.com', cat: 'Project mgmt' },
-  { name: 'Asana', cat: 'Project mgmt' },
-  { name: 'Google Sheets', cat: 'Spreadsheets' },
-  { name: 'Excel', cat: 'Spreadsheets' },
-  { name: 'Airtable', cat: 'Database' },
-  { name: 'Stripe', cat: 'Payments' },
-  { name: 'Square', cat: 'Payments' },
-  { name: 'Slack', cat: 'Communication' },
-  { name: 'Mailchimp', cat: 'Email marketing' },
-  { name: 'Canva', cat: 'Design' },
-  { name: 'HomeAdvisor', cat: 'Lead gen' },
-  { name: 'Angi', cat: 'Lead gen' },
-  { name: 'Thumbtack', cat: 'Lead gen' },
+  {name:'JobNimbus',cat:'Roofing CRM'},{name:'AccuLynx',cat:'Roofing CRM'},{name:'Roofr',cat:'Roofing CRM'},
+  {name:'Service Autopilot',cat:'Field service'},{name:'Jobber',cat:'Field service'},{name:'Housecall Pro',cat:'Field service'},
+  {name:'ServiceTitan',cat:'Field service'},{name:'JobProgress',cat:'Roofing CRM'},{name:'Leap',cat:'CRM'},
+  {name:'Hatch',cat:'CRM'},{name:'Podium',cat:'Reviews'},{name:'Weave',cat:'Communication'},
+  {name:'Thryv',cat:'CRM'},{name:'SalesRabbit',cat:'Sales'},{name:'Buildertrend',cat:'Construction'},
+  {name:'Contractor Foreman',cat:'Construction'},{name:'Houzz Pro',cat:'Home improvement'},
+  {name:'SumoQuote',cat:'Proposals'},{name:'CrewControl',cat:'Roofing CRM'},
+  {name:'QuickBooks',cat:'Accounting'},{name:'Xero',cat:'Accounting'},
+  {name:'Salesforce',cat:'CRM'},{name:'HubSpot',cat:'CRM'},
+  {name:'Monday.com',cat:'Project mgmt'},{name:'Asana',cat:'Project mgmt'},
+  {name:'Google Sheets',cat:'Spreadsheets'},{name:'Excel',cat:'Spreadsheets'},
+  {name:'Stripe',cat:'Payments'},{name:'Square',cat:'Payments'},
+  {name:'HomeAdvisor',cat:'Lead gen'},{name:'Angi',cat:'Lead gen'},{name:'Thumbtack',cat:'Lead gen'},
 ];
 
-// Option card selection
-document.querySelectorAll('.option-grid').forEach(grid => {
-  grid.querySelectorAll('.option-card').forEach(card => {
-    card.addEventListener('click', () => {
-      grid.querySelectorAll('.option-card').forEach(c => c.classList.remove('selected'));
-      card.classList.add('selected');
-      const gridId = grid.id;
-      if (gridId === 'role-grid') formData.role = card.dataset.value;
-      else if (gridId === 'field-workers-grid') formData.fieldWorkers = card.dataset.value;
-      else if (gridId === 'office-staff-grid') formData.officeStaff = card.dataset.value;
-      else if (gridId === 'software-spend-grid') formData.softwareSpend = card.dataset.value;
-      else if (gridId === 'revenue-grid') formData.revenue = card.dataset.value;
-    });
-  });
-});
+function escStr(s){return s.replace(/'/g,"\\'").replace(/"/g,'&quot;');}
+function escHtml(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
 
 // Tool search
-function searchTools() {
-  const query = document.getElementById('tool-search').value.trim();
-  const results = document.getElementById('tool-results');
-  if (!query) { results.classList.remove('show'); return; }
-  const queryLower = query.toLowerCase();
-  const matches = knownTools.filter(t =>
-    t.name.toLowerCase().includes(queryLower) && !selectedTools.has(t.name)
-  ).slice(0, 6);
-  const exactMatch = knownTools.some(t => t.name.toLowerCase() === queryLower);
-  let html = '';
-  if (matches.length > 0) {
-    html += matches.map(t =>
-      `<div class="tool-result" onclick="addTool('${escStr(t.name)}')"><span class="tool-result-name">${t.name}</span><span class="tool-result-cat">${t.cat}</span></div>`
-    ).join('');
-  }
-  if (!exactMatch && !selectedTools.has(query)) {
-    html += `<div class="tool-result-add" onclick="addTool('${escStr(query)}')"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/></svg><span class="tool-result-name">Add "${escHtml(query)}" as a custom tool</span></div>`;
-  }
-  results.innerHTML = html;
-  results.classList.toggle('show', !!html);
+function searchTools(){
+  const q=document.getElementById('tool-search').value.trim();
+  const r=document.getElementById('tool-results');
+  if(!q){r.classList.remove('show');return;}
+  const ql=q.toLowerCase();
+  const matches=knownTools.filter(t=>t.name.toLowerCase().includes(ql)&&!selectedTools.has(t.name)).slice(0,5);
+  const exact=knownTools.some(t=>t.name.toLowerCase()===ql);
+  let h='';
+  if(matches.length>0)h+=matches.map(t=>`<div class="search-result" onclick="addTool('${escStr(t.name)}')"><span class="search-result-name">${t.name}</span><span class="search-result-cat">${t.cat}</span></div>`).join('');
+  if(!exact&&!selectedTools.has(q))h+=`<div class="search-result-add" onclick="addTool('${escStr(q)}')"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/></svg>Add "${escHtml(q)}"</div>`;
+  r.innerHTML=h;r.classList.toggle('show',!!h);
 }
-function handleToolKey(event) {
-  if (event.key === 'Enter') {
-    event.preventDefault();
-    const query = document.getElementById('tool-search').value.trim();
-    if (!query) return;
-    const firstResult = document.querySelector('#tool-results .tool-result, #tool-results .tool-result-add');
-    if (firstResult) firstResult.click();
-    else if (!selectedTools.has(query)) addTool(query);
-  } else if (event.key === 'Escape') {
-    document.getElementById('tool-results').classList.remove('show');
-    document.getElementById('tool-search').blur();
-  }
+function handleToolKey(e){
+  if(e.key==='Enter'){e.preventDefault();const q=document.getElementById('tool-search').value.trim();if(!q)return;const f=document.querySelector('#tool-results .search-result, #tool-results .search-result-add');if(f)f.click();else if(!selectedTools.has(q))addTool(q);}
+  else if(e.key==='Escape'){document.getElementById('tool-results').classList.remove('show');document.getElementById('tool-search').blur();}
 }
-document.addEventListener('click', (e) => {
-  if (!e.target.closest('.tool-search-wrap')) document.getElementById('tool-results').classList.remove('show');
-});
-function addTool(name) {
-  if (!selectedTools.has(name)) { selectedTools.add(name); renderTools(); }
-  document.getElementById('tool-search').value = '';
-  document.getElementById('tool-results').classList.remove('show');
-  document.getElementById('tool-search').focus();
-}
-function removeTool(name) { selectedTools.delete(name); renderTools(); }
-function renderTools() {
-  const list = document.getElementById('tools-list');
-  if (selectedTools.size === 0) {
-    list.innerHTML = '<div class="tools-empty">No tools added yet. Start typing above.</div>';
-    return;
-  }
-  list.innerHTML = Array.from(selectedTools).map(name =>
-    `<div class="tool-chip">${escHtml(name)}<span class="remove" onclick="removeTool('${escStr(name)}')"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg></span></div>`
-  ).join('');
+document.addEventListener('click',e=>{if(!e.target.closest('.search-wrap'))document.getElementById('tool-results').classList.remove('show');});
+function addTool(name){if(!selectedTools.has(name)){selectedTools.add(name);renderTools();}document.getElementById('tool-search').value='';document.getElementById('tool-results').classList.remove('show');document.getElementById('tool-search').focus();}
+function removeTool(name){selectedTools.delete(name);renderTools();}
+function renderTools(){
+  const l=document.getElementById('tools-list');
+  if(selectedTools.size===0){l.innerHTML='<span class="tools-empty">Nothing added yet</span>';return;}
+  l.innerHTML=Array.from(selectedTools).map(n=>`<div class="tool-chip">${escHtml(n)}<span class="remove" onclick="removeTool('${escStr(n)}')"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg></span></div>`).join('');
 }
 
-// Step navigation
-function nextStep() { if (currentStep < totalSteps) goToStep(currentStep + 1); }
-function prevStep() { if (currentStep > 1) goToStep(currentStep - 1); }
-function goToStep(step) {
-  document.querySelectorAll('.step').forEach(s => s.classList.remove('active'));
-  document.querySelector(`.step[data-step="${step}"]`).classList.add('active');
-  document.querySelectorAll('.progress-step').forEach(ps => {
-    const psStep = parseInt(ps.dataset.step);
-    ps.classList.remove('active', 'done');
-    if (psStep < step) ps.classList.add('done');
-    else if (psStep === step) ps.classList.add('active');
-  });
-  document.querySelectorAll('.progress-line').forEach((line, i) => {
-    line.classList.toggle('done', i < step - 1);
-  });
-  currentStep = step;
-  if (step === 2) {
-    const pills = document.getElementById('calc-tools-pills');
-    if (selectedTools.size > 0) {
-      pills.innerHTML = Array.from(selectedTools).map(n => `<span class="tool-chip">${escHtml(n)}</span>`).join('');
-    } else {
-      pills.innerHTML = '<span class="calc-empty">No tools selected — go back</span>';
-    }
-    calcUpdate();
-  }
-  if (step === 7) buildSummary();
-  window.scrollTo({ top: document.querySelector('.wizard-section').offsetTop - 80, behavior: 'smooth' });
+// Cost slider
+function updateCost(){
+  const v=parseInt(document.getElementById('cost-slider').value);
+  document.getElementById('cost-display').textContent='$'+v.toLocaleString();
+  document.getElementById('cost-5yr').textContent='$'+(v*60).toLocaleString();
+  document.getElementById('cost-10yr').textContent='$'+(v*120).toLocaleString();
+  const pct=(v/1000)*100;
+  document.getElementById('cost-slider').style.background=`linear-gradient(to right,var(--accent) ${pct}%,var(--border) ${pct}%)`;
 }
+document.getElementById('cost-slider').addEventListener('input',updateCost);
 
-function buildSummary() {
-  const tools = Array.from(selectedTools);
-  const toolsHtml = tools.length > 0
-    ? `<div class="summary-tools">${tools.map(t => `<div class="tool-chip">${escHtml(t)}</div>`).join('')}</div>`
-    : '<span style="color:var(--muted)">None added</span>';
-  document.getElementById('summary-card').innerHTML = `
-    <div class="summary-row"><span class="summary-label">Current tools</span>${toolsHtml}</div>
-    <div class="summary-row"><span class="summary-label">CRM spend</span><span class="summary-value">${document.getElementById('calcResultTotal').textContent} total</span></div>
-    <div class="summary-row"><span class="summary-label">Field workers</span><span class="summary-value">${formData.fieldWorkers || '—'}</span></div>
-    <div class="summary-row"><span class="summary-label">Office staff</span><span class="summary-value">${formData.officeStaff || '—'}</span></div>
-    <div class="summary-row"><span class="summary-label">Annual revenue</span><span class="summary-value">${formData.revenue || '—'}</span></div>
-    <div class="summary-row"><span class="summary-label">Biggest problem</span><span class="summary-value" style="max-width:70%;">${escHtml(document.getElementById('f-pain').value || '—')}</span></div>
-    <div class="summary-row"><span class="summary-label">Name</span><span class="summary-value">${escHtml(document.getElementById('f-name').value || '—')}</span></div>
-    <div class="summary-row"><span class="summary-label">Email</span><span class="summary-value">${escHtml(document.getElementById('f-email').value || '—')}</span></div>
-    <div class="summary-row"><span class="summary-label">Phone</span><span class="summary-value">${escHtml(document.getElementById('f-phone').value || '—')}</span></div>
-    <div class="summary-row"><span class="summary-label">Company</span><span class="summary-value">${escHtml(document.getElementById('f-company').value || '—')}</span></div>
-    <div class="summary-row"><span class="summary-label">Role</span><span class="summary-value">${formData.role || '—'}</span></div>
-  `;
-}
-
-async function submitApp() {
-  const btn = document.getElementById('submit-btn');
-  btn.disabled = true;
-  btn.textContent = 'Submitting...';
-  const payload = {
-    name: document.getElementById('f-name').value,
-    email: document.getElementById('f-email').value,
-    phone: document.getElementById('f-phone').value,
-    company: document.getElementById('f-company').value,
-    role: formData.role,
-    fieldWorkers: formData.fieldWorkers,
-    officeStaff: formData.officeStaff,
-    currentTools: Array.from(selectedTools),
-    softwareSpend: formData.softwareSpend,
-    crmMonthlyCost: parseFloat(document.getElementById('calcCostInput').value||0),
-    crmCostFreq: calcFreq,
-    crmPastYears: parseInt(document.getElementById('calcPastSlider').value),
-    crmFutureYears: parseInt(document.getElementById('calcFutureSlider').value),
-    crmSpent: document.getElementById('calcResultSpent').textContent,
-    crmFuture: document.getElementById('calcResultFuture').textContent,
-    crmTotal: document.getElementById('calcResultTotal').textContent,
-    revenue: formData.revenue,
-    biggestProblem: document.getElementById('f-pain').value,
-    source: 'replacemysoftware.com/apply'
-  };
-  try {
-    const r = await fetch('https://replacemysoftware.vercel.app/api/contact', {
-      method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload)
+// Chip selection
+document.querySelectorAll('.chip-grid').forEach(grid=>{
+  grid.querySelectorAll('.chip').forEach(chip=>{
+    chip.addEventListener('click',()=>{
+      grid.querySelectorAll('.chip').forEach(c=>c.classList.remove('selected'));
+      chip.classList.add('selected');
+      if(grid.id==='crew-grid')formData.crew=chip.dataset.value;
+      else if(grid.id==='revenue-grid')formData.revenue=chip.dataset.value;
     });
-    if (r.ok) {
-      document.querySelectorAll('.step').forEach(s => s.classList.remove('active'));
+  });
+});
+
+// Navigation
+function nextStep(){if(currentStep<totalSteps)goToStep(currentStep+1);}
+function prevStep(){if(currentStep>1)goToStep(currentStep-1);}
+function goToStep(step){
+  document.querySelectorAll('.step').forEach(s=>s.classList.remove('active'));
+  document.querySelector(`.step[data-step="${step}"]`).classList.add('active');
+  document.getElementById('progress-fill').style.width=(step/totalSteps*100)+'%';
+  document.getElementById('progress-text').textContent=step+' / '+totalSteps;
+  currentStep=step;
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+// Submit
+async function submitApp(){
+  const btn=document.getElementById('submit-btn');
+  btn.disabled=true;btn.textContent='Sending...';
+  const cost=parseInt(document.getElementById('cost-slider').value);
+  const payload={
+    name:document.getElementById('f-name').value,
+    email:document.getElementById('f-email').value,
+    phone:document.getElementById('f-phone').value,
+    company:document.getElementById('f-company').value,
+    currentTools:Array.from(selectedTools),
+    crmMonthlyCost:cost,
+    crmSpent5yr:'$'+(cost*60).toLocaleString(),
+    crmSpent10yr:'$'+(cost*120).toLocaleString(),
+    crew:formData.crew,
+    revenue:formData.revenue,
+    biggestProblem:document.getElementById('f-pain').value,
+    source:'replacemysoftware.com/apply'
+  };
+  try{
+    const r=await fetch('https://replacemysoftware.vercel.app/api/contact',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});
+    if(r.ok){
+      document.querySelectorAll('.step').forEach(s=>s.classList.remove('active'));
       document.querySelector('.step[data-step="success"]').classList.add('active');
-      document.getElementById('progress-bar').style.display = 'none';
-    } else throw new Error();
-  } catch (err) {
-    btn.disabled = false;
-    btn.textContent = 'Try Again';
-    alert('Something went wrong. Please try again or email us at team@replacemysoftware.com');
+      document.querySelector('.progress').style.display='none';
+    }else throw new Error();
+  }catch(err){
+    btn.disabled=false;btn.textContent='Try Again';
+    alert('Something went wrong. Please try again.');
   }
 }
 </script>
