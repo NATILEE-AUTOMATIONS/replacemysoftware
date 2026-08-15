@@ -36,7 +36,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(6,7,9,.8);ba
 .nav-brand .accent{color:var(--accent-light)}
 
 /* Container */
-.main{max-width:520px;margin:0 auto;padding:6.5rem 1.5rem 5rem}
+.main{max-width:540px;margin:0 auto;padding:6.5rem 1.5rem 5rem}
 
 /* Progress */
 .progress{display:flex;align-items:center;gap:.75rem;margin-bottom:2rem}
@@ -55,12 +55,12 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(6,7,9,.8);ba
 
 /* CRM cards */
 .crm-grid{display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin-bottom:1.25rem}
-.crm-card{background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:.85rem .9rem;cursor:pointer;transition:all .15s;display:flex;align-items:center;gap:.6rem;position:relative}
+.crm-card{background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:.85rem .9rem;cursor:pointer;transition:all .15s;display:flex;align-items:center;gap:.6rem}
 .crm-card:hover{border-color:var(--border-light);background:var(--bg-hover)}
 .crm-card.selected{border-color:var(--accent);background:var(--accent-soft);box-shadow:0 0 0 1px var(--accent)}
 .crm-card-dot{width:8px;height:8px;border-radius:50%;background:var(--border);flex-shrink:0;transition:all .15s}
 .crm-card.selected .crm-card-dot{background:var(--accent);box-shadow:0 0 8px var(--accent-glow)}
-.crm-card-name{font-size:.9rem;font-weight:600;line-height:1.2}
+.crm-card-name{font-size:.9rem;font-weight:600}
 
 /* Search */
 .search-wrap{position:relative;margin-bottom:.75rem}
@@ -98,17 +98,23 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(6,7,9,.8);ba
 .input:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
 textarea.input{resize:vertical;min-height:80px;font-family:var(--fb)}
 
-/* Cost */
-.cost-display{background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:1.25rem;text-align:center;margin-bottom:.75rem}
-.cost-amount{font-family:var(--fd);font-size:2.25rem;font-weight:700;color:var(--accent-light);line-height:1}
-.cost-label{font-size:.8rem;color:var(--muted);margin-top:.2rem}
-.cost-slider{width:100%;-webkit-appearance:none;height:5px;background:var(--border);border-radius:3px;outline:none;margin-bottom:.35rem}
-.cost-slider::-webkit-slider-thumb{-webkit-appearance:none;width:18px;height:18px;background:var(--accent);border-radius:50%;cursor:pointer;box-shadow:0 0 8px var(--accent-glow)}
-.cost-slider::-moz-range-thumb{width:18px;height:18px;background:var(--accent);border-radius:50%;cursor:pointer;border:none}
+/* Cost slider */
+.cost-slider{width:100%;-webkit-appearance:none;height:6px;background:var(--border);border-radius:3px;outline:none;margin:.5rem 0 .35rem}
+.cost-slider::-webkit-slider-thumb{-webkit-appearance:none;width:20px;height:20px;background:var(--accent);border-radius:50%;cursor:pointer;box-shadow:0 0 10px var(--accent-glow)}
+.cost-slider::-moz-range-thumb{width:20px;height:20px;background:var(--accent);border-radius:50%;cursor:pointer;border:none}
 .cost-ends{display:flex;justify-content:space-between;font-size:.75rem;color:var(--muted);margin-bottom:.75rem}
-.cost-projection{background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:.85rem 1rem;margin-bottom:.5rem}
-.cost-projection-row{display:flex;justify-content:space-between;padding:.3rem 0;font-size:.85rem}
-.cost-projection-row .val{font-family:var(--fd);font-weight:700;color:var(--red-light)}
+
+/* Big cost breakdown */
+.breakdown{background:var(--bg-card);border:1px solid var(--border);border-radius:14px;overflow:hidden;margin-top:.5rem}
+.breakdown-row{display:flex;justify-content:space-between;align-items:center;padding:.9rem 1.1rem;border-bottom:1px solid var(--border)}
+.breakdown-row:last-child{border-bottom:none}
+.breakdown-row.total{background:var(--accent-soft);border-top:1px solid rgba(59,130,246,.15)}
+.breakdown-label{font-size:.9rem;color:var(--muted)}
+.breakdown-val{font-family:var(--fd);font-size:1.1rem;font-weight:700}
+.breakdown-val.red{color:var(--red-light)}
+.breakdown-val.big{font-size:1.4rem}
+.breakdown-row.total .breakdown-label{color:var(--fg);font-weight:600;font-size:.95rem}
+.breakdown-row.total .breakdown-val{color:var(--accent-light)}
 
 /* Buttons */
 .actions{display:flex;justify-content:space-between;align-items:center;margin-top:1.5rem;gap:.5rem}
@@ -143,10 +149,11 @@ footer{border-top:1px solid var(--border);padding:1.5rem 0}
   .main{padding:5.5rem 1.1rem 4rem}
   .step-q{font-size:1.3rem}
   .crm-grid{grid-template-columns:1fr 1fr}
-  .cost-amount{font-size:1.85rem}
   .chip{padding:.55rem .85rem;font-size:.85rem}
   .crm-card{padding:.7rem .75rem}
   .crm-card-name{font-size:.85rem}
+  .breakdown-val{font-size:1rem}
+  .breakdown-val.big{font-size:1.2rem}
 }
 </style>
 </head>
@@ -158,8 +165,8 @@ footer{border-top:1px solid var(--border);padding:1.5rem 0}
 <div class="main">
 <!-- Progress -->
 <div class="progress">
-<div class="progress-bar-bg"><div class="progress-bar-fill" id="progress-fill" style="width:20%"></div></div>
-<span class="progress-text" id="progress-text">1 / 5</span>
+<div class="progress-bar-bg"><div class="progress-bar-fill" id="progress-fill"></div></div>
+<span class="progress-text" id="progress-text">1 / 4</span>
 </div>
 
 <!-- Step 1: CRM -->
@@ -175,7 +182,6 @@ footer{border-top:1px solid var(--border);padding:1.5rem 0}
 <div class="crm-card" data-name="Leap"><div class="crm-card-dot"></div><span class="crm-card-name">Leap</span></div>
 <div class="crm-card" data-name="CrewControl"><div class="crm-card-dot"></div><span class="crm-card-name">CrewControl</span></div>
 </div>
-
 <div class="section-label">Other tools you pay for</div>
 <div class="search-wrap">
 <svg class="search-icon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
@@ -186,36 +192,24 @@ footer{border-top:1px solid var(--border);padding:1.5rem 0}
 <div class="actions"><div></div><button class="btn btn-primary" onclick="nextStep()">Continue →</button></div>
 </div>
 
-<!-- Step 2: Cost -->
+<!-- Step 2: Cost + Timeline -->
 <div class="step" data-step="2">
 <div class="step-label">Step 2</div>
-<h2 class="step-q">How much per month?</h2>
-<p class="step-desc">Total across all your software.</p>
-<div class="cost-display">
-<div class="cost-amount" id="cost-display">$0</div>
-<div class="cost-label">per month</div>
-</div>
+<h2 class="step-q">What's it costing you?</h2>
+<p class="step-desc">Monthly cost, how long you've been paying, and how long you plan to stay.</p>
+
+<div class="section-label" style="margin-top:0">Monthly cost</div>
 <input type="range" class="cost-slider" id="cost-slider" min="0" max="1000" value="0" step="25">
 <div class="cost-ends"><span>$0</span><span>$1,000+</span></div>
-<div class="cost-projection">
-<div class="cost-projection-row"><span style="color:var(--muted)">5-year cost</span><span class="val" id="cost-5yr">$0</span></div>
-<div class="cost-projection-row"><span style="color:var(--muted)">10-year cost</span><span class="val" id="cost-10yr">$0</span></div>
-</div>
-<div class="actions"><button class="btn btn-back" onclick="prevStep()">←</button><button class="btn btn-primary" onclick="nextStep()">Continue →</button></div>
-</div>
 
-<!-- Step 3: Timeline -->
-<div class="step" data-step="3">
-<div class="step-label">Step 3</div>
-<h2 class="step-q">How long?</h2>
-<p class="step-desc">Past and future — helps us scope your savings.</p>
-<div class="section-label" style="margin-top:0">How long have you been using these tools?</div>
+<div class="section-label">How long have you been using these tools?</div>
 <div class="chip-grid" id="tenure-grid">
 <div class="chip" data-value="<1">Under 1 yr</div>
 <div class="chip" data-value="1-3">1-3 yrs</div>
 <div class="chip" data-value="3-5">3-5 yrs</div>
 <div class="chip" data-value="5+">5+ yrs</div>
 </div>
+
 <div class="section-label">How long do you plan to stay in business?</div>
 <div class="chip-grid" id="horizon-grid">
 <div class="chip" data-value="1-5">1-5 yrs</div>
@@ -223,12 +217,20 @@ footer{border-top:1px solid var(--border);padding:1.5rem 0}
 <div class="chip" data-value="10-20">10-20 yrs</div>
 <div class="chip" data-value="20+">20+ yrs</div>
 </div>
+
+<div class="breakdown" id="breakdown">
+<div class="breakdown-row"><span class="breakdown-label">Monthly</span><span class="breakdown-val red" id="bd-monthly">$0</span></div>
+<div class="breakdown-row"><span class="breakdown-label">Spent so far</span><span class="breakdown-val red" id="bd-spent">$0</span></div>
+<div class="breakdown-row"><span class="breakdown-label">Future cost</span><span class="breakdown-val red" id="bd-future">$0</span></div>
+<div class="breakdown-row total"><span class="breakdown-label">Total over time</span><span class="breakdown-val big" id="bd-total">$0</span></div>
+</div>
+
 <div class="actions"><button class="btn btn-back" onclick="prevStep()">←</button><button class="btn btn-primary" onclick="nextStep()">Continue →</button></div>
 </div>
 
-<!-- Step 4: Business -->
-<div class="step" data-step="4">
-<div class="step-label">Step 4</div>
+<!-- Step 3: Business -->
+<div class="step" data-step="3">
+<div class="step-label">Step 3</div>
 <h2 class="step-q">Your business</h2>
 <p class="step-desc">A few quick details.</p>
 <div class="section-label" style="margin-top:0">Crew size</div>
@@ -250,9 +252,9 @@ footer{border-top:1px solid var(--border);padding:1.5rem 0}
 <div class="actions"><button class="btn btn-back" onclick="prevStep()">←</button><button class="btn btn-primary" onclick="nextStep()">Continue →</button></div>
 </div>
 
-<!-- Step 5: Contact -->
-<div class="step" data-step="5">
-<div class="step-label">Step 5</div>
+<!-- Step 4: Contact -->
+<div class="step" data-step="4">
+<div class="step-label">Step 4</div>
 <h2 class="step-q">Where do we send your plan?</h2>
 <p class="step-desc">Custom CRM roadmap within 24 hours.</p>
 <div style="display:flex;flex-direction:column;gap:.6rem">
@@ -283,9 +285,9 @@ footer{border-top:1px solid var(--border);padding:1.5rem 0}
 </footer>
 
 <script>
-const totalSteps = 5;
+const totalSteps = 4;
 let currentStep = 1;
-const formData = {};
+const formData = {tenure:'1-3', horizon:'5-10'}; // defaults so breakdown works
 const selectedTools = new Set();
 
 // CRM card multi-select
@@ -298,6 +300,10 @@ document.querySelectorAll('#crm-grid .crm-card').forEach(card => {
     renderTools();
   });
 });
+
+// Default-select tenure and horizon chips
+document.querySelector('#tenure-grid .chip[data-value="1-3"]').classList.add('selected');
+document.querySelector('#horizon-grid .chip[data-value="5-10"]').classList.add('selected');
 
 const knownTools = [
   {name:'Service Autopilot',cat:'Field service'},{name:'Jobber',cat:'Field service'},{name:'Housecall Pro',cat:'Field service'},
@@ -313,6 +319,7 @@ const knownTools = [
 
 function escStr(s){return s.replace(/'/g,"\\'").replace(/"/g,'&quot;');}
 function escHtml(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+function fmt(v){return '$'+Math.round(v).toLocaleString();}
 
 function searchTools(){
   const q=document.getElementById('tool-search').value.trim();
@@ -334,7 +341,6 @@ document.addEventListener('click',e=>{if(!e.target.closest('.search-wrap'))docum
 function addTool(name){if(!selectedTools.has(name)){selectedTools.add(name);renderTools();}document.getElementById('tool-search').value='';document.getElementById('tool-results').classList.remove('show');document.getElementById('tool-search').focus();}
 function removeTool(name){
   selectedTools.delete(name);
-  // Uncheck CRM card if it exists
   const card=document.querySelector(`#crm-grid .crm-card[data-name="${name}"]`);
   if(card)card.classList.remove('selected');
   renderTools();
@@ -345,16 +351,36 @@ function renderTools(){
   l.innerHTML=Array.from(selectedTools).map(n=>`<div class="tool-chip">${escHtml(n)}<span class="remove" onclick="removeTool('${escStr(n)}')"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg></span></div>`).join('');
 }
 
-// Cost slider
-function updateCost(){
-  const v=parseInt(document.getElementById('cost-slider').value);
-  document.getElementById('cost-display').textContent='$'+v.toLocaleString();
-  document.getElementById('cost-5yr').textContent='$'+(v*60).toLocaleString();
-  document.getElementById('cost-10yr').textContent='$'+(v*120).toLocaleString();
-  const pct=(v/1000)*100;
-  document.getElementById('cost-slider').style.background=`linear-gradient(to right,var(--accent) ${pct}%,var(--border) ${pct}%)`;
+// Cost breakdown
+function tenureYears(v){
+  if(v==='&lt;1')return 0.5;
+  if(v==='1-3')return 2;
+  if(v==='3-5')return 4;
+  if(v==='5+')return 7;
+  return 2;
 }
-document.getElementById('cost-slider').addEventListener('input',updateCost);
+function horizonYears(v){
+  if(v==='1-5')return 3;
+  if(v==='5-10')return 7.5;
+  if(v==='10-20')return 15;
+  if(v==='20+')return 25;
+  return 7.5;
+}
+function updateBreakdown(){
+  const monthly=parseInt(document.getElementById('cost-slider').value);
+  const past=tenureYears(formData.tenure);
+  const future=horizonYears(formData.horizon);
+  const spent=monthly*12*past;
+  const futureCost=monthly*12*future;
+  const total=spent+futureCost;
+  const pct=(monthly/1000)*100;
+  document.getElementById('cost-slider').style.background=`linear-gradient(to right,var(--accent) ${pct}%,var(--border) ${pct}%)`;
+  document.getElementById('bd-monthly').textContent=fmt(monthly);
+  document.getElementById('bd-spent').textContent=fmt(spent);
+  document.getElementById('bd-future').textContent=fmt(futureCost);
+  document.getElementById('bd-total').textContent=fmt(total);
+}
+document.getElementById('cost-slider').addEventListener('input',updateBreakdown);
 
 // Chip selection
 document.querySelectorAll('.chip-grid').forEach(grid=>{
@@ -364,8 +390,8 @@ document.querySelectorAll('.chip-grid').forEach(grid=>{
       chip.classList.add('selected');
       if(grid.id==='crew-grid')formData.crew=chip.dataset.value;
       else if(grid.id==='revenue-grid')formData.revenue=chip.dataset.value;
-      else if(grid.id==='tenure-grid')formData.tenure=chip.dataset.value;
-      else if(grid.id==='horizon-grid')formData.horizon=chip.dataset.value;
+      else if(grid.id==='tenure-grid'){formData.tenure=chip.dataset.value;updateBreakdown();}
+      else if(grid.id==='horizon-grid'){formData.horizon=chip.dataset.value;updateBreakdown();}
     });
   });
 });
@@ -379,26 +405,28 @@ function goToStep(step){
   document.getElementById('progress-fill').style.width=(step/totalSteps*100)+'%';
   document.getElementById('progress-text').textContent=step+' / '+totalSteps;
   currentStep=step;
+  if(step===2)updateBreakdown();
   window.scrollTo({top:0,behavior:'smooth'});
 }
 
 async function submitApp(){
   const btn=document.getElementById('submit-btn');
   btn.disabled=true;btn.textContent='Sending...';
-  const cost=parseInt(document.getElementById('cost-slider').value);
+  const monthly=parseInt(document.getElementById('cost-slider').value);
   const payload={
     name:document.getElementById('f-name').value,
     email:document.getElementById('f-email').value,
     phone:document.getElementById('f-phone').value,
     company:document.getElementById('f-company').value,
     currentTools:Array.from(selectedTools),
-    crmMonthlyCost:cost,
-    crmSpent5yr:'$'+(cost*60).toLocaleString(),
-    crmSpent10yr:'$'+(cost*120).toLocaleString(),
-    crew:formData.crew,
-    revenue:formData.revenue,
+    crmMonthlyCost:monthly,
     toolTenure:formData.tenure,
     businessHorizon:formData.horizon,
+    crmSpent:document.getElementById('bd-spent').textContent,
+    crmFuture:document.getElementById('bd-future').textContent,
+    crmTotal:document.getElementById('bd-total').textContent,
+    crew:formData.crew,
+    revenue:formData.revenue,
     biggestProblem:document.getElementById('f-pain').value,
     source:'replacemysoftware.com/apply'
   };
