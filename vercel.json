@@ -2,6 +2,10 @@
   "outputDirectory": ".",
   "rewrites": [
     {
+      "source": "/glm-test",
+      "destination": "/glm-test.html"
+    },
+    {
       "source": "/landscaping-software",
       "destination": "/landscaping-software.html"
     },
