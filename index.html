@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<script>document.documentElement.classList.add("js-ready")</script>
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18299539049"></script>
   <script>
@@ -15,8 +16,8 @@
 <title>Replace My Software — Custom CRM Built for Your Business</title>
 <link rel="canonical" href="https://replacemysoftware.com/">
 <meta name="description" content="Stop fighting bloated CRMs. Get a custom CRM built exactly for your business workflow. Your app. Your way.">
-
-<!-- Open Graph / Social Preview -->
+<link rel="icon" type="image/png" href="/logo.png">
+<link rel="apple-touch-icon" href="/logo.png">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://replacemysoftware.com/">
 <meta property="og:title" content="Replace My Software — Custom CRM Built for Your Business">
@@ -25,1685 +26,236 @@
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:site_name" content="Replace My Software">
-
-<!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Replace My Software — Custom CRM Built for Your Business">
 <meta name="twitter:description" content="A CRM that actually fits your business. Your app. Your way.">
 <meta name="twitter:image" content="https://replacemysoftware.com/og-image-v3.png">
-
-<link rel="icon" type="image/svg+xml" href="/logo.svg">
-<link rel="icon" type="image/png" href="/logo.png">
-<link rel="apple-touch-icon" href="/logo.png">
-
-<!-- Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-
 <style>
-/* ═══ RESET ═══ */
-*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-
-:root {
-  --bg: #060709;
-  --bg-2: #0c0e14;
-  --surface: #11141c;
-  --surface-2: #161a24;
-  --border: rgba(255,255,255,0.08);
-  --border-bright: rgba(255,255,255,0.14);
-  --fg: #e8eaf0;
-  --fg-dim: #b4b8c5;
-  --muted: #7a8094;
-  --accent: #3b82f6;
-  --accent-light: #60a5fa;
-  --accent-glow: rgba(59, 130, 246, 0.35);
-  --accent-soft: rgba(59, 130, 246, 0.12);
-  --success: #34d399;
-  --warn: #fbbf24;
-  --radius: 12px;
-  --radius-lg: 20px;
-  --font-display: 'Space Grotesk', system-ui, sans-serif;
-  --font-body: 'Inter', system-ui, sans-serif;
-  --font-mono: 'JetBrains Mono', monospace;
-}
-
-html, body {
-  background: var(--bg);
-  color: var(--fg);
-  font-family: var(--font-body);
-  line-height: 1.6;
-  -webkit-font-smoothing: antialiased;
-  overflow-x: hidden;
-  max-width: 100vw;
-  width: 100%;
-  position: relative;
-  scroll-behavior: smooth;
-}
-html { overflow-x: hidden; }
-
-::selection { background: var(--accent); color: #fff; }
-
-/* ═══ GRID BACKGROUND ═══ */
-.grid-bg {
-  position: fixed;
-  inset: 0;
-  background-image:
-    linear-gradient(rgba(59,130,246,0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(59,130,246,0.04) 1px, transparent 1px);
-  background-size: 64px 64px;
-  pointer-events: none;
-  z-index: 0;
-  mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, black 30%, transparent 80%);
-  -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, black 30%, transparent 80%);
-}
-
-/* ═══ ORBS ═══ */
-.orb {
-  position: fixed;
-  border-radius: 50%;
-  filter: blur(100px);
-  pointer-events: none;
-  z-index: 0;
-  animation: float 14s ease-in-out infinite;
-}
-.orb-1 {
-  width: 500px; height: 500px;
-  background: rgba(59, 130, 246, 0.15);
-  top: -100px; left: -100px;
-}
-.orb-2 {
-  width: 400px; height: 400px;
-  background: rgba(99, 102, 241, 0.12);
-  top: 30%; right: -80px;
-  animation-delay: -4s;
-}
-.orb-3 {
-  width: 350px; height: 350px;
-  background: rgba(59, 130, 246, 0.1);
-  bottom: 10%; left: 20%;
-  animation-delay: -8s;
-}
-@keyframes float {
-  0%, 100% { transform: translate(0, 0); }
-  33% { transform: translate(30px, -20px); }
-  66% { transform: translate(-20px, 30px); }
-}
-
-/* ═══ CONTAINER ═══ */
-.container { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; position: relative; z-index: 1; }
-
-/* ═══ NAV ═══ */
-nav {
-  position: fixed; top: 0; left: 0; right: 0;
-  z-index: 100;
-  background: rgba(6, 7, 9, 0.7);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border-bottom: 1px solid var(--border);
-  transition: all 0.3s;
-}
-nav.scrolled { background: rgba(6, 7, 9, 0.92); }
-.nav-inner {
-  max-width: 1200px; margin: 0 auto;
-  padding: 0.85rem 1.5rem;
-  display: flex; align-items: center; justify-content: space-between;
-}
-.nav-brand {
-  display: flex; align-items: center; gap: 0.65rem;
-  text-decoration: none; color: var(--fg);
-  font-family: var(--font-display); font-weight: 700; font-size: 1.1rem;
-}
-.nav-brand svg { width: 32px; height: 32px; }
-.nav-brand .accent { color: var(--accent-light); }
-.nav-links { display: flex; gap: 2rem; align-items: center; }
-.nav-links a {
-  color: var(--muted); text-decoration: none;
-  font-size: 0.88rem; font-weight: 500;
-  transition: color 0.2s;
-}
-.nav-links a:hover { color: var(--fg); }
-.nav-cta {
-  background: var(--accent); color: #fff;
-  padding: 0.5rem 1.2rem; border-radius: 100px;
-  font-size: 0.85rem; font-weight: 600; text-decoration: none;
-  transition: all 0.2s;
-  box-shadow: 0 4px 20px var(--accent-glow);
-}
-.nav-cta:hover { transform: translateY(-1px); box-shadow: 0 6px 24px var(--accent-glow); }
-
-/* ═══ BUTTONS ═══ */
-.btn {
-  display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem;
-  padding: 0.85rem 1.75rem;
-  border-radius: 100px;
-  font-family: var(--font-body); font-weight: 600; font-size: 0.95rem;
-  text-decoration: none; border: none; cursor: pointer;
-  transition: all 0.25s;
-}
-.btn-primary {
-  background: var(--accent); color: #fff;
-  box-shadow: 0 8px 30px var(--accent-glow);
-}
-.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 40px var(--accent-glow); background: var(--accent-light); }
-.btn-ghost {
-  background: rgba(255,255,255,0.06); color: var(--fg);
-  border: 1px solid var(--border-bright);
-}
-.btn-ghost:hover { background: rgba(255,255,255,0.1); border-color: var(--accent); }
-
-/* ═══ HERO ═══ */
-.hero {
-  min-height: 100vh;
-  display: flex; align-items: center;
-  padding: 8rem 0 4rem;
-  position: relative;
-}
-.hero-badge {
-  display: inline-flex; align-items: center; gap: 0.5rem;
-  padding: 0.4rem 1rem;
-  background: var(--accent-soft);
-  border: 1px solid rgba(59,130,246,0.25);
-  border-radius: 100px;
-  font-size: 0.8rem; font-weight: 500; color: var(--accent-light);
-  margin-bottom: 1.75rem;
-}
-.hero-badge .pulse {
-  width: 8px; height: 8px; border-radius: 50%;
-  background: var(--accent-light);
-  animation: pulse 2s infinite;
-}
-@keyframes pulse {
-  0%, 100% { opacity: 1; box-shadow: 0 0 0 0 var(--accent-glow); }
-  50% { opacity: 0.6; box-shadow: 0 0 0 8px transparent; }
-}
-
-.hero h1 {
-  font-family: var(--font-display);
-  font-size: clamp(2.5rem, 6vw, 5rem);
-  font-weight: 700;
-  line-height: 1.05;
-  letter-spacing: -0.03em;
-  margin-bottom: 1.5rem;
-}
-.hero h1 .gradient {
-  background: linear-gradient(135deg, var(--accent-light), #818cf8, var(--accent-light));
-  background-size: 200% auto;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  animation: shimmer 4s linear infinite;
-}
-@keyframes shimmer {
-  0% { background-position: 0% center; }
-  100% { background-position: 200% center; }
-}
-
-.hero p.lead {
-  font-size: clamp(1.05rem, 2vw, 1.35rem);
-  color: var(--fg-dim);
-  max-width: 580px;
-  margin-bottom: 2.5rem;
-  line-height: 1.65;
-}
-
-.hero-cta {
-  display: flex; gap: 1rem; flex-wrap: wrap;
-  margin-bottom: 3rem;
-}
-
-.hero-stats {
-  display: flex; gap: 2.5rem; flex-wrap: wrap;
-}
-.hero-stat { display: flex; flex-direction: column; gap: 0.25rem; }
-.hero-stat .num {
-  font-family: var(--font-display); font-weight: 700;
-  font-size: 1.75rem; color: var(--fg);
-}
-.hero-stat .label { font-size: 0.82rem; color: var(--muted); }
-
-/* ═══ HERO VISUAL — Dashboard Mockup ═══ */
-.hero-visual {
-  position: relative;
-  margin-top: 2rem;
-}
-.mockup {
-  background: var(--surface);
-  border: 1px solid var(--border-bright);
-  border-radius: var(--radius-lg);
-  overflow: hidden;
-  box-shadow: 0 40px 100px rgba(0,0,0,0.5), 0 0 0 1px var(--border);
-  max-width: 100%;
-}
-.mockup-bar {
-  display: flex; align-items: center; gap: 0.5rem;
-  padding: 0.75rem 1rem;
-  background: var(--surface-2);
-  border-bottom: 1px solid var(--border);
-}
-.mockup-dot { width: 12px; height: 12px; border-radius: 50%; }
-.mockup-dot.r { background: #ff5f57; }
-.mockup-dot.y { background: #febc2e; }
-.mockup-dot.g { background: #28c840; }
-.mockup-url {
-  flex: 1; margin-left: 0.5rem;
-  padding: 0.3rem 0.75rem;
-  background: var(--bg);
-  border-radius: 6px;
-  font-family: var(--font-mono); font-size: 0.75rem; color: var(--muted);
-  border: 1px solid var(--border);
-}
-.mockup-body {
-  display: grid;
-  grid-template-columns: 200px 1fr;
-  min-height: 380px;
-}
-.mockup-sidebar {
-  background: var(--surface-2);
-  border-right: 1px solid var(--border);
-  padding: 1.25rem 0.75rem;
-}
-.mockup-nav-item {
-  display: flex; align-items: center; gap: 0.6rem;
-  padding: 0.55rem 0.75rem;
-  border-radius: 8px;
-  font-size: 0.8rem; color: var(--muted);
-  margin-bottom: 0.25rem;
-  transition: all 0.2s;
-}
-.mockup-nav-item.active { background: var(--accent-soft); color: var(--accent-light); }
-.mockup-nav-item .icon { width: 16px; height: 16px; opacity: 0.7; }
-.mockup-content { padding: 1.5rem; }
-.mockup-header {
-  display: flex; align-items: center; justify-content: space-between;
-  margin-bottom: 1.5rem;
-}
-.mockup-title { font-family: var(--font-display); font-size: 1.1rem; font-weight: 600; }
-.mockup-btn {
-  padding: 0.4rem 0.9rem; border-radius: 8px;
-  background: var(--accent); color: #fff;
-  font-size: 0.78rem; font-weight: 600;
-}
-.mockup-cards {
-  display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.75rem;
-  margin-bottom: 1.5rem;
-}
-.mockup-card {
-  background: var(--surface-2);
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  padding: 1rem;
-}
-.mockup-card .val { font-family: var(--font-display); font-size: 1.5rem; font-weight: 700; color: var(--fg); }
-.mockup-card .lbl { font-size: 0.72rem; color: var(--muted); margin-top: 0.25rem; }
-.mockup-card .delta { font-size: 0.72rem; font-weight: 600; margin-top: 0.35rem; }
-.mockup-card .delta.up { color: var(--success); }
-.mockup-card .delta.down { color: var(--warn); }
-
-.mockup-table { width: 100%; }
-.mockup-row {
-  display: flex; align-items: center; gap: 0.75rem;
-  padding: 0.6rem 0;
-  border-bottom: 1px solid var(--border);
-}
-.mockup-row:last-child { border-bottom: none; }
-.mockup-avatar { width: 28px; height: 28px; border-radius: 50%; background: var(--surface-2); border: 1px solid var(--border); flex-shrink: 0; }
-.mockup-row .name { font-size: 0.82rem; color: var(--fg); }
-.mockup-row .meta { font-size: 0.72rem; color: var(--muted); margin-left: auto; }
-.mockup-status {
-  padding: 0.15rem 0.5rem; border-radius: 100px;
-  font-size: 0.68rem; font-weight: 600;
-}
-.mockup-status.active { background: rgba(52,211,153,0.15); color: var(--success); }
-.mockup-status.pending { background: rgba(251,191,36,0.15); color: var(--warn); }
-
-/* ═══ SECTION ═══ */
-section { padding: 6rem 0; position: relative; z-index: 1; }
-.section-label {
-  display: inline-flex; align-items: center; gap: 0.5rem;
-  font-family: var(--font-mono); font-size: 0.75rem; font-weight: 500;
-  letter-spacing: 0.1em; text-transform: uppercase;
-  color: var(--accent-light);
-  padding: 0.35rem 0.9rem;
-  background: var(--accent-soft);
-  border: 1px solid rgba(59,130,246,0.2);
-  border-radius: 100px;
-  margin-bottom: 1.25rem;
-}
-.section-title {
-  font-family: var(--font-display);
-  font-size: clamp(1.8rem, 4vw, 3rem);
-  font-weight: 700; line-height: 1.15; letter-spacing: -0.025em;
-  margin-bottom: 1rem;
-}
-.section-sub {
-  font-size: 1.1rem; color: var(--fg-dim);
-  max-width: 560px; line-height: 1.6;
-}
-
-/* ═══ PAIN POINTS ═══ */
-.pain-grid {
-  display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem;
-  margin-top: 3rem;
-}
-.pain-card {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
-  padding: 2rem;
-  transition: all 0.3s;
-  position: relative; overflow: hidden;
-}
-.pain-card::before {
-  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
-  background: linear-gradient(90deg, transparent, var(--accent), transparent);
-  opacity: 0; transition: opacity 0.3s;
-}
-.pain-card:hover {
-  border-color: var(--border-bright);
-  transform: translateY(-4px);
-}
-.pain-card:hover::before { opacity: 1; }
-.pain-icon {
-  width: 44px; height: 44px;
-  background: var(--accent-soft);
-  border-radius: 12px;
-  display: flex; align-items: center; justify-content: center;
-  margin-bottom: 1.25rem;
-}
-.pain-icon svg { width: 22px; height: 22px; color: var(--accent-light); }
-.pain-card h3 { font-family: var(--font-display); font-size: 1.2rem; font-weight: 600; margin-bottom: 0.5rem; }
-.pain-card p { font-size: 0.92rem; color: var(--fg-dim); line-height: 1.6; }
-
-/* ═══ HOW IT WORKS ═══ */
-.steps {
-  display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem;
-  margin-top: 3rem;
-  counter-reset: step;
-}
-.step {
-  position: relative;
-  padding: 2.5rem 1.75rem;
-}
-.step-num {
-  font-family: var(--font-display);
-  font-size: 3.5rem; font-weight: 700;
-  background: linear-gradient(135deg, var(--accent), transparent);
-  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-  background-clip: text;
-  margin-bottom: 1rem;
-  line-height: 1;
-}
-.step h3 { font-family: var(--font-display); font-size: 1.25rem; font-weight: 600; margin-bottom: 0.5rem; }
-.step p { font-size: 0.92rem; color: var(--fg-dim); line-height: 1.6; }
-.step::after {
-  content: ''; position: absolute; top: 50%; right: -1rem;
-  width: 2rem; height: 1px;
-  background: linear-gradient(90deg, var(--accent), transparent);
-}
-.step:last-child::after { display: none; }
-
-/* ═══ FEATURES ═══ */
-.feature-grid {
-  display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem;
-  margin-top: 3rem;
-}
-.feature {
-  display: flex; gap: 1rem; align-items: flex-start;
-  padding: 1.5rem;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  transition: all 0.25s;
-}
-.feature:hover { border-color: var(--accent); background: var(--surface-2); }
-.feature-icon {
-  width: 40px; height: 40px; flex-shrink: 0;
-  background: var(--accent-soft);
-  border-radius: 10px;
-  display: flex; align-items: center; justify-content: center;
-}
-.feature-icon svg { width: 20px; height: 20px; color: var(--accent-light); }
-.feature h4 { font-size: 1rem; font-weight: 600; margin-bottom: 0.25rem; }
-.feature p { font-size: 0.85rem; color: var(--muted); line-height: 1.5; }
-
-/* ═══ COMPARISON ═══ */
-.compare {
-  margin-top: 3rem;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
-  overflow: hidden;
-}
-.compare-header {
-  display: grid; grid-template-columns: 1.5fr 1fr 1fr;
-  padding: 1.25rem 1.5rem;
-  background: var(--surface-2);
-  border-bottom: 1px solid var(--border);
-  font-family: var(--font-display); font-weight: 600; font-size: 0.95rem;
-}
-.compare-header .ours { color: var(--accent-light); }
-.compare-row {
-  display: grid; grid-template-columns: 1.5fr 1fr 1fr;
-  padding: 1rem 1.5rem;
-  border-bottom: 1px solid var(--border);
-  font-size: 0.9rem;
-  align-items: center;
-}
-.compare-row:last-child { border-bottom: none; }
-.compare-row .label { color: var(--fg-dim); }
-.compare-cell { display: flex; align-items: center; }
-.compare-cell.yes { color: var(--success); }
-.compare-cell.no { color: var(--muted); }
-
-/* ═══ INDUSTRIES ═══ */
-.industries {
-  display: flex; flex-wrap: wrap; gap: 0.75rem;
-  margin-top: 2rem;
-}
-.industry {
-  display: flex; align-items: center; gap: 0.6rem;
-  padding: 0.7rem 1.25rem;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 100px;
-  font-size: 0.9rem; font-weight: 500;
-  transition: all 0.25s;
-}
-.industry:hover { border-color: var(--accent); background: var(--accent-soft); color: var(--accent-light); transform: translateY(-2px); }
-.industry svg { width: 18px; height: 18px; color: var(--accent-light); }
-
-/* ═══ PRICING ═══ */
-.pricing-card {
-  margin-top: 3rem;
-  background: linear-gradient(135deg, var(--surface), var(--surface-2));
-  border: 1px solid var(--border-bright);
-  border-radius: var(--radius-lg);
-  padding: 3rem;
-  text-align: center;
-  position: relative;
-  overflow: hidden;
-}
-.pricing-card::before {
-  content: '';
-  position: absolute; inset: 0;
-  background: radial-gradient(ellipse 60% 40% at 50% 0%, var(--accent-glow), transparent);
-  pointer-events: none;
-}
-.pricing-card .price {
-  font-family: var(--font-display);
-  font-size: clamp(3rem, 8vw, 5rem);
-  font-weight: 700;
-  background: linear-gradient(135deg, var(--accent-light), #818cf8);
-  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-  background-clip: text;
-  line-height: 1;
-}
-.pricing-card .price-label {
-  font-size: 0.95rem; color: var(--muted); margin-top: 0.5rem;
-}
-.pricing-features {
-  display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.75rem;
-  margin: 2rem auto; max-width: 500px;
-  text-align: left;
-}
-.pricing-feature {
-  display: flex; align-items: center; gap: 0.6rem;
-  font-size: 0.9rem; color: var(--fg-dim);
-}
-.pricing-feature svg { width: 18px; height: 18px; color: var(--success); flex-shrink: 0; }
-.pricing-note {
-  font-size: 0.85rem; color: var(--muted); margin-top: 1rem;
-}
-
-/* ═══ CTA SECTION ═══ */
-.cta-section {
-  padding: 6rem 0;
-}
-.cta-box {
-  background: linear-gradient(135deg, var(--surface) 0%, var(--surface-2) 100%);
-  border: 1px solid var(--border-bright);
-  border-radius: var(--radius-lg);
-  padding: 4.5rem 3rem;
-  max-width: 640px;
-  margin: 0 auto;
-  position: relative;
-  overflow: hidden;
-  text-align: center;
-}
-.cta-box::before {
-  content: '';
-  position: absolute; top: -60%; left: 50%;
-  transform: translateX(-50%);
-  width: 80%; height: 120%;
-  background: radial-gradient(ellipse at center, var(--accent-glow), transparent 65%);
-  pointer-events: none;
-}
-.cta-box > * { position: relative; z-index: 1; }
-.cta-box .section-label {
-  display: inline-block;
-  margin-bottom: 1.25rem;
-}
-.cta-box h2 {
-  font-family: var(--font-display);
-  font-size: 2rem;
-  font-weight: 700;
-  line-height: 1.2;
-  margin-bottom: 1rem;
-}
-.cta-box p.section-sub {
-  color: var(--fg-dim);
-  font-size: 1.05rem;
-  line-height: 1.6;
-  max-width: 440px;
-  margin: 0 auto 2.5rem;
-  text-align: center;
-}
-.cta-box .btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-family: var(--font-display);
-  font-weight: 600;
-}
-.cta-box .form-note {
-  color: var(--muted);
-  font-size: 0.875rem;
-}
-
-/* ═══ FORM ═══ */
-.form-grid {
-  display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
-  margin-top: 2rem;
-  position: relative; z-index: 1;
-}
-.form-field { width: 100%; }
-.form-field.full { grid-column: 1 / -1; }
-.form-field input,
-.form-field select,
-.form-field textarea {
-  width: 100%;
-  padding: 0.85rem 1rem;
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  color: var(--fg);
-  font-family: var(--font-body); font-size: 0.95rem;
-  transition: border-color 0.2s, box-shadow 0.2s;
-  box-sizing: border-box;
-}
-.form-field input::placeholder,
-.form-field textarea::placeholder { color: var(--muted); }
-.form-field input:focus,
-.form-field select:focus,
-.form-field textarea:focus {
-  outline: none;
-  border-color: var(--accent);
-  box-shadow: 0 0 0 3px var(--accent-soft);
-  background: var(--bg-hover);
-}
-/* Fix autofill turning inputs white */
-.form-field input:-webkit-autofill,
-.form-field select:-webkit-autofill,
-.form-field textarea:-webkit-autofill {
-  -webkit-box-shadow: 0 0 0 1000px var(--bg-card) inset !important;
-  -webkit-text-fill-color: var(--fg) !important;
-  caret-color: var(--fg);
-  transition: background-color 9999s ease-in-out 0s;
-}
-.form-field input:-webkit-autofill:focus,
-.form-field select:-webkit-autofill:focus,
-.form-field textarea:-webkit-autofill:focus {
-  -webkit-box-shadow: 0 0 0 1000px var(--bg-hover) inset, 0 0 0 3px var(--accent-soft) !important;
-  -webkit-text-fill-color: var(--fg) !important;
-}
-.form-field textarea { resize: vertical; min-height: 100px; }
-.form-submit {
-  grid-column: 1 / -1;
-  margin-top: 0.5rem;
-}
-.form-submit .btn { width: 100%; padding: 1rem; font-size: 1rem; }
-.form-note {
-  text-align: center; font-size: 0.8rem; color: var(--muted);
-  margin-top: 1rem;
-}
-
-/* ═══ ONBOARDING OVERLAY ═══ */
-.onboarding-overlay {
-  position: fixed; inset: 0; z-index: 9999;
-  background: rgba(6, 7, 9, 0.85);
-  backdrop-filter: blur(12px);
-  display: flex; align-items: center; justify-content: center;
-  padding: 1.5rem;
-  animation: ob-fade-in 0.3s ease;
-}
-@keyframes ob-fade-in {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-.onboarding-card {
-  background: var(--bg);
-  border: 1px solid var(--border);
-  border-radius: 20px;
-  padding: 3rem 2.5rem;
-  max-width: 480px; width: 100%;
-  text-align: center;
-  position: relative;
-  box-shadow: 0 24px 80px rgba(0,0,0,0.5), 0 0 0 1px rgba(59,130,246,0.1);
-}
-.ob-step { display: none; }
-.ob-step.active { display: block; animation: ob-slide-up 0.4s ease; }
-@keyframes ob-slide-up {
-  from { opacity: 0; transform: translateY(12px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-.ob-spinner { margin-bottom: 1.5rem; }
-.ob-title {
-  font-family: var(--font-display);
-  font-size: 1.875rem; font-weight: 700;
-  color: var(--fg); margin-bottom: 0.5rem;
-}
-.ob-sub { color: var(--muted); font-size: 1.1rem; margin-bottom: 2rem; }
-.ob-checks {
-  display: flex; flex-direction: column; gap: 0.75rem;
-  text-align: left; margin-top: 1.5rem;
-}
-.ob-check {
-  display: flex; align-items: center; gap: 0.75rem;
-  font-size: 1.05rem; color: var(--muted);
-  transition: color 0.3s;
-}
-.ob-check.done { color: var(--fg); }
-.ob-check-icon {
-  width: 22px; height: 22px;
-  display: flex; align-items: center; justify-content: center;
-  border-radius: 50%; font-size: 0.8rem;
-  border: 1.5px solid var(--border);
-  transition: all 0.3s;
-}
-.ob-check.done .ob-check-icon {
-  background: #22c55e; border-color: #22c55e; color: #fff;
-}
-.ob-success-icon { margin-bottom: 1.5rem; }
-.ob-next-steps {
-  display: flex; flex-direction: column; gap: 1rem;
-  text-align: left; margin: 1.5rem 0;
-}
-.ob-step-item {
-  display: flex; gap: 0.75rem; align-items: flex-start;
-}
-.ob-step-num {
-  width: 28px; height: 28px; flex-shrink: 0;
-  border-radius: 50%; background: var(--accent-soft);
-  color: var(--accent-light);
-  display: flex; align-items: center; justify-content: center;
-  font-size: 0.85rem; font-weight: 700;
-  font-family: var(--font-display);
-}
-.ob-step-text { font-size: 1.05rem; color: var(--fg); line-height: 1.5; padding-top: 3px; }
-.ob-step-text strong { color: var(--fg); }
-.ob-contact-card {
-  background: rgba(59,130,246,0.08);
-  border: 1px solid rgba(59,130,246,0.2);
-  border-radius: 12px;
-  padding: 1.25rem; margin: 1.5rem 0;
-}
-.ob-contact-row {
-  display: flex; align-items: center; gap: 0.5rem; justify-content: center;
-  font-size: 1.05rem; color: var(--fg);
-}
-.ob-contact-row svg { color: var(--accent-light); }
-.ob-phone {
-  font-size: 1.5rem; font-weight: 700; color: var(--accent-light);
-  font-family: var(--font-display);
-  display: block; text-align: center; margin-top: 0.5rem;
-  white-space: nowrap;
-}
-.ob-portal-btn { width: 100%; padding: 1.1rem; font-size: 1.05rem; }
-.ob-portal-form { margin-top: 0.5rem; }
-.ob-portal-label { font-size: 1.1rem; color: var(--fg); margin-bottom: 0.75rem; font-weight: 500; }
-.ob-password-input {
-  width: 100%; padding: 1.1rem 1.25rem; margin-bottom: 1rem;
-  background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius);
-  color: var(--fg); font-family: var(--font-body); font-size: 1.15rem;
-  box-sizing: border-box; transition: border-color 0.2s, box-shadow 0.2s;
-}
-.ob-password-input:focus {
-  outline: none; border-color: var(--accent);
-  box-shadow: 0 0 0 3px var(--accent-soft);
-  background: var(--bg-hover);
-}
-.ob-password-input:-webkit-autofill {
-  -webkit-box-shadow: 0 0 0 1000px var(--bg-card) inset !important;
-  -webkit-text-fill-color: var(--fg) !important;
-  caret-color: var(--fg);
-  transition: background-color 9999s ease-in-out 0s;
-}
-.ob-close-link {
-  margin-top: 1rem; font-size: 0.8rem; color: var(--muted);
-  cursor: pointer; transition: color 0.2s;
-}
-.ob-close-link:hover { color: var(--fg); }
-@media (max-width: 540px) {
-  .onboarding-card { padding: 2rem 1.5rem; max-width: 100%; }
-  .ob-title { font-size: 1.5rem; }
-  .ob-sub { font-size: 1rem; }
-  .ob-phone { font-size: 1.25rem; }
-  .ob-checks { gap: 0.6rem; }
-  .ob-check { font-size: 0.95rem; }
-  .ob-step-text { font-size: 0.95rem; }
-}
-
-/* ═══ FOOTER ═══ */
-footer {
-  border-top: 1px solid var(--border);
-  padding: 3rem 0 2rem;
-}
-.footer-inner {
-  display: flex; justify-content: space-between; align-items: center;
-  flex-wrap: wrap; gap: 1.5rem;
-}
-.footer-brand {
-  display: flex; align-items: center; gap: 0.6rem;
-  font-family: var(--font-display); font-weight: 700; font-size: 1rem;
-  color: var(--fg);
-}
-.footer-brand .accent { color: var(--accent-light); }
-.footer-links { display: flex; gap: 1.5rem; }
-.footer-links a {
-  color: var(--muted); text-decoration: none;
-  font-size: 0.85rem; transition: color 0.2s;
-}
-.footer-links a:hover { color: var(--fg); }
-.footer-copy { font-size: 0.8rem; color: var(--muted); }
-
-/* ═══ ANIMATIONS ═══ */
-.reveal {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.7s cubic-bezier(0.16,1,0.3,1), transform 0.7s cubic-bezier(0.16,1,0.3,1);
-}
-.reveal.visible { opacity: 1; transform: translateY(0); }
-
-.reveal-stagger > * {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.6s cubic-bezier(0.16,1,0.3,1), transform 0.6s cubic-bezier(0.16,1,0.3,1);
-}
-.reveal-stagger.visible > * { opacity: 1; transform: translateY(0); }
-.reveal-stagger.visible > *:nth-child(1) { transition-delay: 0s; }
-.reveal-stagger.visible > *:nth-child(2) { transition-delay: 0.1s; }
-.reveal-stagger.visible > *:nth-child(3) { transition-delay: 0.2s; }
-.reveal-stagger.visible > *:nth-child(4) { transition-delay: 0.3s; }
-.reveal-stagger.visible > *:nth-child(5) { transition-delay: 0.4s; }
-.reveal-stagger.visible > *:nth-child(6) { transition-delay: 0.5s; }
-
-/* Slide in from left */
-.reveal-left { opacity: 0; transform: translateX(-40px); transition: all 0.7s cubic-bezier(0.16,1,0.3,1); }
-.reveal-left.visible { opacity: 1; transform: translateX(0); }
-
-/* Slide in from right */
-.reveal-right { opacity: 0; transform: translateX(40px); transition: all 0.7s cubic-bezier(0.16,1,0.3,1); }
-.reveal-right.visible { opacity: 1; transform: translateX(0); }
-
-/* Scale in */
-.reveal-scale { opacity: 0; transform: scale(0.92); transition: all 0.7s cubic-bezier(0.16,1,0.3,1); }
-.reveal-scale.visible { opacity: 1; transform: scale(1); }
-
-/* ═══ MARQUEE ═══ */
-.marquee {
-  overflow: hidden;
-  padding: 2.25rem 0;
-  border-top: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
-  background: linear-gradient(180deg, rgba(59,130,246,0.03), transparent);
-  -webkit-mask-image: linear-gradient(90deg, transparent, black 8%, black 92%, transparent);
-  mask-image: linear-gradient(90deg, transparent, black 8%, black 92%, transparent);
-  cursor: grab;
-  touch-action: pan-x;
-  user-select: none;
-  -webkit-user-select: none;
-}
-.marquee.dragging { cursor: grabbing; }
-.marquee-track {
-  display: flex; gap: 3.5rem;
-  width: max-content;
-  will-change: transform;
-}
-.marquee-track.auto {
-  animation: marquee 8s linear infinite;
-}
-.marquee-item {
-  display: flex; align-items: center; gap: 0.65rem;
-  font-family: var(--font-display); font-size: 1.3rem; font-weight: 600; color: var(--fg);
-  white-space: nowrap; letter-spacing: -0.02em;
-}
-.marquee-item .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); flex-shrink: 0; }
-@keyframes marquee {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
-}
-
-/* ═══ RESPONSIVE ═══ */
-@media (max-width: 920px) {
-  .pain-grid { grid-template-columns: 1fr; }
-  .steps { grid-template-columns: 1fr; }
-  .step::after { display: none; }
-  .feature-grid { grid-template-columns: 1fr; }
-  .compare-header, .compare-row { grid-template-columns: 1fr 1fr 1fr; font-size: 0.8rem; padding: 0.75rem; }
-  .mockup-body { grid-template-columns: 1fr; }
-  .mockup-sidebar { display: none; }
-  .nav-links { display: none; }
-  .hero { padding: 6rem 0 3rem; min-height: auto; }
-  section { padding: 4rem 0; }
-}
-@media (max-width: 540px) {
-  .hero-stats { gap: 1.5rem; }
-  .hero-stat .num { font-size: 1.4rem; }
-  .pricing-card { padding: 2rem 1.5rem; }
-  .pricing-features { grid-template-columns: 1fr; }
-  .form-grid { grid-template-columns: 1fr; }
-  .cta-box { padding: 2rem 1.5rem; }
-  .mockup-cards { grid-template-columns: 1fr; }
-  .hero-cta { flex-direction: column; }
-  .hero-cta .btn { width: 100%; }
-  .nav-inner { padding: 0.65rem 1rem; }
-  .nav-brand { font-size: 0.9rem; }
-  .nav-brand svg { width: 26px; height: 26px; }
-  .nav-cta { padding: 0.5rem 0.9rem; font-size: 0.8rem; }
-}
-
-/* Prevent any horizontal scroll on mobile */
-@media (max-width: 920px) {
-  * { max-width: 100vw; }
-  body { overflow-x: hidden; }
-}
-.reveal{opacity:1;transform:none;transition:all .7s cubic-bezier(.16,1,.3,1)}.reveal-left{opacity:1;transform:none;transition:all .7s cubic-bezier(.16,1,.3,1)}.reveal-scale{opacity:1;transform:none;transition:all .7s cubic-bezier(.16,1,.3,1)}.js-ready .reveal{opacity:0;transform:translateY(30px)}.js-ready .reveal.visible{opacity:1;transform:none}.js-ready .reveal-left{opacity:0;transform:translateX(-30px)}.js-ready .reveal-left.visible{opacity:1;transform:translateX(0)}.js-ready .reveal-scale{opacity:0;transform:scale(.95)}.js-ready .reveal-scale.visible{opacity:1;transform:scale(1)}</style>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  "name": "Replace My Software",
-  "url": "https://replacemysoftware.com",
-  "logo": "https://replacemysoftware.com/logo.png",
-  "description": "We build custom CRM and business software for landscaping, lawn care, hardscaping, irrigation, tree care, and green industry companies. Your app, your way. Starting at $10K.",
-  "email": "team@roofingwebpro.com",
-  "telephone": "(919) 525-4567",
-  "foundingDate": "2026"
-}
-</script>
+:root{--bg:#060709;--bg-2:#0a0b0f;--bg-card:#0d0e12;--bg-hover:#14151a;--fg:#e8e9ed;--muted:#7a7d86;--border:#1a1b22;--accent:#3b82f6;--accent-light:#60a5fa;--accent-soft:rgba(59,130,246,.12);--accent-glow:rgba(59,130,246,.4);--green:#22c55e;--green-soft:rgba(34,197,94,.12);--orange:#f59e0b;--radius:12px;--fd:'Space Grotesk',sans-serif;--fb:'Inter',sans-serif;--fm:'JetBrains Mono',monospace}
+*{margin:0;padding:0;box-sizing:border-box}html,body{max-width:100vw;overflow-x:hidden}
+body{background:var(--bg);color:var(--fg);font-family:var(--fb);font-size:16px;line-height:1.6;min-height:100vh}
+a{color:inherit;text-decoration:none}.container{max-width:1200px;margin:0 auto;padding:0 1.5rem}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(6,7,9,.7);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--border);transition:all .3s}
+nav.scrolled{background:rgba(6,7,9,.92)}
+.nav-inner{max-width:1200px;margin:0 auto;padding:.85rem 1.5rem;display:flex;align-items:center;justify-content:space-between}
+.nav-brand{display:flex;align-items:center;gap:.6rem;font-family:var(--fd);font-weight:700;font-size:1.1rem}
+.nav-brand img{width:30px;height:30px;border-radius:6px}
+.nav-brand .accent{color:var(--accent-light)}
+.nav-links{display:flex;gap:2rem;align-items:center}
+.nav-links a{color:var(--muted);font-size:.9rem;font-weight:500;transition:color .2s}.nav-links a:hover{color:var(--fg)}
+.nav-cta{padding:.6rem 1.25rem;background:var(--accent);color:#fff;border-radius:8px;font-weight:600;font-size:.9rem;transition:all .2s;box-shadow:0 4px 20px var(--accent-glow)}.nav-cta:hover{transform:translateY(-1px);box-shadow:0 6px 24px var(--accent-glow)}
+.hero{position:relative;padding:8rem 0 4rem;overflow:hidden}
+.hero-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:3rem;align-items:center}
+.hero-orb{position:absolute;border-radius:50%;filter:blur(80px);opacity:.15;pointer-events:none}
+.orb-1{width:500px;height:500px;background:var(--accent);top:-100px;right:-100px}
+.orb-2{width:400px;height:400px;background:var(--green);bottom:-150px;left:-100px}
+.hero-badge{display:inline-flex;align-items:center;gap:.5rem;padding:.4rem .9rem;background:var(--accent-soft);border:1px solid rgba(59,130,246,.2);border-radius:20px;font-size:.85rem;color:var(--accent-light);font-weight:500;margin-bottom:1.5rem}
+.pulse{width:8px;height:8px;border-radius:50%;background:var(--accent-light);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+.hero h1{font-family:var(--fd);font-size:3.5rem;font-weight:700;line-height:1.1;margin-bottom:1.5rem;letter-spacing:-.02em}
+.hero h1 .highlight{background:linear-gradient(135deg,var(--accent-light),var(--green));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-sub{font-size:1.15rem;color:var(--muted);max-width:540px;margin-bottom:2rem}
+.hero-visual{position:relative}
+.hero-mockup{background:var(--bg-card);border:1px solid var(--border);border-radius:16px;padding:1.5rem;box-shadow:0 20px 60px rgba(0,0,0,.5);animation:float 6s ease-in-out infinite}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+.hero-mockup-header{display:flex;align-items:center;gap:.5rem;margin-bottom:1.25rem;padding-bottom:1rem;border-bottom:1px solid var(--border)}
+.hero-mockup-title{font-family:var(--fm);font-size:.8rem;color:var(--muted);margin-left:.5rem}
+.mockup-dots{display:flex;gap:.35rem}.mockup-dots span{width:10px;height:10px;border-radius:50%}.mockup-dots span:nth-child(1){background:#ef4444}.mockup-dots span:nth-child(2){background:#f59e0b}.mockup-dots span:nth-child(3){background:#22c55e}
+.term{font-family:var(--fm);font-size:.78rem;line-height:1.9;color:var(--muted)}
+.term .cmd{color:var(--fg)}
+.term .prompt{color:var(--accent-light)}
+.term .ok{color:var(--green)}
+.term .done{color:var(--green);font-weight:600}
+.hero-cta{display:flex;gap:1rem;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;padding:.85rem 1.5rem;border-radius:10px;font-family:var(--fb);font-weight:600;font-size:.95rem;line-height:1;border:none;cursor:pointer;transition:all .2s;text-decoration:none}
+.btn-primary{background:var(--accent);color:#fff;box-shadow:0 8px 30px var(--accent-glow)}.btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 40px var(--accent-glow)}
+.btn-ghost{background:transparent;color:var(--fg);border:1px solid var(--border)}.btn-ghost:hover{border-color:var(--accent);background:var(--accent-soft)}
+.hero-stats{display:flex;gap:2rem;margin-top:2.5rem;flex-wrap:wrap}.hero-stat .num{font-family:var(--fd);font-size:1.5rem;font-weight:700;color:var(--fg)}.hero-stat .label{font-size:.8rem;color:var(--muted)}
+section{padding:5rem 0}
+.section-label{display:inline-block;font-family:var(--fm);font-size:.8rem;color:var(--accent-light);text-transform:uppercase;letter-spacing:.1em;margin-bottom:1rem}
+.section-title{font-family:var(--fd);font-size:2.5rem;font-weight:700;line-height:1.2;margin-bottom:1rem;letter-spacing:-.02em}
+.section-sub{font-size:1.1rem;color:var(--muted);max-width:600px;margin-bottom:3rem}
+.pain-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.pain-card{background:var(--bg-card);border:1px solid var(--border);border-radius:16px;padding:2rem;transition:all .3s}.pain-card:hover{border-color:rgba(239,68,68,.3);transform:translateY(-2px)}
+.pain-icon{width:48px;height:48px;border-radius:12px;background:rgba(239,68,68,.1);display:flex;align-items:center;justify-content:center;margin-bottom:1.25rem;color:#ef4444}
+.pain-card h3{font-family:var(--fd);font-size:1.15rem;font-weight:600;margin-bottom:.5rem}.pain-card p{color:var(--muted);font-size:.95rem}
+.pain-price{font-family:var(--fm);color:#ef4444;font-weight:600;font-size:.85rem;margin-top:.5rem}
+.solution-section{background:var(--bg-2)}.solution-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center}
+.solution-list{display:flex;flex-direction:column;gap:1.5rem}.solution-item{display:flex;gap:1rem;align-items:flex-start}
+.solution-check{width:24px;height:24px;border-radius:50%;background:var(--green-soft);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px}.solution-check svg{color:var(--green)}
+.solution-item h4{font-family:var(--fd);font-size:1.05rem;font-weight:600;margin-bottom:.25rem}.solution-item p{color:var(--muted);font-size:.9rem}
+.mockup-card{background:var(--bg-card);border:1px solid var(--border);border-radius:16px;padding:1.5rem;position:relative;overflow:hidden}
+.mockup-header{display:flex;align-items:center;gap:.5rem;margin-bottom:1.25rem;padding-bottom:1rem;border-bottom:1px solid var(--border)}
+.mockup-title{font-family:var(--fm);font-size:.8rem;color:var(--muted);margin-left:.5rem}
+.pipe-row{display:flex;align-items:center;gap:.75rem;padding:.75rem;background:var(--bg);border-radius:8px;margin-bottom:.5rem}
+.pipe-num{width:28px;height:28px;border-radius:50%;background:var(--accent-soft);color:var(--accent-light);display:flex;align-items:center;justify-content:center;font-family:var(--fd);font-weight:700;font-size:.85rem;flex-shrink:0}
+.pipe-info{flex:1}.pipe-info .addr{font-size:.85rem;font-weight:500}.pipe-info .svc{font-size:.75rem;color:var(--muted);font-family:var(--fm)}
+.pipe-status{font-size:.75rem;color:var(--green);font-family:var(--fm);font-weight:600}
+.pipe-total{display:flex;justify-content:space-between;padding:1rem .75rem 0;border-top:1px solid var(--border);margin-top:.5rem;font-size:.9rem}.pipe-total .amount{font-family:var(--fd);font-weight:700;color:var(--green);font-size:1.1rem}
+.features-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.feature{background:var(--bg-card);border:1px solid var(--border);border-radius:16px;padding:1.75rem;transition:all .3s}.feature:hover{border-color:var(--accent);background:var(--bg-hover)}
+.feature-icon{width:40px;height:40px;flex-shrink:0;background:var(--accent-soft);border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:1rem;color:var(--accent-light)}
+.feature h3{font-family:var(--fd);font-size:1.05rem;font-weight:600;margin-bottom:.5rem}.feature p{color:var(--muted);font-size:.9rem}
+.pricing-section{background:var(--bg-2)}.pricing-card{max-width:600px;margin:0 auto;background:var(--bg-card);border:1px solid var(--border);border-radius:20px;padding:3rem;text-align:center;position:relative;overflow:hidden}
+.pricing-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--accent),var(--green))}
+.price{font-family:var(--fd);font-size:3rem;font-weight:700;margin-bottom:.5rem}.price-label{color:var(--muted);font-size:.95rem;margin-bottom:2rem}
+.pricing-features{display:grid;grid-template-columns:1fr 1fr;gap:.75rem;text-align:left;margin-bottom:2rem}.pricing-feature{display:flex;align-items:center;gap:.5rem;font-size:.9rem}.pricing-feature svg{color:var(--green);flex-shrink:0}
+.cta-section{padding:5rem 0}.cta-box{background:var(--bg-card);border:1px solid var(--border);border-radius:20px;padding:4.5rem 3rem;max-width:640px;margin:0 auto;position:relative;overflow:hidden;text-align:center}.cta-box::before{content:"";position:absolute;top:-60%;left:50%;transform:translateX(-50%);width:80%;height:120%;background:radial-gradient(ellipse at center,var(--accent-glow),transparent 65%);pointer-events:none}.cta-box>*{position:relative;z-index:1}
+.cta-box h2{font-family:var(--fd);font-size:1.75rem;font-weight:700;text-align:center;margin-bottom:.5rem}.cta-box p{text-align:center;color:var(--muted);margin-bottom:2rem}
+.form-note{text-align:center;font-size:.8rem;color:var(--muted);margin-top:1rem}
+footer{border-top:1px solid var(--border);padding:2rem 0}.footer-inner{max-width:1200px;margin:0 auto;padding:0 1.5rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
+.footer-brand{display:flex;align-items:center;gap:.5rem;font-family:var(--fd);font-weight:700;font-size:1rem}.footer-brand img{width:24px;height:24px;border-radius:5px}.footer-brand .accent{color:var(--accent-light)}
+.footer-links{display:flex;gap:1.5rem;font-size:.85rem}.footer-links a{color:var(--muted);transition:color .2s}.footer-links a:hover{color:var(--fg)}
+@media(max-width:900px){.hero{padding:6rem 0 3rem}.hero-grid{grid-template-columns:1fr;gap:2rem}.hero h1{font-size:2.25rem}.hero-sub{font-size:1rem}.hero-stats{gap:1.5rem}.hero-visual{display:none}.section-title{font-size:1.75rem}.pain-grid{grid-template-columns:1fr}.solution-grid{grid-template-columns:1fr}.features-grid{grid-template-columns:1fr}.pricing-card{padding:2rem 1.5rem}.pricing-features{grid-template-columns:1fr}.cta-box{padding:2rem 1.5rem}.hero-cta{flex-direction:column}.hero-cta .btn{width:100%}}
+@media(max-width:540px){.nav-inner{padding:.65rem 1rem}.nav-brand{font-size:.9rem}.nav-brand img{width:26px;height:26px}.nav-cta{padding:.5rem .9rem;font-size:.8rem}.hero h1{font-size:1.85rem}}
+.reveal{opacity:1;transform:none;transition:all .7s cubic-bezier(.16,1,.3,1)}.reveal-left{opacity:1;transform:none;transition:all .7s cubic-bezier(.16,1,.3,1)}.reveal-scale{opacity:1;transform:none;transition:all .7s cubic-bezier(.16,1,.3,1)}.js-ready .reveal{opacity:0;transform:translateY(30px)}.js-ready .reveal.visible{opacity:1;transform:none}.js-ready .reveal-left{opacity:0;transform:translateX(-30px)}.js-ready .reveal-left.visible{opacity:1;transform:translateX(0)}.js-ready .reveal-scale{opacity:0;transform:scale(.95)}.js-ready .reveal-scale.visible{opacity:1;transform:scale(1)}
+</style>
 </head>
 <body>
-
-<!-- Background effects -->
-<div class="grid-bg"></div>
-<div class="orb orb-1"></div>
-<div class="orb orb-2"></div>
-<div class="orb orb-3"></div>
-
-<!-- ═══ NAV ═══ -->
-<nav id="nav">
-  <div class="nav-inner">
-    <a href="#" class="nav-brand">
-      <svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
-        <rect width="512" height="512" rx="112" fill="#0a0a0a"/>
-        <path d="M 160 180 L 320 180 L 320 140 L 380 200 L 320 260 L 320 220 L 160 220 Z" fill="#3b82f6" opacity="0.95"/>
-        <path d="M 352 332 L 192 332 L 192 292 L 132 352 L 192 412 L 192 372 L 352 372 Z" fill="#60a5fa" opacity="0.7"/>
-      </svg>
-      Replace My <span class="accent">Software</span>
-    </a>
-    <div class="nav-links">
-      <a href="#pain">Why Us</a>
-      <a href="#how">How It Works</a>
-      <a href="#features">Features</a>
-      <a href="#pricing">Pricing</a>
-    </div>
-    <a href="/apply" class="nav-cta">Apply Now →</a>
-  </div>
-</nav>
-
-<!-- ═══ HERO ═══ -->
+<nav id="nav"><div class="nav-inner"><a href="/" class="nav-brand"><img src="/logo.png" alt="RMS">Replace My <span class="accent">Software</span></a><div class="nav-links"><a href="#pain">Why Replace It</a><a href="#features">What You Get</a><a href="#pricing">Pricing</a></div><a href="/apply" class="nav-cta">Apply Now →</a></div></nav>
 <section class="hero">
-  <div class="container">
-    <div class="hero-badge reveal">
-      <span class="pulse"></span>
-      Taking on 3 new builds this month
-    </div>
-    <h1 class="reveal">
-      Stop renting software.<br>
-      <span class="gradient">Own your tools.</span>
-    </h1>
-    <p class="lead reveal">
-      We build custom CRM software designed around your exact workflow — not bloated SaaS with features you'll never use. Your app. Your way. 6 weeks of free updates included.
-    </p>
-    <div class="hero-cta reveal">
-      <a href="/apply" class="btn btn-primary">
-        Apply Now
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
-      </a>
-      <a href="#how" class="btn btn-ghost">See How It Works</a>
-    </div>
-    <div class="hero-stats reveal">
-      <div class="hero-stat">
-        <span class="num">2 weeks</span>
-        <span class="label">From call to custom build</span>
-      </div>
-      <div class="hero-stat">
-        <span class="num">100%</span>
-        <span class="label">Your app, your way</span>
-      </div>
-      <div class="hero-stat">
-        <span class="num">6 weeks</span>
-        <span class="label">Free updates & changes</span>
-      </div>
-    </div>
-
-    <!-- Dashboard mockup -->
-    <div class="hero-visual reveal-scale" style="margin-top: 3rem;">
-      <div class="mockup">
-        <div class="mockup-bar">
-          <span class="mockup-dot r"></span>
-          <span class="mockup-dot y"></span>
-          <span class="mockup-dot g"></span>
-          <span class="mockup-url">🔒 app.yourcompany.com</span>
-        </div>
-        <div class="mockup-body">
-          <div class="mockup-sidebar">
-            <div class="mockup-nav-item active">
-              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
-              Dashboard
-            </div>
-            <div class="mockup-nav-item">
-              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
-              Leads
-            </div>
-            <div class="mockup-nav-item">
-              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
-              Pipeline
-            </div>
-            <div class="mockup-nav-item">
-              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
-              Invoices
-            </div>
-            <div class="mockup-nav-item">
-              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2H5a2 2 0 00-2-2z"/><path stroke-linecap="round" stroke-linejoin="round" d="M3 7l9 6 9-6"/></svg>
-              Messages
-            </div>
-            <div class="mockup-nav-item">
-              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
-              Reports
-            </div>
-            <div class="mockup-nav-item">
-              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
-              Settings
-            </div>
-          </div>
-          <div class="mockup-content">
-            <div class="mockup-header">
-              <span class="mockup-title">Pipeline Overview</span>
-              <span class="mockup-btn">+ New Lead</span>
-            </div>
-            <div class="mockup-cards">
-              <div class="mockup-card">
-                <div class="val">47</div>
-                <div class="lbl">Active Leads</div>
-                <div class="delta up">↑ 12 this week</div>
-              </div>
-              <div class="mockup-card">
-                <div class="val">$84K</div>
-                <div class="lbl">In Pipeline</div>
-                <div class="delta up">↑ 8% vs last mo</div>
-              </div>
-              <div class="mockup-card">
-                <div class="val">23</div>
-                <div class="lbl">Estimates Sent</div>
-                <div class="delta down">↓ 3 today</div>
-              </div>
-            </div>
-            <div class="mockup-table">
-              <div class="mockup-row">
-                <div class="mockup-avatar" style="background:linear-gradient(135deg,#3b82f6,#1e40af)"></div>
-                <span class="name">Mike's Roofing Co.</span>
-                <span class="mockup-status active">Estimate</span>
-                <span class="meta">2h ago</span>
-              </div>
-              <div class="mockup-row">
-                <div class="mockup-avatar" style="background:linear-gradient(135deg,#818cf8,#3b82f6)"></div>
-                <span class="name">Apex Plumbing</span>
-                <span class="mockup-status pending">Follow-up</span>
-                <span class="meta">5h ago</span>
-              </div>
-              <div class="mockup-row">
-                <div class="mockup-avatar" style="background:linear-gradient(135deg,#34d399,#059669)"></div>
-                <span class="name">Greenway HVAC</span>
-                <span class="mockup-status active">Won — $12K</span>
-                <span class="meta">1d ago</span>
-              </div>
-              <div class="mockup-row">
-                <div class="mockup-avatar" style="background:linear-gradient(135deg,#fbbf24,#d97706)"></div>
-                <span class="name">Summit Electric</span>
-                <span class="mockup-status pending">New</span>
-                <span class="meta">1d ago</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══ MARQUEE ═══ -->
-<div class="marquee" id="marquee">
-  <div class="marquee-track auto" id="marqueeTrack">
-    <span class="marquee-item"><span class="dot"></span> Your app, your way</span>
-    <span class="marquee-item"><span class="dot"></span> No vendor lock-in</span>
-    <span class="marquee-item"><span class="dot"></span> Your app, your way</span>
-    <span class="marquee-item"><span class="dot"></span> Built in 2 weeks</span>
-    <span class="marquee-item"><span class="dot"></span> Supabase backend</span>
-    <span class="marquee-item"><span class="dot"></span> Custom integrations</span>
-    <span class="marquee-item"><span class="dot"></span> No vendor lock-in</span>
-    <span class="marquee-item"><span class="dot"></span> Your app, your way</span>
-    <span class="marquee-item"><span class="dot"></span> No vendor lock-in</span>
-    <span class="marquee-item"><span class="dot"></span> Your app, your way</span>
-    <span class="marquee-item"><span class="dot"></span> Built in 2 weeks</span>
-    <span class="marquee-item"><span class="dot"></span> Supabase backend</span>
-    <span class="marquee-item"><span class="dot"></span> Custom integrations</span>
-    <span class="marquee-item"><span class="dot"></span> No vendor lock-in</span>
-  </div>
+<div class="hero-orb orb-1"></div><div class="hero-orb orb-2"></div>
+<div class="container">
+<div class="hero-grid">
+<div class="hero-content">
+<div class="hero-badge reveal"><span class="pulse"></span>Custom software for field service businesses — AI-built, human-approved</div>
+<h1 class="reveal">Stop Renting<br>Your Software.<br><span class="highlight">Own Your Tools.</span></h1>
+<p class="hero-sub reveal">We don't sell software. We build yours. A custom CRM shaped around how your business actually runs — scheduling, estimates, invoicing, crew apps — for one flat price. Replace JobNimbus, AccuLynx, or ServiceTitan and own every line of code.</p>
+<div class="hero-cta reveal"><a href="/apply" class="btn btn-primary">Apply Now <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg></a><a href="#pricing" class="btn btn-ghost">See Pricing</a></div>
+<div class="hero-stats reveal"><div class="hero-stat"><div class="num">$10K</div><div class="label">Flat one-time build</div></div><div class="hero-stat"><div class="num">2–4 wks</div><div class="label">Idea → live software</div></div><div class="hero-stat"><div class="num">$0/mo</div><div class="label">Software fees after launch</div></div></div>
 </div>
+<div class="hero-visual reveal-scale">
+<div class="hero-mockup">
+<div class="hero-mockup-header"><div class="mockup-dots"><span></span><span></span><span></span></div><span class="hero-mockup-title">your-build.log</span></div>
+<div class="term">
+<div><span class="prompt">$</span> <span class="cmd">glm build "a CRM my roofing company will actually use"</span></div>
+<div><span class="ok">✓</span> estimates, invoices, QuickBooks sync</div>
+<div><span class="ok">✓</span> customer DB <span style="opacity:.6;">(Supabase, RLS on)</span></div>
+<div><span class="ok">✓</span> crew app — iOS + Android</div>
+<div><span class="ok">✓</span> client portal + e-sign</div>
+<div><span class="ok">✓</span> $300/mo SaaS → <span class="ok">$0/mo</span></div>
+<div>&nbsp;</div>
+<div><span class="done">done — 2 weeks, flat $10K, you own it.</span></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="pain"><div class="container">
+<div class="reveal"><span class="section-label">The Problem</span>
+<h2 class="section-title">Still fighting your CRM?</h2>
+<p class="section-sub">You pay $300+/month for software with 50 features. Your crews use 3. The mobile app fights them on every job. And the meter never stops running. Here's what renting software actually costs you:</p></div>
+<div class="pain-grid">
+<div class="pain-card reveal"><div class="pain-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></div>
+<h3>$300+/month, every month, forever</h3><p>Per-user fees plus a base charge. 5 crews? You're at $400+/mo. Over 5 years that's $18,000+ in subscription fees — and you own nothing at the end. Cancel and you lose everything.</p><div class="pain-price">$18K+ over 5 years</div></div>
+<div class="pain-card reveal"><div class="pain-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/></svg></div>
+<h3>50 features. Your crews use 3.</h3><p>Estimating, routing, invoicing, proposal builders, time tracking — and a mobile app that crashes on site. Your crew just needs to know where to go next. The clutter slows everyone down and the training never ends.</p><div class="pain-price">Hours lost to bloat</div></div>
+<div class="pain-card reveal"><div class="pain-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6M6 9l2-2"/></svg></div>
+<h3>Growth gets punished</h3><p>Every new user is another per-seat fee. Every price hike hits while you're mid-season. Your data lives in their cloud, in their format, on their terms. You're not the customer — you're the hostage.</p><div class="pain-price">You grow, they charge</div></div>
+</div>
+</div></section>
+<section class="solution-section"><div class="container"><div class="solution-grid">
+<div class="reveal-left">
+<span class="section-label">The Process</span>
+<h2 class="section-title">Three steps to your own software.</h2>
+<p class="section-sub" style="margin-bottom:2rem;">No six-month dev cycles. No $50K agency quotes. AI agents do the heavy lifting, humans check every detail, and the finished product lives in your GitHub — not ours.</p>
+<div class="solution-list">
+<div class="solution-item"><div class="solution-check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></div><div><h4>1 · Describe your workflow</h4><p>One call or the 3-minute apply form. How you estimate, schedule, invoice, and run crews. We turn it into a build blueprint — free, before you pay anything.</p></div></div>
+<div class="solution-item"><div class="solution-check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></div><div><h4>2 · Agents build, humans QA</h4><p>AI coding agents assemble your software from components already running in production businesses. Then a human tests every flow on real devices before you see it.</p></div></div>
+<div class="solution-item"><div class="solution-check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></div><div><h4>3 · Live in 2–4 weeks. Code is yours.</h4><p>Deployed to your domain, backed by your own database, source code in your GitHub. Six weeks of free updates while your team shakes it down.</p></div></div>
+</div>
+</div>
+<div class="reveal-scale"><div class="mockup-card">
+<div class="mockup-header"><div class="mockup-dots"><span></span><span></span><span></span></div><span class="mockup-title">your-build.log</span></div>
+<div class="pipe-row"><div class="pipe-num">1</div><div class="pipe-info"><div class="addr">Discovery &amp; blueprint</div><div class="svc">your workflow · your pricing · your crew structure</div></div><div class="pipe-status">free</div></div>
+<div class="pipe-row"><div class="pipe-num">2</div><div class="pipe-info"><div class="addr">Agent build + human QA</div><div class="svc">react + supabase · every flow tested</div></div><div class="pipe-status">2–3 wks</div></div>
+<div class="pipe-row"><div class="pipe-num">3</div><div class="pipe-info"><div class="addr">Deploy + handoff</div><div class="svc">your domain · your repo · your data</div></div><div class="pipe-status">day 1</div></div>
+<div class="pipe-row"><div class="pipe-num">✓</div><div class="pipe-info"><div class="addr">6 weeks free updates</div><div class="svc">tweaks, fixes, new features while you onboard</div></div><div class="pipe-status">included</div></div>
+<div class="pipe-total"><span>Cancel your SaaS on launch day</span><span class="amount">$10K flat</span></div>
+</div></div>
+</div></div></section>
+<section id="features"><div class="container">
+<div class="reveal"><span class="section-label">What You Get</span>
+<h2 class="section-title">Everything you need. Nothing you don't.</h2>
+<p class="section-sub">Built around your workflow — not a template you have to bend your business to fit.</p></div>
+<div class="features-grid">
+<div class="feature reveal"><div class="feature-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/></svg></div>
+<h3>Custom CRM</h3><p>Customers, jobs, estimates, follow-ups — shaped around how your company actually sells and schedules. No Contacts-vs-Jobs confusion.</p></div>
+<div class="feature reveal"><div class="feature-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg></div>
+<h3>Scheduling &amp; dispatch</h3><p>Recurring routes, one-off jobs, crew assignments. Text your crew the day's sheet automatically — built on Twilio.</p></div>
+<div class="feature reveal"><div class="feature-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg></div>
+<h3>Invoicing &amp; payments</h3><p>Job done → invoice sent → paid online. QuickBooks sync without the $50/month add-on.</p></div>
+<div class="feature reveal"><div class="feature-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg></div>
+<h3>Crew mobile apps</h3><p>iOS + Android shells on the same database as your web app. Big buttons, photo capture, offline-tolerant — built for the field.</p></div>
+<div class="feature reveal"><div class="feature-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg></div>
+<h3>Email &amp; SMS built in</h3><p>Estimates, review requests, appointment reminders — automated on Resend and Twilio from day one. No third-party add-ons.</p></div>
+<div class="feature reveal"><div class="feature-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg></div>
+<h3>Client portals &amp; auth</h3><p>Your customers log in and see their jobs, invoices, and documents. Magic links or passwords — you pick.</p></div>
+</div>
+</div></section>
+<section id="pricing" class="pricing-section"><div class="container">
+<div class="reveal" style="text-align:center;margin-bottom:3rem;"><span class="section-label">Pricing</span>
+<h2 class="section-title">One price. No surprises.</h2>
+<p class="section-sub" style="margin:0 auto;">A flat fee to build it, pennies to run it. No per-seat pricing. No "contact sales." You get the software, the source code, and the freedom to run it forever.</p></div>
+<div class="pricing-card reveal-scale">
+<div class="price">From $10K</div>
+<div class="price-label">one-time build — flat, not per user, not per month</div>
+<div class="pricing-features">
+<div class="pricing-feature"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>Custom software, your workflow</div>
+<div class="pricing-feature"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>Web app + iOS/Android crew app</div>
+<div class="pricing-feature"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>Database, auth, email, SMS wired in</div>
+<div class="pricing-feature"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>QuickBooks integration</div>
+<div class="pricing-feature"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>Deployed to your domain</div>
+<div class="pricing-feature"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>Source code in your GitHub</div>
+<div class="pricing-feature"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>6 weeks free updates &amp; changes</div>
+<div class="pricing-feature"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>100% money-back guarantee</div>
+<div class="pricing-feature" style="grid-column:1/-1;justify-content:center;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>Typical SaaS spend avoided: $18,000+ over 5 years</div>
+</div>
+<a href="/apply" class="btn btn-primary" style="width:100%;">Apply Now</a>
+<p class="form-note">Optional monthly retainer available for ongoing support &amp; new features.</p>
+</div>
+</div></section>
 
-<!-- ═══ PAIN POINTS ═══ -->
-<section id="pain">
-  <div class="container">
-    <div class="text-center reveal" style="text-align:center;">
-      <span class="section-label">The Problem</span>
-      <h2 class="section-title">Still fighting your CRM?</h2>
-      <p class="section-sub" style="margin-inline:auto;">Off-the-shelf CRMs are built for everyone — which means they're built for no one. Here's what happens:</p>
-    </div>
-    <div class="pain-grid reveal-stagger">
-      <div class="pain-card">
-        <div class="pain-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
-        </div>
-        <h3>Paying for features you never use</h3>
-        <p>HubSpot charges $90/mo per user. Salesforce charges $150+. You're paying enterprise prices for features your team ignores.</p>
-      </div>
-      <div class="pain-card">
-        <div class="pain-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9.879 16.121A3 3 0 1012.015 11L11 14H9c0 .768.293 1.536.879 2.121z"/><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-        </div>
-        <h3>Your team won't use it</h3>
-        <p>Too many clicks. Too many fields. Too complicated. So your team goes back to spreadsheets and sticky notes.</p>
-      </div>
-      <div class="pain-card">
-        <div class="pain-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M10 14L5.5 9.5m0 0L10 5m-4.5 4.5H20M14 10l4.5 4.5m0 0L14 19m4.5-4.5H4"/></svg>
-        </div>
-        <h3>Doesn't fit your workflow</h3>
-        <p>Your process is unique. Generic CRMs force you to adapt to them. We build the software around your process — not the other way around.</p>
-      </div>
+<section id="faq" style="padding:4rem 0;">
+  <div class="container" style="max-width:760px;margin:0 auto;padding:0 1.5rem;">
+    <span class="section-label" style="display:inline-block;margin-bottom:1rem;">FAQ</span>
+    <h2 class="section-title" style="font-family:var(--fd);font-size:1.75rem;font-weight:700;margin-bottom:2rem;">Common questions</h2>
+    <details style="background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:1.1rem 1.25rem;margin-bottom:.75rem;" open><summary style="font-weight:600;font-size:1.05rem;cursor:pointer;color:var(--fg);list-style:none;">How much does it cost?</summary><p style="margin-top:.75rem;color:var(--muted);line-height:1.6;font-size:.95rem;">Most builds start at $10,000 flat — one time. No per-user fees, no monthly license. You'll pay hosting (Supabase/Vercel, typically $0–25/month) and pennies per email/SMS. Optional retainer if you want us on call after handoff.</p></details><details style="background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:1.1rem 1.25rem;margin-bottom:.75rem;"><summary style="font-weight:600;font-size:1.05rem;cursor:pointer;color:var(--fg);list-style:none;">How long does a build take?</summary><p style="margin-top:.75rem;color:var(--muted);line-height:1.6;font-size:.95rem;">2–4 weeks from discovery call to live software, including a 6-week window of free updates while you shake it down with your team. AI agents write the code in hours; the calendar is mostly your review time.</p></details><details style="background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:1.1rem 1.25rem;margin-bottom:.75rem;"><summary style="font-weight:600;font-size:1.05rem;cursor:pointer;color:var(--fg);list-style:none;">Can you replace JobNimbus / AccuLynx / ServiceTitan?</summary><p style="margin-top:.75rem;color:var(--muted);line-height:1.6;font-size:.95rem;">Yes — that's exactly what we do. Your customers, jobs, and history can be exported from your current CRM (we'll walk you through it) and loaded into your new system before launch. Most crews are fully migrated in a day.</p></details><details style="background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:1.1rem 1.25rem;margin-bottom:.75rem;"><summary style="font-weight:600;font-size:1.05rem;cursor:pointer;color:var(--fg);list-style:none;">Does it really work on phones in the field?</summary><p style="margin-top:.75rem;color:var(--muted);line-height:1.6;font-size:.95rem;">Yes. Every build includes iOS and Android crew apps designed for how field workers actually use phones — large buttons, photo capture, simple flows. No pinching and zooming through a desktop website.</p></details><details style="background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:1.1rem 1.25rem;margin-bottom:.75rem;"><summary style="font-weight:600;font-size:1.05rem;cursor:pointer;color:var(--fg);list-style:none;">What happens if I stop working with you?</summary><p style="margin-top:.75rem;color:var(--muted);line-height:1.6;font-size:.95rem;">Nothing bad. The code is in your GitHub, the database is your Supabase account, the domain is yours. Hire any developer to maintain or extend it. There is no lock-in — that's the entire point.</p></details>
+  </div>
+</section>
+
+<section id="contact" class="cta-section"><div class="container">
+<div class="cta-box reveal">
+<span class="section-label">Get Started</span>
+<h2>Stop feeding the SaaS meter.</h2>
+<p>Tell us how your business runs — we'll show you exactly what we'd build, for free, before you spend a dollar. If we can't beat your current software, we'll tell you.</p>
+<a href="/apply" class="btn btn-primary" style="font-size:1.1rem;padding:1.1rem 2.5rem;">Apply Now <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg></a>
+<p class="form-note">Takes 3 minutes. No commitment.</p>
+</div>
+</div></section>
+
+<!-- Internal linking: other industries -->
+<section style="padding:3rem 0;border-top:1px solid var(--border);">
+  <div class="container" style="max-width:900px;margin:0 auto;padding:0 1.5rem;">
+    <p style="font-family:var(--fd);font-size:1.1rem;font-weight:600;margin-bottom:1.25rem;color:var(--fg);">Other industries we build for:</p>
+    <div style="display:flex;flex-wrap:wrap;gap:.6rem;">
+      <a href="/roofing-crm" style="padding:.5rem .9rem;background:var(--bg-card);border:1px solid var(--border);border-radius:8px;font-size:.9rem;color:var(--muted);transition:all .2s;text-decoration:none;">Roofing CRM</a><a href="/landscaping-software" style="padding:.5rem .9rem;background:var(--bg-card);border:1px solid var(--border);border-radius:8px;font-size:.9rem;color:var(--muted);transition:all .2s;text-decoration:none;">Landscaping Software</a><a href="/hardscaping-estimating" style="padding:.5rem .9rem;background:var(--bg-card);border:1px solid var(--border);border-radius:8px;font-size:.9rem;color:var(--muted);transition:all .2s;text-decoration:none;">Hardscaping Estimating</a><a href="/lawn-care-app" style="padding:.5rem .9rem;background:var(--bg-card);border:1px solid var(--border);border-radius:8px;font-size:.9rem;color:var(--muted);transition:all .2s;text-decoration:none;">Lawn Care App</a><a href="/irrigation-software" style="padding:.5rem .9rem;background:var(--bg-card);border:1px solid var(--border);border-radius:8px;font-size:.9rem;color:var(--muted);transition:all .2s;text-decoration:none;">Irrigation Software</a><a href="/tree-care-software" style="padding:.5rem .9rem;background:var(--bg-card);border:1px solid var(--border);border-radius:8px;font-size:.9rem;color:var(--muted);transition:all .2s;text-decoration:none;">Tree Care Software</a><a href="/calculator" style="padding:.5rem .9rem;background:var(--bg-card);border:1px solid var(--border);border-radius:8px;font-size:.9rem;color:var(--muted);transition:all .2s;text-decoration:none;">CRM Cost Calculator</a><a href="/service-autopilot-alternative" style="padding:.5rem .9rem;background:var(--bg-card);border:1px solid var(--border);border-radius:8px;font-size:.9rem;color:var(--muted);transition:all .2s;text-decoration:none;">Service Autopilot Alternative</a>
     </div>
   </div>
 </section>
 
-<!-- ═══ HOW IT WORKS ═══ -->
-<section id="how" style="background: var(--bg-2);">
-  <div class="container">
-    <div class="reveal">
-      <span class="section-label">How It Works</span>
-      <h2 class="section-title">Three steps to custom software</h2>
-      <p class="section-sub">No 6-month implementation cycle. No consultants. No migration fees.</p>
-    </div>
-    <div class="steps reveal-stagger">
-      <div class="step">
-        <div class="step-num">01</div>
-        <h3>Tell us your workflow</h3>
-        <p>We get on a call. You tell us how your business actually runs — not how some CRM thinks it should run. What leads come in, what happens next, what breaks.</p>
-      </div>
-      <div class="step">
-        <div class="step-num">02</div>
-        <h3>We build your CRM</h3>
-        <p>Within days, not months. Custom fields, custom pipeline, custom automations. Built on Supabase — enterprise-grade auth and database. Your data, your rules.</p>
-      </div>
-      <div class="step">
-        <div class="step-num">03</div>
-        <h3>Your team actually uses it</h3>
-        <p>Because it's built around how they already work. No training needed. No 200-field forms. Just the tools they need, nothing they don't.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══ FEATURES ═══ -->
-<section id="features">
-  <div class="container">
-    <div class="reveal">
-      <span class="section-label">What You Get</span>
-      <h2 class="section-title">Everything you need.<br>Nothing you don't.</h2>
-      <p class="section-sub">Every build includes the essentials. Custom features are built on demand.</p>
-    </div>
-    <div class="feature-grid reveal-stagger">
-      <div class="feature">
-        <div class="feature-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
-        </div>
-        <div>
-          <h4>Built around your team</h4>
-          <p>Each person sees exactly what they need — no clutter, no confusion. The app works the way your team already works.</p>
-        </div>
-      </div>
-      <div class="feature">
-        <div class="feature-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7H7v6h6V7z"/><path stroke-linecap="round" stroke-linejoin="round" d="M9 3v2m6-2v2M3 9h2m-2 6h2m14-6h2m-2 6h2M9 21v2m6-2v2"/></svg>
-        </div>
-        <div>
-          <h4>Does exactly what your business needs</h4>
-          <p>Your sales process isn't "Lead → Contacted → Won." We build the exact stages, fields, and automations your business actually uses. Nothing extra, nothing missing.</p>
-        </div>
-      </div>
-      <div class="feature">
-        <div class="feature-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2H5a2 2 0 00-2-2z"/><path stroke-linecap="round" stroke-linejoin="round" d="M3 7l9 6 9-6"/></svg>
-        </div>
-        <div>
-          <h4>Eliminates miscommunication</h4>
-          <p>New lead? Right rep gets notified instantly. Estimate accepted? Auto-assign the installer. No more dropped balls or “I didn't see that.”</p>
-        </div>
-      </div>
-      <div class="feature">
-        <div class="feature-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
-        </div>
-        <div>
-          <h4>Estimates & invoices that match your business</h4>
-          <p>Branded estimates and invoices with your fields, your pricing, your terms. One click to send, auto-tracked in the pipeline.</p>
-        </div>
-      </div>
-      <div class="feature">
-        <div class="feature-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2H5a2 2 0 00-2-2z"/><path stroke-linecap="round" stroke-linejoin="round" d="M21 9l-7 4-7-4"/></svg>
-        </div>
-        <div>
-          <h4>Connects to everything</h4>
-          <p>QuickBooks, Stripe, Twilio, Google Calendar — we integrate whatever tools you already use. As many as you need, no limits.</p>
-        </div>
-      </div>
-      <div class="feature">
-        <div class="feature-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
-        </div>
-        <div>
-          <h4>Works where your team works</h4>
-          <p>In the truck, on the roof, at the office. Every CRM we build works flawlessly on phone, tablet, and desktop — built for field service first.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══ COMPARISON ═══ -->
-<section style="background: var(--bg-2);">
-  <div class="container">
-    <div class="reveal">
-      <span class="section-label">The Difference</span>
-      <h2 class="section-title">Custom vs. Off-the-shelf</h2>
-    </div>
-    <div class="compare reveal-scale">
-      <div class="compare-header">
-        <span>Feature</span>
-        <span class="ours">Replace My Software</span>
-        <span>Generic SaaS CRM</span>
-      </div>
-      <div class="compare-row">
-        <span class="label">Monthly fee</span>
-        <span class="compare-cell yes">$0 — you own it</span>
-        <span class="compare-cell no">$50-150/user/mo</span>
-      </div>
-      <div class="compare-row">
-        <span class="label">Custom workflow</span>
-        <span class="compare-cell yes">Built for your process</span>
-        <span class="compare-cell no">Adapt to theirs</span>
-      </div>
-      <div class="compare-row">
-        <span class="label">Setup time</span>
-        <span class="compare-cell yes">2 weeks</span>
-        <span class="compare-cell no">2-6 months</span>
-      </div>
-      <div class="compare-row">
-        <span class="label">Data ownership</span>
-        <span class="compare-cell yes">100% yours</span>
-        <span class="compare-cell no">Locked in their platform</span>
-      </div>
-      <div class="compare-row">
-        <span class="label">Custom integrations</span>
-        <span class="compare-cell yes">Built on demand</span>
-        <span class="compare-cell no">Limited / expensive</span>
-      </div>
-      <div class="compare-row">
-        <span class="label">Feature bloat</span>
-        <span class="compare-cell yes">Only what you need</span>
-        <span class="compare-cell no">80% you ignore</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══ INDUSTRIES ═══ -->
-<section>
-  <div class="container">
-    <div class="reveal">
-      <span class="section-label">Who We Build For</span>
-      <h2 class="section-title">Built for field service businesses</h2>
-      <p class="section-sub">We specialize in CRMs for trades and home services. We know your workflow because we've built for it.</p>
-    </div>
-    <div class="industries reveal-stagger">
-      <span class="industry">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
-        Roofing
-      </span>
-      <span class="industry">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 3h8l-1 9h-6L8 3z"/><path stroke-linecap="round" stroke-linejoin="round" d="M5 21h14"/></svg>
-        Plumbing
-      </span>
-      <span class="industry">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
-        HVAC
-      </span>
-      <span class="industry">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2H7z"/></svg>
-        Electrical
-      </span>
-      <span class="industry">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 21l3-3m0 0l9-9 3 3-9 9H6v-3zM15 6l3-3 3 3-3 3-3-3z"/></svg>
-        Landscaping
-      </span>
-      <span class="industry">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5"/></svg>
-        General Contractors
-      </span>
-      <span class="industry">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z"/></svg>
-        Painting
-      </span>
-      <span class="industry">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/></svg>
-        Solar
-      </span>
-    </div>
-  </div>
-</section>
-
-<!-- ═══ PRICING ═══ -->
-<section id="pricing" style="background: var(--bg-2);">
-  <div class="container">
-    <div class="reveal" style="text-align:center;">
-      <span class="section-label">Pricing</span>
-      <h2 class="section-title">One price. No surprises.</h2>
-      <p class="section-sub" style="margin-inline:auto;">A custom CRM built for your business. Flat rate. You own everything.</p>
-    </div>
-    <div class="pricing-card reveal-scale">
-      <div class="price">From $15,000</div>
-      <div class="price-label">One-time build — your app, your way</div>
-      <div class="pricing-features">
-        <div class="pricing-feature">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
-          Custom CRM built for your workflow
-        </div>
-        <div class="pricing-feature">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
-          Supabase auth & database setup
-        </div>
-        <div class="pricing-feature">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
-          Custom pipeline & fields
-        </div>
-        <div class="pricing-feature">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
-          As many integrations as you need
-        </div>
-        <div class="pricing-feature">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
-          Mobile-responsive design
-        </div>
-        <div class="pricing-feature">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
-          Built around your team's roles
-        </div>
-        <div class="pricing-feature">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
-          6 weeks of free updates & changes
-        </div>
-        <div class="pricing-feature">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
-          Your app, your way
-        </div>
-      </div>
-      <a href="#contact" class="btn btn-primary" style="margin-top:1rem;">
-        Start Your Build
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
-      </a>
-      <p class="pricing-note">6 weeks of free updates & changes included. Optional monthly retainer available after — no commitment required.</p>
-    </div>
-  </div>
-</section>
-
-<!-- ═══ CTA / CONTACT FORM ═══ -->
-<section id="contact" class="cta-section">
-  <div class="container">
-    <div class="cta-box reveal">
-      <span class="section-label">Get Started</span>
-      <h2>Think a custom CRM is right for you?</h2>
-      <p class="section-sub">Answer a few questions about your business. We'll review your workflow and tell you exactly what we'd build — no call required.</p>
-      <a href="/apply" class="btn btn-primary" style="font-size:1.1rem;padding:1.1rem 2.5rem;">
-        Apply Now
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
-      </a>
-      <p class="form-note">Takes 3 minutes. No commitment.</p>
-    </div>
-  </div>
-</section>
-
-<!-- ═══ FOOTER ═══ -->
-<footer>
-  <div class="container">
-    <div class="footer-inner">
-      <div class="footer-brand">
-        <svg viewBox="0 0 512 512" width="28" height="28" xmlns="http://www.w3.org/2000/svg">
-          <rect width="512" height="512" rx="112" fill="#0a0a0a"/>
-          <path d="M 160 180 L 320 180 L 320 140 L 380 200 L 320 260 L 320 220 L 160 220 Z" fill="#3b82f6" opacity="0.95"/>
-          <path d="M 352 332 L 192 332 L 192 292 L 132 352 L 192 412 L 192 372 L 352 372 Z" fill="#60a5fa" opacity="0.7"/>
-        </svg>
-        Replace My <span class="accent">Software</span>
-      </div>
-      <div class="footer-links">
-        <a href="#pain">Why Us</a>
-        <a href="#how">How It Works</a>
-        <a href="#features">Features</a>
-        <a href="#pricing">Pricing</a>
-        <a href="#contact">Contact</a>
-      </div>
-      <div class="footer-copy">© 2026 Replace My Software. Built custom.</div>
-    </div>
-  </div>
-</footer>
-
+<footer><div class="footer-inner">
+<a href="/" class="footer-brand"><img src="/logo.png" alt="RMS">Replace My <span class="accent">Software</span></a>
+<div class="footer-links"><a href="/roofing-crm">Roofing CRM</a><a href="/landscaping-software">Landscaping</a><a href="mailto:team@roofingwebpro.com">Contact</a></div>
+<div style="font-size:.8rem;color:var(--muted);">© 2026 Replace My Software. Built by NATILEE AUTOMATIONS.</div>
+</div></footer>
 <script>
-// ═══ NAV SCROLL EFFECT ═══
-const nav = document.getElementById('nav');
-window.addEventListener('scroll', () => {
-  if (window.scrollY > 40) nav.classList.add('scrolled');
-  else nav.classList.remove('scrolled');
-});
-
-// ═══ SCROLL REVEAL ANIMATIONS ═══
-const revealElements = document.querySelectorAll('.reveal, .reveal-stagger, .reveal-left, .reveal-right, .reveal-scale');
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('visible');
-      observer.unobserve(entry.target);
-    }
-  });
-}, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
-
-revealElements.forEach(el => observer.observe(el));
-
-// ═══ FORM HANDLER REMOVED — leads now go to /apply ═══
-
-// ═══ PARALLAX ON ORBS ═══
-window.addEventListener('scroll', () => {
-  const scrolled = window.pageYOffset;
-  document.querySelectorAll('.orb').forEach((orb, i) => {
-    const speed = 0.3 + (i * 0.1);
-    orb.style.transform = `translateY(${scrolled * speed}px)`;
-  });
-});
-
-// ═══ ANIMATED COUNTER (for hero stats if needed later) ═══
-function animateCounter(el, target, duration = 1500) {
-  const start = 0;
-  const startTime = performance.now();
-  function update(now) {
-    const progress = Math.min((now - startTime) / duration, 1);
-    const eased = 1 - Math.pow(1 - progress, 3);
-    el.textContent = Math.floor(start + (target - start) * eased);
-    if (progress < 1) requestAnimationFrame(update);
-  }
-  requestAnimationFrame(update);
-}
-
-// ═══ ONBOARDING OVERLAY ═══
-function showOnboardingFlow(leadName, payload, result) {
-  const overlay = document.createElement('div');
-  overlay.className = 'onboarding-overlay';
-  overlay.innerHTML = `
-    <div class="onboarding-card">
-      <!-- Step 1: Thinking -->
-      <div class="ob-step ob-thinking active">
-        <div class="ob-spinner">
-          <svg width="48" height="48" viewBox="0 0 48 48">
-            <circle cx="24" cy="24" r="20" fill="none" stroke="rgba(59,130,246,0.15)" stroke-width="3"/>
-            <circle cx="24" cy="24" r="20" fill="none" stroke="#3b82f6" stroke-width="3" stroke-linecap="round" stroke-dasharray="90 150" stroke-dashoffset="0">
-              <animateTransform attributeName="transform" type="rotate" from="0 24 24" to="360 24 24" dur="1.2s" repeatCount="indefinite"/>
-            </circle>
-          </svg>
-        </div>
-        <h3 class="ob-title">Reviewing your request…</h3>
-        <p class="ob-sub">Our AI is checking if we can help with your project.</p>
-        <div class="ob-checks">
-          <div class="ob-check" data-check="0"><span class="ob-check-icon">○</span> Analyzing your message</div>
-          <div class="ob-check" data-check="1"><span class="ob-check-icon">○</span> Checking project scope</div>
-          <div class="ob-check" data-check="2"><span class="ob-check-icon">○</span> Verifying fit</div>
-        </div>
-      </div>
-
-      <!-- Step 2: Approved -->
-      <div class="ob-step ob-approved">
-        <div class="ob-success-icon">
-          <svg width="64" height="64" viewBox="0 0 64 64">
-            <circle cx="32" cy="32" r="28" fill="none" stroke="#22c55e" stroke-width="3" stroke-dasharray="176" stroke-dashoffset="176">
-              <animate attributeName="stroke-dashoffset" from="176" to="0" dur="0.6s" fill="freeze" begin="0.1s"/>
-            </circle>
-            <path d="M20 32 L28 40 L44 24" fill="none" stroke="#22c55e" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="40" stroke-dashoffset="40">
-              <animate attributeName="stroke-dashoffset" from="40" to="0" dur="0.4s" fill="freeze" begin="0.5s"/>
-            </path>
-          </svg>
-        </div>
-        <h3 class="ob-title">You're approved! 🎉</h3>
-        <p class="ob-sub">${leadName ? leadName.split(' ')[0] + ', ' : ''}your project looks like a great fit.</p>
-        <div class="ob-next-steps">
-          <div class="ob-step-item">
-            <div class="ob-step-num">1</div>
-            <div class="ob-step-text"><strong>Create your free portal</strong> to track your project and upload requirements.</div>
-          </div>
-          <div class="ob-step-item">
-            <div class="ob-step-num">2</div>
-            <div class="ob-step-text"><strong>Expect a call from Reagan</strong> — the owner. He'll personally discuss your project.</div>
-          </div>
-        </div>
-        <div class="ob-contact-card">
-          <div class="ob-contact-row">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
-            <span>Reagan Gallagher — Owner</span>
-          </div>
-          <a href="tel:+19195254567" class="ob-phone">(919) 525-4567</a>
-        </div>
-        
-        <div class="ob-portal-form">
-          <p class="ob-portal-label">Your portal is ready! Here are your login details:</p>
-          <div style="background:var(--bg-card);border-radius:12px;padding:1rem;margin-bottom:0.75rem;font-family:var(--font-mono);font-size:0.9rem;line-height:1.8;">
-            <div><span style="color:var(--muted);">Email:</span> <span id="portal-email-display">—</span></div>
-            <div><span style="color:var(--muted);">Password:</span> <span id="portal-pw-display">—</span></div>
-          </div>
-          <p style="font-size:0.8rem;color:var(--muted);margin-bottom:1rem;">Save these — you'll need them to log in.</p>
-          <a class="btn btn-primary ob-portal-btn" id="portal-link-btn" href="/portal.html">
-            Go to Portal
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
-          </a>
-        </div>
-        <p class="ob-close-link" onclick="document.querySelector('.onboarding-overlay').remove()">Close</p>
-      </div>
-    </div>
-  `;
-  document.body.appendChild(overlay);
-  document.body.style.overflow = 'hidden';
-
-  // Animate checks
-  const checks = overlay.querySelectorAll('.ob-check');
-  checks.forEach((check, i) => {
-    setTimeout(() => {
-      check.querySelector('.ob-check-icon').textContent = '✓';
-      check.classList.add('done');
-    }, 800 + i * 1200);
-  });
-
-  // Switch to approved after ~5s
-  setTimeout(() => {
-    overlay.querySelector('.ob-thinking').classList.remove('active');
-    overlay.querySelector('.ob-approved').classList.add('active');
-
-    // Show portal credentials from API response
-    if (result && result.portalPassword) {
-      const emailEl = overlay.querySelector('#portal-email-display');
-      const pwEl = overlay.querySelector('#portal-pw-display');
-      const linkEl = overlay.querySelector('#portal-link-btn');
-      if (emailEl) emailEl.textContent = result.email || payload.email;
-      if (pwEl) pwEl.textContent = result.portalPassword;
-      if (linkEl && result.email) linkEl.href = '/portal.html?email=' + encodeURIComponent(result.email);
-    }
-
-    if (portalInput) {
-      portalInput.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter') {
-          e.preventDefault();
-          portalBtn.click();
-        }
-      });
-      portalInput.addEventListener('input', () => {
-        portalInput.style.borderColor = '';
-      });
-    }
-  }, 5200);
-}
-</script>
-
-<script>
-// ═══ MARQUEE DRAG-TO-SWIPE WITH SPRING BACK ═══
-(function(){
-  const marquee = document.getElementById('marquee');
-  const track = document.getElementById('marqueeTrack');
-  if(!marquee || !track) return;
-
-  let isDragging = false;
-  let startX = 0;
-  let currentX = 0;
-  let offset = 0;
-  let velocity = 0;
-  let lastX = 0;
-  let lastTime = 0;
-  let rafId = null;
-  let trackWidth = 0;
-  const HALF = () => trackWidth / 2;
-
-  function getOffset() {
-    const matrix = new DOMMatrixReadOnly(getComputedStyle(track).transform);
-    return matrix.m41;
-  }
-
-  function setOffset(x) {
-    track.style.transform = `translateX(${x}px)`;
-  }
-
-  function wrapOffset(x) {
-    const half = HALF();
-    if (half === 0) return x;
-    // wrap into [-half, 0] for seamless loop
-    while (x > 0) x -= half;
-    while (x < -half) x += half;
-    return x;
-  }
-
-  function startDrag(e) {
-    isDragging = true;
-    marquee.classList.add('dragging');
-    track.classList.remove('auto');
-    // capture current animated position
-    offset = getOffset();
-    setOffset(offset);
-    startX = e.touches ? e.touches[0].clientX : e.clientX;
-    lastX = startX;
-    lastTime = performance.now();
-    velocity = 0;
-    if(rafId) cancelAnimationFrame(rafId);
-    e.preventDefault();
-  }
-
-  function moveDrag(e) {
-    if(!isDragging) return;
-    const x = e.touches ? e.touches[0].clientX : e.clientX;
-    const delta = x - startX;
-    offset = wrapOffset(offset + delta - (x - lastX));
-    // Actually simpler: just track from start
-    offset = wrapOffset(getOffset() + (x - lastX));
-    setOffset(offset);
-    
-    const now = performance.now();
-    const dt = now - lastTime;
-    if (dt > 0) velocity = (x - lastX) / dt; // px per ms
-    lastX = x;
-    lastTime = now;
-    e.preventDefault();
-  }
-
-  function endDrag() {
-    if(!isDragging) return;
-    isDragging = false;
-    marquee.classList.remove('dragging');
-    
-    // Fling with velocity, then spring back to auto animation
-    const v = velocity * 1000; // px per second
-    let x = getOffset();
-    let vPxPerFrame = v / 60; // px per 16ms frame
-    let frameCount = 0;
-    const maxFrames = 90; // ~1.5s
-
-    function fling() {
-      frameCount++;
-      x += vPxPerFrame;
-      vPxPerFrame *= 0.92; // friction
-      setOffset(wrapOffset(x));
-      
-      if (Math.abs(vPxPerFrame) < 0.5 || frameCount > maxFrames) {
-        // Spring back: blend current position into auto animation
-        // Snap to nearest loop position and resume CSS animation
-        const half = HALF();
-        let snapped = wrapOffset(x);
-        // Clear inline transform, let CSS animation take over from 0
-        track.style.transform = '';
-        track.classList.add('auto');
-        return;
-      }
-      rafId = requestAnimationFrame(fling);
-    }
-    rafId = requestAnimationFrame(fling);
-  }
-
-  // Measure track width after load
-  requestAnimationFrame(() => { trackWidth = track.scrollWidth; });
-  window.addEventListener('resize', () => { trackWidth = track.scrollWidth; });
-
-  marquee.addEventListener('mousedown', startDrag);
-  marquee.addEventListener('touchstart', startDrag, { passive: false });
-  window.addEventListener('mousemove', moveDrag);
-  window.addEventListener('touchmove', moveDrag, { passive: false });
-  window.addEventListener('mouseup', endDrag);
-  window.addEventListener('touchend', endDrag);
-  window.addEventListener('touchcancel', endDrag);
-
-  // Resume auto on mouse leave if not dragging
-  marquee.addEventListener('mouseleave', () => { if(!isDragging) return; });
-})();
+const nav=document.getElementById('nav');window.addEventListener('scroll',()=>{nav.classList.toggle('scrolled',window.scrollY>20)});
+const observer=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')})},{threshold:0.1});document.querySelectorAll('.reveal,.reveal-left,.reveal-scale').forEach(el=>observer.observe(el));
 </script>
 </body>
 </html>

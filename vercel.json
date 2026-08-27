@@ -1,9 +1,16 @@
 {
   "outputDirectory": ".",
-  "rewrites": [
+  "redirects": [
     {
       "source": "/glm-test",
-      "destination": "/glm-test.html"
+      "destination": "/",
+      "permanent": false
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/test-home",
+      "destination": "/test-home.html"
     },
     {
       "source": "/landscaping-software",
