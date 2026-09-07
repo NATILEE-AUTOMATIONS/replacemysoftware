@@ -58,6 +58,9 @@ nav.scrolled{background:rgba(6,7,9,.92)}
 .hero h1{font-family:var(--fd);font-size:3.5rem;font-weight:700;line-height:1.1;margin-bottom:1.5rem;letter-spacing:-.02em}
 .hero h1 .highlight{background:linear-gradient(135deg,var(--accent-light),var(--green));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 .hero-sub{font-size:1.15rem;color:var(--muted);max-width:540px;margin-bottom:2rem}
+.promise-row{display:flex;flex-wrap:wrap;gap:.6rem;margin:1.5rem 0 1.9rem;max-width:560px}
+.promise{display:inline-flex;align-items:center;gap:.5rem;padding:.55rem 1rem;border:1px solid var(--border);background:var(--bg-card);border-radius:999px;font-size:.9rem;font-weight:500;color:var(--fg);white-space:nowrap}
+.promise svg{color:var(--green);flex:none}
 .hero-visual{position:relative}
 .hero-mockup{background:var(--bg-card);border:1px solid var(--border);border-radius:16px;padding:1.5rem;box-shadow:0 20px 60px rgba(0,0,0,.5);animation:float 6s ease-in-out infinite}
 @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
@@ -123,7 +126,12 @@ footer{border-top:1px solid var(--border);padding:2rem 0}.footer-inner{max-width
 <div class="hero-content">
 <div class="hero-badge reveal"><span class="pulse"></span>Custom software for field service businesses — AI-built, human-approved</div>
 <h1 class="reveal">Replace JobNimbus With a<br><span class="highlight">Custom CRM</span> Built Exactly the Way<br>You Like to Run Your Business</h1>
-<p class="hero-sub reveal">We don't sell software. We build yours. A custom CRM shaped around how your business actually runs — scheduling, estimates, invoicing, crew apps — for one flat price. You own every line of code.</p>
+<div class="promise-row reveal">
+<div class="promise"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>Custom built around your workflow</div>
+<div class="promise"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 12c-2-2.67-4-4-6-4a4 4 0 100 8c2 0 4-1.33 6-4Zm0 0c2 2.67 4 4 6 4a4 4 0 100-8c-2 0-4 1.33-6 4Z"/></svg>Yours for life, never rented</div>
+<div class="promise"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 01-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 011-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 011.52 0C14.51 3.81 17 5 19 5a1 1 0 011 1z"/><path d="m9 12 2 2 4-4"/></svg>No bugs, no glitches</div>
+<div class="promise"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3 4 7l4 4"/><path d="M4 7h16"/><path d="m16 21 4-4-4-4"/><path d="M20 17H4"/></svg>Free JobNimbus data transfer</div>
+</div>
 <div class="hero-cta reveal"><a href="/apply" class="btn btn-primary">Apply Now <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg></a><a href="#pricing" class="btn btn-ghost">See Pricing</a></div>
 <div class="hero-stats reveal"><div class="hero-stat"><div class="num">$10K</div><div class="label">Flat one-time build</div></div><div class="hero-stat"><div class="num">2–4 wks</div><div class="label">Idea → live software</div></div><div class="hero-stat"><div class="num">$0/mo</div><div class="label">Software fees after launch</div></div></div>
 </div>
