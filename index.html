@@ -154,17 +154,44 @@ footer{border-top:1px solid var(--border);padding:2rem 0}.footer-inner{max-width
 </div>
 </div>
 </section>
-<section id="pain"><div class="container">
-<div class="reveal"><span class="section-label">The Problem</span>
-<h2 class="section-title">Still fighting your CRM?</h2>
-<p class="section-sub">You pay $300+/month for software with 50 features. Your crews use 3. The mobile app fights them on every job. And the meter never stops running. Here's what renting software actually costs you:</p></div>
-<div class="pain-grid">
-<div class="pain-card reveal"><div class="pain-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></div>
-<h3>$300+/month, every month, forever</h3><p>Per-user fees plus a base charge. 5 crews? You're at $400+/mo. Over 5 years that's $18,000+ in subscription fees — and you own nothing at the end. Cancel and you lose everything.</p><div class="pain-price">$18K+ over 5 years</div></div>
-<div class="pain-card reveal"><div class="pain-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/></svg></div>
-<h3>50 features. Your crews use 3.</h3><p>Estimating, routing, invoicing, proposal builders, time tracking — and a mobile app that crashes on site. Your crew just needs to know where to go next. The clutter slows everyone down and the training never ends.</p><div class="pain-price">Hours lost to bloat</div></div>
-<div class="pain-card reveal"><div class="pain-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6M6 9l2-2"/></svg></div>
-<h3>Growth gets punished</h3><p>Every new user is another per-seat fee. Every price hike hits while you're mid-season. Your data lives in their cloud, in their format, on their terms. You're not the customer — you're the hostage.</p><div class="pain-price">You grow, they charge</div></div>
+<section id="compare"><div class="container">
+<style>
+.compare{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;max-width:900px;margin:3rem auto 0}
+.compare-col{background:var(--bg-card);border:1px solid var(--border);border-radius:16px;padding:2rem}
+.compare-col.rent{border-color:rgba(239,68,68,.35)}
+.compare-col.own{border-color:rgba(34,197,94,.4);background:linear-gradient(180deg,rgba(34,197,94,.05),var(--bg-card))}
+.compare-tag{display:inline-block;padding:.3rem .8rem;border-radius:99px;font-size:.78rem;font-weight:600;text-transform:uppercase;letter-spacing:.05em;margin-bottom:1rem}
+.compare-tag.rent{background:rgba(239,68,68,.12);color:#f87171}
+.compare-tag.own{background:var(--green-soft);color:var(--green)}
+.compare-col h3{font-family:var(--fd);font-size:1.35rem;font-weight:700;margin-bottom:1.25rem}
+.compare-col ul{list-style:none}
+.compare-col li{padding:.6rem 0;font-size:.95rem;color:var(--fg);border-top:1px solid var(--border);display:flex;gap:.6rem;align-items:flex-start}
+.compare-col li::before{content:"✕";color:#f87171;font-weight:700;flex:none}
+.compare-col.own li::before{content:"✓";color:var(--green)}
+@media(max-width:720px){.compare{grid-template-columns:1fr}}
+</style>
+<div class="reveal" style="text-align:center"><span class="section-label">The Two Kinds of Software</span>
+<h2 class="section-title">Rent it forever.<br>Or own it once.</h2></div>
+<div class="compare">
+<div class="compare-col rent reveal"><span class="compare-tag rent">Renting</span>
+<h3>JobNimbus</h3>
+<ul>
+<li>You pay monthly. Forever.</li>
+<li>Hidden price. "Request pricing."</li>
+<li>Every user costs more</li>
+<li>Their logo, not yours</li>
+<li>You own nothing, ever</li>
+</ul></div>
+<div class="compare-col own reveal"><span class="compare-tag own">Owning</span>
+<h3>ReplaceMySoftware</h3>
+<ul>
+<li>One payment. Done.</li>
+<li>Starting at $7,500</li>
+<li>Unlimited users, free</li>
+<li>Your own iOS + Android app</li>
+<li>Your logo, your name</li>
+<li>You own everything from day 1</li>
+</ul></div>
 </div>
 </div></section>
 <section class="solution-section"><div class="container"><div class="solution-grid">
