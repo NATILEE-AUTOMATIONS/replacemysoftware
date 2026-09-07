@@ -55,11 +55,11 @@ nav.scrolled{background:rgba(6,7,9,.92)}
 .hero-badge{display:inline-flex;align-items:center;gap:.5rem;padding:.4rem .9rem;background:var(--accent-soft);border:1px solid rgba(59,130,246,.2);border-radius:20px;font-size:.85rem;color:var(--accent-light);font-weight:500;margin-bottom:1.5rem}
 .pulse{width:8px;height:8px;border-radius:50%;background:var(--accent-light);animation:pulse 2s infinite}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
-.hero h1{font-family:var(--fd);font-size:3.5rem;font-weight:700;line-height:1.1;margin-bottom:1.5rem;letter-spacing:-.02em}
+.hero h1{font-family:var(--fd);font-size:3.15rem;font-weight:700;line-height:1.12;margin-bottom:1.5rem;letter-spacing:-.02em}
 .hero h1 .highlight{background:linear-gradient(135deg,var(--accent-light),var(--green));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 .hero-sub{font-size:1.15rem;color:var(--muted);max-width:540px;margin-bottom:2rem}
-.promise-row{display:flex;flex-wrap:wrap;gap:.6rem;margin:1.5rem 0 1.9rem;max-width:560px}
-.promise{display:inline-flex;align-items:center;gap:.5rem;padding:.55rem 1rem;border:1px solid var(--border);background:var(--bg-card);border-radius:999px;font-size:.9rem;font-weight:500;color:var(--fg);white-space:nowrap}
+.promise-row{display:grid;grid-template-columns:repeat(2,max-content);gap:.65rem 1rem;justify-content:start;margin:1.6rem 0 1.9rem}
+.promise{display:flex;align-items:center;gap:.5rem;padding:.55rem 1.1rem;border:1px solid var(--border);background:var(--bg-card);border-radius:999px;font-size:.9rem;font-weight:500;color:var(--fg);white-space:nowrap}
 .promise svg{color:var(--green);flex:none}
 .hero-visual{position:relative}
 .hero-mockup{background:var(--bg-card);border:1px solid var(--border);border-radius:16px;padding:1.5rem;box-shadow:0 20px 60px rgba(0,0,0,.5);animation:float 6s ease-in-out infinite}
@@ -125,7 +125,7 @@ footer{border-top:1px solid var(--border);padding:2rem 0}.footer-inner{max-width
 <div class="hero-grid">
 <div class="hero-content">
 <div class="hero-badge reveal"><span class="pulse"></span>Custom software for field service businesses — AI-built, human-approved</div>
-<h1 class="reveal">Replace JobNimbus With a<br><span class="highlight">Custom CRM</span> Built Exactly the Way<br>You Like to Run Your Business</h1>
+<h1 class="reveal">Replace JobNimbus<br>With a <span class="highlight">Custom CRM</span><br>Built Exactly the Way<br>You Like to Run Your Business</h1>
 <div class="promise-row reveal">
 <div class="promise"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>Custom built around your workflow</div>
 <div class="promise"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 12c-2-2.67-4-4-6-4a4 4 0 100 8c2 0 4-1.33 6-4Zm0 0c2 2.67 4 4 6 4a4 4 0 100-8c-2 0-4 1.33-6 4Z"/></svg>Yours for life, never rented</div>
